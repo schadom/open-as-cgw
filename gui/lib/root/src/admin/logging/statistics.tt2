@@ -1,0 +1,10 @@
+<div id="logging_statistics_entire_traffic_stats">
+	[% INCLUDE admin/logging/statistics/entire_traffic_stats.inc.tt2 %]
+</div>
+
+<!--
+<div id="logging_statistics_sender_traffic_stats">
+	[% INCLUDE admin/logging/statistics/sender_traffic_stats.inc.tt2 %]
+</div>
+
+-->

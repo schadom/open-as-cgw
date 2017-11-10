@@ -1,0 +1,51 @@
+<!--
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+
+
+[% MACRO month_ntoa(type) SWITCH type;
+  CASE '01'; "Jan";
+  CASE '02'; "Feb";
+  CASE '03'; "Mar";
+  CASE '04'; "Apr";
+  CASE '05'; "May";
+  CASE '06'; "Jun";
+  CASE '07'; "Jul";
+  CASE '08'; "Aug";
+  CASE '09'; "Sep";
+  CASE '10'; "Oct";
+  CASE '11'; "Nov";
+  CASE '12'; "Dec";
+END; %]
+
+
+<ul class="text_list">
+[%
+	FOREACH year IN logs.pairs;
+		year_last = 1 IF loop.last;
+		FOREACH month IN year.value.pairs;
+			month_last = 1 IF loop.last;
+			%]<li><strong>[% year.key %] - [% month_ntoa(month.key) %]: </strong>[%
+
+			# Days link to logfile
+			FOREACH day IN month.value.pairs;
+				day_of_month = day.value.match('.*\d\d(\d\d)\.gz$').0;
+				file_url = Catalyst.uri_for('/admin/logging/log_viewer/logfile/' _ day.value);
+				%]<a href="[% file_url %]">[% day_of_month _ " " %]</a>[%
+			END;
+
+			# "today" entry
+			IF year_last==1 AND month_last==1;
+				%]<a href="[% Catalyst.localize('/admin/logging/log_viewer/logfile/mail.log.gz') %]">today</a>[%
+			END;
+			%]</li>[%
+		END;
+	END;
+%]
+</ul>
+
+
+
+[% INCLUDE 'site/box_close' %]
+-->

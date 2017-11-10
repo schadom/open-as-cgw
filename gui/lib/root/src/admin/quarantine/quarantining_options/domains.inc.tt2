@@ -1,0 +1,27 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+[% INCLUDE 'site/elements/form',
+	url = Catalyst.uri_for('/admin/quarantine/quarantining_options/change_quarantine_domains') %]
+	<fieldset>
+	[% 	domain_list = [];
+		FOREACH dom IN domains.keys.sort;
+			found = 0;
+			FOREACH white_dom IN whitelisted_domains_array;
+				IF dom == white_dom;
+					found = 1;
+				END;
+			END;
+			domain_list.push({ value => dom, checked=>(found==1) ? 'checked' : '', label=>dom, });
+		END;
+
+		INCLUDE 'site/elements/multiple_select'
+			name = 'domains',
+			wide = 'wide',
+			option_list = domain_list;	%]
+	</fieldset>
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input' type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

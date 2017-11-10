@@ -1,0 +1,12 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('smtp_restrictions') %]</h3>
+    <p>[% Catalyst.localize('help_smtp_restrictions') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_smtp_advanced') %]</h3>
+    <p>[% Catalyst.localize('help_heading_antispam_smtp_advanced') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_smtp_ssl') %]</h3>
+    <p>[% Catalyst.localize('help_heading_antispam_smtp_ssl') %]</p>
+</div>

@@ -1,0 +1,71 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[%	list_from = [];
+	list_to = [];
+	FOREACH entry IN log_range;
+		list_from.push({ value => entry.value, label => entry.label  });
+		list_to.push({ value => entry.value, label => entry.label  });
+	END; %]
+
+<p class="info">[% Catalyst.localize(box_path _ '_warning') %]</p>
+
+[% IF entry.size > 0 %]
+	[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/logging/log_viewer/search') %]
+		<fieldset>
+			[%  INCLUDE 'site/elements/select'
+				name = 'from',
+				option_list = list_from, -%]
+			[%	INCLUDE 'site/elements/input',
+				name = 'use_regex', 
+				value = '1',
+				type = 'checkbox', %]
+			[%  INCLUDE 'site/elements/select'
+				name = 'to',
+				option_list = list_to, -%]
+			[%	INCLUDE 'site/elements/input',
+				name = 'ignore_case', 
+				value = '1',
+				type = 'checkbox', %]
+			[%	INCLUDE 'site/elements/input',
+				name = 'pattern', %]
+			[%	INCLUDE 'site/elements/input',
+				name = 'reverse', 
+				value = '1',
+				type = 'checkbox', %]
+			[% INCLUDE 'site/elements/input'
+				value = Catalyst.localize(box_path _ '_start'),
+				type = 'button' -%]
+		</fieldset>
+	</form>
+
+	[% IF search_result.size AND search_result.size > 0; 
+		table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_num'));
+		table_headers.push(Catalyst.localize(box_path _ '_match'));
+
+		table_th_classes = [];
+		table_th_classes.push('', '');
+		table_td_classes = [];
+		table_td_classes.push('', '');
+
+		table_values = [];
+		num = 0;
+
+		IF reverse_output; search_result = search_result.reverse; END;
+		FOREACH line IN search_result; 
+			num = num + 1;
+			line_filtered = line FILTER html_entity;
+			table_values.push([ num, line_filtered.remove('ANTISPAM') ]);
+		END;
+
+		INCLUDE 'site/elements/table',
+			headers = table_headers,
+			td_classes = table_td_classes,
+			th_classes = table_th_classes,
+			td_values = table_values;
+	END %]
+[% ELSE %]
+	<p><i>There are currently no logs to crawl through - your appliance may be brand new; please
+	re-check this page in some while.</i></p>
+[% END %]
+[% INCLUDE 'site/box_close' %]

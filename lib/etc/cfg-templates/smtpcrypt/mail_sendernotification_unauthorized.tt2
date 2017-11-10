@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title>Encryption failure notification</title>
+	</head>
+	<body>
+		<h3>Sorry, you're not authorized to use Mail-Encryption</h3>
+		You have ordered to send an encrypted e-mail to [% mail_rcpt %]. However, administration policy enforcement asserts that you are not authorized to utilize the Mail Encryption Engine on this server. As a matter of fact, your e-mail has <b>not</b> been forwarded to [% mail_rcpt %] and has been deleted from the mail-queue.
+		</body>
+</html>

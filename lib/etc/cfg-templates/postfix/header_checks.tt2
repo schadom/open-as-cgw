@@ -1,0 +1,9 @@
+# Mails which are to be encrypted have to be forwarded
+# to the "filter" service script, if configured so.
+[% IF smtpcrypt_enable == "1" %]
+/@[% smtpcrypt_cryptotag %]/						FILTER smtpcrypt:
+[% END %]
+
+# LOG all subjects
+/^[Ss]ubject:/                 WARN
+

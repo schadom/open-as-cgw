@@ -1,0 +1,24 @@
+    <div id="left">
+        <div id="applienceName">
+            <h1>
+                <a href="index.htm" title="Startscreen">
+                    <span class="invisible">Open AS Communication Gateway</span>
+                </a>
+            </h1>
+        </div>
+        <div id="container">
+            [% PROCESS site/navigation %]
+            </div>
+            <div id="contentContainer">
+            [% content %]
+            </div>
+        </div>
+        <div id="underground">
+            <h2>
+                <a href="https://openas.org" title="Open AS">
+                    <span class="invisible">Open AS</span>
+                </a>
+            </h2>
+        </div>
+    </div>
+

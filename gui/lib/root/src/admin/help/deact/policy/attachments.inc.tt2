@@ -1,0 +1,15 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('recipient_warnings') %]</h3>
+    <p>[% Catalyst.localize('help_recipient_warnings') %]</p>
+
+    <h3>[% Catalyst.localize('title_policy_add_attachment') %]</h3>
+    <p>[% Catalyst.localize('help_title_policy_add_attachment') %]</p>
+
+    <h3>[% Catalyst.localize('title_policy_add_groups') %]</h3>
+    <p>[% Catalyst.localize('help_policy_add_groups') %]</p>
+    
+    <h3>[% Catalyst.localize('blocked_attachments') %]</h3>
+    <p>[% Catalyst.localize('help_blocked_attachments') %]</p>
+</div>

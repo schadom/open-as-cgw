@@ -1,0 +1,7 @@
+<div id="system_notifications_add">
+    [% INCLUDE admin/system/notifications/add.inc.tt2 %]
+</div>
+<div id="system_notifications_list">
+    [% INCLUDE admin/system/notifications/list.inc.tt2 %]
+</div>
+

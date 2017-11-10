@@ -1,0 +1,4 @@
+<div id="system_user_pw_gui">
+    [% INCLUDE admin/system/user/pw_gui.inc.tt2 %]
+</div>
+

@@ -1,0 +1,46 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% prefix = 'monitoring_ping_trace_trace_' %]
+
+
+[% INCLUDE 'site/elements/form'
+	url=Catalyst.uri_for('/admin/monitoring/ping_trace/trace'), -%]
+	[% button_text= 'Trace' %]
+	<fieldset>
+		[%  INCLUDE 'site/elements/input'
+			name='hostname',
+			id = 'trace_host',
+			required='required', -%]
+		[% INCLUDE 'site/elements/input'
+			name='noreverselookup',
+			type='checkbox',
+			value='No', -%]
+		[% INCLUDE 'site/elements/input' type = 'button', value = button_text, -%]
+	</fieldset>
+</form>
+
+[% IF trace_data;
+	table_headers = [];
+	table_headers.push(Catalyst.localize( box_path _ "_hop"));
+	table_headers.push(Catalyst.localize( box_path _ "_router"));
+	table_headers.push(Catalyst.localize( box_path _ "_time"));
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', '');
+	table_td_classes = [];
+	table_td_classes.push('left', '', '');
+
+	table_values =  [];
+	FOREACH hop IN trace_data;
+		table_values.push( [ hop.count, hop.host, hop.time ] );
+	END;
+
+	 INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		td_values = table_values; 
+END; %]
+
+[% INCLUDE 'site/box_close' %]

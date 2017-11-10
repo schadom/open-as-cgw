@@ -1,0 +1,122 @@
+# Configuration template for PostFWD (postfix firewall daemon)
+[% bl_action = "REJECT" %]
+[% bl_reason = "Blacklisted" %]
+[% wl_action = "FILTER smtp-amavis:[127.0.0.1]:10026" %] # Amavis WHITELIST
+
+### Send SASL authenticated users to amavis:10028
+id=SASL1; action=FILTER smtp-amavis:[127.0.0.1]:10028 ; sasl_username!~^$ ; sasl_method!~^$
+
+#
+#
+#### WHITELIST
+[% IF status_bwman == "enabled" %]
+	[% IF whitelist %]
+		[% IF whitelist.size > 0 %]
+			[% FOREACH rec IN whitelist %]
+				[% IF (rec.category == "ip_addr_cidr" || rec.category == "ip_addr_plain") %]
+					id=WL[%rec.id%]; action=[% wl_action %] ; client_address=[%rec.postfwd_rule%]
+				[% ELSIF rec.category == "ip_range" %]
+					[% cnt = 0 %]
+					[% FOREACH ip_part IN rec.postfwd_rule %]
+					id=WL[%rec.id _ cnt%]; action=[% wl_action %] ; client_address=[%ip_part%]
+					[% cnt = cnt + 1 %]
+					[% END %]
+				[% ELSIF (rec.category == "domainname" || rec.category == "hostname") %]
+					id=WL[%rec.id%]; action=[% wl_action %] ; reverse_client_name=[%rec.postfwd_rule%]
+				[% ELSIF (rec.category == "domainname_wildcard" || rec.category == "hostname_wildcard") %]
+					id=WL[%rec.id%]; action=[% wl_action %] ; reverse_client_name~=[%rec.postfwd_rule%]$
+				[% ELSIF rec.category == "mail_addr" %]
+					id=WL[%rec.id%]; action=[% wl_action %] ; sender=[%rec.postfwd_rule%]
+				[% ELSIF rec.category == "mail_addr_wildcard" %]
+					id=WL[%rec.id%]; action=[% wl_action %] ; sender~=[%rec.postfwd_rule%]$
+				[% END %]
+			[% END %]
+		[% END %]
+	[% END %]
+#
+#
+#### BLACKLIST
+	[% IF blacklist %]
+		[% IF blacklist.size > 0 %]
+			[% FOREACH rec IN blacklist %]
+				[% IF (rec.category == "ip_addr_cidr" || rec.category == "ip_addr_plain") %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; client_address=[%rec.postfwd_rule%]
+				[% ELSIF rec.category == "ip_range" %]
+					[% cnt = 0 %]
+					[% FOREACH ip_part IN rec.postfwd_rule %]
+					id=BL[%rec.id _ cnt%]; action=[% bl_action %] [% bl_reason %] ; client_address=[%ip_part%]
+					[% cnt = cnt + 1 %]
+					[% END %]
+				[% ELSIF (rec.category == "domainname" ) %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; reverse_client_name=[%rec.postfwd_rule%]
+				[% ELSIF (rec.category == "domainname_wildcard" ) %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; reverse_client_name~=[%rec.postfwd_rule%]$
+				[% ELSIF ( rec.category == "hostname") %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; reverse_client_name=[%rec.postfwd_rule%]
+				[% ELSIF ( rec.category == "hostname_wildcard") %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; reverse_client_name~=[%rec.postfwd_rule%]$
+				[% ELSIF rec.category == "mail_addr" %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; sender=[%rec.postfwd_rule%]
+				[% ELSIF rec.category == "mail_addr_wildcard" %]
+					id=BL[%rec.id%]; action=[% bl_action %] [% bl_reason %] ; sender~=[%rec.postfwd_rule%]$
+				[% END %]
+			[% END %]
+		[% END %]
+	[% END %]
+[% END %]
+
+#
+#
+
+#
+#### REMOTE BLACKLISTS
+# Check if -any- given entry is enabled
+[% rbl_enabled_entries_avail =  0 %]
+[% FOREACH rec IN rbls %]
+	[% IF rec.value.enabled == 1 %]
+		[% rbl_enabled_entries_avail = rbl_enabled_entries_avail + 1 %]
+	[% END %]
+[% END %]
+# 
+[% IF status_rbl == "enabled" && rbls_list.size > 0 && rbl_enabled_entries_avail > 0 %]
+	&&RBLS { \
+		[% FOREACH entry IN rbls_list %]
+			[% IF rbls.$entry.enabled == 1 %]
+			rbl=[% entry %] ; \
+			[% END %]
+		[% END %]
+	};
+
+	id=RBL_LOOKUP  ;  &&RBLS ;  rhsblcount=all ; rblcount=all ; action=set(HIT_rbls=$$rhsblcount,HIT_rbls+=$$rblcount,HIT_text=$$dnsbltext)
+	id=RBL_ENFORCE  ;  HIT_rbls>=[% rbl_threshold %]  ; action=REJECT Sender is listed on RBL(s) [Reason: $$HIT_text, Hits: $$HIT_rbls]
+[% END %]
+#
+#
+#
+#### SELECTIVE GREYLISTING
+[% IF status_selective_greylisting == "enabled" %]
+	# Greylist everything with >4 hyphens in hostname
+	id=SGL1; action=rc_greylisting ; reverse_client_name~=(\-.+){4}$
+
+	# Greylist everything with >4 dots in hostname
+	id=SGL2; action=rc_greylisting ; reverse_client_name~=(\..+){4}$
+
+	# Greylist everything with unknown reverse lookup
+	id=SGL3; action=rc_greylisting ; reverse_client_name=^unknown$
+
+	# Greylist everything based on some really weired regex
+	id=SGL4; action=rc_greylisting ; reverse_client_name~=(^|[0-9.x_-])(abo|br(e|oa)dband|cabel|(hk)?cablep?|catv|cbl|cidr|d?client2?|cust(omer)?s?|dhcp|dial?(in|up)?|d[iu]p|[asx]?dsld?|dyn(a(dsl|mic)?)?|home|in-addr|modem(cable)?|(di)?pool|ppp|ptr|rev|user|YahooBB[0-9]{12}|c[[:alnum:]]{6,}(\.[a-z]{3})?\.virtua|[1-9]Cust[0-9]+|AC[A-Z][0-9A-F]{5}\.ipt|pcp[0-9]{6,}pcs|S0106[[:alnum:]]{12,}\.[a-z]{2})[0-9.x_-]
+[% END %]
+#
+
+
+#### GREYLISTING
+[% IF status_greylisting == "enabled" %]
+	id=GL1; action=rc_greylisting 
+ # So something blabla
+[% END %]
+#
+#
+### Finally do normal scan process (log msg needed by rtlog)
+#id=DUMMY ; action=FILTER smtp-amavis:[127.0.0.1]:10024
+id=DUMMY ; action=DUNNO

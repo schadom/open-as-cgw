@@ -1,0 +1,4 @@
+<div id="help_appliance_logging">
+    <h3>[% Catalyst.localize('logging_live_log_livelog_heading') %]</h3>
+	<p>[% Catalyst.localize('help_logging_live_log_livelog') %]</p>
+</div>

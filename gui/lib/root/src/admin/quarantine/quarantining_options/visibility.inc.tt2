@@ -1,0 +1,28 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form', url = Catalyst.uri_for('/admin/quarantine/quarantining_options/change_report_options') %]
+	<fieldset>
+	[%	FOREACH cat IN ['spam', 'virus', 'banned'];
+				report_options = [];
+
+				report_options.push({ 	value => 'full', 
+										selected => (report_show.$cat == "1" && report_hidelinks.$cat == "0" ? 'selected="selected"' : ''), 
+										label => Catalyst.localize(box_path _ "_full") });
+
+				report_options.push({ 	value => 'mail', 
+										selected => (report_show.$cat == "0" ? 'selected="selected' : ''), 
+										label => Catalyst.localize(box_path _ "_mail") });
+
+				report_options.push({ 	value => 'links', 
+										selected => (report_hidelinks.$cat == "1" ? 'selected="selected' : ''), 
+										label => Catalyst.localize(box_path _ "_links") });
+
+
+				INCLUDE 'site/elements/select'
+					name = cat,
+					option_list = report_options;
+		END; 
+		INCLUDE 'site/elements/input' type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

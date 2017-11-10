@@ -1,0 +1,4 @@
+<div id="monitoring_process_list_plist">
+	[% INCLUDE admin/monitoring/process_list/plist.inc.tt2 %]
+</div>
+

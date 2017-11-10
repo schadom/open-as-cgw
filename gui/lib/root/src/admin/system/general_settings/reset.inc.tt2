@@ -1,0 +1,18 @@
+[% PROCESS 'site/box_init';
+
+# variable definitions
+options=[];
+options.push({value=>'statistics', selected=>' selected="selected"', label=>Catalyst.localize(box_path _ '_reset_statistics')});
+options.push({value=>'soft', selected=>'', label=>Catalyst.localize(box_path _ '_reset_soft')});
+options.push({value=>'hard', selected=>'', label=>Catalyst.localize(box_path _ '_reset_hard')}); %]
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/general_settings/reset') %]
+        <p class="info"><strong>[%Catalyst.localize(box_path _ '_reset_statistics') %]:</strong> [% Catalyst.localize(box_path _ '_statistics_text') %]</p>
+        <p class="info"><strong>[%Catalyst.localize(box_path _ '_reset_soft') %]:</strong> [% Catalyst.localize(box_path _ '_soft_text') %]</p>
+        <p class="info"><strong>[%Catalyst.localize(box_path _ '_reset_hard') %]:</strong> [% Catalyst.localize(box_path _ '_hard_text') %]</p>
+        <fieldset>
+            [% INCLUDE site/elements/select name='type', option_list=options %]
+            [% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize('perform_action') %]
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

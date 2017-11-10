@@ -1,0 +1,70 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open'; %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+    [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/content_scanning/spam_handling/save_matrix') %]
+[%
+	table_headers = [];
+	table_headers.push( Catalyst.localize(box_path _ '_policy') );
+	table_headers.push( Catalyst.localize(box_path _ '_tag') );
+	table_headers.push( Catalyst.localize(box_path _ '_quarantine') );
+	table_headers.push( Catalyst.localize(box_path _ '_block') );
+	table_headers.push( Catalyst.localize(box_path _ '_nodsn') );
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', '', '', '');
+
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', '', '');
+
+	table_values = [];
+
+	FOREACH row IN ['default', 'whitelist', 'relayhosts', 'smtpauth', 'defaultqon', 'defaultqoff'];
+		myrow = [];
+		myrow.push( Catalyst.localize(box_path _ '_' _ row) );
+
+		FOREACH col IN ['tag', 'cutoff', 'block', 'dsn'];
+			input = BLOCK; INCLUDE 'site/elements/input' 
+				name = row _ '_' _ col, 
+				value = $row.$col, 
+				class = 'nolabel'; 
+			END;
+			myrow.push(input);
+		END;
+
+		table_values.push( myrow );
+	END;
+
+#	INCLUDE 'site/elements/table'
+#		headers = table_headers,
+#		td_classes = table_td_classes,
+#		th_classes = table_th_classes,
+#		td_values = table_values;
+%]
+
+<fieldset style="margin: 0; padding: 0;">
+<table class="table_content">
+	<thead>
+		<tr>
+			<th>[% Catalyst.localize(box_path _ '_policy') %]</th>
+			<th>[% Catalyst.localize(box_path _ '_tag') %]</th>
+			<th>[% Catalyst.localize(box_path _ '_quarantine') %]</th>
+			<th>[% Catalyst.localize(box_path _ '_block') %]</th>
+			<th>[% Catalyst.localize(box_path _ '_nodsn') %]</th>
+		</tr>
+	</thead>
+	[% FOREACH row IN ['default', 'whitelist', 'relayhosts', 'smtpauth', 'defaultqon', 'defaultqoff'] %]
+	<tr>
+		<td><strong>[% Catalyst.localize(box_path _ '_' _ row) %]</strong></td>
+		[% FOREACH col IN ['tag', 'block', 'cutoff', 'dsn'] %]
+		<td><input name="[% row %]" value="[% $row.$col %]" class="matrix" /></td>
+		[% END %]
+	</tr>
+	[% END %]
+</table>
+</fieldset>
+
+<fieldset>
+	[% INCLUDE 'site/elements/input' type = 'button' %]
+</fieldset>
+</form>
+[% INCLUDE 'site/box_close'; %]

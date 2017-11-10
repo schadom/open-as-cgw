@@ -1,0 +1,15 @@
+[% language_strings.mail_rcptnotification_heading %]
+
+
+[% mail_sender %] [% language_strings.mail_rcptnotification_sender_is %]:
+	[% mail_subject %]"
+[% language_strings.mail_rcptnotification_contact_sender %] [% mail_sender %].
+
+[% IF file_type == "pdf" %]
+[% language_strings.mail_rcptnotification_get_adobe %]
+[% ELSE %]
+[% language_strings.mail_rcptnotification_get_7zip %]
+[% END %]											
+										
+--
+[% language_strings.footer_signature %] underground_8 [% language_strings.via %] [% language_strings.product %]

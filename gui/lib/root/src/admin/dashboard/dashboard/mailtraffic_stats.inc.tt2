@@ -1,0 +1,65 @@
+[% PROCESS 'site/box_init'; %]
+
+[%# conv_human_readable(number)·
+	Transforms numerical values >1000 into floats
+	with k (kilo), M (mega) and G (giga) suffixes, with two 
+	decimal places after comma (accuracy 10^-2).  %]
+[% MACRO conv_human_readable(n) IF n < 1000 %]
+    [% n %]
+  [% ELSIF n >= 1000 && n < 1000000 %]
+    [% n = n div 10 / 100 %]
+    [% n %]k 
+  [% ELSIF n >= 1000000 && n < 1000000000 %]
+    [% n = n div 10000 / 100 %]
+    [% n %]M 
+  [% ELSE %]
+    [% n = n div 10000000 / 100 %]
+    [% n %]G 
+[% END %]
+
+[%
+table_headers = [];
+table_headers.push(Catalyst.localize('dashboard_dashboard_mail_traffic_type_of_mail'));
+table_headers.push(Catalyst.localize('dashboard_dashboard_mail_traffic_all_time'));
+table_headers.push(Catalyst.localize('dashboard_dashboard_mail_traffic_today'));
+table_headers.push(Catalyst.localize('dashboard_dashboard_mail_traffic_last_24h'));
+table_headers.push(Catalyst.localize('dashboard_dashboard_mail_traffic_last_h'));
+
+table_th_classes = [];
+table_th_classes.push('left', '', '', '', '',);
+
+table_td_classes = [];
+table_td_classes.push('left', '', '', '', '',);
+
+#fill the table values with the right values and text fields, but the spans with those classes are necessary
+table_values = [];
+
+FOREACH type IN mail_types;
+    name = Catalyst.localize("dashboard_dashboard_mail_traffic_type_$type");
+    table_values.push(["<span class=\"$type\">$name</span>", 
+		conv_human_readable(current_stats.alltime.$type), 
+		conv_human_readable(current_stats.today.$type), 
+		conv_human_readable(current_stats.last24h.$type), 
+		conv_human_readable(current_stats.lasthour.$type)]);
+END;
+-%]
+
+[% INCLUDE 'site/box_open' %]
+	[% INCLUDE 'site/elements/amchart'
+		height = 300,
+		id = 'mail_traffic',
+		type = 'amcolumn',
+		width = 602
+	-%]
+	
+	[% INCLUDE 'site/elements/table'
+		headers = table_headers,
+		id = 'spam_stats',
+		th_classes = table_th_classes,
+		td_classes = table_td_classes,
+		td_values = table_values		
+	-%]
+    
+
+[% INCLUDE 'site/box_close' %]
+

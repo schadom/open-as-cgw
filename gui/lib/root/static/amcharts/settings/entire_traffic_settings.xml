@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings> 
+	<font>Lucida Sans Unicode</font>                
+	<thousands_separator>.</thousands_separator>
+	<background>                                                
+		<border_alpha>7</border_alpha>                        
+	</background>
+
+	<export_as_image>
+		<color>#505050</color>
+		<alpha>100</alpha>
+		<text_color>#FFFFFF</text_color>
+	</export_as_image>	
+	
+	<help>    
+		<button> 
+			<color>#505050</color>          
+			<text_color>#FFFFFF</text_color>
+			<text_color_hover>#4BD2FA</text_color_hover>    
+		</button>    
+		<balloon>                        
+			<color>#505050</color>                      
+			<text_color>#FFFFFF</text_color> 
+			<text>                                                
+				<![CDATA[Click on the graph to turn on/off value balloon <br/><br/>Click on legend key to show/hide graph<br/><br/>Mark the area you wish to enlarge]]>
+			</text>                               
+		</balloon>    
+	</help> 
+	
+	<plot_area>              
+		<margins>              
+			<left>80</left>        
+			<top>20</top>         
+			<right>200</right>   
+			<bottom>40</bottom>  
+		</margins>
+	</plot_area>
+  
+	<grid>       
+		<x>                                                             
+			<alpha>10</alpha> 
+		</x>
+		<y_left>      
+			<alpha>10</alpha>   
+		</y_left>
+	</grid>
+  
+	<axes>               
+		<x>
+			<color>#505050</color>
+			<width>1</width>                                    
+			<tick_length>5</tick_length> 			
+		</x>
+		<y_left>            
+			<color>#505050</color>
+			<width>1</width>                                    
+			<tick_length>5</tick_length> 
+			<logarithmic>false</logarithmic>
+		</y_left>
+	</axes>   
+	  
+	<legend>                       
+		<enabled>true</enabled>      
+		<x>700</x>                   
+		<y>40</y>
+		<text_color>#505050</text_color>
+		<text_color_hover>#00A0FA</text_color_hover>
+		<width>180</width>
+	</legend>  
+	
+	<indicator>           
+		<color>#505050</color>
+		<line_alpha>75</line_alpha>
+		<selection_color>#00a0fa</selection_color>
+		<selection_alpha>10</selection_alpha>     
+		<x_balloon_text_color>#FFFFFF</x_balloon_text_color>
+	</indicator>
+
+	<graphs>
+		<graph gid="passed_clean">
+			<color>#50e326</color>
+			<color_hover>#38b315</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+		<graph gid="passed_spam">
+			<color>#ece31f</color>
+			<color_hover>#bfb713</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+		<graph gid="blocked_spam">
+			<color>#ff8105</color>
+			<color_hover>#d27214</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+		<graph gid="blocked_greylisted">
+			<color>#777777</color>
+			<color_hover>#555555</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+		<graph gid="blocked_blacklisted">
+			<color>#ec321f</color>
+			<color_hover>#c91a08</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+		<graph gid="blocked_virus">
+			<color>#d64385</color>
+			<color_hover>#ae185b</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+		<graph gid="blocked_banned">
+			<color>#9351b2</color>
+			<color_hover>#641a86</color_hover>
+			<balloon_text>
+				<![CDATA[<b>{title}:</b> {value}]]>
+			</balloon_text>
+			<bullet>round_outline</bullet>
+			<bullet_size>7</bullet_size>
+			<line_width>2</line_width>
+		</graph>
+	</graphs>
+</settings>

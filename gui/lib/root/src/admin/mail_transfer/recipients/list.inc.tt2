@@ -1,0 +1,69 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form'  update = 'content', url = Catalyst.uri_for('/admin/mail_transfer/recipients/show_recipients/') %]
+	[% 	options = [];
+		FOREACH domain IN relay_domains;
+			options.push({ value=> domain.key, label => domain.key, selected = (current_domain == domain.key ? 'selected' : '') });
+		END; %]
+	<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+	<fieldset>
+		[% INCLUDE 'site/elements/select' name = 'domain', id = 'domain_list', option_list = options %]
+		[% INCLUDE 'site/elements/input'  name = 'showcache', type = 'checkbox', value = '1' %]
+		[% INCLUDE 'site/elements/input' value = 'Show list', type = 'button' %]
+	</fieldset>
+</form>
+
+[% IF usermaps;
+		table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_status'));
+		table_headers.push(Catalyst.localize(box_path _ '_address'));
+		table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+		table_th_classes = [];
+		table_th_classes.push('left', '', 'action');
+		table_td_classes = [];
+		table_td_classes.push('left', '', 'action');
+
+		table_values = [];
+
+		recipient_addresses = usermaps.addresses;
+		FOREACH address IN recipient_addresses.keys.sort;
+			recipient_address_accept = recipient_addresses.$address.accept;
+
+			IF recipient_address_accept == "ldap";
+				address_status = "(LDAP)";
+			ELSIF recipient_address_accept == "1";
+				address_status = '<span class="enabled">accept</span>';
+			ELSE;
+				address_status = '<span class="disabled">deny</span';
+			END;
+
+			full_address = address _ "@" _ current_domain;
+
+			link_del = BLOCK;
+				INCLUDE 'site/elements/link',
+					update = 'content',
+					url = Catalyst.uri_for('/admin/mail_transfer/recipients/delete/' _ address _ '/' _ current_domain),
+					infobar = box_path _ '_infobar',
+					label = Catalyst.localize(box_path _ '_delete');
+			END;
+			link_del = '<span>' _ link_del _ '</span>';
+
+			IF recipient_address_accept == "ldap";
+				link_del = "";
+			END;
+
+			table_values.push([ address_status, full_address, link_del ]);
+		END;
+
+		IF recipient_addresses.keys.size > 0;
+			INCLUDE 'site/elements/table'
+				headers = table_headers,
+				td_classes = table_td_classes,
+				th_classes = table_th_classes,
+				td_values = table_values;
+		ELSE;
+			%]<p class="no_entries">[% Catalyst.localize(box_path _ '_nousers') _ ' ' _ current_domain %].</p>[%
+		END;
+END %]
+[% INCLUDE 'site/box_close' %]

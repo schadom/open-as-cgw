@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+[% USE date %]
+<chart>
+	<xaxis>
+    [% FOREACH timestamp IN current_stats.0 -%]
+        [%- IF loop.count mod 15 == "1" %]
+        <value xid="[%- timestamp -%]">[%- date.format(timestamp, format = '%H:%M %b %d') -%]</value>
+        [%- END -%]
+    [% END %]
+	</xaxis>
+	<graphs>
+        [% FOREACH type IN mail_types %]
+		<graph gid="[%- type -%]" title="[%- Catalyst.localize(type) -%]">[%- count = loop.count; tempvalue = 0; -%]
+           [%- FOREACH value IN current_stats.$count -%]
+            [%- innercount = loop.count - 1 -%]
+            [%- IF innercount mod 15 == "0" %]
+			<value xid="[%- current_stats.0.$innercount -%]">[%- tempvalue -%]</value>[%- tempvalue = 0 -%]
+            [%- ELSE; 
+                tempvalue = tempvalue + value;
+            END; -%]
+           [%- END %]
+		</graph>
+        [% END %]
+	</graphs>
+</chart>
+
+[%# USE Dumper %]
+[%# Dumper.dump(current_stats) %]

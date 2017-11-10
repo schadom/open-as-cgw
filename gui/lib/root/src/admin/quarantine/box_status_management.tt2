@@ -1,0 +1,6 @@
+<div id="quarantine_box_status_management_filter">
+	[% INCLUDE 'admin/quarantine/box_status_management/filter.inc.tt2' -%]
+</div>
+<div id="quarantine_box_status_management_list">
+	[% INCLUDE 'admin/quarantine/box_status_management/list.inc.tt2' -%]
+</div>

@@ -1,0 +1,15 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('heading_antispam_domains_adddomain') %]</h3>
+    <p>[% Catalyst.localize('help_heading_antispam_domains_adddomain') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_domains_multiadddomain') %]</h3>
+    <p>[% Catalyst.localize('help_domains_multiadddomain') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_domains_bulk_assignment') %]</h3>
+    <p>[% Catalyst.localize('help_heading_antispam_domains_bulk_assignment') %]</p>
+
+    <h3>[% Catalyst.localize('configured_domains') %]</h3>
+    <p>[% Catalyst.localize('help_configured_domains') %]</p>
+</div>

@@ -1,0 +1,11 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_clamav') %]</strong>
+		[% INCLUDE 'site/elements/enable'
+			status = clamav_enabled ? 'enabled' : 'disabled',
+			url = Catalyst.uri_for("/admin/content_scanning/anti_virus/toggle_scanner/clamav"); %]
+	</li>
+</ul>
+[% INCLUDE 'site/box_close' %]

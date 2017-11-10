@@ -1,0 +1,7 @@
+127.0.0.1 FILTER smtp-amavis:[127.0.0.1]:10022
+
+[%- IF ip_whitelisting -%]
+    [%- FOREACH ip = ip_addresses %]
+[% ip %] FILTER smtp-amavis:[127.0.0.1]:10026
+    [%- END -%]
+[% END %]

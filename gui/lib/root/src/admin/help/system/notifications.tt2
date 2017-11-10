@@ -1,0 +1,7 @@
+<div id="help_appliance_system">
+	<h3>[% Catalyst.localize('system_notifications_add_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_notifications_add') %]</p>
+
+	<h3>[% Catalyst.localize('system_notifications_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_notifications_list') %]</p>
+</div>

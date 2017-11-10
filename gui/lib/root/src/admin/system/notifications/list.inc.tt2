@@ -1,0 +1,55 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% IF notification_account_list.size > 0;
+	table_headers = [];
+	table_headers.push(Catalyst.localize(box_path _ '_email'));
+	table_headers.push(Catalyst.localize(box_path _ '_name'));
+	table_headers.push(Catalyst.localize(box_path _ '_smtpsrv'));
+	table_headers.push(Catalyst.localize(box_path _ '_login'));
+	table_headers.push(Catalyst.localize(box_path _ '_password'));
+	table_headers.push(Catalyst.localize(box_path _ '_usetls'));
+	table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', '', '', '', '', 'action');
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', '', '', '', 'action');
+	table_values = [];
+
+	i = 0;
+	FOREACH account IN notification_account_list;
+		edit_link = BLOCK;
+			INCLUDE 'site/elements/link'
+				url = Catalyst.uri_for('/admin/system/notifications/edit/' _ i),
+				update = 'content',
+				infobar = box_path _ '_infobar',
+				label = Catalyst.localize(box_path _ '_edit');
+		END;
+		delete_link = BLOCK;
+			INCLUDE 'site/elements/link'
+				url = Catalyst.uri_for('/admin/system/notifications/delete/' _ i),
+				update = 'content',
+				infobar = box_path _ '_infobar',
+				label = Catalyst.localize(box_path _ '_delete');
+		END;
+
+
+		smtpsrv = (account.smtp_server == "") ? '-' : account.smtp_server;
+		login = (account.smtp_login == "") ? '-' : account.smtp_login;
+		pass  = (account.smtp_password == "") ? '-' : account.smtp_password;
+		tls   = (account.smtp_use_ssl == 0) ? 'no' : 'yes';
+		links = '<span>' _ edit_link _ '</span><span>' _ delete_link _ '</span>';
+
+		table_values.push([ account.address, account.name, smtpsrv, login, pass, tls, links ]);
+		i = i + 1;
+	END;
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		td_values = table_values;
+ELSE;%]
+	<p class="no_entries">[% Catalyst.localize(box_path _ '_empty')  %]</p>
+[% END; %]
+[% INCLUDE 'site/box_close' %]

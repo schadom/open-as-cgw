@@ -1,0 +1,11 @@
+# AX -> Type
+# First Number: Max RAM Usage in MB
+# Second Number: Max CPU Core Usage
+# 0 Means Unlimited
+A0=1024,1
+A1=2048,2
+A2=3072,2
+A3=4096,4
+A4=6144,4
+A5=8192,6
+A6=0,0

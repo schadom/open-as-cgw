@@ -1,0 +1,9 @@
+                        <div id="[% name %]_heading" class="[% class %] boxDescription" onclick="Effect.toggle('[% name %]_content','slide',{duration: 0.1}); toggle_handle('[% name %]_handle'); return false;">
+                            <span class="handle">
+                                <a id="[% name %]_handle" class="[% showbox.$name ? 'close' : 'open' %]" href="#">
+                                    <span class="invisible">handle</span>
+                                </a>
+                            </span>
+                            <h2>[% heading %]</h2>
+                        </div>
+

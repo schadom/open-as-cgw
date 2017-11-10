@@ -1,0 +1,6 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+	<ul class="text_list">
+	<li>[% Catalyst.localize( box_path _ "_unavailable") %]</li>
+	</ul>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,45 @@
+# snmpd.conf
+
+com2sec local localhost public
+[% IF network %]
+com2sec mynetwork [% network %] [% community %]
+[% END %]
+
+group MyROGroup v1  local
+group MyROGroup v2c local
+group MyROGroup usm local
+
+[% IF network %]
+group MyROGroup v1  mynetwork
+group MyROGroup v2c mynetwork
+group MyROGroup usm mynetwork
+[% END %]
+
+view all excluded .1
+view all included interfaces.ifTable
+view all included tcp
+view all included udp
+view all included inetCidr
+view all included ipCidr
+view all excluded ifSpecific
+view all excluded ifIndex
+view all included sysContact
+view all included sysName
+view all included sysLocation
+view all included ipRouteDest
+view all included icmp
+view all included snmp
+view all included hrSystemUptime
+view all included hrSystemDate
+view all included hrSystemProcesses
+view all included hrMemorySize
+
+access MyROGroup "" any noauth exact all none none
+
+[% IF syslocation %]
+sysLocation [% syslocation %]
+[% END %]
+[% IF syscontact %]
+sysContact [% syscontact %]
+[% END %]
+

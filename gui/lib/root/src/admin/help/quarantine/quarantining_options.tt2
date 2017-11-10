@@ -1,0 +1,13 @@
+<div id="help_appliance_quarantine">
+   	<h3>[% Catalyst.localize('quarantine_quarantining_options_mail_handling_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_quarantining_options_mail_handling') %]
+
+	<h3>[% Catalyst.localize('quarantine_quarantining_options_global_mailboxes_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_quarantining_options_global_mailboxes') %]</p>
+
+	<h3>[% Catalyst.localize('quarantine_quarantining_options_domains_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_quarantining_options_domains') %]</p>
+
+	<h3>[% Catalyst.localize('quarantine_quarantining_options_visibility_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_quarantining_options_visibility') %]</p>
+</div>

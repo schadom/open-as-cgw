@@ -1,0 +1,32 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% MACRO conv_human_readable(n) IF n < 1024 %]
+    [% n %]B
+  [% ELSIF n >= 1024 && n < (1024 * 1024) %]
+    [% n = n div 102.4 / 10 %]
+    [% n %]KB
+  [% ELSIF n >= (1024 * 1024) && n < (1024 * 1024 * 1024) %]
+    [% n = n div (1024 * 102.4) / 10 %]
+    [% n %]MB
+  [% ELSE %]
+    [% n = n div (1024 * 1024 * 102.4) / 10 %]
+    [% n %]GB
+[% END %]
+
+<p>[% Catalyst.localize( box_path _ '_text') %]</p>
+
+<!--
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize( box_path _ '_mailcount') %]</strong>[% mailcount %]</li>
+	<li><strong>[% Catalyst.localize( box_path _ '_queuesize') %]</strong>[% conv_human_readable(queuesize) %]</li>
+</ul>
+-->
+
+[% INCLUDE 'site/elements/form'
+	url=Catalyst.uri_for('/admin/monitoring/mail_queue/stats'), -%]
+	<fieldset>
+		[% INCLUDE 'site/elements/input', value = Catalyst.localize(box_path _ '_flush'), type = 'button',  -%]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

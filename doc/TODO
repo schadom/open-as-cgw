@@ -1,0 +1,50 @@
+Howdy contributors,
+thank you for you interest in this project.
+
+The code-base is supposed to build, and packaging should work so far. However,
+there are plenty of tasks which could be accomplished to make things better.
+
+Here are some of these...
+
+General:
+  * The whole project is solely aimed to be installed on Ubuntu Server
+    (specifically, Ubuntu Server 10.04(.1) Lucid). Chances are low that
+    the AS system will work on any other distribution without considerable
+    changes.
+  * Code: ton's of die() calls
+  * Code: code-duplication at any place
+  * rtlogd: Currently, the rtlogd/LiveLog is based on scanning syslog lines.
+    this code is ugly and fragile, due to tons of regexes and asynchronous
+    information retrieval (e.g. for a complete mail-tuple, multiple syslog
+    lines have to be parsed, which may occur in no well-defined order). Would
+    be much cooler if every component a mail passes, adds an X-header to the
+    mail...
+  * Quarantine: implementation is a bit fragile here, too many die() calls,
+	insufficient logging, etc
+  * Quarantine: Enable per-domain quarantine settings (e.g. language, etc),
+    maybe allow users to control user-based settings on their own
+  * Backups: backups are encrypted with die-hard legacy code, this is really
+    scary
+  * Config: Get rid of current XML-based config, and get rid of the current,
+    inconsistent config-file splitting 
+  * Config: config-change management, versioning, get rid of timezones...
+  * It would be incredibly cool if the build-process would result in an ISO
+    which is ready to boot up
+  * SNMP: Revise the MIBs propagated via the SNMP agent
+  * WebGUI: Enhance SMTP Settings
+  * WebGUI: Update Dashboard/Notifications code to alert admin when some
+    service quit working (as suggested by box "Service Status")
+  * Send alert notifications if something went wrong (e.g. dead services)
+  * WebGUI: enable manual restart of certain services, in case the internal
+    monitoring system (monit) can't bring them up automatically for some reason
+  * Backend: Update monit files
+  * Revise DNSBLs
+  * and much, MUCH, more ..
+
+Component update:
+  * Postfwd is fine but could be integrated much better - since its first
+    integration in the AS, postfwd has dramatically enhanced its functionality.
+    Moreover, parsing postfwd stats (as printed in syslog) would be cool
+    
+Cheers,
+The Open AS Team

@@ -1,0 +1,44 @@
+﻿[% language_strings.report_status | upper %] [% date_string %]
+[% language_strings.report_usage | eval %]
+
+[% language_strings.report_manager %]
+- [% language_strings.report_request_plain %]: mailto:[% sender_address %]?subject=[% language_strings.report_subject_report_plain %]&body=[[GET:[% confirmation_id %]]]
+- [% language_strings.report_activate_plain %]: mailto:[% sender_address %]?subject=[% language_strings.report_subject_enable_plain %]&body=[[ACT:[% confirmation_id %]]]
+- [% language_strings.report_disable_plain %]: mailto:[% sender_address %]?subject=[% language_strings.report_subject_disable_plain %]&body=[[DEA:[% confirmation_id %]]]
+
+[% IF quarantined_messages.size == 0  %]
+[% language_strings.report_empty_box | upper %]
+[% ELSE %]
+[% language_strings.report_mails_in_quarantine | upper %] - [% language_strings.report_delete_all_plain %]: mailto:[% sender_address %]?subject=[% language_strings.report_subject_delete_all_plain %]&body=[[DAL:[% confirmation_id %]]]
+
+[% FOREACH item IN quarantined_messages.keys.sort.reverse %]
+[% USE date %]
+[% mydate = date.format(date.now, '%d.%m.%Y') %]
+[% IF mydate == item %]
+[% language_strings.quar_today %] [% item %] (mailto:[% sender_address %]?subject=[% language_strings.report_delete_day_plain %]&body=[[DED:st[% item %][% confirmation_id %]]])
+[% ELSE %]
+[% item %] (mailto:[% sender_address %]?subject=[% language_strings.report_delete_day_plain %]&body=[[DED:st[% item %][% confirmation_id %]]])
+[% END %]
+
+[% list_items = [] %]
+[% FOREACH list_item = quarantined_messages.$item %]
+    [% list_items.push(list_item) %]
+[% END %]
+
+[% sorted_list = list_items.sort('date').reverse %]
+
+[% FOREACH message IN sorted_list %]
+
+[% IF (message.quar_type == 'V' && show_virus == 0 && hide_report_links == 0) || (message.quar_type == 'B' && show_banned == 0 && hide_report_links == 0) || (message.quar_type == 'S' && show_spam == 0 && hide_report_links == 0) %] 
+    [% NEXT %] 
+[% ELSE %]
+
+[% message.date %] | T: [% message.quar_type %] | SL: [% message.spam_level %] | From: [% message.from %] | Subject: [% message.subject FILTER html_entity %] | [%  IF ((message.quar_type == 'V' && show_virus == 0) || (message.quar_type == 'B' && show_banned == 0) || (message.quar_type == 'S' && show_spam == 0)) && hide_report_links == 1 %]hidden[% ELSE %][% language_strings.report_release_plain %]: mailto:[% sender_address %]?subject=[% language_strings.report_release | ucfirst %]&body=[[REL:[% message.mail_id %][% message.confirmation_id %]]]" - [% language_strings.report_delete_plain %]:[% sender_address %]?subject=[% language_strings.report_delete | ucfirst %]&body=[[DEL:[% message.mail_id %][% message.confirmation_id %]]][% END %] 
+############################################################
+[% END %]
+[% END %]
+[% END %]
+[% END %]
+
+-- 
+[% language_strings.quar_footer_signature %] [% language_strings.quar_footer_company %] [% language_strings.quar_footer_brand %]

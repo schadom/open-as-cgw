@@ -1,0 +1,6 @@
+<div id="help_appliance_processlist">
+    
+
+    <h2>[% Catalyst.localize('help_plist') %]</h2>
+    <p>[% Catalyst.localize('help_plist_desc')  %]</p>
+</div>

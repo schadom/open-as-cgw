@@ -1,0 +1,27 @@
+				[% IF id; table_id = ' id="' _ id _ '"'; END; -%]
+				[% td_count =  0; -%]
+				<table class="table_content"[% table_id %]>
+					<thead>
+						<tr>
+							[% FOREACH header IN headers %]
+							[% td_count = loop.size %]
+							<th
+							[%- tmp = loop.index; IF th_classes.$tmp; ' class="' _ th_classes.$tmp _ '"'; END; IF th_colspan.$tmp; ' colspan="' _ th_colspan.$tmp _ '"'; END;  %]>[% header %]</th>
+							[% END %]
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="[% td_count %]"></td>
+						</tr>
+					</tfoot>
+					<tbody>
+						[% FOREACH row IN td_values %]
+						<tr [% li = loop.max - loop.index; IF tr_classes; ' class="' _ tr_classes.$li _ '"'; END; %]>
+							[% FOREACH class IN td_classes %]
+							<td[% IF class; ' class="' _ class _ '"'; END; %]>[% tmp = loop.index; row.$tmp; %]</td>
+							[% END%]
+						</tr>
+						[% END%]
+					</tbody>
+				</table>

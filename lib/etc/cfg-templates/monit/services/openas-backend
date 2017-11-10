@@ -1,0 +1,5 @@
+ check process openas-backend with pidfile /var/run/openas-backend.pid
+   group www 
+   start program = "/etc/init.d/openas-backend start"
+   stop  program = "/etc/init.d/openas-backend stop"
+   if cpu > 60% for 2 cycles then alert

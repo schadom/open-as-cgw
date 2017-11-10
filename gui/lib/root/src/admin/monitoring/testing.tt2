@@ -1,0 +1,3 @@
+<div id="monitoring_testing_spam">
+	[% INCLUDE admin/monitoring/testing/spam.inc.tt2 %]
+</div>

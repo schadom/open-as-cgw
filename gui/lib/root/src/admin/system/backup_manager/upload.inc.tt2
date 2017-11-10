@@ -1,0 +1,10 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info">[% Catalyst.localize(box_path _ '_text') %]</p>
+[% INCLUDE 'site/elements/form'	update = 'content',	nojs = 'nojs', enctype = 'multipart/form-data',	url = Catalyst.uri_for('/admin/system/backup_manager/upload')%]
+	<fieldset>
+	[% INCLUDE 'site/elements/input' type = 'file', name = 'backup'%]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_upload') %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close'; %]

@@ -1,0 +1,5 @@
+[%- IF addr_whitelisting -%]
+    [%- FOREACH addr = addresses %]
+/[% addr %]$/ FILTER smtp-amavis:[127.0.0.1]:10026
+    [%- END -%]
+[% END %]

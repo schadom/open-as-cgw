@@ -1,0 +1,12 @@
+<div id="help_appliance_diagnostics">
+	
+
+	<h3>[% Catalyst.localize('appliance_selfdiagnostics') %]</h2>
+	<p>[% Catalyst.localize('help_diagnostics_selfdiagnostics') %]</p>
+
+	<h3>[% Catalyst.localize('perform_diagnostics_ping') %]</h3>
+  <p>[% Catalyst.localize('help_diagnostics_ping') %]</p>
+
+	<h3>[% Catalyst.localize('perform_diagnostics_tracert') %]</h3>
+	<p>[% Catalyst.localize('help_diagnostics_tracert') %]</p>
+</div>

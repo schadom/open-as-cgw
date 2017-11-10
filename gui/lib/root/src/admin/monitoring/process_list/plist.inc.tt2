@@ -1,0 +1,78 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open'; %]
+
+<script type="text/javascript">
+	new Ajax.PeriodicalUpdater(
+		"monitoring_process_list_plist",
+		"[% Catalyst.uri_for("/admin/monitoring/process_list/update/$order") %]",
+		{ method: "get", frequency: 2, decay: 2 }
+	);
+</script>
+
+[% # Edit data for our needs
+	updatelink = Catalyst.uri_for('/admin/monitoring/process_list/order/');
+
+	# Built up process table
+	table_values = [];
+	FOREACH process IN plist;
+		FOREACH pair IN psubst.pairs;
+			process.cmd = process.cmd.replace(pair.key, pair.value);
+		END;
+
+		process.cpu = process.cpu * 10;                   # to enable numerical sorting
+		process.mem = process.mem * 10;                   # ^ 
+		process.cmd = process.cmd.remove('perl -w ');     # remove interpreter
+		process.cmd = process.cmd.remove('sh -c ');       # remove interpreter
+		process.cmd = process.cmd.remove('sh ');          # remove interpreter
+		process.cmd = process.cmd.remove('^[\w\/\.]*\/'); # basename only 
+		process.cmd = process.cmd.substr(0,50);           # truncate cmd to maximum 
+
+		process.cpu = process.cpu / 10;
+		process.mem = process.mem / 10;
+	END;
+
+	# Perform requested ordering (depending on column, this is done numerically or
+	# alphanumerically, and possibly reversed) 
+	SWITCH order;
+		CASE 'pid';
+			plist = plist.nsort('pid');
+		CASE 'cpu';
+			plist = plist.nsort('cpu');
+			plist = plist.reverse;
+		CASE 'mem';
+			plist = plist.nsort('mem');
+			plist = plist.reverse;
+		CASE 'user';
+			plist = plist.sort('user');
+		CASE 'cmd';
+			plist = plist.sort('cmd');
+	END;
+	
+	FOREACH process IN plist;
+		IF process.cmd.match(pdmask); # Skip list entries, if defined in process_deletemask
+			NEXT;
+		END;
+		table_values.push( [ process.pid, process.cpu , process.mem , process.time, process.cmd ]);
+	END;
+
+	table_headers = [];
+	table_headers.push("<a href=\"${updatelink}pid\">PID</a>");
+	table_headers.push("<a href=\"${updatelink}cpu\">CPU</a>");
+	table_headers.push("<a href=\"${updatelink}mem\">MEM</a>");
+	table_headers.push('Time');
+	table_headers.push("<a href=\"${updatelink}cmd\">Command</a>");
+
+	table_th_classes = [];
+	table_th_classes.push('plist_pid', 'plist_cpu', 'plist_mem', 'plist_time', '');
+
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', '', '');
+
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		id = 'plist',
+		td_values = table_values; %]
+[% INCLUDE 'site/box_close'; %]

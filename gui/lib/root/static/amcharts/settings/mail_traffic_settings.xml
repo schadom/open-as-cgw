@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings> 
+	<font>Lucida Sans Unicode</font>                
+	<depth>10</depth>                  
+	<angle>45</angle>
+	<thousands_separator>.</thousands_separator>
+	<background>                                                
+		<border_alpha>7</border_alpha>                        
+	</background>
+
+	<export_as_image>
+		<color>#505050</color>
+		<alpha>100</alpha>
+		<text_color>#FFFFFF</text_color>
+	</export_as_image>	
+	
+	<help>    
+		<button> 
+			<color>#505050</color>          
+			<text_color>#FFFFFF</text_color>
+			<text_color_hover>#4BD2FA</text_color_hover>    
+		</button>    
+		<balloon>                        
+			<color>#505050</color>                      
+			<text_color>#FFFFFF</text_color> 
+			<text>                                                
+				<![CDATA[Click on the graph to turn on/off value balloon <br/><br/>Click on legend key to show/hide graph<br/><br/>Mark the area you wish to enlarge]]>
+			</text>                               
+		</balloon>    
+	</help> 
+  
+	<column>
+		<type>100% stacked</type>        
+		<width>85</width>                
+		<grow_time>1</grow_time>         
+		<grow_effect>strong</grow_effect>    
+		<alpha>75</alpha>                
+		<data_labels>
+			<![CDATA[{percents}%]]>        
+		</data_labels>
+		<data_labels_text_color>#FFFFFF</data_labels_text_color> 
+		<balloon_text>          
+			<![CDATA[{percents}% of the e-mail traffic for this time was {title}]]> 
+		</balloon_text>    
+	</column>
+     
+	<plot_area>              
+		<margins>              
+			<left>20</left>        
+			<top>40</top>         
+			<right>200</right>   
+			<bottom>40</bottom>  
+		</margins>
+	</plot_area>
+  
+	<grid>                   
+		<category>                                                                  
+			<alpha>0</alpha>     
+		</category>
+		<value>          
+			<alpha>0</alpha>
+		</value>
+	</grid>
+  
+	<values>            
+		<value>           
+			<enabled>false</enabled>    
+		</value>
+	</values>
+  
+	<axes>               
+		<category>         
+			<alpha>0</alpha> 
+		</category>
+		<value>            
+			<alpha>0</alpha> 
+		</value>
+	</axes>  
+  
+	<legend>                       
+		<enabled>true</enabled>      
+		<x>420</x>                   
+		<y>40</y>                    
+		<key>
+			<size>18</size>
+		</key>        
+		<reverse_order>true</reverse_order> 
+		<text_color>#505050</text_color>
+		<text_color_hover>#00A0FA</text_color_hover>
+		<width>180</width>  
+	</legend>  
+
+	<graphs>
+		<graph gid="passed_clean">
+			<color>#50e326</color>
+		</graph>
+		<graph gid="passed_spam">
+			<color>#ece31f</color>
+		</graph>
+		<graph gid="blocked_spam">
+			<color>#ff8105</color>
+		</graph>
+		<graph gid="blocked_greylisted">
+			<color>#777777</color>
+		</graph>
+		<graph gid="blocked_blacklisted">
+			<color>#ec321f</color>
+		</graph>
+		<graph gid="blocked_virus">
+			<color>#d64385</color>
+		</graph>
+		<graph gid="blocked_banned">
+			<color>#9351b2</color>
+		</graph>
+	</graphs>
+</settings>

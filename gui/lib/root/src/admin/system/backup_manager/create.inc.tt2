@@ -1,0 +1,8 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form'	update = 'content',	url=Catalyst.uri_for('/admin/system/backup_manager/create') %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_create') %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close'; %]

@@ -1,0 +1,19 @@
+					[% UNLESS id; id = name; END; %]
+					[% UNLESS lines; lines = 5; END; %]
+                    [% label = box_path _ '_' _ name %]
+                    [% IF box_status.fields.$name; class_error = ' error'; END; %]
+                    [% IF wide; class_wide = ' wide'; END; %]
+					[% IF required; class_required = ' required'; END; %]															
+					<div class="element checkbox_list[% class_required %][% class_error %]">
+						[% UNLESS wide; -%]
+						<strong>[% Catalyst.localize(label) %]</strong>
+						[% END -%]
+						<div class="box_list[% class_wide %]" style="height: [% lines * 26 %]px;">
+							[% FOREACH option_list %]
+							<div>
+								<input id="[% id _ '_' _ loop.index %]" name="[% name %]" type="checkbox" value="[% value %]"[% checked %] />
+								<label for="[% id _ '_' _ loop.index %]">[% label %]</label>
+							</div>
+							[% END %]
+						</div>
+					</div>

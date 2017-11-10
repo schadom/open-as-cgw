@@ -1,0 +1,25 @@
+		[% UNLESS class; class = 'warning'; END; %]
+		<div id="notification" class="notification_[% class %]">
+			<h3>[% heading %]</h3>
+			<p>[% text %]</p>
+			<div id="buttons">
+			[% IF information_only %]
+				<span><a href="javascript: fade_overlay();">[% link_text %]</a></span>
+			[% ELSIF proceed_only %]
+				<span>[% INCLUDE 'site/elements/link'
+							url=link_url,
+							update=update,
+							label=link_text,
+						-%]
+				</span>
+			[% ELSE %]
+				<span>[% INCLUDE 'site/elements/link'
+							url=link_url,
+							update=update,
+							label=link_text,
+						-%]
+				</span>
+				<span class="cancel"><a href="javascript: fade_overlay();">[% Catalyst.localize('cancel') %]</a></span>
+			[% END %]		
+			</div>
+		</div>

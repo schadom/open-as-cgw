@@ -1,0 +1,7 @@
+[% language_strings.disable_attention %]
+[% language_strings.disable_usage %]
+
+[% language_strings.disable_activate %]
+
+-- 
+[% language_strings.quar_footer_signature %] [% language_strings.quar_footer_company %] [% language_strings.quar_footer_brand %]

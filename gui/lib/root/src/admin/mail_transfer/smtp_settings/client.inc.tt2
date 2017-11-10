@@ -1,0 +1,17 @@
+[%  PROCESS 'site/box_init';
+-%]
+
+[% INCLUDE 'site/box_open' %]
+	<ul class="text_list two_column">
+	[% FOREACH elem IN client_params %]
+		<li>
+			<strong>[% Catalyst.localize("mail_transfer_smtp_settings_client_" _ elem.key) %]</strong>
+            [% INCLUDE 'site/elements/enable'
+                name=elem.key,
+                status=(elem.value) ? 'enabled' : 'disabled',
+                url=Catalyst.uri_for("/admin/mail_transfer/smtp_settings/client/" _ elem.key),
+            -%]
+        </li>
+	[% END %]
+	</ul>
+[% INCLUDE 'site/box_close' %]

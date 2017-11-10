@@ -1,0 +1,28 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/widget_open' %]
+	<ul>
+		<!--<li><a href="[% Catalyst.uri_for('/admin/envelope_scanning/bwlist_manager') %]">
+			[% Catalyst.localize(box_path _ '_bwlist') %]</a>
+		</li>-->
+
+		<li><a href="[% Catalyst.uri_for('/admin/monitoring/diagnostics_center') %]">
+			[% Catalyst.localize(box_path _ '_diagnostics') %]</a>
+		</li>
+
+		<li><a href="[% Catalyst.uri_for('/admin/content_scanning/policies') %]">
+			[% Catalyst.localize(box_path _ '_policies') %]</a>
+		</li>
+
+		<li><a href="[% Catalyst.uri_for('/admin/quarantine/box_status_management') %]">
+			[% Catalyst.localize(box_path _ '_quarantine') %]</a>
+		</li>
+
+		<li><a href="[% Catalyst.uri_for('/admin/logging/live_log') %]">
+			[% Catalyst.localize(box_path _ '_livelog') %]</a>
+		</li>
+
+		<li><a href="[% Catalyst.uri_for('/admin/modules/licence_management') %]">
+			[% Catalyst.localize(box_path _ '_licences') %]</a>
+		</li>
+	</ul>
+[% INCLUDE 'site/widget_close' %]

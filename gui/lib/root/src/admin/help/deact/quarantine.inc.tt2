@@ -1,0 +1,18 @@
+<div id="help_quarantine">
+    
+
+    <h3>[% Catalyst.localize('title_quarantine') %]</h3>
+    <p>[% Catalyst.localize('abstract_quarantine') %]</p>
+
+    <h3>[% Catalyst.localize('nav_quarantine_settings') %]</h3>
+    <p>[% Catalyst.localize('abstract_quarantine_settings') %]</p>
+	
+    <h3>[% Catalyst.localize('nav_quarantine_options') %]</h3>
+    <p>[% Catalyst.localize('abstract_quarantine_options') %]</p>
+
+    <h3>[% Catalyst.localize('nav_quarantine_management') %]</h3>
+    <p>[% Catalyst.localize('abstract_quarantine_management') %]</p>
+	
+	 <h3>[% Catalyst.localize('nav_quarantine_recipients') %]</h3>
+    <p>[% Catalyst.localize('abstract_quarantine_recipient') %]</p>
+</div>

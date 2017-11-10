@@ -1,0 +1,15 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('antispam_use_greylisting') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_use_greylisting') %]</p>
+	
+	<h3>[% Catalyst.localize('antispam_use_selective_greylisting') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_use_selective_greylisting') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_general_spam') %]</h3>
+    <p>[% Catalyst.localize('help_heading_antispam_general_spam') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_general_gtube') %]</h3>
+    <p>[% Catalyst.localize('help_test_score') %]</p>
+</div>

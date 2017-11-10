@@ -1,0 +1,39 @@
+<perldata>
+ <hashref memory_address="0xbbaedd0">
+  <item key="bl.spamcop.net">
+   <hashref memory_address="0xbbaf790">
+    <item key="enabled">1</item>
+    <item key="rank">2</item>
+    <item key="type">system</item>
+   </hashref>
+  </item>
+  <item key="dnsbl-1.uceprotect.net">
+   <hashref memory_address="0xbc9a96c">
+    <item key="enabled">1</item>
+    <item key="rank">1</item>
+    <item key="type">system</item>
+   </hashref>
+  </item>
+  <item key="dyna.spamrats.com">
+   <hashref memory_address="0xb9562e4">
+    <item key="enabled">1</item>
+    <item key="rank">5</item>
+    <item key="type">system</item>
+   </hashref>
+  </item>
+  <item key="t1.dnsbl.net.au">
+   <hashref memory_address="0xb66c058">
+    <item key="enabled">1</item>
+    <item key="rank">4</item>
+    <item key="type">system</item>
+   </hashref>
+  </item>
+  <item key="zen.spamhaus.org">
+   <hashref memory_address="0xbb6d730">
+    <item key="enabled">1</item>
+    <item key="rank">3</item>
+    <item key="type">system</item>
+   </hashref>
+  </item>
+ </hashref>
+</perldata>

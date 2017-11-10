@@ -1,0 +1,24 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+[%	
+	content_types_list = [];
+	FOREACH entry IN antispam.banned_attachments_contenttypes;
+		selected = 0;
+		FOREACH banned IN banned_attachments;
+				IF entry == banned.banned;
+					selected = 1;
+				END;
+		END;
+		content_types_list.push({ value => entry, label => entry, checked => (selected ? "checked":"") });
+	END;
+%]
+[% INCLUDE 'site/elements/form' update = 'content', url = Catalyst.uri_for('/admin/content_scanning/attachments/enlist_contenttype') %]
+	<fieldset>
+	[% INCLUDE 'site/elements/multiple_select',	name = 'content_types',	wide = 'wide', lines = "10", option_list = content_types_list; %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/input', type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

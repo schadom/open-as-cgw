@@ -1,0 +1,41 @@
+#
+# =============================================================================
+# This is a template for VIRUS/BANNED SENDER NOTIFICATIONS.
+# For syntax and customization instructions see README.customize.
+# The From, To and Date header fields will be provided automatically.
+# Long header fields will be automatically wrapped by the program.
+#
+Date: %d
+From: AS Communication Gateway <as-cgw@%h>
+Subject: [? [:ccat_maj]
+|Clean message from you (other)\
+|Clean message from you (tempfail)\
+|Clean message from you\
+|OVERSIZED message from you\
+|BAD-HEADER in message from you\
+|SPAM apparently from you\
+|SPAM apparently from you\
+|A message with UNCHECKED contents from you\
+|AS Communication Gateway: Illegal attachments in message from you\
+|VIRUS in message apparently from you (%V)\
+]
+[? %m  |#|In-Reply-To: %m]
+Message-ID: <VS%i@%h>
+
+[? [:ccat_maj] |Clean (other)|Clean|TEMPFAIL|OVERSIZED|INVALID HEADER|\
+spam|SPAM|UNCHECKED contents|Illegal attachments have been blocked in a message from you.|VIRUS ALERT]
+
+AS Communication Gateway has found the following illegal contents:
+[? %#V |#|[:wrap|78||  |[? %#V |viruses|virus|viruses]: %V]]
+[? %#F |#|[:wrap|78||  |Banned [? %#F |Names|Name|Names]: %F]]
+[? %#X |#|[[:wrap|78||  |%X]\n]]
+
+in a mail from you (%s) sent to the following [? %#R |recipients|recipient|recipients]: [%R]
+
+Your message was not delivered.
+
+Please do not reply to this e-mail, this is an auto-generated message. 
+
+-- 
+AS Communication Gateway
+http://www.underground8.com

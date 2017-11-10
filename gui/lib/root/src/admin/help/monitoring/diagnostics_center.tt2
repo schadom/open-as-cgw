@@ -1,0 +1,7 @@
+<div id="help_appliance_monitoring">
+    <h3>[% Catalyst.localize('monitoring_diagnostics_center_system_status_heading') %]</h3>
+	<p>[% Catalyst.localize('help_monitoring_diagnostics_center_system_status') %]</p>
+
+	<h3>[% Catalyst.localize('monitoring_diagnostics_center_self_diagnostics_heading') %]</h3>
+	<p>[% Catalyst.localize('help_monitoring_diagnostics_center_self_diagnostics') %]</p>
+</div>

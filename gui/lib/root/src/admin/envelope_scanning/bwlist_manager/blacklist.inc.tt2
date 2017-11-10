@@ -1,0 +1,65 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% MACRO translate_entrytype(etype) SWITCH etype;
+  CASE 'ip_addr_cidr';
+    Catalyst.localize('bwlistman_gui_ip_addr_cidr');
+  CASE 'ip_addr_plain';
+    Catalyst.localize('bwlistman_gui_ip_addr_plain');
+  CASE 'ip_range';
+    Catalyst.localize('bwlistman_gui_ip_range');
+  CASE 'domainname_wildcard';
+    Catalyst.localize('bwlistman_gui_domainname_wildcard');
+  CASE 'domainname';
+    Catalyst.localize('bwlistman_gui_domainname');
+  CASE 'mail_addr_wildcard';
+    Catalyst.localize('bwlistman_gui_mail_addr_wildcard');
+  CASE 'mail_addr';
+    Catalyst.localize('bwlistman_gui_mail_addr');
+  CASE 'hostname_wildcard';
+    Catalyst.localize('bwlistman_gui_hostname_wildcard');
+  CASE 'hostname';
+    Catalyst.localize('bwlistman_gui_hostname');
+END; %]
+[% IF engine_status == "enabled" %]
+	[% IF config.blacklist.size > 0; %]
+	<p class="info"><strong>Note:</strong> [% Catalyst.localize('envelope_scanning_bwlist_manager_blacklist_text') %]</p>
+	[%
+		table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_entry'));
+		table_headers.push(Catalyst.localize(box_path _ '_type'));
+		table_headers.push(Catalyst.localize(box_path _ '_description'));
+		table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+		table_th_classes = [];
+		table_th_classes.push('left', '', '', 'action');
+		table_td_classes = [];
+		table_td_classes.push('left', '', '', 'action');
+
+		table_values = [];
+		FOREACH entry IN config.blacklist; 
+        -%]
+            [% link_text = BLOCK %]<span>
+                [% INCLUDE 'site/elements/link'
+                    url = Catalyst.uri_for('/admin/envelope_scanning/bwlist_manager/delist/' _ entry.id),
+                    update = 'content',
+                    infobar = box_path _ '_infobar',
+                    label = Catalyst.localize('envelope_scanning_bwlist_manager_blacklist_delete'),
+                -%]</span>
+            [% END %]
+        [%
+			table_values.push([ "<strong>$entry.entry</strong>", translate_entrytype(entry.category), entry.desc, link_text ]);
+		END;
+	
+		INCLUDE 'site/elements/table'
+			headers = table_headers,
+			td_classes = table_td_classes,
+			th_classes = table_th_classes,
+			td_values = table_values;
+
+	ELSE %]
+		<p class="no_entries">[% Catalyst.localize('envelope_scanning_bwlist_manager_blacklist_noentries') %]</p>
+	[% END %]
+[% ELSE %]
+	<p>[% Catalyst.localize('envelope_scanning_bwlist_manager_disabled') %]</p>
+[% END %]
+[% INCLUDE 'site/box_close' %]

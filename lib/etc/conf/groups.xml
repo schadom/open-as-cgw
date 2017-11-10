@@ -1,0 +1,91 @@
+<perldata>
+ <hashref memory_address="0x8170d84">
+  <item key="archives">
+   <arrayref memory_address="0x849b6c4">
+    <item key="0">Archive files group</item>
+    <item key="1">
+     <arrayref memory_address="0x849b670">
+      <item key="0">zip</item>
+      <item key="1">7z</item>
+      <item key="2">rar</item>
+      <item key="3">tgz</item>
+      <item key="4">tar</item>
+     </arrayref>
+    </item>
+   </arrayref>
+  </item>
+  <item key="executables">
+   <arrayref memory_address="0x849b5bc">
+    <item key="0">Potentially dangerous executables</item>
+    <item key="1">
+     <arrayref memory_address="0x849b4d8">
+      <item key="0">exe</item>
+      <item key="1">com</item>
+      <item key="2">vb</item>
+      <item key="3">vbs</item>
+      <item key="4">vbe</item>
+      <item key="5">cmd</item>
+      <item key="6">bat</item>
+      <item key="7">ws</item>
+      <item key="8">wsf</item>
+      <item key="9">scr</item>
+      <item key="10">shs</item>
+      <item key="11">pif</item>
+      <item key="12">hta</item>
+      <item key="13">jar</item>
+      <item key="14">js</item>
+      <item key="15">jse</item>
+      <item key="16">lnk</item>
+     </arrayref>
+    </item>
+   </arrayref>
+  </item>
+  <item key="images">
+   <arrayref memory_address="0x849b4a8">
+    <item key="0">Images group</item>
+    <item key="1">
+     <arrayref memory_address="0x849b40c">
+      <item key="0">GIF</item>
+      <item key="1">JPG</item>
+      <item key="2">BMP</item>
+      <item key="3">PNG</item>
+      <item key="4">AI</item>
+      <item key="5">WMF</item>
+      <item key="6">TIF</item>
+      <item key="7">EPS</item>
+      <item key="8">PCX</item>
+      <item key="9">DXF</item>
+     </arrayref>
+    </item>
+   </arrayref>
+  </item>
+  <item key="multimedia">
+   <arrayref memory_address="0x849b640">
+    <item key="0">Multimedia files group</item>
+    <item key="1">
+     <arrayref memory_address="0x849b5ec">
+      <item key="0">mp3</item>
+      <item key="1">wav</item>
+      <item key="2">wma</item>
+      <item key="3">[audio/midi]</item>
+      <item key="4">[audio/phone]</item>
+     </arrayref>
+    </item>
+   </arrayref>
+  </item>
+  <item key="office_data">
+   <arrayref memory_address="0x8170d54">
+    <item key="0">Office Data group</item>
+    <item key="1">
+     <arrayref memory_address="0x849b6f4">
+      <item key="0">doc</item>
+      <item key="1">xls</item>
+      <item key="2">ppt</item>
+      <item key="3">pps</item>
+      <item key="4">pdf</item>
+     </arrayref>
+    </item>
+   </arrayref>
+  </item>
+ </hashref>
+</perldata>

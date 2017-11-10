@@ -1,0 +1,14 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form', url = Catalyst.uri_for('/admin/quarantine/quarantining_options/change_admin_boxes') %]
+	<fieldset>
+	[%	FOREACH cat IN ['spam', 'virus', 'banned'];
+			box_name = cat _ "_box";
+			INCLUDE 'site/elements/input',
+				name = box_name,
+				value = admin_boxes.$box_name;
+		END;
+		INCLUDE 'site/elements/input' type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

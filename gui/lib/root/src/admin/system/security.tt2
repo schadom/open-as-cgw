@@ -1,0 +1,15 @@
+<div id="system_security_adm_form">
+    [% INCLUDE admin/system/security/adm_form.inc.tt2 %]
+</div>
+<div id="system_security_adm_table">
+    [% INCLUDE admin/system/security/adm_table.inc.tt2 %]
+</div>
+<div id="system_security_ca_assign">
+    [% INCLUDE admin/system/security/ca_assign.inc.tt2 %]
+</div>
+<div id="system_security_ca_unassign">
+    [% INCLUDE admin/system/security/ca_unassign.inc.tt2 %]
+</div>
+<div id="system_security_revoke_keypair">
+    [% INCLUDE admin/system/security/revoke_keypair.inc.tt2 %]
+</div>

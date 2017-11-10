@@ -1,0 +1,43 @@
+# LMTP Settings
+listen_port           = [% listen_port%] 
+listen_address        = [% listen_address%]
+
+
+# MySQL Settings
+db_host               = [% db_host%]  
+db_name               = [%db_name%]
+db_user               = [%db_user%]
+db_password           = [%db_password%]
+
+
+# Quarantine Settings
+quarantine_path       = [%quarantine_path%]
+quarantine_enabled    = [%quarantine_enabled%]
+send_notifications    = [%send_notifications_enabled%]
+send_spamreports      = [%send_reports_enabled%]
+domain_map            = [%domain_map%]
+check_sender          = [%check_sender%]
+language              = [%language%]
+max_confirm_retries   = [%max_confirm_retries%]
+max_confirm_interval  = [%max_confirm_interval%]
+max_quarantine_size   = [%max_quarantine_size%] # in megabyte
+global_item_lifetime  = [%global_item_lifetime%]
+user_item_lifetime    = [%user_item_lifetime%]
+sender_name           = [%sender_name%]
+notify_address        = [%sizelimit_address%]
+show_virus            = [%show_virus%]
+show_banned           = [%show_banned%]
+show_spam             = [%show_spam%]
+hide_links_virus      = [%hide_links_virus%]
+hide_links_banned     = [%hide_links_banned%]
+hide_links_spam       = [%hide_links_spam%]
+whitelisted_domains   = [%whitelisted_domains%]
+
+# Quarantine Cron Settings
+notify_unconfirmees_interval = [%notify_unconfirmees_interval%] 
+send_spamreport_interval = [% send_spamreport_interval %]
+cleanup_interval = 0 */3 * * *
+cleanup_old_interval = 30 */3 * * *
+timeout_interval = 0 */3 * * *
+disk_space_interval = 0 */1 * * *
+

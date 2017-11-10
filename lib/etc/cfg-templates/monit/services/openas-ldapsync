@@ -1,0 +1,4 @@
+ check process openas-ldapsync with pidfile /var/run/openas-ldapsync.pid
+   start program = "/etc/init.d/openas-ldapsync start"
+   stop  program = "/etc/init.d/openas-ldapsync stop"
+   if cpu > 60% for 2 cycles then alert

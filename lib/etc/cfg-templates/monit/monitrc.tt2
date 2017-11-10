@@ -1,0 +1,53 @@
+set daemon  60
+
+## Set syslog logging with the 'daemon' facility. If the FACILITY option is
+## omited, monit will use 'user' facility by default. You can specify the
+## path to the file for monit native logging.
+#
+#set logfile syslog facility log_daemon 
+set logfile /var/log/monit.log
+
+# set default mailserver
+set mailserver localhost               # 
+
+## By default monit will drop the event alert, in the case that there is no
+## mailserver available. In the case that you want to keep the events for
+## later delivery retry, you can use the EVENTQUEUE statement. The base
+## directory where undelivered events will be stored is specified by the
+## BASEDIR option. You can limit the maximal queue size using the SLOTS
+## option (if omited then the queue is limited just by the backend filesystem).
+#
+# set eventqueue
+#     basedir /var/monit  # set the base directory where events will be stored
+#     slots 100           # optionaly limit the queue size
+
+set alert postmaster@localhost { timeout }     # receive all alerts
+
+set httpd port 2812 and
+     use address localhost  # only accept connection from localhost
+     allow localhost        # allow localhost to connect to the server and
+     allow admin:loltruck2000      # require user 'admin' with password 'monit'
+
+###############################################################################
+## Includes
+###############################################################################
+##
+## It is possible to include the configuration or its parts from other files or
+## directories.
+#
+#  include /etc/monit.d/*
+include /etc/open-as-cgw/cfg-templates/monit/services/amavisd-new
+include /etc/open-as-cgw/cfg-templates/monit/services/clamav
+#include /etc/open-as-cgw/cfg-templates/monit/services/localhost
+#include /etc/open-as-cgw/cfg-templates/monit/services/locutus
+include /etc/open-as-cgw/cfg-templates/monit/services/mysql
+include /etc/open-as-cgw/cfg-templates/monit/services/nginx
+include /etc/open-as-cgw/cfg-templates/monit/services/ntp
+include /etc/open-as-cgw/cfg-templates/monit/services/openas-backend
+include /etc/open-as-cgw/cfg-templates/monit/services/openas-ldapsync
+include /etc/open-as-cgw/cfg-templates/monit/services/openas-qcron
+include /etc/open-as-cgw/cfg-templates/monit/services/openas-qng
+include /etc/open-as-cgw/cfg-templates/monit/services/openas-rtlogd
+include /etc/open-as-cgw/cfg-templates/monit/services/postfix
+include /etc/open-as-cgw/cfg-templates/monit/services/postfwd
+include /etc/open-as-cgw/cfg-templates/monit/services/sqlgrey

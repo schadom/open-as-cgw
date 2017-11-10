@@ -1,0 +1,11 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<ul class="text_list two_column">
+    <li><strong>[% Catalyst.localize('system_version') %]</strong>[%- versions.version_system -%]</li>
+    <li><strong>[% Catalyst.localize('system_version_available') %]</strong>[%- versions.version_system_available -%]</li>
+    <li><strong>[% Catalyst.localize('virus_engine_versions') %]</strong>[%- versions.version_clamav -%] ([%- versions.time_clamav_printable -%])</li>
+    <li><strong>[% Catalyst.localize('antispam_engine_rules_versions') %]</strong>[%- versions.version_spamassassin -%]</li>
+    <li><strong>[% Catalyst.localize('revision_version') %]</strong>[%- versions.version_revision -%]</li>
+    <li><strong>[% Catalyst.localize('last_version_information_update') %]</strong>[%- versions.last_update_printable -%]</li>
+</ul>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,24 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' 
+	update = 'content',
+	enctype = 'multipart/form-data',
+	nojs = 'nojs',
+	url = Catalyst.uri_for('/admin/mail_transfer/recipients/add_bulk/') %]
+	[% IF box_name == "bulk_add" %]
+	<script type="text/javascript">
+		function toggle_bulk_add(){
+			Effect.toggle('mail_transfer_recipients_bulk_add_infobar','slide',{duration: 0.2});
+		}
+		window.onload = toggle_bulk_add;
+	</script>
+	[% END %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input' type = 'file', required = 'required', name = 'csvfile' %]
+	</fieldset>
+	<fieldset>
+		[% INCLUDE 'site/elements/input' name = 'predelete', type = 'checkbox', value = 'yes' %]
+		[% INCLUDE 'site/elements/input' value = 'Upload recipient list', type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

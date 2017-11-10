@@ -1,0 +1,12 @@
+/* ##########################################
+## CSS for AS Comunication Gateway
+## (c) 2009 underground_8 secure computing 
+##### @author: vo@underground8.com 
+##### @last_changed: 2009-02-23
+############################################# */
+
+/* ## LAYOUT & DESIGN ########################################## */
+#title{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='static/error/img/title_bg.png')}
+#top{height: 160px; overflow: visible;}
+#top #countdown{height: 98px;}
+#bottom{height: 300px;overflow: visible;}

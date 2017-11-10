@@ -1,0 +1,214 @@
+/* ****************************************************************************
+This file is part of the Open AS Communication Gateway.
+
+The Open AS Communication Gateway is free software: you can redistribute it
+and/or modify it under theterms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the License,
+or (at your option) any later version.
+
+The Open AS Communication Gateway is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with the Open AS Communication Gateway. If not, see http://www.gnu.org/licenses/.
+**************************************************************************** */
+
+/* ##########################################
+## CSS for AS Comunication Gateway
+## @author: Veronika Oesterle
+## @last_changed: 2009-04-27
+############################################# */
+
+/* -- Login -- */
+body#login{background: #13ABE1 url(../img/login_bg.jpg) center center no-repeat;}
+body#login #logo{background: url(../img/u8_logo.png) top left no-repeat; display: block; height: 148px; left: 50%; margin-left: -450px; position: absolute; text-indent: -9999px; top: 0; width: 158px;}
+body#login #overlay{height: 100%; z-index: 2001;}
+#login_horizon{height: 1px; left: 0; position: absolute; top: 50%; width: 100%; z-index: 2001;}
+#login_center{background: transparent url(../img/login_box.gif) top center no-repeat; height: 336px; left: 50%; margin-left: -265px; margin-top: -168px; position: absolute; width: 530px;}
+#login form{display: block; height: 137px; margin: 70px 75px; position: absolute; top: 0; width: 380px;}
+#login label{display: none;}
+#login strong{font-weight: bold;}
+#login #username, #login #password{background-position: 9px 13px; background-repeat: no-repeat; border: 1px solid #CCC; color: #999; font-size: 18px; height: 30px; padding-left: 30px; padding-top: 10px; width: 150px;}
+#login #username{background-image: url(../img/login_user.gif); float: left;}
+	#login #username:focus{background-image: url(../img/login_user_active.gif);}
+#login #password{background-image: url(../img/login_password.gif); float: right;}
+	#login #password:focus{background-image: url(../img/login_password_active.gif);}
+#login #submit{background: url(../img/login_button.png) top left no-repeat; border: none; bottom: 0; height: 67px; position: absolute; right: 0; width: 67px;}
+#personalize{color: #999; left: 75px; position: absolute; top: 157px;}
+#login_error{color: #00A0FA; font-weight: bold; margin: 25px 75px; position: absolute; text-align: center; width: 380px;}
+#copy_note{color: #FFF; font-weight: bold; left: 50%; margin-left: -265px; position: absolute; top: 160px; text-align: center; text-shadow: 0px 0px 2px #004C89; width: 530px;}
+	#copy_note a{color: #FFF;}
+	#copy_note a:hover{text-decoration: underline;}
+
+
+
+/* -- Header Banner -- */
+#banner.dashboard_dashboard{background-image: url(../img/header_banner_dashboard.jpg);}
+
+#banner.system_user{background-image: url(../img/header_banner_user.jpg);}
+#banner.system_network{background-image: url(../img/header_banner_network.jpg);}
+#banner.system_time_settings{background-image: url(../img/header_banner_timesettings.jpg);}
+#banner.system_security{background-image: url(../img/header_banner_security.jpg);}
+#banner.system_update{background-image: url(../img/header_banner_update.jpg);}
+#banner.system_notifications{background-image: url(../img/header_banner_notifications.jpg);}
+
+#banner.mail_transfer_domains{background-image: url(../img/header_banner_domains.jpg);}
+
+#banner.envelope_scanning_bwlist_manager{background-image: url(../img/header_banner_bwlistmanager.jpg);}
+
+#banner.content_scanning_attachments{background-image: url(../img/header_banner_attachments.jpg);}
+#banner.content_scanning_languages{background-image: url(../img/header_banner_languages.jpg);}
+
+#banner.quarantine_quarantining_options{background-image: url(../img/header_banner_quarantiningoptions.jpg);}
+#banner.quarantine_box_status_management{background-image: url(../img/header_banner_boxstatusmgmt.jpg);}
+#banner.quarantine_user_box_administration{background-image: url(../img/header_banner_usersboxadmin.jpg);}
+
+#banner.monitoring_diagnostics_center{background-image: url(../img/header_banner_diagnosticscenter.jpg);}
+#banner.monitoring_mail_queue{background-image: url(../img/header_banner_mailqueue.jpg);}
+#banner.monitoring_process_list{background-image: url(../img/header_banner_processlist.jpg);}
+
+#banner.logging_live_log{background-image: url(../img/header_banner_livelog.jpg);}
+#banner.logging_log_viewer{background-image: url(../img/header_banner_logviewer.jpg);}
+#banner.logging_maillog_simple{background-image: url(../img/header_banner_simplemaillog.jpg);}
+#banner.logging_syslog{background-image: url(../img/header_banner_syslog.jpg);}
+#banner.logging_statistics{background-image: url(../img/header_banner_statistics.jpg);}
+
+#banner.modules_licence_management{background-image: url(../img/header_banner_modules .jpg);}
+
+
+/* -- Dashboard -- */
+
+#content.dashboard_dashboard{background: #FFF url(../img/dashboard_bg.gif) top right repeat-y;}
+#dashboard_content{float: left; margin: -40px 0 -20px -40px; padding: 40px; width: 630px;}
+	#dashboard_content .box{background-image: url(../img/dashboard_box_bg.gif); margin-bottom: 16px;}
+	#dashboard_content .box h3{background-image: url(../img/dashboard_box_heading_bg.gif);}
+	#dashboard_content .box table.table_content{width: 622px;}
+	#dashboard_content .box table.table_content td, #dashboard_content .box table.table_content th{text-align: center;}
+	#dashboard_content .box table.table_content .left{text-align: left; font-weight: bold;}
+	#dashboard_content  #spam_stats td.left span{background-position: top left; background-repeat: no-repeat; padding-bottom: 1px; padding-left: 20px;}
+	#dashboard_content  #spam_stats span.passed_clean{background-image: url(../img/mail_status_clean.gif);}
+	#dashboard_content  #spam_stats span.passed_spam{background-image: url(../img/mail_status_tagged.gif);}
+	#dashboard_content  #spam_stats span.blocked_spam{background-image: url(../img/mail_status_spam.gif);}
+	#dashboard_content  #spam_stats span.blocked_greylisted{background-image: url(../img/mail_status_greylisted.gif);}
+	#dashboard_content  #spam_stats span.blocked_blacklisted{background-image: url(../img/mail_status_blacklisted.gif);}
+	#dashboard_content  #spam_stats span.blocked_virus{background-image: url(../img/mail_status_virus.gif);}
+	#dashboard_content  #spam_stats span.blocked_banned{background-image: url(../img/mail_status_attachment.gif);}
+	/* -- bar graphs for CSS stats -- */
+	#dashboard_stats{padding: 15px 15px 0 15px;}
+		#dashboard_stats ul{font-weight: bold; float: right; line-height: 22px; margin-top: 45px;}
+		#dashboard_stats li{background-position: center left; background-repeat: no-repeat; padding-left: 20px;}
+		#dashboard_stats em{color: #999; font-weight: normal;}
+		#dashboard_stats .graph_container{color: #666; float: left; margin-right: 25px;}
+		#dashboard_stats .graph_container h5{font-size: 11px; font-weight: bold; margin: 0 0 5px 0; text-align: center; text-transform: uppercase;}
+		#dashboard_stats .graph_container .bar_graph{border: 1px solid #FFF; height: 200px; width: 85px;}
+		#dashboard_stats .graph_container .bar_graph div{text-indent: -9999px;}
+		#dashboard_stats .graph_container .bar_graph .clean{background: url(../img/dashboard_email_stats.png) 0 0 no-repeat;}
+		#dashboard_stats .graph_container .bar_graph .tagged{background: url(../img/dashboard_email_stats.png) -85px 0 no-repeat;}
+		#dashboard_stats .graph_container .bar_graph .spam{background: url(../img/dashboard_email_stats.png) -170px 0 no-repeat;}
+		#dashboard_stats .graph_container .bar_graph .greylisted{background: url(../img/dashboard_email_stats.png) -255px 0 no-repeat;}
+		#dashboard_stats .graph_container .bar_graph .blacklisted{background: url(../img/dashboard_email_stats.png) -340px 0 no-repeat;}
+		#dashboard_stats .graph_container .bar_graph .virus{background: url(../img/dashboard_email_stats.png) -425px 0 no-repeat;}
+		#dashboard_stats .graph_container .bar_graph .attachment{background: url(../img/dashboard_email_stats.png) -510px 0 no-repeat;}
+	
+	#dashboard_content .box .box_bottom{background-image: url(../img/dashboard_box_bottom_bg.gif);}
+	
+	#dashboard_content .box.small{background-image: url(../img/dashboard_box_small_bg.gif); float: left; width: 307px;}
+	#dashboard_content .box.small.left{margin-right: 16px;}
+	#dashboard_content .box.small h3{background-image: url(../img/dashboard_box_small_heading_bg.gif);}
+	#dashboard_content .box.small ul.text_list strong{width: 165px;}
+	#dashboard_content .box.small .box_bottom{background-image: url(../img/dashboard_box_small_bottom_bg.gif);}
+	#dashboard_content ul#service_status li{padding-left: 15px;}
+	#dashboard_content ul#service_status li.running{background: url(../img/service_running.gif) top left no-repeat;}
+	#dashboard_content ul#service_status li.not_running{background: url(../img/service_not_running.gif) top left no-repeat; color: #777; font-style: italic;}
+
+
+#dashboard_sidebar{color: #505050; float: right; margin: -40px -40px -20px 0; width: 270px;}
+	#dashboard_sidebar h4{background-position: top left; background-repeat: no-repeat; font-size: 14px; font-weight: bold; margin: 0 20px 0 20px; padding: 12px 0 12px 40px; text-transform: uppercase;}
+	#dashboard_sidebar h5{font-weight: bold;}
+	#dashboard_sidebar .widget{margin: 20px 0;}
+	#dashboard_sidebar .widget .toggle_down, #dashboard_sidebar .widget .toggle_up{background-repeat: no-repeat; display: block; float: right; height: 13px; margin-right: 10px; margin-top: 2px; text-indent: -9999px; width: 9px;}
+	#dashboard_sidebar .widget .toggle_down{background-image: url(../img/widget_toggle.png); background-position: top right;}
+	#dashboard_sidebar .widget .toggle_up{background-image: url(../img/widget_toggle.png); background-position: top left;}
+	#dashboard_sidebar .widget ul{margin-left: 50px; margin-top: 16.5px;}
+	#dashboard_sidebar .widget li{list-style-image: url(../img/widget_bullet.png);}
+	#dashboard_sidebar .widget a{color: #666; font-weight: bold;}
+	#dashboard_sidebar .widget a:hover, #dashboard_sidebar #support a:hover{text-decoration: underline;}
+	#dashboard_sidebar .widget p{margin: 16.5px 40px 0 40px;}
+	
+	#dashboard_sidebar #notifications h4{background-image: url(../img/dashboard_sidebar_headline_notification.png);}
+	.reminder_critical, .reminder_major, .reminder_minor{border-bottom: 1px dotted #DDD; margin: 16.5px 20px 0 20px; padding: 0 20px 16.5px 20px;}
+	#dashboard_sidebar #notifications p{margin: 0;}
+	.reminder_critical a, .reminder_major a, .reminder_minor a{font-weight: bold;}
+	.reminder_critical a:hover, .reminder_major a:hover, .reminder_minor a:hover{text-decoration: underline;}
+	.reminder_critical h5, .reminder_major h5, .reminder_minor h5{background-position: top left; background-repeat: no-repeat; padding-left: 20px;}
+	.reminder_critical h5{background-image: url(../img/reminder_small_critical.png)}
+	.reminder_critical a{color: #F00;}
+	
+	.reminder_major h5{background-image: url(../img/reminder_small_major.png)}
+	.reminder_major a{color: #FF8500;}
+	
+	.reminder_minor h5{background-image: url(../img/reminder_small_minor.png)}
+	.reminder_minor a{color: #00A0FA;}
+
+	#dashboard_sidebar #quicklinks h4{background-image: url(../img/dashboard_sidebar_headline_quicklinks.png);}
+	
+	#dashboard_sidebar #support h4{background-image: url(../img/dashboard_sidebar_headline_support.png);}
+
+
+/* -- ScoreMatrix -- */
+.box input.matrix{background-color: #FFF; border: 1px solid #DDD; padding: 4px 3px; text-align: center; width: 50px;}
+
+
+/* -- Processlist -- */
+#plist td{width: auto;}
+table.table_content thead th.plist_pid{width: 60px;}
+table.table_content thead th.plist_cpu{width: 60px;}
+table.table_content thead th.plist_mem{width: 60px;}
+table.table_content thead th.plist_time{width: 60px;}
+
+
+/* -- Licence Management -- */
+.box .licence_keys  .element input{text-align: center; width: 40px;}
+
+/* -- LiveLog -- */
+/* Table */
+tbody td{background-position: top left; background-repeat: repeat-x;}
+tbody tr.passed_clean td{background: #CAF7BD url(../img/tbody_clean_bg.gif);}
+	tbody tr.passed_clean:hover td{background: #CAF7BD url(../img/tbody_clean_hover_bg.gif);}
+tbody tr.passed_spam td{background: #F9F7BB url(../img/tbody_tagged_bg.gif);}
+	tbody tr.passed_spam:hover td{background: #F9F7BB url(../img/tbody_tagged_hover_bg.gif);}
+tbody tr.blocked_spam td{background: #FFD9B4 url(../img/tbody_spam_bg.gif);}
+	tbody tr.blocked_spam:hover td{background: #FFD9B4 url(../img/tbody_spam_hover_bg.gif);}
+tbody tr.blocked_greylisted td{background: #DDD url(../img/tbody_greylisted_bg.gif);}
+	tbody tr.blocked_greylisted:hover td{background: #DDD url(../img/tbody_greylisted_hover_bg.gif);}
+tbody tr.blocked_blacklisted td{background: #F9C1BB url(../img/tbody_blacklisted_bg.gif);}
+	tbody tr.blocked_blacklisted:hover td{background: #F9C1BB url(../img/tbody_blacklisted_hover_bg.gif);}
+tbody tr.blocked_virus td{background: #F3C6DA url(../img/tbody_virus_bg.gif);}
+	tbody tr.blocked_virus:hover td{background: #F3C6DA url(../img/tbody_virus_hover_bg.gif);}
+tbody tr.blocked_banned td{background: #F3C6DA url(../img/tbody_attachment_bg.gif);}
+	tbody tr.blocked_banned:hover td{background: #F3C6DA url(../img/tbody_attachment_hover_bg.gif);}
+
+tbody td.status{font-weight: bold; text-transform: uppercase;}
+	
+/* Details Box */
+.mail_status{background-position: top left; background-repeat: no-repeat; height: 94px; margin: 10px 0 10px 20px; padding: 40px 0 0 150px;}
+	.mail_status li{display: block; float: left; width: 350px;}
+	.mail_status strong{display: block; float: left; font-weight: bold; width: 80px;}
+	.mail_status .status{font-weight: bold; text-transform: uppercase;}
+	
+	.mail_status.passed_clean{background-image: url(../img/livelog_clean.jpg);}
+		.mail_status.passed_clean .status{color: #50E326;}
+	.mail_status.passed_spam{background-image: url(../img/livelog_tagged.jpg);}
+		.mail_status.passed_spam .status{color: #ECE31F;}
+	.mail_status.blocked_spam{background-image: url(../img/livelog_spam.jpg);}
+		.mail_status.blocked_spam .status{color: #FF8105;}
+	.mail_status.blocked_greylisted {background-image: url(../img/livelog_blocked_greylisted.jpg);}
+		.mail_status.blocked_greylisted .status{color: #999;}
+	.mail_status.blocked_blacklisted{background-image: url(../img/livelog_blacklisted.jpg);}
+		.mail_status.blocked_blacklisted .status{color: #EC321F;}
+	.mail_status.blocked_virus{background-image: url(../img/livelog_virus.jpg);}
+		.mail_status.blocked_virus .status{color: #D64385;}
+	.mail_status.blocked_banned{background-image: url(../img/livelog_attachment.jpg);}
+		.mail_status.blocked_banned .status{color: #9351B2;}

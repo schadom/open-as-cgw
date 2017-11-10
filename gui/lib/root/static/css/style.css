@@ -1,0 +1,77 @@
+/* ****************************************************************************
+This file is part of the Open AS Communication Gateway.
+
+The Open AS Communication Gateway is free software: you can redistribute it
+and/or modify it under theterms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the License,
+or (at your option) any later version.
+
+The Open AS Communication Gateway is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with the Open AS Communication Gateway. If not, see http://www.gnu.org/licenses/.
+**************************************************************************** */
+
+/* ##########################################
+## CSS for AS Comunication Gateway
+## @author: Veronika Oesterle
+## @last_changed: 2009-04-27
+############################################# */
+
+/* ## IMPORT OTHER STYLES ###################################### */
+@import url("reset.css");
+@import url("navigation.css");
+@import url("template.css");
+@import url("specific_content.css");
+
+
+/* ## HELPER STYLES ############################################ */
+/* ## for small adaptions ###################################### */
+.clear{clear: both; height: 1px; font-size: 1px; margin: 0;}
+
+/* ## LAYOUT STYLES ############################################ */
+/* ## for the big container DIVs ############################### */
+html{background-color: #2E3030;}
+html, body{height: 100%;}
+body{background: #2E3030 url(../img/body_bg.jpg) top center no-repeat; font: 11px "Lucida Sans Unicode", sans-serif; line-height: 16.5px;}
+#horizon{height: 1px; left: 0; position: absolute; top: 50%; width: 100%; z-index: 2000;}
+#center{left: 50%; margin-left: -490px; position: absolute; top: 0; width: 980px; z-index: 1;}
+
+#top_bar{background: #555 url(../img/top_bar_bg.gif) top left repeat-x; height: 41px; position: fixed; top: 0; width: 100%; z-index: 500;}
+	#working{background: url(../img/working_bg.gif) top left no-repeat; height: 20px; left: 50%; margin-left: -493px; position: absolute; top: 10px; width: 121px;}
+		#working.now{background-image: url(../img/working_animated.gif);}
+	
+
+#appliance_name{background-color: transparent; background-position: top left; background-repeat: no-repeat; height: 54px; position: absolute; text-indent: -9999px; top: 54px; width: 490px;}
+	.as_open{background-image: url(../img/appliance_name_bg_open.png);}
+
+	.as_150{background-image: url(../img/appliance_name_bg_150.png);}
+	.as_300{background-image: url(../img/appliance_name_bg_300.png);}
+	.as_500{background-image: url(../img/appliance_name_bg_500.png);}
+	.as_1000{background-image: url(../img/appliance_name_bg_1000.png);}
+	.as_2500{background-image: url(../img/appliance_name_bg_2500.png);}
+	.as_5000{background-image: url(../img/appliance_name_bg_5000.png);}
+	.as_10000{background-image: url(../img/appliance_name_bg_10000.png);}
+	
+	.as_v300{background-image: url(../img/appliance_name_bg_v300.png);}
+	.as_v500{background-image: url(../img/appliance_name_bg_v500.png);}
+	.as_v1000{background-image: url(../img/appliance_name_bg_v1000.png);}
+	.as_v2500{background-image: url(../img/appliance_name_bg_v2500.png);}
+	.as_v5000{background-image: url(../img/appliance_name_bg_v5000.png);}
+	.as_v10000{background-image: url(../img/appliance_name_bg_v10000.png);}
+	.as_v20000{background-image: url(../img/appliance_name_bg_v20000.png);}
+
+#container{border: 1px solid #000; border-bottom: none; position: absolute; top: 118px; width: 100%}
+
+#header{height: 222px;}
+
+	#banner{background: #5F5F5F url(../img/header_banner.jpg) top left no-repeat; height: 180px; left: 0; position: absolute; top: 41px; width: 100%; z-index: 1;}
+		#banner h2, #banner p{margin-left: 40px; width: 645px;}
+		#banner h2{color: #FFF; font-size: 24px; font-weight: bold; line-height: 33px;  margin-top: 60px; text-shadow: #111 0px 0px 5px; text-transform: uppercase;}
+		#banner p{background: transparent url(../img/header_banner_p_bg.png); color: #FFF; font-weight: bold; padding: 10px;}
+			#banner p strong{color: #39A6D8; font-weight: bold;}
+			
+#content{background: #FFF; padding: 40px 40px 20px 40px;}

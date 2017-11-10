@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>AS Communication Gateway - Quarantine Opt-In</title>
+    </head>
+	
+    <body bgcolor="#505050" style="margin:0; padding:0;">
+		<table id="layout" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td align="center">
+					<table id="center" bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="700">
+						<tr>
+							<td align="left">
+								<!-- START orange Stripe above -->
+								<table id="border_top" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#ff8500" height="8"></td>
+									</tr>				
+								</table>
+								<!-- END orange Stripe above -->
+								
+								<!-- START Top Content with Headline -->
+								<table id="header" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#EEEEEE" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif;">
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+									<tr>
+										<td width="30"></td>
+										<td width="640" valign="middle">
+											<h1 style="font-size: 16px;">Personal quarantine successfully activated</h1>
+											<p style="color: #666666; font-size: 13px;">Your quarantine box is set up and ready for you to use. From now on, all spam is sent directly to this box which you can easily administer yourself.<br>Release e-mails delete mails that are definitely spam or (de)activate the quarantine itself.</p>
+										</td>
+										<td width="30"></td>
+									</tr>									
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+								</table>								
+								<!-- END Top Content with Headline -->
+							
+								
+								<table id="info" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>
+									<!-- START How do I use it -->
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 14px; margin: 0 0 15px 0;">How do I use this quarantine?</h2>
+											<table id="summary" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+												<tr>
+													<td width="310" valign="top"><p><strong>This is the good part:</strong> using this quarantine is as easy as writing e-mail - because that is exactly how it works. Regardless of whether you are connected from inside your company's network, checking e-mails from home or from any mobile device, you can manage your quarantine from anywhere at any time. </p></td>
+													<td width="20"></td>
+													<td width="310" valign="top"><p>For every action you want to take, simply click on the corresponding button. Next, an e-mail with automatically filled content is generated that you just need to send - without having to change the content or the recipient.</p></td>
+												</tr>
+											</table>
+										</td>
+										<td width="30"></td>
+									</tr>
+									<!-- END START How do I use it -->
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>
+									<!-- START And what can I do with it -->
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 14px; margin: 0 0 15px 0;">And what can I do with it?</h2>
+											<p>The quarantine status report is automatically sent to you on a regular basis. The report contains a list of all e-mails that are currently in your quarantine box. E-mails can be individually released or deleted. Released e-mails are <strong>sent to you immediately</strong>.</p>						
+											<img src="[% img_path %]/img/help_list.gif" alt="list of e-mails how they are displayed in the quarantine" height="123" width="640">
+										</td>
+										<td width="30"></td>
+									</tr>
+									<!-- END And what can I do with it -->
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>									
+								</table>
+								
+								<!-- START What actions can I take with the quarantine manager -->
+								<table id="actions" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 14px; margin: 0 0 15px 0;">Which actions can I take with the quarantine manager?</h2>
+											<table id="action_list" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/help_new_report.gif" alt="" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">Let's assume you are waiting for an e-mail that hasn't arrived, so you want to check the status of your quarantine box now. All you have to do is request a <strong>new report</strong> and you receive the current status of your quarantine box.</td>
+												</tr>
+												<tr>
+													<td colspan="3"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td>
+												</tr>
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/help_flush.gif" alt="" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">Though your quarantine box gets cleared on a regular basis (for more details, please ask your network administrator) you can manually dispose of all e-mail currently in there by <strong>flushing</strong> the list. <em>This process cannot be undone, so please check twice, before flushing.</em></td>
+												</tr>
+												<tr>
+													<td colspan="3"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td>
+												</tr>
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/help_activate.gif" alt="" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">If you had your quarantine disabled for some reason, it can easily be reactivated with the <strong>activate</strong> button that comes with every quarantine report. It doesn't matter how old the report is. The successful activation will be confirmed with another copy of this e-mail.</td>
+												</tr>
+												<tr>
+													<td colspan="3"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td>
+												</tr>
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/help_disable.gif" alt="" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">If you find maintaining your quarantine by yourself is a workload you'd rather have done automatically, it is possible to opt-out of the quarantine with one click on the <strong>disable</strong> button. You will receive a confirmation e-mail immediately. Reactivating the quarantine is still possible at any time.</td>
+												</tr>
+											</table>
+										</td>
+										<td width="30"></td>
+									</tr>				
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>									
+								</table>
+								<!-- END What actions can I take with the quarantine manager -->
+								
+								<!-- END Footer --
+								
+								<!-- START Footer -->
+								<table id="footer" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#00a0fa" height="8"></td>
+									</tr>									
+								</table>
+								<!-- END Footer -->
+							</td>
+						</tr>
+					</table>
+					<!-- START underground note -->
+					<table id="underground" border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<td align="center" height="30" style="color: #999999; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;" valign="middle">This end-user quarantine is brought to you  by <a href="http://www.underground8.com" title="visit the underground_8 website" style="color: #999999; font-weight: bold; text-decoration: none;">underground_8</a> via the AS Communication Gateway</td>
+						</tr>
+					</table>
+					<!-- END underground note -->
+				</td>
+			</tr>
+		</table>
+    </body>
+</html>

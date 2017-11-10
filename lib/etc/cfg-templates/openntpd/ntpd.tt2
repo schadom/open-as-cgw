@@ -1,0 +1,13 @@
+# $OpenBSD: ntpd.conf,v 1.7 2004/07/20 17:38:35 henning Exp $
+# sample ntpd configuration file, see ntpd.conf(5)
+
+# Addresses to listen on (ntpd does not listen by default)
+#listen on *
+#listen on 127.0.0.1
+#listen on ::1
+
+# http://twiki.ntp.org/bin/view/Servers/NTPPoolServers
+# http://www.pool.ntp.org/
+[% FOREACH single_server = server %]
+server [%- single_server -%]
+[% END %]

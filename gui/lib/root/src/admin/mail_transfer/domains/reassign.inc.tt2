@@ -1,0 +1,15 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' update = 'content',	url = Catalyst.uri_for('/admin/mail_transfer/domains/reassign/') %]
+	[% 	smtpsrv = relay_domains.$domain_name.dest_mailserver;
+		options = [];
+		FOREACH srv IN relay_smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (srv.value.addr == smtpsrv ? 'selected="selected"' : '') });
+		END; %]
+	<fieldset>
+	[% INCLUDE 'site/elements/select' name = 'smtpsrv_from', option_list = options %]
+	[% INCLUDE 'site/elements/select' name = 'smtpsrv_to', option_list = options %]
+	[% INCLUDE 'site/elements/input' name = 'move', value = 'move', type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

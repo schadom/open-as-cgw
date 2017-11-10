@@ -1,0 +1,16 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form', update = 'content', url = Catalyst.uri_for('/admin/quarantine/user_box_administration/recipient_mails') %]
+	<fieldset>
+	[%	INCLUDE 'site/elements/input', update = 'content', value = re_user, name = 'username';
+		domain_list = [];
+		FOREACH dom IN domains.keys.sort;
+			domain_list.push({ value => dom, selected=>(re_domain == dom) ? 'selected' : '', label=>dom, });
+		END;
+		INCLUDE 'site/elements/select', name = 'domain', option_list = domain_list; %]
+	</fieldset>
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input' value = Catalyst.localize(box_path _ '_apply'), type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

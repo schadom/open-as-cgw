@@ -1,0 +1,43 @@
+[% PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+
+[%
+	table_headers = [];
+	table_headers.push(  Catalyst.localize(box_path _ '_type') );
+	table_headers.push( Catalyst.localize(box_path _ '_type_spam') );
+	table_headers.push( Catalyst.localize(box_path _ '_type_virus') );
+	table_headers.push( Catalyst.localize(box_path _ '_type_att') );
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', '', '');
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', '');
+
+	table_values = [];
+
+	FOREACH origin IN ['extern', 'relayhosts', 'whitelist', 'smtpauth'];
+		row = [];
+		row.push( "<strong>" _ Catalyst.localize(box_path _ '_origin_' _ origin) _ "</strong>");
+
+		FOREACH type IN ['bypass_spam', 'bypass_virus', 'bypass_att'];
+			link = BLOCK;
+				INCLUDE 'site/elements/enable'
+					status = (policy.$origin.$type) ? 'disabled' : 'enabled',
+					url = Catalyst.uri_for("/admin/content_scanning/policies/toggle/$origin/$type");
+					#url = Catalyst.uri_for("/admin/content_scanning/policies/toggle/$origin");
+			END;
+			row.push(link);
+		END;
+		table_values.push(row);
+	END;
+
+
+	INCLUDE site/elements/table,
+		headers = table_headers,
+		th_classes = table_th_classes,
+		td_classes = table_td_classes,
+		td_values = table_values;
+
+%]
+
+[% INCLUDE 'site/box_close' %]

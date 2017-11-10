@@ -1,0 +1,31 @@
+How to deploy the Open AS Communication Gateway
+===============================================
+
+1. Installation
+Deployment is quite easy. First, make sure that you successfully installed your
+Open AS Communication Gateway according to the installation instructions found
+at doc/INSTALL.
+
+2. Connectivity
+Next, make sure your Open AS Communication gateway is reachable from the
+Internet (if you intend to use it for real-world mail traffic). This means,
+you either have to assign a public IP to your installation, or at least forward
+port 25 from a publicly reachable address.
+
+3. DNS MX records
+You will have to point the DNS MX records to the Open AS Communication Gateway,
+either directly (AS has a public IP) or to the host you're forwarding port 25
+from, for all domains you want the Open AS to accept mails for.
+
+4. Web-GUI configuration
+Add all of your SMTP servers the Open AS Communication Gateway shall relay
+incoming mail to, to the list of SMTP servers within the Open AS web-frontend:
+Log in and go to "Mail Transfer -> SMTP Servers".
+
+Finally, add all of the domains you want the Open AS Communication Gateway to
+accept mails for. Go to "Mail Transfer -> Domains".
+
+These settings are the only requirements for the Open AS in order to get mail
+scanned and relayed for you. However, I'd highly recommend to have a closer
+look at the numerous other pages the web-frontend offers, to optimize the
+scanning procedures.

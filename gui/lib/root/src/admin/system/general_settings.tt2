@@ -1,0 +1,9 @@
+<div id="system_general_settings_version">
+    [% INCLUDE admin/system/general_settings/version.inc.tt2 %]
+</div>
+<div id="system_general_settings_reboot_shutdown">
+    [% INCLUDE admin/system/general_settings/reboot_shutdown.inc.tt2 %]
+</div>
+<div id="system_general_settings_reset">
+    [% INCLUDE admin/system/general_settings/reset.inc.tt2 %]
+</div>

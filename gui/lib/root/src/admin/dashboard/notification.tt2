@@ -1,0 +1,11 @@
+<div id="overlay" style="height: 100%">
+    <div id="horizon">
+        <div id="dashboard_notification_notification">
+            [% INCLUDE 'admin/dashboard/notification/notification.inc.tt2' %]
+        </div>
+    </div>
+</div>
+
+
+
+

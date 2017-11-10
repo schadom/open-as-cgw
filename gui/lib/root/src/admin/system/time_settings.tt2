@@ -1,0 +1,6 @@
+<div id="system_time_settings_timezone">
+    [% INCLUDE admin/system/time_settings/timezone.inc.tt2 %]
+</div>
+<div id="system_time_settings_ntp">
+    [% INCLUDE admin/system/time_settings/ntp.inc.tt2 %]
+</div>

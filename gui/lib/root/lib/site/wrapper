@@ -1,0 +1,15 @@
+[%- IF template.name.match('\.(css|js|txt)');
+     content;
+   ELSIF template.name.match('\.inc\.tt2');
+     content;
+   ELSIF template.name.match('login.tt2');
+     content;
+   ELSIF template.name.match('error.tt2');
+     content;
+   ELSIF template.name.match('notification\.tt2');
+     content WRAPPER site/html;
+   ELSIF template.name.match('^email/');
+     content;
+   ELSE;
+     content WRAPPER site/html + site/layout;
+   END; -%]

@@ -1,0 +1,57 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+	<script type="text/javascript">
+		function toggle_list(){
+			Effect.toggle('system_backup_manager_list_infobar','slide',{duration: 0.2});
+		}
+	</script>
+		[% IF deleted == 1 %]
+	<script type="text/javascript"> toggle_list(); </script>
+		[% END %]
+[% IF backup_list_encrypted.size > 0; %]
+	<p class="info">[% Catalyst.localize(box_path _ '_available_text') %]</p>
+[%
+	table_headers = [];
+	table_headers.push( Catalyst.localize(box_path _ '_filename') );
+	table_headers.push( Catalyst.localize(box_path _ '_action') );
+
+	table_th_classes = [];
+	table_th_classes.push('left', 'action');
+
+	table_td_classes = [];
+	table_td_classes.push('left', 'action');
+
+	table_values = [];
+	
+	FOREACH item IN backup_list_encrypted;
+		link_backup_inst = BLOCK;
+			INCLUDE 'site/elements/link'
+					url = Catalyst.uri_for('/admin/system/backup_manager/install/') _ loop.index(),
+					update = 'content',
+					label = Catalyst.localize(box_path _ '_install') ;
+		END;
+		link_backup_del = BLOCK;
+			INCLUDE 'site/elements/link'
+					url = Catalyst.uri_for('/admin/system/backup_manager/delete/') _ loop.index(),
+					update = 'content',
+					label = Catalyst.localize(box_path _ '_delete') ;
+		END;
+
+		# link-element would add js-magic which dooms the download to die
+		link_download = '<a href="' _ Catalyst.uri_for('/admin/system/backup_manager/download/') _ loop.index() _ '">' _ Catalyst.localize(box_path _ '_download') _ '</a>';
+
+		links = '<span>' _ link_backup_inst _ '</span><span>' _ link_backup_del _ '</span><span>'  _ link_download _ '</span>';
+
+		table_values.push( [ item, links ] );
+	END;
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		td_values = table_values;
+
+ELSE;%]
+	<p class="no_entries">[% Catalyst.localize(box_path _ '_noentries') %]</p>
+[%END;%]
+[% INCLUDE 'site/box_close'; %]

@@ -1,0 +1,27 @@
+<div id="dashboard_content">
+		<div id="dashboard_dashboard_appliance_status">
+			[% INCLUDE admin/dashboard/dashboard/appliance_status.inc.tt2 %]
+		</div>
+		<div id="dashboard_dashboard_service_status">
+			[% INCLUDE admin/dashboard/dashboard/service_status.inc.tt2 %]
+		</div>
+        <div class="clear"></div>
+        <div id="dashboard_dashboard_mailtraffic_stats">
+            [% INCLUDE admin/dashboard/dashboard/mailtraffic_stats.inc.tt2 %]
+        </div>
+        <div id="dashboard_dashboard_workflow">
+            [% INCLUDE admin/dashboard/dashboard/workflow.inc.tt2 %]
+        </div>
+</div>
+<div id="dashboard_sidebar">
+	<div id="dashboard_dashboard_notification">
+		[% INCLUDE admin/dashboard/dashboard/notifications.inc.tt2 %]
+	</div>
+	<div id="dashboard_dashboard_quicklinks">
+		[% INCLUDE admin/dashboard/dashboard/quicklinks.inc.tt2 %]
+	</div>
+	<div id="dashboard_dashboard_support">
+		[% INCLUDE admin/dashboard/dashboard/support.inc.tt2 %]
+	</div>
+</div>
+<div class="clear"></div>

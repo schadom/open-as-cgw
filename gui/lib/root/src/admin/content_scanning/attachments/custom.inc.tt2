@@ -1,0 +1,45 @@
+[%  PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+
+<p><strong>[% Catalyst.localize(box_path _ '_section_file_extension') %]</strong><br/>
+blablabla</p>
+[% INCLUDE 'site/elements/form',
+	url = Catalyst.uri_for('/admin/content_scanning/attachments/enlist_rule_filetype'), -%]
+	<fieldset>
+	[% INCLUDE 'site/elements/input',
+		name = 'file_extension_desc'; %]
+	[% INCLUDE 'site/elements/input',
+		name = 'file_extension'; %]
+	[% INCLUDE 'site/elements/input',
+		type = 'button'; %]
+	</fieldset>
+</form>
+
+
+<p><strong>[% Catalyst.localize(box_path _ '_section_mime_types') %]</strong><br/>
+[%	
+	content_types_list = [];
+	FOREACH entry IN antispam.banned_attachments_contenttypes;
+		content_types_list.push({ value => entry, label => entry });
+	END;
+
+%]
+
+[% INCLUDE 'site/elements/form',
+	url = Catalyst.uri_for('/admin/content_scanning/attachments/update_mime_blocks'), -%]
+	<fieldset>
+	[% INCLUDE 'site/elements/multiple_select',
+		name = content_types,
+		wide = 'wide',
+		lines = "10",
+		option_list = content_types_list; %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/input',
+		type = 'button'; %]
+	</fieldset>
+</form>
+
+
+
+[% INCLUDE 'site/box_close' %]

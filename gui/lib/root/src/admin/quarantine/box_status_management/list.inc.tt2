@@ -1,0 +1,92 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+
+[% IF recipient_list.size > 0; 
+	table_headers = [];
+	table_headers.push( Catalyst.localize(box_path _ '_status') );
+	table_headers.push( Catalyst.localize(box_path _ '_address') );
+	table_headers.push( Catalyst.localize(box_path _ '_action') );
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', 'action');
+	table_td_classes = [];
+	table_td_classes.push('left', '', 'action');
+
+	table_values = [];
+	FOREACH recipient IN recipient_list;
+		# Quarantine status for address
+		IF recipient.status == 'notconfirmed';
+			status = 'Unconfirmed';
+		ELSE;
+			status = (recipient.decision == 1) ? 'Enabled' : 'Disabled';
+		END;
+
+		# Mail address
+		url_userbox = BLOCK; 
+			INCLUDE 'site/elements/link',
+				#url = Catalyst.uri_for("/admin/quarantine/user_box_administration/recipient_mails_redirect/" _ recipient.email),
+				url = Catalyst.uri_for("/admin/quarantine/user_box_administration/change_current_recipient/" _ recipient.email),
+				update = 'content',
+				label = recipient.email; 
+		END;
+
+		# Available actions
+		IF recipient.status == 'notconfirmed';
+			url_notify = BLOCK; %]<span> [%
+				INCLUDE 'site/elements/link',
+					url = Catalyst.uri_for("/admin/quarantine/box_status_management/notify/" _ recipient.email),
+					update = 'content',
+					label = Catalyst.localize(box_path _ '_notify'); %]</span> [%
+			END;
+
+			url_reset = BLOCK; %]<span> [%
+				INCLUDE 'site/elements/link',
+					url = Catalyst.uri_for("/admin/quarantine/box_status_management/reset/" _ recipient.email),
+					update = 'content',
+					label = Catalyst.localize(box_path _ '_reset'); %]</span> [%
+			END;
+
+			action = url_notify _ " | " _ url_reset;
+		ELSE;
+			IF recipient.decision == 1;
+				url_disable = BLOCK; %]<span> [%
+					INCLUDE 'site/elements/link',
+						url = Catalyst.uri_for("/admin/quarantine/box_status_management/disable/" _ recipient.email),
+						update = 'content',
+						label = Catalyst.localize(box_path _ '_disable'); %]</span> [%
+				END;
+				action = url_disable;
+			ELSIF recipient.decision == 2;
+				url_enable = BLOCK; %]<span> [%
+					INCLUDE 'site/elements/link',
+						url = Catalyst.uri_for("/admin/quarantine/box_status_management/enable/" _ recipient.email),
+						update = 'content',
+						label = Catalyst.localize(box_path _ '_enable'); %]</span> [%
+				END;
+
+				url_renotify = BLOCK; %]<span> [%
+					INCLUDE 'site/elements/link',
+						url = Catalyst.uri_for("/admin/quarantine/box_status_management/notify/" _ recipient.email),
+						update = 'content',
+						label = Catalyst.localize(box_path _ '_renotify'); %]</span> [% 
+				END;
+				action = url_enable _ " | " _ url_renotify;
+			END;
+		END;
+
+		table_values.push([ status, url_userbox, action ]);
+		
+		status = "";
+		address = "";
+		action = "";
+	END;
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		td_values = table_values;
+ELSE; %]
+<p class="no_entries">[% Catalyst.localize(box_path _ '_noresults') %]</p>
+[% END; %]
+[% INCLUDE 'site/box_close' %]

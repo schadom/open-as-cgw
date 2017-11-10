@@ -1,0 +1,12 @@
+[% language_strings.confirmation_welcome | upper %]
+[% language_strings.confirmation_information | eval %]
+[% language_strings.confirmation_usage_info_plain %]
+[% language_strings.confirmation_usage_delete_plain %]
+[% language_strings.confirmation_flooded %]
+[% language_strings.confirmation_activate_info %]
+
+[% language_strings.confirmation_activate | upper %]
+[% language_strings.confirmation_activate_plain %]: mailto:[% sender_address %]?subject=[% language_strings.confirmation_activate_plain | ucfirst %]&body=[[AAC:[% confirmation_id %]]]
+
+-- 
+[% language_strings.quar_footer_signature %] [% language_strings.quar_footer_company %] [% language_strings.quar_footer_brand %]

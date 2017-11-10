@@ -1,0 +1,15 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form'	url = Catalyst.uri_for('/admin/system/notifications/add_recipient' _ (edit_mode == 1 ? '/' _ edit_index : '')),	update = 'content' %]
+	<p class="info">[% Catalyst.localize(box_path _ '_text')  %]</p>
+	<fieldset>
+		[% INCLUDE 'site/elements/input' required = 'required', value = (edit_mode == 1 ? edit_email : ''), name = 'email' %]
+		[% INCLUDE 'site/elements/input' value = (edit_mode == 1 ? edit_login : ''), name = 'login' %]
+		[% INCLUDE 'site/elements/input' value = (edit_mode == 1 ? edit_name : ''), required = 'required', name = 'name' %]
+		[% INCLUDE 'site/elements/input' value = (edit_mode == 1 ? edit_password : ''), type = 'password', name = 'password' %]
+		[% INCLUDE 'site/elements/input' value = (edit_mode == 1 ? edit_smtpsrv : ''), name = 'smtpsrv'%]
+		[% INCLUDE 'site/elements/input' type = 'checkbox', checked = (edit_usetls == 1 ? 'checked' : ''), value = 1, name = 'usetls'%]
+		[% INCLUDE 'site/elements/input' value = (edit_mode != 1 ) ? Catalyst.localize('add') : Catalyst.localize('save') type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

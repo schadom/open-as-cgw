@@ -1,0 +1,7 @@
+<div id="system_remote_assistance_ssh">
+    [% INCLUDE admin/system/remote_assistance/ssh.inc.tt2 %]
+</div>
+<div id="system_remote_assistance_snmp">
+    [% INCLUDE admin/system/remote_assistance/snmp.inc.tt2 %]
+</div>
+

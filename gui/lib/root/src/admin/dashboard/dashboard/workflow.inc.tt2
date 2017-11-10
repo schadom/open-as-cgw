@@ -1,0 +1,4 @@
+[% PROCESS 'site/box_init'; %]
+[% INCLUDE 'site/box_open' %]
+		<img src="/static/images/antispam_frontpage.gif" alt="AS Communication Gateway Workflow" style="margin: 0 0 15px 68px"/>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,11 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+[% INCLUDE 'site/elements/form' update = 'content', url = Catalyst.uri_for('/admin/content_scanning/attachments/enlist_extension')%]
+	<fieldset>
+	[% INCLUDE 'site/elements/input', name = 'desc'; %]
+	[% INCLUDE 'site/elements/input', name = 'extension'; %]
+	[% INCLUDE 'site/elements/input', type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

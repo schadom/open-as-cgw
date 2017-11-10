@@ -1,0 +1,82 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% MACRO conv_human_readable(n) IF n < 1024 %]
+    [% n %]B
+  [% ELSIF n >= 1024 && n < (1024 * 1024) %]
+    [% n = n div 102.4 / 10 %]
+    [% n %]KB
+  [% ELSIF n >= (1024 * 1024) && n < (1024 * 1024 * 1024) %]
+    [% n = n div (1024 * 102.4) / 10 %]
+    [% n %]MB
+  [% ELSE %]
+    [% n = n div (1024 * 1024 * 102.4) / 10 %]
+    [% n %]GB
+[% END %]
+
+[% IF mailqueue_live.size > 0;
+	CELL_WIDTH = 25;
+	RCPT_WIDTH = 50;
+
+	table_headers = [];
+	table_headers.push(Catalyst.localize(box_path _ '_datetime'));
+	table_headers.push(Catalyst.localize(box_path _ '_queue'));
+	table_headers.push(Catalyst.localize(box_path _ '_queuenr'));
+	table_headers.push(Catalyst.localize(box_path _ '_size'));
+	table_headers.push(Catalyst.localize(box_path _ '_sender'));
+	table_headers.push(Catalyst.localize(box_path _ '_recipients'));
+
+	table_th_classes = [];
+	table_th_classes.push('left', 'left', '', '', '', '');
+	table_td_classes = [];
+	table_td_classes.push('left', 'left', '', '', '', '');
+
+	table_row_classes = [ 'passed_clean', 'passed_spam', 'passed_spam' ];
+
+	table_values = [];
+	FOREACH mail IN mailqueue_live; 
+		sender = mail.sender.length > (CELL_WIDTH + 3)
+				? "<span title=\"" _ mail.sender _ "\">" _ mail.sender.substr(0,CELL_WIDTH) _ '...' _ "</span>"
+				: mail.sender;
+
+		recipients = mail.recipients.length > (RCPT_WIDTH + 3)
+				? "<span title=\"" _ mail.recipients _ "\">" _ mail.recipients.substr(0,RCPT_WIDTH) _ '...' _ "</span>"
+				: mail.recipients;
+
+		IF mail.active == 1;
+			status = 'passed_clean';
+			queue = '<b>Active</b>';
+		ELSIF mail.fail == 1;
+			status = 'blocked_blacklisted';
+			queue = '<b><span title="' _ mail.fail_message _ '">Deferred</span></b>';
+		ELSE;
+			status = 'passed_spam';
+			queue = '<b>Incoming</b>';
+		END;
+
+		table_values.push([
+			mail.timestamp,
+			queue,
+			mail.queuenr,
+			conv_human_readable(mail.size),
+			sender,
+			recipients,
+		]);
+
+		table_row_classes.unshift( status );
+	END;
+
+	INCLUDE 'site/elements/table'
+		id = 'livelog',
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		tr_classes = table_row_classes,
+		td_values = table_values;
+
+ELSE %]
+	<p class="no_entries">[% Catalyst.localize(box_path _ '_noentries') %]</p>
+[% END %]
+
+
+[% INCLUDE 'site/box_close' %]

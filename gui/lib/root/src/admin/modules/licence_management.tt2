@@ -1,0 +1,10 @@
+<div id="modules_licence_management_info">
+    [% INCLUDE admin/modules/licence_management/info.inc.tt2 %]
+</div>
+<div id="modules_licence_management_update">
+    [% INCLUDE admin/modules/licence_management/update.inc.tt2 %]
+</div>
+<div id="modules_licence_management_upload">
+    [% INCLUDE admin/modules/licence_management/upload.inc.tt2 %]
+</div>
+

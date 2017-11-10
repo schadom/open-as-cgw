@@ -1,0 +1,61 @@
+/var/log/open-as-cgw/update.log {
+        daily
+        missingok
+        rotate 14
+        compress
+        delaycompress
+        notifempty
+        create 600
+}
+
+/var/log/open-as-cgw/mail.log {
+    daily
+    dateext
+    rotate 90
+    missingok
+    compress
+#   olddir /var/www/LimesGUI/root/static/log
+    nocreate
+}
+
+/var/log/open-as-cgw/syslog {
+        daily
+        missingok
+        rotate 14
+        compress
+        delaycompress
+        notifempty
+        create 600
+}
+
+/var/log/open-as-cgw/mangled-mail.log {
+     daily
+     dateext
+     rotate 90
+     missingok
+     olddir /var/www/LimesGUI/root/static/log
+     nocreate
+     postrotate
+         cd /var/www/LimesGUI/root/static/log
+         IFILE=mangled-mail.log-`/bin/date +%Y%m%d`
+         OFILE=mail.log-`/bin/date +%Y%m%d -d '1 days ago'`
+         if [ -f "$OFILE.gz" ]; then
+             COUNTER=`/bin/ls ${OFILE}_* | /usr/bin/sort -r | /bin/sed -n -e 's/\.gz$//g' -e '1p' | /usr/bin/awk -F '_v' '{print $2}'`
+             COUNTER=$(( $COUNTER + 1 ))
+             OFILE="${OFILE}_v$COUNTER"
+         fi
+         /bin/mv -f "$IFILE" "$OFILE"
+         /etc/init.d/syslog-ng reload > /dev/null
+         /bin/gzip "$OFILE"
+     endscript
+}
+
+/var/log/open-as-cgw/LimesGUI.log {
+        daily
+        missingok
+        rotate 14
+        compress
+        delaycompress
+        notifempty
+        create 600
+}

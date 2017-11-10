@@ -1,0 +1,20 @@
+How to test the Open AS Communication Gateway
+=============================================
+
+Since the Open AS Communication Gateway aims to be a component which gets
+integrated in an existing mailing infrastructure, testing requires some
+effort.
+
+At least, you need to have a working SMTP server. For testing purposes, you may
+want to set up a simple Postfix installation on a virtual machine, you can
+relay mail traffic to.
+
+For generating test e-mails, I'd recommend the really cool command-line tool
+"swaks" (Swiss Army Knife SMTP - http://www.jetmore.org/john/code/swaks/):
+  $ swaks -f someuser@somedomain.tld -t user@yourdomain.tld -s <open-as-IP>
+
+Swaks also supports SMTP authentication (SASL), attachments and a large number
+or other cool features.
+
+Unfortunately, there is no automated testing environment available until now,
+any enhancements in this direction would be highly appreciated.

@@ -1,0 +1,74 @@
+# vim: ts=4:sw=4
+
+GENERAL DEVELOPMENT NOTES
+===============================================================================
+
+The OpenAS is an SMTP gateway. This means, it accepts mail for certain domains
+(as far as it's not considered spam), does content scanning and relays it to
+predefined SMTP servers.
+The OpenAS is NOT a fully-fledged MTA-suite:
+ * it does not define mail-boxes or user-accounts,
+ * it does not handle any kind of mail retrieval (POP, IMAP, ...)
+
+
+External software-components used:
+ * postfix as central MTA
+ * sqlgrey as greylisting policy server 
+ * postfwd for black-/whitelistig and general postfix target demuxer; it sets
+   postfix targets for sasl-authenticated mails, sending to-be-greylisted 
+   mails to sqlgrey, does selective greylisting checks and performs
+   DNSBL lookups. Finally, it reaches a dummy-target, which is used to simply
+   print a syslog-message for further parsing (see below)
+ * amavisd-new as virus-scanning middleware
+ * clamav for the actually scanning process
+ * snmpd for SNMP
+ * dnsmasq as lightweight DNS forwarder and caching daemon 
+ * monit to ensure service- and daemon availability
+ * munin to do some resource graphs
+ * MySQL as the common database-backend, used for greylisting-db, stats, etc
+ * Nginx is the web-server of choice for serving the web-frontend and
+   the munin graphs
+ * ntpd
+ * syslog-ng as syslog daemon
+ * a modified version of cyrus-sasl for proxying SASL requests to MTAs
+
+
+AS-specific components:
+ * rtlog: A real time syslog parsing engine, aiming to provide easy-to-use
+   real-time information of the mail-flow (e.g. "Live-Log", Simple Log Search,
+   etc)
+ * quarantine-ng: an end-user quarantine, which defines quarantine-boxed for
+   each user (though, their mailboxes are not stored on the OpenAS itself),
+   and offering the possibility for the users to release and/or delete mails
+   in their quarantine boxes without the intervention of the administrator.
+   The whole quarantine-ng is managed through emails: e.g. if a user wants to
+   release a mail from the quarantine-box, he/she clicks on a mailto: link
+   inside the daily spam report he/she is automatically receiving every day,
+   and a mail containing a special character-code in the mail body is sent to
+   the OpenAS itself, where the quarantine-ng daemon reacts accordingly. This
+   mail-only approach makes it easy-to-use without additional software 
+   installation, and is client independent.
+ * saslauthd: the saslauthd sources have been patched in order to support
+   proxying SASL authentication requests to SMTP servers, which have been
+   configured on the AS web-frontend to support SMTP authentication
+ 
+
+Basically everything AS-specific is done in Perl, using numerous CPAN modules,
+whereas most of them are already available via Ubuntu packages. The core code
+is contained in the lib/lib/Underground8 directory.
+
+Appliance/			Main appliance object, the root of the config-model tree
+Configuration/		Meta-configuration, according to GUI
+Services/			Low-level service handler/controller. Every service has
+					a SLAVE.pm, which does the low-level stuff.
+QuarantineNG/		quarantine implementation
+Exception/			Perl exception definitions
+ReportFactors/		Generates system reports
+Log/				rtlogd stuff 
+Misc/				s/t
+
+Configuration files, GUI pages and some other files are managed through Template
+Toolkit (TT2) templates, and reside in lib/etc/cfg-templates (in an installed
+environment, under /etc/open-as-cgw/cfg-templates).
+
+

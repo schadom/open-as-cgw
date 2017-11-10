@@ -1,0 +1,12 @@
+<div id="quarantine_general_settings_timing_options">
+	[% INCLUDE 'admin/quarantine/general_settings/timing_options.inc.tt2' %]
+</div>
+<div id="quarantine_general_settings_activation_request">
+	[% INCLUDE 'admin/quarantine/general_settings/activation_request.inc.tt2' %]
+</div>
+<div id="quarantine_general_settings_spam_report">
+	[% INCLUDE 'admin/quarantine/general_settings/spam_report.inc.tt2' %]
+</div>
+<div id="quarantine_general_settings_language_options">
+	[% INCLUDE 'admin/quarantine/general_settings/language_options.inc.tt2' %]
+</div>

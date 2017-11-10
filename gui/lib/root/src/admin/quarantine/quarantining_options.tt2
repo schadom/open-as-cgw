@@ -1,0 +1,13 @@
+<div id="quarantine_quarantining_options_mail_handling">
+	[% INCLUDE admin/quarantine/quarantining_options/mail_handling.inc.tt2 %]
+</div>
+<div id="quarantine_quarantining_options_global_mailboxes">
+	[% INCLUDE admin/quarantine/quarantining_options/global_mailboxes.inc.tt2 %]
+</div>
+<div id="quarantine_quarantining_options_domains">
+	[% INCLUDE admin/quarantine/quarantining_options/domains.inc.tt2 %]
+</div>
+<div id="quarantine_quarantining_options_visibility">
+	[% INCLUDE admin/quarantine/quarantining_options/visibility.inc.tt2 %]
+</div>
+

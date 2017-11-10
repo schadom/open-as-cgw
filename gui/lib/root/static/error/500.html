@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<title>
+			AS Communication Gateway&trade; | Error 500
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="author" content="Open AS" />
+		<meta name="copyright" content="Open AS" />
+		<link href="static/error/css/error_500.css" rel="stylesheet" type="text/css" media="all" />
+		<!--[if lt IE 7]>
+		<link href="static/error/css/error_500_ie.css" rel="stylesheet" type="text/css" media="all" />
+		<![endif]-->
+		<script src="static/error/js/countdown.js" type="text/javascript"></script>
+	</head>
+	<body>
+	<div id="center">
+		<h1 id="title">Oh No - there is something wrong with the GUI!</h1>
+		<div id="container">
+			<div id="top">
+				<div id="countdown">10:00</div>
+				<h2>Are You currently upgrading or restarting?</h2>
+				<p>If you've reached this page after you've started the <strong>update process</strong> via System Updates or <strong>rebooted the appliance</strong> for some reason, then everything is perfectly normal.</p>
+				<p>After waiting for <strong>10 minutes</strong> this pages <strong>automatically refreshes</strong> and your AS Communication Gateway&trade; returns to its <strong>normal functionality.</strong></p>
+			</div>
+			<div id="bottom">
+				<h3>You have already refreshed this page and it is still showing?</h3>
+				<p>Unfortunatly there is something wrong with your AS Communication Gateway. You now have three possibilities to fix the problem. Please note that you should only try them in the correct order. Note that when you <strong>restart the GUI</strong> your AS will be out of service for only a few seconds but if you <strong>restart the whole appliance</strong> it can be out up to 3 minutes.</p>
+                                <div class="solution restart_gui">
+                                        <h4>1. Restart the GUI</h4>
+                                        <p>To restart the GUI, please connect via <em>SSH or console</em> to your AS Communication Gateway&trade; and choose the option <em>Restart Management GUI</em> within the shell menu. </p>
+                                </div>
+                                <div class="solution restart_appliance">
+                                        <h4>2. Restart the Appliance</h4>
+                                        <p>To reboot the Appliance, please connect via <em>SSH or console</em> to your AS Communication Gateway&trade; and choose the option <em>Reboot Appliance</em> within the shell menu.</p>
+                                </div>
+				<div class="solution support">
+					<h4>3. Contact the Open AS support</h4>
+					<p>In case none of the two solutions helped, <strong>please contact the Open AS support team</strong>.<br/><br/>
+						<strong>E</strong> <a href="mailto:team@openas.org?subject:Server%20Error%20500%20on%20my%20AS%20Communication%20Gateway">team@openas.org</a><br />
+						<strong>W</strong> <a href="https://openas.org" target="_blank">www.openas.org</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

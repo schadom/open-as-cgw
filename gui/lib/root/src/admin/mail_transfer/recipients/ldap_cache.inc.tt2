@@ -1,0 +1,9 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form'  url = Catalyst.uri_for('/admin/mail_transfer/recipients/update_ldapcache/') %]
+	<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_update_text') %]</p>
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input' name = 'update', value = 'Update cache', type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,89 @@
+#!/bin/bash
+#
+# This file is part of the Open AS Communication Gateway.
+#
+# The Open AS Communication Gateway is free software: you can redistribute it
+# and/or modify it under theterms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the License,
+# or (at your option) any later version.
+#
+# The Open AS Communication Gateway is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+# General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along
+# with the Open AS Communication Gateway. If not, see http://www.gnu.org/licenses/.
+#
+### BEGIN INIT INFO
+# Provides:          openas-ldapsync
+# Required-Start:    $local_fs $network $remote_fs $syslog
+# Required-Stop:     $local_fs $network $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Init script for Open AS LDAP Syncronisator.
+# Description:       Init script for Open AS LDAP Syncronisator.
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/bin/ldap.pl
+NAME=openas-ldapsync
+DESC="Open AS LDAP Syncronisator"
+
+test -f ${DAEMON} || exit 0
+
+START="--start --quiet --background --make-pidfile --pidfile /var/run/${NAME}.pid --name ${NAME} --startas ${DAEMON}"
+STOP="--stop --quiet --pidfile /var/run/${NAME}.pid --name ${NAME} --retry=TERM/30/KILL/5"
+
+case "$1" in
+  start)
+    echo -n "Starting $DESC: "  
+    if start-stop-daemon ${START} -- start >/dev/null ; then
+            echo "${NAME}."
+    else
+            if start-stop-daemon --test ${START} >/dev/null 2>&1; then
+                echo "(failed)."
+                exit 1
+            else
+                echo "(already running)."
+                exit 0
+            fi
+    fi
+    ;;
+
+  stop)
+    echo -n "Stopping $DESC: "
+    if start-stop-daemon ${STOP} --retry 10 >/dev/null ; then
+            echo "${NAME}."
+    else
+            if start-stop-daemon --test ${START} >/dev/null 2>&1; then
+                echo "(not running)."
+                exit 0
+            else
+                echo "(failed)."
+                exit 1
+            fi
+    fi
+    ;;
+
+  restart)
+    $0 stop
+    $0 start
+    ;;
+
+  status)
+    echo -n "Status $DESC is: "
+    if start-stop-daemon --test ${START} >/dev/null 2>&1; then
+        echo "(not running)."
+        exit 1
+    else
+        echo "(running)."
+        exit 0
+    fi
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart|status}" >&2
+    exit 0
+    ;;
+esac

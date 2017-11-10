@@ -1,0 +1,10 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/network/configure_dns') %]
+        <fieldset>
+            [%  INCLUDE 'site/elements/input' name='primary_dns', value=system.primary_dns, required='required' %]
+            [%  INCLUDE 'site/elements/input' name='secondary_dns', value=system.secondary_dns, required='required' %]
+            [% INCLUDE 'site/elements/input' type = 'button' %]
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

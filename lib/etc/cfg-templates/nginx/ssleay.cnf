@@ -1,0 +1,38 @@
+#
+# SSLeay example configuration file.
+#
+
+RANDFILE		= /tmp/.rnd
+
+[ req ]
+default_bits            = 1024
+default_keyfile         = privkey.pem
+distinguished_name      = req_distinguished_name
+
+[ req_distinguished_name ]
+countryName                     = Country Name (2 letter code)
+countryName_default             = AT
+countryName_min                 = 2
+countryName_max                 = 2
+
+stateOrProvinceName             = State or Province Name (full name)
+stateOrProvinceName_default     = Tyrol
+
+localityName                    = Locality Name (eg, city)
+localityName_default		= Innsbruck 
+
+organizationName                = Organization Name (eg, company; recommended)
+organizationName_max            = 64
+organizationName_default	= Open AS 
+
+organizationalUnitName          = Organizational Unit Name (eg, section)
+organizationalUnitName_max      = 64
+organizationalUnitName_default	= Anti Spam 
+
+commonName                      = server name (eg. ssl.domain.tld; required!!!)
+commonName_max                  = 64
+commonName_default		= antispam.localdomain
+
+emailAddress                    = Email Address
+emailAddress_max                = 40
+emailAddress_default		= root@antispam.local 

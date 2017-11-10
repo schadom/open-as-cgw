@@ -1,0 +1,4 @@
+127.0.0.0/8 trusted
+[% FOREACH ip IN ip_range_whitelist -%]
+[% ip -%] trusted
+[% END %]

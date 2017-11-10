@@ -1,0 +1,9 @@
+<div id="help_appliance_license">
+    
+    <h3>[% Catalyst.localize('appliance_license_info_header') %]</h3>
+    <p>[% Catalyst.localize('help_license_info_text')  %]</p>
+    <h3>[% Catalyst.localize('heading_appliance_license_enter_voucher') %]</h3>
+    <p>[% Catalyst.localize('help_license_enter_text')  %]</p>
+    <h3>[% Catalyst.localize('heading_appliance_upload_license_file') %]</h3>
+    <p>[% Catalyst.localize('help_license_upload_text')  %]</p>
+</div>

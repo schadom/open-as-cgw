@@ -1,0 +1,7 @@
+<div id="help_appliance_quarantine">
+    <h3>[% Catalyst.localize('quarantine_box_status_management_filter_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_box_status_management_filter') %]
+
+	<h3>[% Catalyst.localize('quarantine_box_status_management_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_box_status_management_list') %]</p>
+</div>

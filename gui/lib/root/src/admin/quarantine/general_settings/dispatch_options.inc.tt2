@@ -1,0 +1,50 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+
+[% INCLUDE 'site/elements/form',
+	url = Catalyst.uri_for('/admin/quarantine/general_settings/save_dispatch_options'), -%]
+	<fieldset style="width:60%;">
+		[%	notification_list = [];
+			notification_list.push({ value=>'status_report', label => Catalyst.localize( box_path _ '_status_report') });
+			notification_list.push({ value=>'activation_request', label => Catalyst.localize( box_path _ '_activation_request') });
+			
+			automation_list = [];
+			automation_list.push({ value=>'auto',  label=>Catalyst.localize(box_path _ '_automation_enabled') });
+			automation_list.push({ value=>'never', label=>Catalyst.localize(box_path _ '_automation_disabled') });
+		
+			timeofday_list = [];
+			FOREACH hour IN [0..23];
+				timeofday_list.push({ value=>hour, label=>"$hour:00" });
+			END;
+
+			weekdays_list = [];
+			FOREACH day IN ['daily', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+				weekdays_list.push({ value=>day, label=>Catalyst.localize(box_path _ '_day_' _ day) });
+			END;
+		%]
+
+		[% INCLUDE 'site/elements/select',
+			name = 'choose_interval',
+			option_list = notification_list, %]
+		[% INCLUDE 'site/elements/select',
+			name = 'automation',
+			option_list = automation_list, %]
+		[% INCLUDE 'site/elements/select',
+			name = 'day_hours',
+			option_list = timeofday_list, %]
+		[% INCLUDE 'site/elements/multiple_select',
+			name = 'week_days',
+			option_list = weekdays_list, %]
+
+	</fieldset>
+	<fieldset style="width:60%;">
+		[% INCLUDE 'site/elements/input' type = 'button', %]
+	</fieldset>
+</form>
+
+
+
+[% INCLUDE 'site/box_close' %]
+
+

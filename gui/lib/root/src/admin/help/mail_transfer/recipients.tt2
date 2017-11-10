@@ -1,0 +1,13 @@
+<div id="help_appliance_mail_transfer">
+  	<h3>[% Catalyst.localize('mail_transfer_recipients_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_recipients_list') %]</p>
+
+	<h3>[% Catalyst.localize('mail_transfer_recipients_ldap_cache_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_recipients_ldap_cache') %]</p>
+
+	<h3>[% Catalyst.localize('mail_transfer_recipients_add_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_recipients_add') %]</p>
+
+	<h3>[% Catalyst.localize('mail_transfer_recipients_bulk_add_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_recipients_bulk_add') %]</p>
+</div>

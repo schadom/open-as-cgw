@@ -1,0 +1,38 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+<ul class="text_list">
+	[% # Basic Greylisting %]
+	<li><strong>[% Catalyst.localize(box_path _ '_basic_greylisting') %]</strong>
+		[% INCLUDE 'site/elements/enable' 
+			status = (antispam.greylisting() == "enabled" ? 'enabled' : 'disabled'),
+			url=Catalyst.uri_for('/admin/envelope_scanning/envelope_processing/toggle_greylisting'),
+		%]
+	</li>
+
+	[% # Botnet Blocker / Selective Greylisting %]
+	<li><strong>[% Catalyst.localize(box_path _ '_botnet_blocker') %]</strong>
+		[% INCLUDE 'site/elements/enable' 
+			status = (antispam.selective_greylisting() == "enabled" ? 'enabled' : 'disabled'),
+			id = 'envelopescanning_selective_greylisting',
+			url=Catalyst.uri_for('/admin/envelope_scanning/envelope_processing/toggle_selective_greylisting'),
+		%]
+	</li>
+</ul>
+
+[% IF antispam.greylisting() == "enabled" OR antispam.selective_greylisting() == "enabled" %]
+	[% INCLUDE 'site/elements/form'
+		url = Catalyst.uri_for('/admin/envelope_scanning/envelope_processing/set_greylisting_params'), %]
+
+		<fieldset>
+		[% INCLUDE 'site/elements/input' name = 'message', value = antispam.greylisting_message() OR "You have been greylisted. Come back in 240 seconds." %]
+		[% INCLUDE 'site/elements/input' name = 'authtime', class='number', value = antispam.greylisting_authtime() OR "30" %]
+                [% INCLUDE 'site/elements/input' name = 'domainlevel', class='number', value = antispam.greylisting_domainlevel() OR "2" %]
+		[% INCLUDE 'site/elements/input' name = 'triplettime', class='number', value = antispam.greylisting_triplettime() OR "5" %]
+                [% INCLUDE 'site/elements/input' name = 'connectage', class='number', value = antispam.greylisting_connectage() OR "24" %]
+		[% INCLUDE 'site/elements/input' type = 'button' %]
+		</fieldset>
+	</form>
+[% END %]
+
+[% INCLUDE 'site/box_close' %]

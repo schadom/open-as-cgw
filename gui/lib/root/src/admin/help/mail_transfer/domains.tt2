@@ -1,0 +1,10 @@
+<div id="help_appliance_mail_transfer">
+    <h3>[% Catalyst.localize('mail_transfer_domains_select_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_domains_select') %]</p>
+
+	<h3>[% Catalyst.localize('mail_transfer_domains_add_bulk_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_domains_add_bulk') %]
+
+	<h3>[% Catalyst.localize('mail_transfer_domains_reassign_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_domains_reassign') %]</p>
+</div>

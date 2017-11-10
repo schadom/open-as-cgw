@@ -1,0 +1,10 @@
+[% language_strings.sendernotification_failure_heading %]
+
+[% language_strings.sendernotification_failure_send_to %] [% mail_rcpt %].
+
+[% language_strings.sendernotification_failure_something_wrong %]
+
+[% language_strings.sendernotification_failure_fix_admin %]
+					
+--
+[% language_strings.footer_signature %] underground_8 [% language_strings.via %] [% language_strings.product %]

@@ -1,0 +1,15 @@
+<div id="system_network_hostname">
+    [% INCLUDE admin/system/network/hostname.inc.tt2 %]
+</div>
+<div id="system_network_ip">
+    [% INCLUDE admin/system/network/ip.inc.tt2 %]
+</div>
+<div id="system_network_dns">
+    [% INCLUDE admin/system/network/dns.inc.tt2 %]
+</div>
+<div id="system_network_proxy">
+    [% INCLUDE admin/system/network/proxy.inc.tt2 %]
+</div>
+<div id="system_network_admin">
+    [% INCLUDE admin/system/network/admin.inc.tt2 %]
+</div>

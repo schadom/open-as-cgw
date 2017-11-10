@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>[% language_strings.quar_product %] - [% language_strings.deactivate_title %]</title>
+    </head>
+	
+    <body bgcolor="#505050" style="margin:0; padding:0;">
+		<table id="layout" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td align="center">
+					<table id="center" bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="700">
+						<tr>
+							<td align="left">
+								<!-- START orange Stripe above -->
+								<table id="border_top" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#ff8500" height="8"></td>
+									</tr>				
+								</table>
+								<!-- END orange Stripe above -->
+								
+								<!-- START Top Content with Headline -->
+								<table id="header" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#EEEEEE" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif;">
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+									<tr>
+										<td width="30"></td>
+										<td width="640" valign="middle">
+											<h1 style="font-size: 16px;">[% language_strings.deactivate_attention %]</h1>
+											<p style="color: #666666; font-size: 13px;">[% language_strings.deactivate_text %]</p>
+										</td>
+										<td width="30"></td>
+									</tr>									
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+								</table>								
+								<!-- END Top Content with Headline -->
+								
+								<!-- START Footer -->
+								<table id="footer" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#00a0fa" height="8"></td>
+									</tr>									
+								</table>
+								<!-- END Footer -->
+							</td>
+						</tr>
+					</table>
+					<!-- START underground note -->
+					<table id="underground" border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<td align="center" height="30" style="color: #999999; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;" valign="middle">[% language_strings.quar_footer_signature %] <a href="http://www.underground8.com" title="visit the underground_8 website" style="color: #999999; font-weight: bold; text-decoration: none;">[% language_strings.quar_footer_company %]</a> [% language_strings.quar_footer_brand %]</td>
+						</tr>
+					</table>
+					<!-- END underground note -->
+				</td>
+			</tr>
+		</table>
+    </body>
+</html>

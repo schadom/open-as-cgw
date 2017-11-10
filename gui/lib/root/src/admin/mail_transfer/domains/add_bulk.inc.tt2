@@ -1,0 +1,33 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' 
+	# update = 'content',
+	enctype = 'multipart/form-data',
+	nojs = 'nojs',
+	url = Catalyst.uri_for('/admin/mail_transfer/domains/multiple_add/') %]
+	[% IF box_name == "add_bulk" %]
+	<script type="text/javascript">
+		function toggle_add_bulk(){
+			Effect.toggle('mail_transfer_domains_add_bulk_infobar','slide',{duration: 0.2});
+		}
+		window.onload = toggle_add_bulk;
+	</script>
+	[% END %]
+	[% 	smtpsrv = relay_domains.$domain_name.dest_mailserver;
+		options = [];
+		FOREACH srv IN relay_smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => '' });
+		END;
+	%]
+	<fieldset>
+	[% INCLUDE 'site/elements/input' name = 'csvfile', type = 'file' %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/select' name = 'smtpsrv', option_list = options %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/input' name = 'predelete', type = 'checkbox',	value = 'yes' %]
+	[% INCLUDE 'site/elements/input' type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

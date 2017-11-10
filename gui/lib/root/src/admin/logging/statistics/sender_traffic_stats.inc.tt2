@@ -1,0 +1,35 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' -%]
+[%	sender_headers = [];
+	sender_headers.push('Sender Domains');
+	sender_headers.push('Passed (clean)');
+	sender_headers.push('Passed (tagged)');
+	sender_headers.push('Blocked (spam)');
+	sender_headers.push('Blocked (greylisted)');
+	sender_headers.push('Blocked (blacklisted)');
+	sender_headers.push('Blocked (virus)');
+	sender_headers.push('Blocked (banned attachment)');
+	
+	sender_th_classes = [];
+	sender_th_classes.push('left', 'passed_clean', 'passed_spam', 'blocked_spam', 'blocked_greylisted', 'blocked_blacklisted', 'blocked_virus', 'blocked_banned');
+	
+	#fill the table values with the right values and text fields, but the spans with those classes are necessary
+	sender_values = [];
+	sender_values.push(['www.ranzsdf.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	sender_values.push(['www.sdfsdfsdf.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	sender_values.push(['www.fghdfghfgh.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	sender_values.push(['www.fghdgjhdhj.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	sender_values.push(['www.gjhfgjhfgjh.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	sender_values.push(['www.ransrtzr6hzsdf.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	sender_values.push(['www.gjkhklhjkl.com', '394365', '92236', '138', '443', '563', '123',  '125']);
+	
+-%]
+	<p>The following chart has been drawn using the freely available version of <a href="http://www.amcharts.com">amCharts</a></p><br/>
+	[% INCLUDE 'site/elements/table'
+		headers = sender_headers,
+		th_classes = sender_th_classes,
+		td_classes = sender_th_classes,
+		td_values = sender_values		
+	-%]
+	
+[% INCLUDE 'site/box_close' %]

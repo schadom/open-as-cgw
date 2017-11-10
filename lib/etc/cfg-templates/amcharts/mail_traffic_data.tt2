@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+	<series>
+		<value xid="all_time">[% Catalyst.localize('dashboard_dashboard_mail_traffic_all_time') %]</value>
+		<value xid="today">[% Catalyst.localize('dashboard_dashboard_mail_traffic_today') %]</value>
+		<value xid="last_24_h">[% Catalyst.localize('dashboard_dashboard_mail_traffic_last_24h') %]</value>
+		<value xid="last_1_h">[% Catalyst.localize('dashboard_dashboard_mail_traffic_last_h') %]</value>
+	</series>
+	<graphs>
+        [% FOREACH type IN mail_types %]
+		<graph gid="[% type %]" title="[% Catalyst.localize("dashboard_dashboard_mail_traffic_type_$type") %]">
+			<value xid="all_time">[% current_stats.alltime.$type %]</value>
+			<value xid="today">[% current_stats.today.$type %]</value>	
+			<value xid="last_24_h">[% current_stats.last24h.$type %]</value>
+			<value xid="last_1_h">[% current_stats.lasthour.$type %]</value>
+		</graph>
+        [% END %]
+	</graphs>
+</chart>

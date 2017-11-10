@@ -1,0 +1,27 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('nav_policy') %]</h3>
+    <p>[% Catalyst.localize('help_title_policy') %]</p>
+	
+    <h3>[% Catalyst.localize('nav_policy_ip_range_whitelist') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_iprangewhitelist') %]</p>
+	
+    <h3>[% Catalyst.localize('nav_policy_ipblacklist') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_ipblacklist') %]</p>
+	
+    <h3>[% Catalyst.localize('nav_policy_ipwhitelist') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_ipwhitelist') %]</p>
+
+	<h3>[% Catalyst.localize('nav_policy_emailaddressblacklist') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_emailaddressblacklist') %]</p>
+
+    <h3>[% Catalyst.localize('nav_policy_emailaddresswhitelist') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_emailaddresswhitelist') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_policy_remoteblacklist') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_remoteblacklist') %]</p>
+
+    <h3>[% Catalyst.localize('nav_policy_attachments') %]</h3>
+    <p>[% Catalyst.localize('abstract_policy_attachments') %]</p>
+</div>

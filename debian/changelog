@@ -1,0 +1,12 @@
+open-as-cgw (2.2.0) xenial; urgency=low
+
+  * Initial release for xenial.
+
+ -- Dominic Schallert <dominic@openas.org>  Tue,  9 Aug 2016 18:50:00 +0100
+
+open-as-cgw (2.1.0) trusty; urgency=low
+
+  * First version for trusty, new package name and structure
+
+ -- Stefan Wehinger <stefan@openas.org>  Tue,  11 Nov 2014 03:14:00 +0100
+

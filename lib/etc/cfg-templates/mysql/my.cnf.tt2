@@ -1,0 +1,98 @@
+#
+# [% info %]
+#
+# MariaDB 10.1.x database server configuration file.
+
+[client]
+port                            = 3306
+socket                          = /var/run/mysqld/mysqld.sock
+
+[mysql]
+port                            = 3306
+socket                          = /var/run/mysqld/mysqld.sock
+
+[mysqld_safe]
+socket                          = /var/run/mysqld/mysqld.sock
+nice                            = 0
+
+[mysqld]
+
+# GENERAL #
+bind-address                    = 127.0.0.1
+port                            = 3306
+user                            = mysql
+default-storage-engine          = InnoDB
+sql_mode                        = NO_ENGINE_SUBSTITUTION
+socket                          = /var/run/mysqld/mysqld.sock
+pid-file                        = /var/run/mysqld/mysqld.pid
+datadir                         = /var/lib/mysql/
+tmpdir                          = /run/mysqld/
+
+# SAFETY #
+explicit_defaults_for_timestamp = 1
+max_allowed_packet              = 16M
+max_connections                 = 151
+max_connect_errors              = 1000
+wait_timeout                    = 600
+connect_timeout                 = 5
+sysdate-is-now                  = 1
+skip-name-resolve
+skip-external-locking
+
+# CACHES AND LIMITS #
+tmp_table_size                  = 128M
+max_heap_table_size             = 128M
+bulk_insert_buffer_size         = 16M
+join_buffer_size                = 8M
+sort_buffer_size                = 4M
+thread_cache_size               = 128
+open_files_limit                = 65536
+
+# MyISAM #
+myisam_recover_options          = FORCE,BACKUP
+key_buffer                      = [% 64 * memory_factor %]M
+key_buffer_size                 = [% 64 * memory_factor %]M
+table_open_cache                = 10240
+table_definition_cache          = 4096
+query_cache_type                = 1
+query_cache_min_res_unit        = 4096
+query_cache_size                = [% 64 * memory_factor %]M
+query_cache_limit               = 4M
+query_cache_wlock_invalidate    = OFF
+
+# INNODB #
+innodb_buffer_pool_instances    = 2
+innodb_buffer_pool_size         = [% 192 * memory_factor %]M
+innodb_log_buffer_size          = 8M
+innodb_log_files_in_group       = 2
+innodb_log_file_size            = 128M
+innodb_flush_log_at_trx_commit  = 1
+innodb_file_per_table           = 1
+
+# LOGGING #
+#general_log                    = 1
+#general_log_file               = /var/log/mysql/mysql.log
+log-error                       = /var/log/mysql/mysql-error.log
+expire_logs_days                = 10
+
+# SLOW QUERY LOGGING #
+#slow_query_log                 = 1
+#slow_query_log_file            = /var/log/mysql/mysql-slow.log
+#long_query_time                = 10
+#log-queries-not-using-indexes
+
+# MYSQLDUMP #
+[mysqldump]
+max_allowed_packet              = 16M
+quote-names
+quick
+
+# MYSQLCHK #
+[isamchk]
+key_buffer                      = 16M
+
+#
+# * IMPORTANT: Additional settings that can override those from this file!
+#   The files must end with '.cnf', otherwise they'll be ignored.
+#
+!includedir /etc/mysql/conf.d/

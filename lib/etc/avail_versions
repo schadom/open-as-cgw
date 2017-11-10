@@ -1,0 +1,411 @@
+<perldata>
+ <hashref memory_address="0x84e21a8">
+  <item key="devel">
+   <hashref memory_address="0x8170280">
+    <item key="1.0">
+     <hashref memory_address="0x84e2d0c">
+      <item key="avail">
+       <hashref memory_address="0x84e2cdc">
+        <item key="1.1">
+         <hashref memory_address="0x84e2c94">
+          <item key="auto-upgrade">1</item>
+         </hashref>
+        </item>
+        <item key="1.2">
+         <hashref memory_address="0x84e2cb8">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x84e2c70">
+        <item key="0">1.X</item>
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="1.1">
+     <hashref memory_address="0x84e2dc0">
+      <item key="avail">
+       <hashref memory_address="0x84e2d9c">
+        <item key="1.2">
+         <hashref memory_address="0x84e2d78">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="limes-stealth">
+         <hashref memory_address="0x8170850">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="mail-tests">
+         <hashref memory_address="0x817115c">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-129">
+         <hashref memory_address="0x8171054">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-130">
+         <hashref memory_address="0x8170934">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-133">
+         <hashref memory_address="0x8170ff4">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-14">
+         <hashref memory_address="0x8347dd0">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-14-old">
+         <hashref memory_address="0x8170a54">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-147">
+         <hashref memory_address="0x8170814">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-156">
+         <hashref memory_address="0x8170874">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-158">
+         <hashref memory_address="0x81706ac">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-162">
+         <hashref memory_address="0x8170f64">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-164">
+         <hashref memory_address="0x854c3b8">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-2">
+         <hashref memory_address="0x81707a8">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-28">
+         <hashref memory_address="0x81708f8">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x84e2d48">
+        <item key="0">1.X</item>
+        <item key="1">1.0</item>
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="1.2">
+     <hashref memory_address="0x8170244">
+      <item key="avail">
+       <hashref memory_address="0x817022c">
+        <item key="limes-stealth">
+         <hashref memory_address="0x81710d8">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="mail-tests">
+         <hashref memory_address="0x8171138">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-129">
+         <hashref memory_address="0x8171030">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-130">
+         <hashref memory_address="0x8170964">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-133">
+         <hashref memory_address="0x8170fdc">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-14">
+         <hashref memory_address="0x8523fcc">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-14-old">
+         <hashref memory_address="0x8170a3c">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-147">
+         <hashref memory_address="0x8170838">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-156">
+         <hashref memory_address="0x8170ee0">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-158">
+         <hashref memory_address="0x8170724">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-162">
+         <hashref memory_address="0x8170f1c">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-164">
+         <hashref memory_address="0x8524254">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-2">
+         <hashref memory_address="0x8170790">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+        <item key="ticket-28">
+         <hashref memory_address="0x817061c">
+          <item key="auto-upgrade">0</item>
+         </hashref>
+        </item>
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x84e2dfc">
+        <item key="0">1.X</item>
+        <item key="1">1.0</item>
+        <item key="2">1.1</item>
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="limes-stealth">
+     <hashref memory_address="0x8171090">
+      <item key="avail">
+       <hashref memory_address="0x8171018">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+        <item key="0">1.X</item>
+        <item key="1">1.0</item>
+        <item key="2">1.1</item>
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="mail-tests">
+     <hashref memory_address="0x81710b4">
+      <item key="avail">
+       <hashref memory_address="0x8171108">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-129">
+     <hashref memory_address="0x8171000">
+      <item key="avail">
+       <hashref memory_address="0x8170fc4">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-130">
+     <hashref memory_address="0x8170a24">
+      <item key="avail">
+       <hashref memory_address="0x8170a0c">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-133">
+     <hashref memory_address="0x8170f34">
+      <item key="avail">
+       <hashref memory_address="0x8170f88">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-14">
+     <hashref memory_address="0x81709b8">
+      <item key="avail">
+       <hashref memory_address="0x854c3e8">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-14-old">
+     <hashref memory_address="0x8347db8">
+      <item key="avail">
+       <hashref memory_address="0x8170a84">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-147">
+     <hashref memory_address="0x81707b4">
+      <item key="avail">
+       <hashref memory_address="0x8170820">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-156">
+     <hashref memory_address="0x8170e5c">
+      <item key="avail">
+       <hashref memory_address="0x817088c">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-158">
+     <hashref memory_address="0x8170a90">
+      <item key="avail">
+       <hashref memory_address="0x8170634">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-162">
+     <hashref memory_address="0x8170e98">
+      <item key="avail">
+       <hashref memory_address="0x8170ea4">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-164">
+     <hashref memory_address="0x84e2cac">
+      <item key="avail">
+       <hashref memory_address="0x84e2df0">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-2">
+     <hashref memory_address="0x817070c">
+      <item key="avail">
+       <hashref memory_address="0x81706e8">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+    <item key="ticket-28">
+     <hashref memory_address="0x8170580">
+      <item key="avail">
+       <hashref memory_address="0x81708bc">
+       </hashref>
+      </item>
+      <item key="base">feisty</item>
+      <item key="depends">
+       <arrayref memory_address="0x8152c28">
+       </arrayref>
+      </item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="nuked">
+   <hashref memory_address="0x8170304">
+    <item key="1.1.2">
+     <hashref memory_address="0x81702bc">
+      <item key="active">1</item>
+     </hashref>
+    </item>
+    <item key="1.1.3">
+     <hashref memory_address="0x81702e0">
+      <item key="active">0</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="stable">
+   <hashref memory_address="0x8170280">
+   </hashref>
+  </item>
+ </hashref>
+</perldata>

@@ -1,0 +1,15 @@
+[% PROCESS 'site/box_init';
+
+# variable definitions
+options=[];
+options.push({value=>'reboot', selected=>' selected="selected"', label=>Catalyst.localize(box_path _ '_reboot')});
+options.push({value=>'shutdown', selected=>'', label=>Catalyst.localize(box_path _ '_shutdown')}); %]
+
+[% INCLUDE 'site/box_open' %]				
+     [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/general_settings/reboot_shutdown') %]
+         <fieldset>
+            [% INCLUDE site/elements/select name='action', option_list = options %]
+            [% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize('perform_action') %]
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

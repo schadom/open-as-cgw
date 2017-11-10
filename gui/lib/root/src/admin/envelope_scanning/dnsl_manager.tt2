@@ -1,0 +1,6 @@
+<div id="envelope_scanning_dnsl_manager_control">
+	[% INCLUDE admin/envelope_scanning/dnsl_manager/control.inc.tt2  %]
+</div>
+<div id="envelope_scanning_dnsl_manager_list">
+	[% INCLUDE admin/envelope_scanning/dnsl_manager/list.inc.tt2  %]
+</div>

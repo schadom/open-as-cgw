@@ -1,0 +1,12 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+	[% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/security/add_range'), update = 'content' %]
+		<p class="info">[% Catalyst.localize(box_path _ '_text') %]</p>
+		<fieldset>
+			[%  INCLUDE 'site/elements/input' name='range_start', required='required' %]
+			[%  INCLUDE 'site/elements/input' name='range_end', required='required' %]
+			[%  INCLUDE 'site/elements/input' name='description' %]
+			[%  INCLUDE 'site/elements/input' type = 'button' %] 
+		</fieldset>
+	</form>
+[% INCLUDE 'site/box_close' %]

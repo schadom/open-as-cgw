@@ -1,0 +1,57 @@
+			[% UNLESS width; width = 872; END -%]
+			[% UNLESS height; height = 350; END -%]
+			<ul class="controls">
+			[% IF controls -%]
+				<li><a href="javascript: reloadAll_[% id %]('/static/amcharts/data/[% id %]_24h_data.xml', '/static/amcharts/settings/[% id %]_settings.xml');">[% Catalyst.localize('amchart_last_24h')%]</a></li>
+				<li><a href="javascript: reloadAll_[% id %]('/static/amcharts/data/[% id %]_week_data.xml', '/static/amcharts/settings/[% id %]_settings.xml');">[% Catalyst.localize('amchart_last_week')%]</a></li>
+				<li><a href="javascript: reloadAll_[% id %]('/static/amcharts/data/[% id %]_month_data.xml', '/static/amcharts/settings/[% id %]_settings.xml');">[% Catalyst.localize('amchart_last_month')%]</a></li>
+				<li><a href="javascript: reloadAll_[% id %]('/static/amcharts/data/[% id %]_year_data.xml', '/static/amcharts/settings/[% id %]_settings.xml');">[% Catalyst.localize('amchart_last_year')%]</a></li>
+			[% END %]
+				<li><a href="javascript: exportImage_[% id %]();">[% Catalyst.localize('amchart_export')%]</a></li>
+			</ul>
+			<div id="[% id _ '_container'%]" class="amchart"></div>
+			
+			<script type="text/javascript" src="/static/amcharts/software/[% type %]/swfobject.js"></script>
+			<script defer="defer" type="text/javascript">
+				// <![CDATA[
+				// embedd flash stats
+				var so = new SWFObject("/static/amcharts/software/[% type %]/[% type %].swf", "[% id %]", "[% width %]", "[% height %]", "8", "#FFFFFF");
+				so.addVariable("path", "/static/amcharts/software/[% type %]/");
+				so.addVariable("settings_file", escape("/static/amcharts/settings/[% id %]_settings.xml"));
+				so.addVariable("data_file", escape("/static/amcharts/data/[% id %]_data.xml"));
+				so.addVariable("preloader_color", "#999999");
+				so.addParam("wmode", "opaque");
+				so.write("[% id _ '_container'%]");
+				
+				//necessary functions for image export
+				var flashMovie_[% id %];
+				init_[% id %] = function(){
+					if (document.getElementById){
+						flashMovie_[% id %] = document.getElementById('[% id %]');
+					}
+				}
+
+				function reloadAll_[% id %] (datafile, settingsfile){
+					if (flashMovie_[% id %]){
+						flashMovie_[% id %].reloadAll(datafile,settingsfile,true);
+					}
+				}
+
+				if(window.attachEvent){
+					var browser=navigator.appName;
+					if(browser == 'Microsoft Internet Explorer'){
+						window.attachEvent('onload', init_[% id %]);
+					}else{
+						window.onload = init_[% id %]();
+					}
+				}else{
+					window.onload = init_[% id %]();
+				}
+
+				function exportImage_[% id %] (){
+					if (flashMovie_[% id %]){
+						flashMovie_[% id %].exportImage('/admin/export_graph');
+					}
+				}
+				// ]]>
+			</script>

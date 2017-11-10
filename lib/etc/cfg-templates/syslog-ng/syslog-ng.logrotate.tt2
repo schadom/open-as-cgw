@@ -1,0 +1,129 @@
+/var/log/auth.log {
+	rotate 4
+	missingok
+	notifempty
+	weekly
+	compress
+}
+
+/var/log/cron.log {
+	rotate 4
+	weekly
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/daemon.log {
+	rotate 7
+	weekly
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/debug {
+	rotate 14
+	daily
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/kern.log {
+	rotate 4
+	weekly
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/lpr.log {
+	rotate 4
+	weekly
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/mail.err {
+	rotate 14
+	daily
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/mail.info {
+	rotate 14
+	daily
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/mail.log {
+	rotate 14
+	daily
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/mail-simple.log {
+	rotate 12
+	monthly
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/ascgw.log {
+	rotate 14
+	monthly
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/mail.warn {
+	rotate 14
+	daily
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/messages {
+	rotate 31
+	size 50M
+	missingok
+	notifempty
+	compress
+}
+
+
+/var/log/user.log {
+	rotate 31
+	size 50M
+	missingok
+	notifempty
+	compress
+}
+
+/var/log/uucp.log {
+	rotate 4
+	missingok
+	notifempty
+	weekly
+	compress
+}
+
+/var/log/syslog {
+	rotate 31
+	size 50M
+	compress
+	postrotate
+	   /etc/init.d/syslog-ng restart >/dev/null
+	endscript
+}

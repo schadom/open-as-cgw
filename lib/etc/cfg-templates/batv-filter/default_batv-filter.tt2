@@ -1,0 +1,23 @@
+# Sane defaults: log to syslog, better error codes
+DAEMON_OPTS="-l -S"
+#
+# The key to sign with (in the first record) - required
+DAEMON_OPTS="$DAEMON_OPTS -k /etc/mail/batv-filter.key"
+#
+# List of internal hosts (to be signed) - required
+DAEMON_OPTS="$DAEMON_OPTS -i /etc/mail/batv-filter.relay"
+#
+# Sign for the following list comma separated domains (defaults to all)
+#DAEMON_OPTS="$DAEMON_OPTS -d example.com"
+#
+# Allowlist - file with list of envelope address to pass (ignore)
+#DAEMON_OPTS="$DAEMON_OPTS -a /etc/mail/batv.allow"
+
+# See batv-filter(8) for a complete list of options
+#
+# Uncomment to specify an alternate socket
+#SOCKET="/var/run/batv-filter/batv-filter.sock" # default
+#SOCKET="inet:54321" # listen on all interfaces on port 54321
+SOCKET="inet:10060@localhost" # listen on loopback on port 10060
+#SOCKET="inet:12345@192.0.2.1" # listen on 192.0.2.1 on port 12345
+

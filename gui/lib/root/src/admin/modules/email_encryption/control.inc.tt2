@@ -1,0 +1,42 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open'; %]
+
+[% IF up2date == 0 %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_commercial') %])</p>
+[% ELSE %]
+
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_status') %]</strong>
+	[% INCLUDE 'site/elements/enable' 
+		status = (ctrl_enabled == 1) ? 'enabled' : 'disabled',
+		update = 'content',
+		url = Catalyst.uri_for('/admin/modules/email_encryption/toggle_status'),
+	-%]
+	</li>
+</ul>
+
+[% IF ctrl_enabled == 1 %]
+	[%	options_pw = [];
+		options_pw.push({ value=>'generate_pw', selected=>' selected="selected"', label=>Catalyst.localize(box_path _ "_pwhandling_generate") });
+		options_pw.push({ value=>'preset_pw',   selected=>'',                     label=>Catalyst.localize(box_path _ "_pwhandling_preset") }); %]
+	[%	options_packtype = [];
+		options_packtype.push({ value=>'zip', selected=>' selected="selected"', label=>'ZIP' });
+		options_packtype.push({ value=>'pdf', selected=>'',                     label=>'PDF (experimental)' }); %]
+
+
+	[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/modules/email_encryption/global_conf'), update = 'content' %]
+		<fieldset>
+			[% INCLUDE 'site/elements/input'  name = 'id_password',	 value = ctrl_password   %]
+			[% INCLUDE 'site/elements/input'  name = 'id_cryptotag', value = ctrl_cryptotag  required = 'required' %]
+			[% INCLUDE 'site/elements/select' name = 'id_enctype',	    option_list = options_pw %]
+			[% INCLUDE 'site/elements/select' name = 'id_packtype',	    option_list = options_packtype %]
+			[% INCLUDE 'site/elements/input'  type = 'button' %]
+		</fieldset>
+	</form>
+[% ELSE %]
+[% END %]
+
+[% END # up2date %]
+ 
+[% INCLUDE 'site/box_close'; %]
+

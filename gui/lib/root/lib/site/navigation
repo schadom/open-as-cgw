@@ -1,0 +1,31 @@
+				[%  current = ' class="current"';
+			
+                    # there are redirects in the Controller-classes for main_menu_points
+                    # e.g. /admin/system is redirected to /admin/system/general_settings 
+					main_menu = {
+						order => ['dashboard', 'system', 'mail_transfer', 'envelope_scanning', 'content_scanning', 'quarantine', 'monitoring', 'logging', 'modules'], 
+						dashboard => ['dashboard'],		
+						system => ['general_settings', 'user', 'network', 'time_settings', 'security', 'update', 'remote_assistance', 'notifications', 'backup_manager' ],
+						# monitoring => ['diagnostics_center', 'process_list', 'connection_status', 'ping_trace', 'mail_queue', 'testing'],
+						monitoring => ['diagnostics_center', 'ping_trace', 'testing', 'mail_queue', 'process_list'],
+						mail_transfer => ['smtp_servers', 'domains', 'recipients', 'smtp_settings', 'relay_hosts'],
+						envelope_scanning => ['envelope_processing', 'dnsl_manager', 'bwlist_manager'],
+						content_scanning => ['policies', 'attachments', 'anti_virus', 'spam_handling', 'languages'],
+						quarantine => ['general_settings', 'quarantining_options', 'box_status_management', 'user_box_administration'],
+						logging => ['live_log', 'log_viewer', 'maillog_simple', 'syslog', 'statistics'],
+						modules => ['email_encryption']};
+				%]
+				<ul id="[% id %]">
+					[% FOREACH menu_item IN main_menu.order %]
+					<li class="nav_[% menu_item %][% menu.match(menu_item) ? ' show' : '' %]">
+						<a[% menu.match(menu_item) ? current : '' %] href="[% Catalyst.uri_for('/admin/' _ menu_item) %]" title="[% Catalyst.localize('nav_' _ menu_item) %]">[% Catalyst.localize('nav_' _ menu_item) %]</a>
+						[% IF main_menu.$menu_item.size > 0 %] 
+						<ul>
+							[% FOREACH submenu_item IN main_menu.$menu_item %]
+							<li><a[% submenu.match(submenu_item) ? current : '' %] href="[% Catalyst.uri_for('/admin/' _ menu_item _ '/' _ submenu_item) %]" title="[% Catalyst.localize('nav_' _ menu_item _ '_' _ submenu_item) %]">[% Catalyst.localize('nav_' _ menu_item _ '_' _ submenu_item) %]</a></li>
+							[% END %]
+						</ul>
+						[% END %]
+					</li>
+					[% END %]
+				</ul>

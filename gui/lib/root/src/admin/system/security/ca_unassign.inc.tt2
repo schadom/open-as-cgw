@@ -1,0 +1,14 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form'	id = 'system_security_ssl_revoke', url = Catalyst.uri_for('/admin/system/security/ca_unassign') %]
+	<p class="info">[% Catalyst.localize(box_path _ '_text') %]</p>
+	<fieldset>
+	[%	options = [];
+		FOREACH srv IN smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (smtpsrv_preselect == srv.key ? 'selected="selected"' : '') });
+		END %]
+	[% INCLUDE 'site/elements/select' name = 'smtpsrv', id = 'ssl_revoke',	option_list = options %]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_revokecert') %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

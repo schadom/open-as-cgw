@@ -1,0 +1,59 @@
+[% PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+[% IF relay_domains.size > 0; %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+	[% table_headers = [];
+	table_headers.push(Catalyst.localize(box_path _ '_domain'));
+	table_headers.push(Catalyst.localize(box_path _ '_mailserver'));
+	table_headers.push(Catalyst.localize(box_path _ '_status'));
+	table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', '', 'action');
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', 'action');
+
+	table_values = [];
+	FOREACH domain IN relay_domains; 
+		domain_name = domain.key;
+		domain_value = domain.value; 
+		smtpsrv = domain_value.dest_mailserver;
+	%]
+
+		[% link_del = BLOCK %]
+			[% INCLUDE 'site/elements/link'
+				url = Catalyst.uri_for('/admin/mail_transfer/domains/delete/' _ domain_name),
+				update = 'content',
+				infobar = box_path _ '_infobar',
+				label = Catalyst.localize(box_path _ '_delete') %]
+		[% END %]
+
+		[% link_edit = BLOCK %]
+			[% INCLUDE 'site/elements/link'
+				url = Catalyst.uri_for('/admin/mail_transfer/domains/edit/' _ domain_name),
+				update = 'content',
+				infobar = box_path _ '_infobar',
+				label = Catalyst.localize(box_path _ '_edit') %]
+		[% END %]
+		[% link_status = BLOCK %]
+			[% INCLUDE 'site/elements/enable',
+				update = 'content',
+				status = (domain_value.enabled == 'yes' ? 'enabled' : 'disabled'),
+				url = Catalyst.uri_for('/admin/mail_transfer/domains/toggle_status/' _ domain_name _ '/' _ (domain_value.enabled=='yes' ? 'disable' : 'enable')) %]
+		[% END %]
+		[%
+		links = '<span>' _ link_del _ '</span><span>' _ link_edit _ '</span>';
+		addr = relay_smtpsrvs.$smtpsrv.descr _ " [" _ relay_smtpsrvs.$smtpsrv.addr _ "]";
+		table_values.push([ domain_name, addr, link_status, links ]);
+	END;
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		td_values = table_values;
+
+ELSE; %]
+	<p class="no_entries">[% Catalyst.localize(box_path _ '_noentries') %]</p>
+[% END %]
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,70 @@
+# This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Use Bayesian classifier (default: 1)
+#
+# use_bayes 1
+
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+# bayes_auto_learn 1
+
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+# Let's keep Bayes for the moment, but not give any negative scores
+ifplugin Mail::SpamAssassin::Plugin::Bayes
+score BAYES_00 0 0 0 0
+score BAYES_05 0 0 0 0
+score BAYES_20 0 0 0 0
+score BAYES_40 0 0 0 0
+score BAYES_50 0 0 0 0
+score BAYES_60 0 0 1.0 1.0
+score BAYES_80 0 0 2.0 2.0
+score BAYES_95 0 0 3.0 3.0
+score BAYES_99 0 0 3.5 3.5
+endif
+
+
+
+#### ALL_TRUSTED bug
+# fixed with amavisd-new 2.6.1
+#trusted_networks 127.0.0.1
+#internal_networks 127.0.0.1
+score ALL_TRUSTED 0
+
+#### GTUBE UBE Test String
+body GTUBE		/[% gtube_string_cleaned %]/
+score GTUBE		[% gtube_score OR 25 %]
+describe GTUBE		Generic Test for Unsolicited Bulk Email
+tflags GTUBE		userconf noautolearn
+
+#### MF Report String
+rawbody MF			/<h3><font color="FFFFFF">APPLIANCE SYSTEM STATUS<\/font> <em><font color="CCCCCC">| for the last 24h<\/font><\/em><\/h3>/
+score MF		-15
+describe MF		U8 MF Report
+tflags MF		userconf noautolearn
+
+[% IF language_filter_status == "enabled" %]
+ifplugin Mail::SpamAssassin::Plugin::TextCat
+ok_languages [% languages_allowed OR "en de" %]
+endif
+[% END %]

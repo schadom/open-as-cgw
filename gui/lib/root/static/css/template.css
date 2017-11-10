@@ -1,0 +1,275 @@
+/* ****************************************************************************
+This file is part of the Open AS Communication Gateway.
+
+The Open AS Communication Gateway is free software: you can redistribute it
+and/or modify it under theterms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the License,
+or (at your option) any later version.
+
+The Open AS Communication Gateway is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with the Open AS Communication Gateway. If not, see http://www.gnu.org/licenses/.
+**************************************************************************** */
+
+/* ##########################################
+## CSS for AS Comunication Gateway
+## @author: Veronika Oesterle
+## @last_changed: 2009-02-09
+############################################# */
+
+/* -- Help -- */
+#help{position: absolute; top: 41px; width: 100%; z-index: 500;}
+#help_handle{left: 50%; margin-left: 440px; position: absolute; top: 7px; z-index: 1000;}
+#help_handle a{background: url(../img/help.gif) top right no-repeat; color: #AAA; display: block; height: 30px; padding: 5px 30px 5px 0;}
+		#help_handle a:hover{color: #DDD; text-decoration: underline;}
+	#help_content{background-color: #222; color: #CCC;}
+		#help_center{background: url(../img/help_center_bg.gif) bottom right no-repeat; margin: 0 auto; padding: 20px 0; width: 980px;}
+			#help_content h3{color: #FFF; font-weight: bold; font-size: 16px; margin-top: 16.5px; text-transform: uppercase;}
+				#help_content h3:first-child{margin-top: 0;}
+			#help_content h4{font-size: 12px; font-weight: bold; text-transform: uppercase;}
+			#help_content strong{background-color: #0079BE; font-weight: bold; color: #FFF; padding: 1px 2px;}
+			#help_content em{color: #DDD; font-style: italic; text-transform: uppercase;}
+			#help_content a{border-bottom: 1px solid #39A6D8; color: #FFF; font-weight: bold;}
+				#help_content a:hover{border-bottom-color: #FFF;}
+			#help_content p, #help_content ul{margin-bottom: 16.5px;}
+			#help_content ul, #help_content li{list-style-type: square;}
+			#help_content ul{margin-left: 40px;}
+
+/* -- Sitemap -- */
+#sitemap{position: absolute; top: 41px; width: 100%; z-index: 500;}
+#sitemap_handle{left: 50%; margin-left: 350px; position: absolute; top: 7px; z-index: 1000;}
+	#sitemap_handle a{background: url(../img/sitemap.gif) top right no-repeat; color: #AAA; display: block; height: 30px; padding: 5px 30px 5px 0;}
+		#sitemap_handle a:hover{color: #DDD; text-decoration: underline;}
+#sitemap_content{background-color: #222; height: 380px; padding-top: 20px;}
+#sitemap ul#sitemap_list{background:  url(../img/overview_bg.gif) bottom right no-repeat;  left: 50%; margin-left: -480px; position: absolute; width: 980px;}
+	#sitemap ul li{float: left; height: 165px; margin-bottom: 16.5px; margin-right: 10px; width: 235px;}
+	#sitemap .nav_envelope_scanning, #sitemap .nav_content_scanning, #sitemap .nav_quarantine, #sitemap .nav_logging{height: 99px;} 
+	#sitemap .nav_modules{height: 66px;} 
+		#sitemap ul li a{color: #FFF; font-size: 18px; text-transform: uppercase;}
+			#sitemap ul li a:hover{color: #39A6D8;}
+	#sitemap ul li ul, #sitemap ul li ul li{clear: left; float: none; height: auto; margin: 0;  width: auto;}
+		#sitemap ul li li a{background: url(../img/sitemap_bullet.gif) bottom left no-repeat; color: #DDD; font-size: 11px; padding-left: 8px; text-transform: none;}
+			#sitemap ul li li a:hover{color: #FFF; text-decoration: underline;}
+			
+		
+/* -- Reminder in the TopBar to point out important events at any time and any page -- */
+.reminder{left: 50%; margin-left: -365px; position: absolute; top: 5px;}
+.minor, .major, .critical{background-position: top left; background-repeat: no-repeat; padding-left: 36px;}
+	.minor h4, .major h4, .critical h4{font-weight: bold; font-size: 14px; text-transform: uppercase;}
+	.minor p, .major p, .critical p{color: #EEE;}
+	.minor{background-image: url(../img/reminder_minor.gif);}
+		.minor h4{color: #4BD2FA;}
+	.major{background-image: url(../img/reminder_major.gif);}
+		.major h4{color: #FFB84C;}
+	.critical{background-image: url(../img/reminder_critical.gif);}
+		.critical h4{color: #F00;}
+
+	
+/* -- Content Element -- */
+.box{background: #F7F7F7 url(../img/box_bg.gif) top left repeat-y; margin-bottom: 20px;}
+	.box h3{background: url(../img/box_heading_bg.gif) top left no-repeat; color: #555; font-size: 18px; padding: 23px 0 7px 23px; text-transform: uppercase;}
+	.box h3 em{color: #999; text-transform: none;}
+	/* -- Form Elements -- */
+	.box fieldset{margin: 20px 15px 0 15px;}
+		.box legend, .box h4{color: #0079BE; font-size: 12px; font-weight: bold; margin-left: 15px; padding-bottom: 15px; text-transform: uppercase;}
+		.box .element{float: left; height: 40px; margin-left: 10px; width: 420px;}
+			.box .element label{color: #505050; display: block; float: left; font-weight: bold; padding-top: 8px;}
+				.box .element label em{color: #888; font-weight: normal;}
+			.box .element input, .box .element select{float: right;}
+			.box .element.text input, .box .element.password input, .box .element.number input, .box .element.select select, .box .element.file input, .box input.matrix{background-color: #FFF; border: 1px solid #DDD; padding: 7px 2px;}
+			.box .element.text.required input, .box .element.number.required input, .box .element.select.required select, .box .element.file.required input, .box .element.checkbox_list.required .box_list{background: #FFF url(../img/required.gif) top right no-repeat;}
+				.box .element.text input:focus, .box .element.password input:focus, .box .element.number input:focus, .box .element.select select:focus, .box .element.file input:focus, .box .element.checkbox_list:focus{border-color: #86CDEE;}
+			.box .element.error input, .box .element.error select{border-color: #F00;}
+			.box .element.error label{color: #F00;}
+			.box .element.text input, .box .element.password input, .box .element.select select, .box .element.file input{width: 196px;}
+			.box .element.text label, .box .element.select label{width: 210px;}
+			.box .element.number input{width: 96px;}
+			.box .element.number label{width: 310px;}
+			.box .element.nolabel {float: left; width: 66px; margin: 5px 0 5px 0; } /* trial-and-error css by es@*/
+			.box .element.nolabel input{width: 66px;  background-color: #FFF; border: 1px solid #DDD; padding: 7px 2px; float: left; }   /* trial-and-error css by es@*/
+			.box .element.select select{height: 30px; width: 200px;}
+			.box .element.checkbox input{margin-top: 8px;}
+			.box .element.break{float: none; clear: left;}
+			/* -- checkbox list instead of multiple selects -- */
+			.box .element.checkbox_list{clear: both; float: none; height: auto; margin-bottom: 8px;}
+			.box .element.checkbox_list.error .box_list{border-color: #F00;}
+			.box .element.checkbox_list.error strong{color: #F00;}
+			.box .element.checkbox_list strong{color: #505050; font-weight: bold;}
+			.box .element.checkbox_list .box_list{background-color: #FFF; border: 1px solid #DDD; clear: both; float: right; height: auto; overflow: auto; width: 200px;}
+				.box .element.checkbox_list .box_list.wide{width: 418px;}
+				.box .element.checkbox_list .box_list div{clear: both; padding: 5.5px;}
+				.box .element.checkbox_list .box_list div:hover{background-color: #E5F5FE;}
+					.box .element.checkbox_list .box_list label{display: inline; float: none;}
+					.box .element.checkbox_list .box_list input{margin-top: 2px;}
+			
+			/* -- Button with flexible width -- */
+			.box .element.button{float: none; clear: left; height: 39px; margin: 0; width: 100%;}
+				.box .element.button input{background: url(../img/button_left.gif) top left no-repeat; border: none; color: #FFF; font-weight: bold; height: 29px; padding: 0 18px 0 20px; text-transform: uppercase;}
+				.box .element.button div.button{background: url(../img/button_right.gif) top right no-repeat; height: 29px; padding-right: 3px;}
+				
+	/* -- other Content Elements -- */
+	.box ul.text_list{color: #505050; margin: 20px 20px 16.5px 20px;}
+	.box ul.text_list a, .box label a{color: #00a0fa;}
+		.box ul.text_list a:hover, .box label a:hover{color: #006efa; text-decoration: underline;}
+	.box ul.text_list strong{display: block; float: left; font-weight: bold; width: 260px;}
+	.box ul.text_list strong em{color: #999;}
+	.box ul.text_list li{clear: left; height: 16.5px;}
+	.box ul.text_list li.problem{color: #F00;}
+	.box ul.text_list li.problem strong em{color: #F66;}
+	.box ul.text_list.two_column{overflow: auto;}
+	.box ul.text_list.two_column li{clear: none; float: left; width: 430px;}
+		
+	.box p{color: #505050; margin: 20px 20px 16.5px 20px;}
+	.box p strong{font-weight: bold;}
+	.box p em{font-style: italic;}
+	.box p.info{background-color: #EEE; margin-top: 18px; margin-bottom: 14.5px; padding: 2px 3px;}
+		.box p.info strong{background: url(../img/icon_info.gif) top left no-repeat; padding-left: 20px;}
+	.box p.no_entries{color: #777; font-style: italic;}
+	.box p.updating{background: url(../img/updating.gif) top left no-repeat; font-style: italic; padding-left: 20px;}
+	.box p a{color: #0079BE; text-decoration: underline;}
+	.box p a:hover{color: #02649B;}
+	.box p.button{height: 29px; margin-bottom: 10px; margin-right: 15px;}
+	.box p.button span{background: url(../img/button_right.gif) top right no-repeat; display: block; height: 29px; padding-right: 2px;}
+	.box p.button a{background: url(../img/button_left.gif) top left no-repeat; color: #FFF; display: block; float: right; font-weight: bold; height: 22px; padding: 7px 18px 0 20px; text-decoration: none; text-transform: uppercase;}
+		.box p.button a:hover{color: #FFF;}
+	.box span.error{background: url(../img/icon_error.gif) top left no-repeat; color: #F00; padding-left: 20px;}
+	.box span.warning{background: url(../img/icon_warning.gif) top left no-repeat; font-style: italic; color: #777; padding-left: 20px;}
+	.box span.success{background: url(../img/icon_success.gif) top left no-repeat; font-weight: bold; padding-left: 20px;}
+
+		
+	/* -- Status indicator links -- */
+	.box a.enabled, .box a.disabled{padding-left: 16px;}
+	.box a.enabled{background: url(../img/status_sprite.gif) 0 0 no-repeat; color: #0087FA; font-weight: bold;}
+		.box a.enabled:hover, .box a.disabled:hover{text-decoration: none;}
+		.box a.enabled:hover{background-position: 0 -16px; color: #0058B0;}
+	.box a.disabled{background: url(../img/status_sprite.gif) 0 -32px no-repeat; color: #999; font-style: italic;}
+		.box a.disabled:hover{background-position: 0 -48px; color: #666;}
+		
+	/* -- close link in upper right corner -- */
+	.box .close{color: #0079BE; float: right; font-weight: bold; margin-right: 15px; margin-top: -20px;}
+		.box .close:hover{color: #02649B; text-decoration: underline;}
+	
+	.box .box_bottom{background: url(../img/box_bottom.gif) bottom left no-repeat; font-size: 1px; height: 4px; margin-left: -1px; text-indent: -9999px;}
+	
+	/* -- AMchart -- */
+	.amchart{margin: 0 15px 5px 13px;}
+	.controls{float: right; margin-right: 15px; margin-top: -20px;}
+		.controls li{border-right: 2px solid #999; display: inline; padding-right: 4px;}
+		.controls li:last-child {border-right: none;}
+		.controls a{color: #0079BE; font-weight: bold;}
+			.controls a:hover{color: #02649B; text-decoration: underline;}
+	
+/* -- Action Notification -- */
+.notification{border: 1px solid; padding: 20px; margin: 0 3px 20px 3px;}
+	.notification h3{color: #FFF; display: inline; padding-right: 10px; font-size: 18px; font-weight: bold; text-transform: uppercase;}
+	.notification p{display: inline; font-weight: bold;}
+	.notification a{color: inherit; text-decoration: underline;}
+		.notification a:hover{color: #FFF;}
+	.notification.info{background-color: #67DCFF; border-color: #0087FA;}
+		.notification.info h3{text-shadow: 0px 0px 3px #085CC8;}
+		.notification.info p{color: #085CC8;}
+	.notification.success{background-color: #D0E53C; border-color: #80A944;}
+		.notification.success h3{text-shadow: 0px 0px 3px #568710;}
+		.notification.success p{color: #568710;}
+	.notification.error{background-color: #FF837A; border-color: #D31102;}
+		.notification.error h3{text-shadow: 0px 0px 3px #e71000;}
+		.notification.error p{color: #e71000;}
+	.notification.warning{background-color: #FFB151; border-color: #f08800;}
+		.notification.warning h3{text-shadow: 0px 0px 3px #F60;}
+		.notification.warning p{color: #F60;}
+				
+/* -- Table Styles -- */
+table.table_content{color: #505050; margin: 20px 3px -1px 4px; width: 891px;}
+	table.table_content thead{border-left: 1px solid #008ECB; border-right: 1px solid #008ECB;}
+	table.table_content thead th{background: #008ECB url(../img/thead_bg.gif) top center repeat-x; color: #FFF; font-weight: bold; height: 36px; padding: 0 5px; white-space: nowrap;}
+	table.table_content thead th.action{text-align: center;}
+	table.table_content thead th.one_action{text-align: center;}
+	table.table_content thead th.two_action{text-align: center; width: 160px;}
+	table.table_content thead th.three_action{text-align: center; width: 240px;}
+	table.table_content thead th.system_update{width: 60px;}
+		table.table_content thead th a{color: #FFF;}
+			table.table_content thead th a:hover{text-decoration: underline;}
+	table.table_content tbody td{background: #FFF url(../img/tbody_bg.gif) top left repeat-x; height: 30px; padding: 0 5px;}
+		table.table_content tbody span.disabled{color: #999; font-style: italic;}
+		table.table_content tbody span.enabled{color: #0079BE; font-weight: bold;}
+	table.table_content tbody tr:hover td{background: #DDD url(../img/tbody_bg_hover.gif) top left repeat-x;}
+	table.table_content tbody td.action {white-space: nowrap;}
+	table.table_content tbody td.action span, table.table_content tbody td.action a{display: block;}
+		table.table_content tbody td.action span{background: url(../img/tbody_action_span_bg.png) top left no-repeat; float: left; margin-left: 5px; padding-left: 9px;}
+		table.table_content tbody td.action a{background: url(../img/tbody_action_a_bg.png) top right no-repeat; color: #FFF; font-weight: bold; padding: 1px 9px 1px 0; text-align: center; text-shadow: #111 0px 0px 3px;}
+			table.table_content tbody td.action a:hover{text-decoration: underline;}
+	
+	table.table_content tfoot{border-left: 1px solid #AAA; border-right: 1px solid #AAA;}
+	table.table_content tfoot td{background: #DDD url(../img/tfoot_bg.gif) top left repeat-x; padding: 10px 5px 9px 5px; text-align: right;}
+		table.table_content tfoot td a{color: #666; font-weight: bold;}
+			table.table_content tfoot td a:hover{color: #333;}
+		table.table_content tfoot td a.delete, table.table_content tfoot td a.invert, table.table_content tfoot td a.play, table.table_content tfoot td a.pause, table.table_content tfoot td a.select_all, table.table_content tfoot td a.unselect_all{margin-left: 10px; padding: 2px 23px 3px 0;}
+		table.table_content tfoot td a.delete{background: url(../img/tfoot_delete_all.gif) top right no-repeat;}
+			table.table_content tfoot td a.delete:hover{background: url(../img/tfoot_delete_all.gif) bottom right no-repeat;}
+		table.table_content tfoot td a.invert{background: url(../img/tfoot_invert.gif) top right no-repeat;}
+			table.table_content tfoot td a.invert:hover{background: url(../img/tfoot_invert.gif) bottom right no-repeat;}
+		table.table_content tfoot td a.play{background: url(../img/tfoot_play.gif) top right no-repeat;}
+			table.table_content tfoot td a.play:hover{background: url(../img/tfoot_play.gif) bottom right no-repeat;}
+		table.table_content tfoot td a.pause{background: url(../img/tfoot_pause.gif) top right no-repeat;}
+			table.table_content tfoot td a.pause:hover{background: url(../img/tfoot_pause.gif) bottom right no-repeat;}	
+		table.table_content tfoot td a.select_all{background: url(../img/tfoot_select.gif) top right no-repeat;}
+			table.table_content tfoot td a.select_all:hover{background: url(../img/tfoot_select.gif) bottom right no-repeat;}
+		table.table_content tfoot td a.unselect_all{background: url(../img/tfoot_unselect.gif) top right no-repeat;}
+			table.table_content tfoot td a.unselect_all:hover{background: url(../img/tfoot_unselect.gif) bottom right no-repeat;}
+			
+		/* -- table for mail stats -- */
+		table.table_content td.passed_clean, table.table_content td.passed_spam, table.table_content td.blocked_spam, table.table_content td.blocked_greylisted, table.table_content td.blocked_blacklisted, table.table_content td.blocked_virus, table.table_content td.blocked_banned{background: top left repeat-x; text-align: center;}
+		table.table_content th.passed_clean, table.table_content th.passed_spam, table.table_content th.blocked_spam, table.table_content th.blocked_greylisted, table.table_content th.blocked_blacklisted, table.table_content th.blocked_virus, table.table_content th.blocked_banned{background: top center repeat-x; text-indent: -9999px; width: 70px;}
+		table.table_content th.passed_clean{background: #CAF7BD url(../img/th_bg_clean.png);}
+		table.table_content th.passed_spam{background: #CAF7BD url(../img/th_bg_tagged.png);}
+		table.table_content th.blocked_spam{background: #CAF7BD url(../img/th_bg_spam.png);}
+		table.table_content th.blocked_greylisted{background: #CAF7BD url(../img/th_bg_greylisted.png);}
+		table.table_content th.blocked_blacklisted{background: #CAF7BD url(../img/th_bg_blacklisted.png);}
+		table.table_content th.blocked_virus{background: #CAF7BD url(../img/th_bg_virus.png);}
+		table.table_content th.blocked_banned{background: #CAF7BD url(../img/th_bg_attachment.png);}
+		
+		table.table_content td.passed_clean{background: #CAF7BD url(../img/tbody_clean_bg.gif);}
+			table.table_content tr:hover td.passed_clean{background: #CAF7BD url(../img/tbody_clean_hover_bg.gif);}
+		table.table_content td.passed_spam{background: #F9F7BB url(../img/tbody_tagged_bg.gif);}
+			table.table_content tr:hover td.passed_spam{background: #F9F7BB url(../img/tbody_tagged_hover_bg.gif);}
+		table.table_content td.blocked_spam{background: #FFD9B4 url(../img/tbody_spam_bg.gif);}
+			table.table_content tr:hover td.blocked_spam{background: #FFD9B4 url(../img/tbody_spam_hover_bg.gif);}
+		table.table_content td.blocked_greylisted{background: #DDD url(../img/tbody_greylisted_bg.gif);}
+			table.table_content tr:hover td.blocked_greylisted{background: #DDD url(../img/tbody_greylisted_hover_bg.gif);}
+		table.table_content td.blocked_blacklisted{background: #F9C1BB url(../img/tbody_blacklisted_bg.gif);}
+			table.table_content tr:hover td.blocked_blacklisted{background: #F9C1BB url(../img/tbody_blacklisted_hover_bg.gif);}
+		table.table_content td.blocked_virus{background: #F3C6DA url(../img/tbody_virus_bg.gif);}
+			table.table_content tr:hover td.blocked_virus{background: #F3C6DA url(../img/tbody_virus_hover_bg.gif);}
+		table.table_content td.blocked_banned{background: #F3C6DA url(../img/tbody_attachment_bg.gif);}
+			table.table_content tr:hover td.blocked_banned{background: #F3C6DA url(../img/tbody_attachment_hover_bg.gif);}
+			
+			
+/* -- Notification Pop Ups with Overlay --*/
+#overlay{background-color: #000; height: 500px; left: 0; position: absolute; top: 0; width: 100%; z-index: 1001;}
+#notification{background-color: #EEE; background-position: 14px 55px; background-repeat: no-repeat; left: 50%; margin-left: -225px; margin-top: -100px; position: absolute; width: 450px;}
+	#notification p{margin: 15px 15px 16.5px 140px;}
+	#notification strong{font-weight: bold;}
+	 #notification #buttons{height: 29px; margin: 0 10px 10px 10px;}
+		#notification #buttons span{background: url(../img/button_right.gif) top right no-repeat; display: block; float: right; height: 29px; margin-left: 5px; padding-right: 2px;}
+		#notification #buttons span.cancel{background-image: url(../img/button_cancel_right.gif);}
+		#notification #buttons a{background: url(../img/button_left.gif) top left no-repeat; color: #FFF; display: block; font-weight: bold; height: 22px; padding: 7px 18px 0 20px; text-decoration: none; text-transform: uppercase;}
+		#notification #buttons span.cancel a{background-image: url(../img/button_cancel_left.gif); color: #CCC; font-weight: normal; text-transform: lowercase;}
+	#notification h3{background-position: top left; background-repeat: repeat-x; color: #FFF; font-size: 14px; font-weight: bold; height: 29px; padding-top: 11px; text-align: center;}
+	.notification_error{background-image: url(../img/notification_error_bg.gif);}
+		.notification_error h3{background-image: url(../img/notification_h3_error.gif); border-left: 1px solid #F44; border-right: 1px solid #F44; text-shadow: 0px 0px 3px #C00;}
+	.notification_warning{background-image: url(../img/notification_warning_bg.gif);}
+		.notification_warning h3{background-image: url(../img/notification_h3_warning.gif); border-left: 1px solid #FF8500; border-right: 1px solid #FF8500; text-shadow: 0px 0px 3px #DE7903;}
+	.notification_success{background-image: url(../img/notification_success_bg.gif);}
+		.notification_success h3{background-image: url(../img/notification_h3_success.gif); border-left: 1px solid #DAF61E; border-right: 1px solid #DAF61E; text-shadow: 0px 0px 3px #AEC703;}
+
+		
+/* -- System Reboot/shutdown with overlay -- */
+#gui_lock{height: 123px; left: 50%; margin-left: -240px; margin-top: -62px; position: absolute; width: 480px;}		
+	#gui_lock h3{background-color: transparent; background-position: top left; background-repeat: no-repeat; height: 54px; position: absolute; text-indent: -9999px; top: 0; width: 480px;}
+	#gui_lock p{color: #CCC; font-size: 16.5px; text-align: center; margin-top: 72px; text-transform: uppercase;}
+	#gui_lock a{font-size: 16.5px; text-transform: lowercase;}
+	#gui_lock img{bottom: 0; left: 50%; margin-left: -58px; position: absolute;}

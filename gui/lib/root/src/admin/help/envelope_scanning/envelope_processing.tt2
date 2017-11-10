@@ -1,0 +1,4 @@
+<div id="help_appliance_envelope_scanning">
+  	<h3>[% Catalyst.localize('envelope_scanning_envelope_processing_greylisting_heading') %]</h3>
+	<p>[% Catalyst.localize('help_envelope_scanning_envelope_processing_greylisting') %]</p>
+</div>

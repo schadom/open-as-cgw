@@ -1,0 +1,86 @@
+[% USE date %]
+[%  matches = template.name.match('admin/(.+)\.tt2');
+	menu = matches.0;
+	matches = menu.match('(\w+)/(\w+)');
+	menu = matches.0 || menu;
+	submenu = matches.1; %]
+<div id="top_bar">
+	<div class="idle" id="working">
+	</div>
+
+	<!-- Special events -->
+	<!-- NOTE: THIS CODE HAS BEEN MOVED TO root/src/admin/dashboard/dashboard/notification* -->
+	<!--
+	[% IF Catalyst.config.new_sec_version or Catalyst.config.new_main_version %]
+		[% update_class =  Catalyst.config.new_sec_version ? "class=\"security\" " : "" %]
+		<div id="get_update">
+			<a [% update_class %]href="/admin/appliance/update" title="[% Catalyst.localize('get_update') %]">[% Catalyst.localize('update_available') %]</a>
+		</div>
+	[% END %]
+
+	[% IF Catalyst.config.restart_required %]
+		<div id="reboot_required">
+			<a href="/admin/appliance" title="[% Catalyst.localize('reboot_required') %]">[% Catalyst.localize('reboot_required') %]</a>
+		</div>
+	[% END %]
+
+	[% IF Catalyst.config.renew_licence_warning == 1 %]
+		<div id="renew_licence">
+			<a href="/admin/appliance/license" title="[% Catalyst.localize('renew_licence') %]">[% Catalyst.localize('renew_licence') %]</a>
+		</div>
+	[% ELSIF Catalyst.config.renew_licence_warning == 2 %]
+		<div id="has_expired">
+			<a href="/admin/appliance/license" title="[% Catalyst.localize('licence_expired') %]">[% Catalyst.localize('licence_expired') %]</a>
+		</div>
+	[% END %]
+	-->
+
+	<!-- Help pages -->
+	<div id="help_handle">
+		<a href="#" onclick="Effect.toggle('help', 'blind'); return false;">help</a>
+	</div>
+	<div id="help" style="display: none;">
+		<div id="help_content">
+			<div id="help_center">
+				[% help_url = 'admin/help/' _ menu _ '/' _ submenu _ '.tt2' %]
+				[% INCLUDE $help_url %]
+			</div>
+		</div>
+	</div>
+
+	<!-- Overview link -->
+	<div id="sitemap_handle">
+		<a href="#" onclick="Effect.toggle('sitemap', 'blind'); return false;">overview</a>
+	</div>
+	<div id="sitemap" style="display: none;">
+		<div id="sitemap_content">
+		[% PROCESS site/navigation id = 'sitemap_list' %]
+		</div>
+	</div>
+</div>
+
+<div id="center">
+	<h1 id="appliance_name" class="as_open">[% Catalyst.config.product %] Communication Gateway</h1>
+	<ul id="quick_nav">
+		<li id="logout"><a href="[% Catalyst.uri_for('/logout') %]">[% Catalyst.localize('nav_logout') %]</a></li>
+		<li id="clock"> [% PROCESS site/clock %] </li>
+	</ul>
+
+	<div id="container">
+		<div id="header">
+			[% PROCESS site/navigation id = 'main_menu' %]
+			<div id="banner" class="[% menu _ '_' _ submenu %]">
+				<h2 id="breadcrumb">[% Catalyst.localize('nav_' _ menu) -%] &raquo; [% Catalyst.localize('nav_' _ menu _ '_' _ submenu) -%]</h2>
+				<p>[% Catalyst.localize(menu _ '_' _ submenu _ '_abstract') -%]</p>
+			</div>
+		</div>
+		<div id="content" class="[% menu _ '_' _ submenu %]">
+			[% content %]
+		</div>
+	</div>
+</div>
+
+<div id="overlay" style="display: none;">
+	<div id="horizon" style="display: none;">
+	</div>
+</div>

@@ -1,0 +1,291 @@
+[% USE date %]
+[% MACRO conv_human_readable(n) IF n < 1024 %]
+    [% n %]B
+  [% ELSIF n >= 1024 && n < (1024 * 1024) %]
+    [% n = n div 102.4 / 10 %]
+    [% n %]KB
+  [% ELSIF n >= (1024 * 1024) && n < (1024 * 1024 * 1024) %]
+    [% n = n div (1024 * 102.4) / 10 %]
+    [% n %]MB
+  [% ELSE %]
+    [% n = n div (1024 * 1024 * 102.4) / 10 %]
+    [% n %]GB
+[% END %]
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>[% language_strings.quar_product %] - [% language_strings.dr_title %]</title>
+		<style type="text/css">
+			#emailstats td, #emailstats th{padding: 0 6px;}
+		</style>
+    </head>
+    <body bgcolor="#505050" style="margin:0; padding:0;">
+		<table id="layout" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td align="center">
+					<table id="center" border="0" cellspacing="0" cellpadding="0" width="700" style="margin: 8px auto;">
+						<tr>
+							<td align="left">
+								<!-- START orange Stripe above -->
+								<table border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#FF8500" height="8"></td>
+									</tr>				
+								</table>
+								<!-- END orange Stripe above -->
+								
+								<!-- START Top Content with Headline -->
+								<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#EEEEEE" style="border-bottom: 1px solid #DDDDDD; color: #333333; font-family: Lucida Sans Unicode, sans-serif; font-size: 12px; line-height: 24px;">
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+									<tr>
+										<td width="30"></td>
+										<td width="630" valign="middle">
+											<h1 style="font-size: 24px; font-weight: normal; margin: 0; padding: 0; text-transform: uppercase;">[% language_strings.dr_h1 %] [% date_string %]</h1>
+											<h2 style="color: #666666; font-size: 18px; font-weight: normal; margin: 0 0 24px 0; padding: 0;">AS 500 Communication Gateway | <span style="color: #888888;">[% hostname _ '.' _ domainname %]</span></h2>	
+											<p style="line-height: 18px;">[% language_strings.dr_introduction | eval %]</p>
+										</td>
+										<td width="30"></td>
+									</tr>									
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+								</table>								
+								<!-- END Top Content with Headline -->
+								
+	
+								
+								<table bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, Arial, sans-serif; font-size: 12px; line-height: 18px; padding: 30px 0;">
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											[%	#if last backup was over 3 months ago display a reminder
+												IF last_backup;
+													now_y = date.format(myformat, '%Y');
+													now_m = date.format(myformat, '%m');
+													now_d = date.format(myformat, '%d');
+													lb_y = last_backup.substr(0,4);
+													lb_m = last_backup.substr(5,2);
+													lb_d = last_backup.substr(8,2);
+													calc = date.calc;
+													days_ago = calc.Delta_Days(now_y, now_m, now_d, lb_y, lb_m, lb_d);
+													IF days_ago < -90;
+											%]
+											<!-- START Backup Reminder -->
+											<h2 style="color: red; font-size: 18px; margin: 0;">[% language_strings.dr_h2_backup %]</h2>
+											<p style="font-weight: bold; color: #505050; font-family: Lucida Sans Unicode, Arial, sans-serif; font-size: 12px; line-height: 18px; padding-bottom: 18px; border-bottom: 1px dotted red;">[% language_strings.dr_backup_reminder_text %]</p>
+											<!-- END Backup Reminder -->
+											[% END; END; %]
+											<!-- START Licence Info -->
+											<h2 style="font-size: 18px; margin: 0;">[% language_strings.dr_h2_licencing %]</h2>
+											<table id="licenceinfo" border="0" cellspacing="0" cellpadding="0" width="100%" valign="middle" style="font-size: 12px; font-family: Lucida Sans Unicode, Arial, sans-serif; line-height: 18px;">
+												<tr>
+													<td align="left" valign="middle" width="140">
+														<img src="[% img_path %]/img/licencing.gif" style="margin-top: 18px;">
+													</td>
+													<td width="180">
+														[% 	links.up2date = 'http://www.underground8.com/de/products/modules.html#up2date';
+														 	links.care_pack = 'http://www.underground8.com/de/products/modules.html#care_pack';
+														 	links.virtual_use = 'http://www.underground8.com/de/products/vas_communication_gateway.html';
+															FOREACH modul IN lics.services; %]
+														<a href="[% links.$modul %]" style="color: #555; text-decoration: underline; font-weight: bold;">[% language_strings.$modul %]</a>
+															[% UNLESS loop.last %]
+															<br>												
+															[% END %]
+														[% END %]
+													</td>
+													<td width="320">
+													[%	FOREACH modul IN lics.services;
+															get_lic = 'mailto:licence@underground8.com?subject=Request%20' _ language_strings.$modul _ '%20Licence&body=DEAR%20UNDERGROUND_8%20TEAM%0D%0A%0D%0A%09Service-Modul:%20' _ language_strings.$modul _ '%0D%0A%09Appliance%20Serial%20Number:%20' _ sn _ '%0D%0A%09Comment:';
+															IF lics.license_info.$modul.valid_until == '1970-01-01' %]
+																<em>[% language_strings.dr_not_y_act %]</em> (<a href="[% get_lic %]">[% language_strings.dr_get_lic %]</a>)
+															[% ELSE %]
+																[% IF lics.license_info.$modul.valid_for_days > 30;
+																	language_strings.dr_valid_until %] <strong>[% lics.license_info.$modul.valid_until %]</strong> ([% lics.license_info.$modul.valid_for_days %] [% language_strings.dr_more_d %])
+																[% ELSIF lics.license_info.$modul.valid_for_days <= 29 && lics.license_info.$modul.valid_for_days != 0;
+																	language_strings.dr_valid_until %] <strong style="color: red;">[% lics.license_info.$modul.valid_until %]</strong> ([% lics.license_info.$modul.valid_for_days _ ' ' _ language_strings.dr_more_d %] - <a href="[% get_lic %]">[% language_strings.dr_get_lic %]</a>)
+																[% ELSIF lics.license_info.$modul.valid_for_days == 0 %]
+																	<span style="color: red;">[% language_strings.dr_expired %] <strong>[% lics.license_info.$modul.valid_until %]</strong></span> (<a href="[% get_lic %]">[% language_strings.dr_get_lic %]</a>)
+																[% END;
+															END;
+															UNLESS loop.last %]
+															<br>												
+															[% END;
+														END; %]
+													</td>
+												</tr>
+											</table>
+											<!-- END Licence Info -->
+										</td>
+										<td width="30"></td>
+									</tr>
+								</table>
+								
+								<!-- START Appliance System Information -->
+								<table bgcolor="#333333" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #FFFFFF; font-size: 12px; font-family: Lucida Sans Unicode, Arial, sans-serif; line-height: 18px; padding: 30px 0;">
+								<tr>
+									<td width="30"></td>
+									<td width="640">
+										<h2 style="font-size: 18px; font-weight: normal; margin: 0 0 18px 0; text-transform: uppercase;">[% language_strings.dr_gateway_status %]</h2>
+										<table border="0" cellspacing="0" cellpadding="0" width="100%">
+											<tr>
+												<td width="200" style="font-weight: bold;">
+													[% language_strings.dr_product %]<br>
+													[% language_strings.dr_firmware %]<br>
+													[% language_strings.dr_serial %]<br>
+													[% language_strings.dr_update_clam %]<br>
+													[% language_strings.dr_harddisk %]<br>
+													[% language_strings.dr_load_avg %]<br>
+													[% language_strings.dr_sys_uptime %]
+													
+												</td>
+												[%	newest_version = versions.version_system_available;
+													newest_version = newest_version.substr(0,5);
+													current_version = versions.version_system;
+													current_version = current_version.substr(0,5);
+													IF current_version != newest_version;
+														update_available = '<span style="color: #FF8500; font-weight: bold;">' _ language_strings.dr_update_available _ '</span>';
+													END;
+												%]
+												<td width="240">
+													[% versions.product %]<br>
+													<a style="color: #00A0FA; text-decoration: underline;" href="http://www.underground8.com/de/support/updates/update_as_[% current_version.substr(0,1) %]_[% current_version.substr(2,1) %].html">[% versions.version_system %]</a> [% update_available %]<br>
+													[% sn %]<br>
+													[% versions.version_clamav %] <span style="color: #999; font-weight: normal;">([% versions.time_clamav_printable %])</span><br>
+													[% sysinfo.disk_usedpercentage %]% [% language_strings.dr_used %]<br>
+													[% sysinfo.loadavg_15 %]<br>
+													[% sysinfo.uptime %]
+												</td>
+												<td valign="middle" width="200">
+													<img src="[% img_path %]/img/appliance.gif">
+												</td>												
+											</tr>
+										</table>
+									</td>
+									<td width="30"></td>
+								</tr>
+								</table>
+								<!-- END Appliance System Information -->
+								
+								<!-- START E-Mail Stats -->
+								<table bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, Arial, sans-serif; font-size: 12px; line-height: 18px; padding: 30px 0;">
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 18px; margin: 0 0 18px 0;">[% language_strings.dr_h2_email_statistics %]</h2>
+											<table id="emailstats" border="0" cellspacing="0" cellpadding="0" width="100%" valign="middle" style="font-size: 12px; font-family: Lucida Sans Unicode, Arial, sans-serif; line-height: 18px;">
+												<tr valign="middle" style="color: #FFF; height: 30px;">
+													<th align="left" style="background: #23A1D7 url([% img_path %]/img/thead_bg.gif) top left repeat-x;">[% language_strings.dr_type_mail %]</th>
+													<th align="center" style="background: #23A1D7 url([% img_path %]/img/thead_bg.gif) top left repeat-x;">[% language_strings.dr_today %]</th>
+													<th align="center" style="background: #23A1D7 url([% img_path %]/img/thead_bg.gif) top left repeat-x;">[% language_strings.dr_last24h %]</th>
+													<th align="center" style="background: #23A1D7 url([% img_path %]/img/thead_bg.gif) top left repeat-x;">[% language_strings.dr_lasthour %]</th>
+												</tr>  
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #caf7bd url([% img_path %]/img/tr_passed.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_passed %]</td>
+													<td align="center" style="background: #caf7bd url([% img_path %]/img/tr_passed.gif) top left repeat-x;">[% mailstats.today.passed_clean %]</td>
+													<td align="center" style="background: #caf7bd url([% img_path %]/img/tr_passed.gif) top left repeat-x;">[% mailstats.last24h.passed_clean %]</td>
+													<td align="center" style="background: #caf7bd url([% img_path %]/img/tr_passed.gif) top left repeat-x;">[% mailstats.lasthour.passed_clean %]</td>
+												</tr>
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #f9f7bb url([% img_path %]/img/tr_tagged.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_tagged %]</td>
+													<td align="center" style="background: #f9f7bb url([% img_path %]/img/tr_tagged.gif) top left repeat-x;">[% mailstats.today.passed_spam %]</td>
+													<td align="center" style="background: #f9f7bb url([% img_path %]/img/tr_tagged.gif) top left repeat-x;">[% mailstats.last24h.passed_spam %]</td>
+													<td align="center" style="background: #f9f7bb url([% img_path %]/img/tr_tagged.gif) top left repeat-x;">[% mailstats.lasthour.passed_spam %]</td>
+												</tr>
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #ffd9b4 url([% img_path %]/img/tr_spam.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_spam %]</td>
+													<td align="center" style="background: #ffd9b4 url([% img_path %]/img/tr_spam.gif) top left repeat-x;">[% mailstats.today.blocked_spam %]</td>
+													<td align="center" style="background: #ffd9b4 url([% img_path %]/img/tr_spam.gif) top left repeat-x;">[% mailstats.last24h.blocked_spam %]</td>
+													<td align="center" style="background: #ffd9b4 url([% img_path %]/img/tr_spam.gif) top left repeat-x;">[% mailstats.lasthour.blocked_spam %]</td>
+												</tr>
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #d9d9d9 url([% img_path %]/img/tr_greylisted.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_greylisted %]</td>
+													<td align="center" style="background: #d9d9d9 url([% img_path %]/img/tr_greylisted.gif) top left repeat-x;">[% mailstats.today.blocked_greylisted %]</td>
+													<td align="center" style="background: #d9d9d9 url([% img_path %]/img/tr_greylisted.gif) top left repeat-x;">[% mailstats.last24h.blocked_greylisted %]</td>
+													<td align="center" style="background: #d9d9d9 url([% img_path %]/img/tr_greylisted.gif) top left repeat-x;">[% mailstats.lasthour.blocked_greylisted %]</td>
+												</tr>
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #f9c1bb url([% img_path %]/img/tr_blacklisted.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_blacklisted %]</td>
+													<td align="center" style="background: #f9c1bb url([% img_path %]/img/tr_blacklisted.gif) top left repeat-x;">[% mailstats.today.blocked_blacklisted %]</td>
+													<td align="center" style="background: #f9c1bb url([% img_path %]/img/tr_blacklisted.gif) top left repeat-x;">[% mailstats.last24h.blocked_blacklisted %]</td>
+													<td align="center" style="background: #f9c1bb url([% img_path %]/img/tr_blacklisted.gif) top left repeat-x;">[% mailstats.lasthour.blocked_blacklisted %]</td>
+												</tr>
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #f3c6da url([% img_path %]/img/tr_virus.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_virus %]</td>
+													<td align="center" style="background: #f3c6da url([% img_path %]/img/tr_virus.gif) top left repeat-x;">[% mailstats.today.blocked_virus %]</td>
+													<td align="center" style="background: #f3c6da url([% img_path %]/img/tr_virus.gif) top left repeat-x;">[% mailstats.last24h.blocked_virus %]</td>
+													<td align="center" style="background: #f3c6da url([% img_path %]/img/tr_virus.gif) top left repeat-x;">[% mailstats.lasthour.blocked_virus %]</td>
+												</tr>
+												<tr valign="middle" style="height: 30px;">
+													<td align="left" style="background: #decae8 url([% img_path %]/img/tr_attachment.gif) top left repeat-x; font-weight: bold;">[% language_strings.dr_banned %]</td>
+													<td align="center" style="background: #decae8 url([% img_path %]/img/tr_attachment.gif) top left repeat-x;">[% mailstats.today.blocked_banned %]</td>
+													<td align="center" style="background: #decae8 url([% img_path %]/img/tr_attachment.gif) top left repeat-x;">[% mailstats.last24h.blocked_banned %]</td>
+													<td align="center" style="background: #decae8 url([% img_path %]/img/tr_attachment.gif) top left repeat-x;">[% mailstats.lasthour.blocked_banned %]</td>
+												</tr>
+											</table>												
+										</td>
+										<td width="30"></td>
+									</tr>
+								</table>
+								<!-- END E-Mail Stats -->
+								
+								<!-- START MailQueue -->
+								<table bgcolor="#333333" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #FFFFFF; font-size: 12px; font-family: Lucida Sans Unicode, Arial, sans-serif; line-height: 18px; padding: 30px 0;">
+								<tr>
+									<td width="30"></td>
+									<td width="640">
+										<h2 style="font-size: 18px; font-weight: normal; margin: 0 0 18px 0; text-transform: uppercase;">[% language_strings.dr_mailq %]</h2>
+										<table border="0" cellspacing="0" cellpadding="0" width="100%">
+											<tr>							
+												<td align="left;" valign="middle" width="40">
+													<img src="[% img_path %]/img/mq_items.gif">
+												</td>
+												<td align="left;" valign="middle" width="100">
+													[% language_strings.dr_item %]
+												</td>
+												<td align="left;" valign="middle" width="180">
+													<span style="color: #4bd2fa; font-size: 24px;">
+													[% 	mq_live_cnt %]
+													</span>
+												</td>
+												<td align="left;" valign="middle" width="40">
+													<img src="[% img_path %]/img/mq_size.gif">
+												</td>
+												<td align="left;" valign="middle" width="100">
+													[% language_strings.dr_harddisk %]
+												</td>
+												<td align="left;" valign="middle" width="180">
+													<span style="color: #ffb84c; font-size: 24px;">[% conv_human_readable(mq_live_size) %]</span>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td width="30"></td>
+								</tr>
+								</table>
+								<!-- END MailQueue -->
+										
+							
+								<!-- START blue Stripe below -->
+								<table border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#00A0FA" height="8"></td>
+									</tr>				
+								</table>
+								<!-- END blue Stripe below -->
+								
+								<!-- START Footer -->
+								<table border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #999999; font-family: Lucida Sans Unicode, sans-serif; font-size: 12px; line-height: 18px; margin-top: 8px; ">
+									<tr>
+										<td valign="middle" align="center">
+											[% language_strings.dr_help %] <a href="mailto:support@underground8.com" title="" style="color: #AAA; text-decoration: none;">support@underground8.com</a> | <a href="http://www.underground8.com" title="" style="color: #AAA; text-decoration: none;">www.underground8.com</a>
+										</td>
+									</tr>
+								</table>
+								<!-- END Footer -->
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+    </body>
+</html>

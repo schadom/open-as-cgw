@@ -1,0 +1,28 @@
+#
+# =============================================================================
+# This is a template for SPAM ADMINISTRATOR NOTIFICATIONS.
+# For syntax and customization instructions see README.customize.
+# Long header fields will be automatically wrapped by the program.
+#
+Date: %d
+From: %f
+Subject: AS Communication Gateway: Blocked SPAM
+To: [? %#T |undisclosed-recipients: ;|[<%T>|, ]]
+[? %#C |#|Cc: [<%C>|, ]]
+[? %#B |#|Bcc: [<%B>|, ]]
+Message-ID: <SA%i@%h>
+
+Your Limes Anti-Spam has blocked a SPAM mail:
+From: [?%s|<>|[?%o|(?)|%s]] 
+To: [? %#T |undisclosed-recipients: ;|[<%T>|, ]]
+[? %j |#|[:wrap|78||  |Subject: %j]]
+
+[? %a |#|[:wrap|78||  |IP address of the sender: \[%a\] %g]]
+
+[? %m |#|[:wrap|78||  |Message-ID: %m]]
+
+[? %q |The message was not quarantined.|The message has been quarantined.]
+
+-- 
+AS Communication Gateway
+http://www.underground8.com 

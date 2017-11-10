@@ -1,0 +1,11 @@
+[% language_strings.sendernotification_success_heading %]
+
+[% language_strings.sendernotification_success_recipient_is %] [% mail_rcpt %].
+
+[% language_strings.sendernotification_success_notify_recipient %]
+
+[% language_strings.sendernotification_success_password_is %]
+[% mail_password %]
+
+--
+[% language_strings.footer_signature %] underground_8 [% language_strings.via %] [% language_strings.product %]

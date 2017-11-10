@@ -1,0 +1,39 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[%
+	options = [];
+	options.push({ value => "udp", label => "UDP", });
+	options.push({ value => "tcp", label => "TCP", selected => (syslog.proto=='tcp') ? 'selected="selected"' : '' });
+%]
+
+<p>[% Catalyst.localize(box_path _ '_note') %]</p>
+
+[% INCLUDE 'site/elements/form'
+	url=Catalyst.uri_for('/admin/logging/syslog/set_syslog'), -%]
+	<fieldset>
+		[%  INCLUDE 'site/elements/input'
+			type = 'checkbox',
+			checked = (syslog.enabled==1) ? "checked" : "",
+			value = "enabled",
+			name = 'enabled', -%]
+	</fieldset>
+	<fieldset>
+		[%  INCLUDE 'site/elements/input'
+			required = 'required',
+			value = syslog.host,
+			name = 'host', -%]
+		[%  INCLUDE 'site/elements/select'
+			option_list = options,
+			name = 'proto', -%]
+		[%  INCLUDE 'site/elements/input'
+			required = 'required',
+			value = syslog.port,
+			class = 'number',
+			name = 'port', -%]
+		[% INCLUDE 'site/elements/input'
+			type = 'button'
+			-%]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

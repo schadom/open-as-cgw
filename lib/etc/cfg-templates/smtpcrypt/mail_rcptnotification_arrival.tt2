@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Encrypted email notification</title>
+	</head>
+	<body>
+		<h3>You have received an encrypted e-mail</h3>
+		<br/>
+		<br/>
+		The original sender has decided to send you an encrypted e-mail for security reasons. The message as well as attachments, if any, have been packed into a password-protected archive file (e.g. PDF, ZIP, RAR, etc.) and is attached to this e-mail.<br/>
+		<br/>
+		If you do not yet know the password, please contact the author [% mail_sender %].
+	</body>
+</html>

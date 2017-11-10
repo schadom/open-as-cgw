@@ -1,0 +1,15 @@
+<div id="content_scanning_attachments_warnings">
+    [% INCLUDE admin/content_scanning/attachments/warnings.inc.tt2 %]
+</div>
+<div id="content_scanning_attachments_block_file_extensions">
+    [% INCLUDE admin/content_scanning/attachments/block_file_extensions.inc.tt2 %]
+</div>
+<div id="content_scanning_attachments_block_mime_types">
+    [% INCLUDE admin/content_scanning/attachments/block_mime_types.inc.tt2 %]
+</div>
+<div id="content_scanning_attachments_group">
+    [% INCLUDE admin/content_scanning/attachments/group.inc.tt2 %]
+</div>
+<div id="content_scanning_attachments_list">
+    [% INCLUDE admin/content_scanning/attachments/list.inc.tt2 %]
+</div>

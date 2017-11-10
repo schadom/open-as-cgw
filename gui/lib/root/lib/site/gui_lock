@@ -1,0 +1,5 @@
+		<div id="gui_lock">
+			<h3 class="[% class = Catalyst.config.product FILTER lower; class.replace('\W+', '_'); -%]">[% Catalyst.config.product %] Communication Gateway</h3>
+			<p>[% text %]</p>
+			<img src="/static/img/reboot_shutdown.gif" alt=""/>
+		</div>

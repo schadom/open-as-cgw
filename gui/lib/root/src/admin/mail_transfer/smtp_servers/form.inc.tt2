@@ -1,0 +1,18 @@
+[% PROCESS 'site/box_init'
+
+-%]
+
+[% INCLUDE 'site/box_open' %]
+
+    [% INCLUDE 'site/elements/form' 
+        url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/form') %]
+
+        <fieldset>
+
+
+        
+
+
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

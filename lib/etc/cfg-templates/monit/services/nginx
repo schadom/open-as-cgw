@@ -1,0 +1,8 @@
+ check process nginx with pidfile /var/run/nginx.pid
+   group www
+   start program = "/etc/init.d/nginx start"
+   stop  program = "/etc/init.d/nginx stop"
+   if failed host localhost port 443 type TCPSSL within 3 cycles then restart
+   if failed unixsocket /tmp/limesgui.socket-0 then restart
+   if 2 restarts within 9 cycles then timeout
+

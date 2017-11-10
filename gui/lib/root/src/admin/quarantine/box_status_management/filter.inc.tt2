@@ -1,0 +1,27 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form', update = 'content', url = Catalyst.uri_for('/admin/quarantine/box_status_management/change_filter') %]
+	<fieldset>
+	[% 	domain_list = [];
+		domain_list.push({ value=>'all', label => Catalyst.localize(box_path _ '_alldomains')  });
+		FOREACH domain IN domains.keys.sort;
+			domain_list.push({ value=>domain, label=>domain, selected => (domain == filter_domain) ? 'selected' : '' });
+		END;
+
+		INCLUDE 'site/elements/select'
+			name = 'domain_filter',
+			option_list = domain_list;
+
+		status_list = [];
+		status_list.push({ value=>'all', label => Catalyst.localize(box_path _ '_box_irrelevant'), selected => ('all' == filter_status) ? 'selected' : '' });
+		status_list.push({ value=>'unconfirmed', label => Catalyst.localize(box_path _ '_box_unconfirmed'), selected => ('unconfirmed' == filter_status) ? 'selected' : '' });
+		status_list.push({ value=>'1', label => Catalyst.localize(box_path _ '_box_qenabled'), selected => ('1' == filter_status) ? 'selected' : '' });
+		status_list.push({ value=>'2', label => Catalyst.localize(box_path _ '_box_qdisabled'), selected => ('2' == filter_status) ? 'selected' : '' });
+
+		INCLUDE 'site/elements/select' name = 'box_status', option_list = status_list; %]
+	</fieldset>
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input' value = Catalyst.localize(box_path _ '_apply'), type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

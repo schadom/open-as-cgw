@@ -1,0 +1,21 @@
+updateserver_stable =   http://
+updateserver_beta =     http://
+updateserver_devel =    http://
+update_timestamp_file = /etc/open-as-cgw/update_timestamp
+upgradelog_file =       /var/log/open-as-cgw/upgrades/upgrade_
+upgradehistory_file =   /var/log/open-as-cgw/upgrade.history
+sourceslist_file =      /etc/apt/sources.list
+repository_dir =        limesas
+
+output4gui_file =       /tmp/usus-running
+
+avail_versions_url =    /limesas-versions.xml.gpg
+avail_versions_file =   /etc/open-as-cgw/avail_versions
+avail_secversion_file = /etc/open-as-cgw/avail_secversion
+
+update                = [% parameters.update %]
+download              = [% parameters.download %]
+upgrade               = [% parameters.upgrade %]
+auto_newest           = [% parameters.auto_newest %]
+main_version          = 0
+type                  = devel

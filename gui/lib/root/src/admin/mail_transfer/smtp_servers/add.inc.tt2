@@ -1,0 +1,55 @@
+[% PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form'  update = 'content', url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/save_server/') _ (smtpsrv_name ? smtpsrv_name : "new") %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input', value = (description ? description : ''), name = 'description' %]	
+		[% INCLUDE 'site/elements/input', class = 'number', value = (port ? port : ''), name = 'port' %]	
+		[% INCLUDE 'site/elements/input', value = (address ? address : ''), name = 'address' %]	
+	</fieldset>
+	[%	options = [];
+		options.push({ value=> '0', label => Catalyst.localize(box_path _ '_smtpauth_none'), selected => (smtpauth == 0 ? 'selected="selected"' : '') });
+		options.push({ value=> '1', label => Catalyst.localize(box_path _ '_smtpauth_plaintext'), selected => (smtpauth == 1 ? 'selected="selected"' : '') });
+		options.push({ value=> '2', label => Catalyst.localize(box_path _ '_smtpauth_tls_all'), selected => (smtpauth == 2 ? 'selected="selected"' : '') });
+		options.push({ value=> '3', label => Catalyst.localize(box_path _ '_smtpauth_tls_known'), selected => (smtpauth == 3 ? 'selected="selected"' : '') });%]
+	<fieldset>
+		[% INCLUDE 'site/elements/select' name='smtpauth', option_list = options, %]
+		[% INCLUDE 'site/elements/input' type = 'checkbox', name = 'cutdelim', value = "1", checked = (cutdelim == "1" ? 'checked' : '') %]
+	</fieldset>
+	<ul class="text_list">
+		<!--
+		<li><strong>[% Catalyst.localize(box_path _ '_enable_smtpauth') %]</strong>
+		[% INCLUDE 'site/elements/enable',
+			status = (use_smtpauth ? 'enabled' : 'disabled'),
+			url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/toggle_smtpauth'), %]
+		</li>
+		-->
+		<li><strong>[% Catalyst.localize(box_path _ '_enable_ldap') %]</strong>
+		[% INCLUDE 'site/elements/enable',
+			update = 'content',
+			status = (use_ldap ? 'enabled' : 'disabled'),
+			url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/toggle_ldap/') _ use_ldap _ "/" _ (smtpsrv_name ? smtpsrv_name : "new"), %] (please save settings before enabling LDAP)
+		</li>
+	</ul>
+	[% IF use_ldap %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input', value = (ldap_username ? ldap_username : ''), name = 'ldap_username' %]	
+		[% INCLUDE 'site/elements/input', type = 'password', value = (ldap_password ? ldap_password : ''), name = 'ldap_password' %]	
+		[% INCLUDE 'site/elements/input', value = (ldap_server ? ldap_server : ''), name = 'ldap_server' %]	
+		[% INCLUDE 'site/elements/input', value = (ldap_basedn ? ldap_basedn : ''), name = 'ldap_basedn' %]	
+		[% INCLUDE 'site/elements/input', value = (ldap_filter ? ldap_filter : ''), name = 'ldap_filter' %]	
+		[% INCLUDE 'site/elements/input', value = (ldap_properties ? ldap_properties : ''), name = 'ldap_properties' %]	
+		[% INCLUDE 'site/elements/input', value = (ldap_testmail ? ldap_testmail : ''), name = 'ldap_testmail' %]
+		[% INCLUDE 'site/elements/input' type = 'checkbox', name = 'ldap_autolearn_domains', value = '1', checked = (ldap_autolearn_domains == "1" ? 'checked="checked"' : ''), %]
+		[% IF no_ldap_test %]
+		[% INCLUDE 'site/elements/input' type = 'checkbox', name = 'no_ldap_test', value = '1', checked = 0 %]
+		[% END %]
+	</fieldset>
+	[% END %]
+	<input type="hidden" name="use_ldap" value="[% use_ldap %]"/>
+	[% IF use_smtpauth %]
+	[% END %]
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input' value = Catalyst.localize(box_path _ (smtpsrv_name ? '_save' : '_savenew')), type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

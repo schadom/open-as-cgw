@@ -1,0 +1,10 @@
+<div id="quarantine_user_box_administration_filter">
+	[% INCLUDE 'admin/quarantine/user_box_administration/filter.inc.tt2' -%]
+</div>
+<div id="quarantine_user_box_administration_status_information">
+	[% INCLUDE 'admin/quarantine/user_box_administration/status_information.inc.tt2' -%]
+</div>
+<div id="quarantine_user_box_administration_item_list">
+	[% INCLUDE 'admin/quarantine/user_box_administration/item_list.inc.tt2' -%]
+</div>
+

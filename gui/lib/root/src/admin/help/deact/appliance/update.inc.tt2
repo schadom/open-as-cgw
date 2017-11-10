@@ -1,0 +1,18 @@
+<div id="help_appliance_update">
+    
+
+    <h3>[% Catalyst.localize('update_automation_settings') %]</h3>
+    <p>[% Catalyst.localize('help_update_automation_settings')  %]</p>
+
+    <h3>[% Catalyst.localize('title_appliance_update_currentversions') %]</h3>
+    <p>[% Catalyst.localize('help_title_appliance_update_currentversions')  %]</p>
+
+    <h3>[% Catalyst.localize('title_appliance_update_sec_version') %]</h3>
+    <p>[% Catalyst.localize('help_title_appliance_update_sec_version')  %]</p>
+
+    <h3>[% Catalyst.localize('title_appliance_update_main_version') %]</h3>
+    <p>[% Catalyst.localize('help_title_appliance_update_main_version')  %]</p>
+
+
+</div>
+

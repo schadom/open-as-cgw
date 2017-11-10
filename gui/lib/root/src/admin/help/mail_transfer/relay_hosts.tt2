@@ -1,0 +1,7 @@
+<div id="help_appliance_mail_transfer">
+  	<h3>[% Catalyst.localize('mail_transfer_relay_hosts_form_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_relay_hosts_form') %]</p>
+
+	<h3>[% Catalyst.localize('mail_transfer_relay_hosts_table_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_relay_hosts_table') %]</p>
+</div>

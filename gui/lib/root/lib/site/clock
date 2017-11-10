@@ -1,0 +1,5 @@
+					<script type="text/javascript">
+						var timestamp = new Date([% date.format(format => '%Y,(%m-1),%e,%H,%M,%S') %]).getTime();
+						var timezone = '[% date.format(format => '%Z') %]';
+						start_clock(timestamp,timezone);
+					</script>

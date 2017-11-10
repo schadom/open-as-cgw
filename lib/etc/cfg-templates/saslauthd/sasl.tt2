@@ -1,0 +1,19 @@
+debug 3
+server localhost
+port 25
+timeout 5
+send_fq_username [% use_fqdn %]
+
+use_ehlo 1
+use_tls 1
+helo_as "LimesAS"
+
+auth_with_cram_md5 0
+auth_with_digest_md5 0
+auth_with_login 1
+auth_with_plain 1
+
+check_certificate 0
+certificat_issuer *
+certificates_folder /etc/open-as-cgw/xml/cacert
+

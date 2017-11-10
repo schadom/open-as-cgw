@@ -1,0 +1,39 @@
+			[%# params are : div_name, fields(hash of key->arrayof options),uri%]
+		    [%PROCESS site/infoBar
+		        name=div_name
+		    %]
+			<div id="div_[%div_name%]">
+				[% Catalyst.prototype.form_with_indicator({
+					update => 'content',
+					url => uri,
+					id => div_name _ '_form',
+					indicator => div_name _ '_submit',
+					infobar => div_name _ '_infobar' }) %]
+					<div class="oneColumn">
+						[% FOREACH entry IN fields.keys %]
+						<div id="div_elem_[% entry %]">
+							<h4>[% Catalyst.localize(entry) %]</h4>  
+							[%FOREACH input IN fields.$entry.keys%]
+								<div class="element">
+									<label>[% Catalyst.localize(input) %]</label>
+									<select name="[%entry%]_[%input%]" [% fields.$entry.$input.type.defined ? "multiple = \"multiple\" class=\"multiple_select\"" : '' %] size ="[%fields.$entry.$input.type.defined ? "3" : "1"%]">
+									   [%IF fields.$entry.$input.type.defined %]
+										<option value="all"[% fields.$entry.$input.preselect == '*' ? " selected=\"selected\"" : "" %]>[%Catalyst.localize('daily')%]</option>
+									   [% END %]
+									[% count = 0 %]
+									[% FOREACH opt IN fields.$entry.$input.values %]
+										[% cond = fields.$entry.$input.preselect == count || fields.$entry.$input.preselect.match(count) %]
+										<option value="[% count %]" [% cond ? 'selected = \'selected\'' : '' %]>[% Catalyst.localize('day_' _ opt) %]</option>
+									[% count =count +1 %]
+									[% END%]        
+									</select>
+								</div>
+							[% END%] 
+						</div>
+						[% END%]
+						<div id="[%div_name%]_submit" class="button element">
+							<input class="save" name="save" value="Save" type="submit" />
+						</div>
+					</div>
+				</form>
+			</div>

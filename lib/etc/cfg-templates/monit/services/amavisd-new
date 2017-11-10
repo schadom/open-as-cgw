@@ -1,0 +1,26 @@
+ check process amavisd with pidfile /var/run/amavis/amavisd.pid
+   group mail
+   start program = "/etc/init.d/amavis start"
+   stop  program = "/etc/init.d/amavis stop"
+   if failed port 10024 type TCP within 3 cycles then restart
+   if failed port 10026 type TCP within 3 cycles then restart
+   if failed port 10028 type TCP within 3 cycles then restart
+   if failed port 10030 type TCP within 3 cycles then restart
+   if 2 restarts within 9 cycles then timeout
+#   depends on amavisd_bin
+#   depends on amavisd_rc
+
+# check file amavisd_bin with path /usr/sbin/amavisd-new
+#   group mail
+#   if failed checksum then unmonitor
+#   if failed permission 755 then unmonitor
+#   if failed uid root then unmonitor
+#   if failed gid root then unmonitor
+
+# check file amavisd_rc with path /etc/init.d/amavis
+#   group mail
+#   if failed checksum then unmonitor
+#   if failed permission 755 then unmonitor
+#   if failed uid root then unmonitor
+#   if failed gid root then unmonitor
+

@@ -1,0 +1,4 @@
+<div id="help_appliance_monitoring">
+    <h3>[% Catalyst.localize('monitoring_process_list_plist_heading') %]</h3>
+	<p>[% Catalyst.localize('help_monitoring_process_list_plist') %]</p>
+</div>

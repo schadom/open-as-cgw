@@ -1,0 +1,43 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% IF antispam.postfwd.get_status_rbl == "disabled" %]
+	<p>[% Catalyst.localize(box_path _ '_rbls_inactive') %]</p>
+[% ELSE %]
+
+	<script type="text/javascript">
+		function toggle_list(){
+			Effect.toggle('envelope_scanning_dnsl_manager_list_infobar','slide',{duration: 0.2});
+		}
+	</script>
+		[% IF deleted == 1 %]
+	<script type="text/javascript"> toggle_list(); </script>
+		[% END %]
+
+	<p>[% Catalyst.localize(box_path _ '_text') %]</p>
+	<ul class="text_list two_column">
+		[% FOREACH rbl IN antispam.postfwd.rbls.keys.sort() %]
+			<li>
+				<strong>[% rbl %]</strong>
+				[% INCLUDE 'site/elements/enable'
+					status = antispam.postfwd.rbls.$rbl.enabled ? 'enabled' : 'disabled',
+					url = Catalyst.uri_for("/admin/envelope_scanning/dnsl_manager/toggle_entry/$rbl"),
+					update = 'content',
+				 %]
+
+				[% link_text = BLOCK %]
+					[% INCLUDE 'site/elements/link',
+					url = Catalyst.uri_for("/admin/envelope_scanning/dnsl_manager/delist/$rbl"),
+					update = 'content',
+					label = Catalyst.localize(box_path _ '_remove'),
+					-%]
+				[% END %]
+				[% link_text IF antispam.postfwd.rbls.$rbl.type == "user" %]
+			</li>
+		[% END %]
+	</ul>
+[% END %]
+
+
+[% INCLUDE 'site/box_close' %]
+

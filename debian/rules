@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+	dh_installinit --name=openas-firewall -- defaults 20
+	dh_installinit --name=openas-rtlogd -- defaults 20
+	dh_installinit --name=openas-qcron -- defaults 60
+	dh_installinit --name=openas-qng -- defaults 60
+	dh_installinit --name=openas-ldapsync --no-start -- defaults 60
+	dh_installinit --name=openas-backend -- defaults 60
+	dh_install
+	dh_installcron
+	dh_install
+	dh_installlogrotate

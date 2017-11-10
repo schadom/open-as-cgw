@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>[% language_strings.mail_crypt_product %] - [% language_strings.activate_title %]</title>
+    </head>
+	
+    <body bgcolor="#505050" style="margin:0; padding:0;">
+		<table id="layout" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td align="center">
+					<table id="center" bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="700">
+						<tr>
+							<td align="left">
+								<!-- START orange Stripe above -->
+								<table id="border_top" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#ff8500" height="8"></td>
+									</tr>				
+								</table>
+								<!-- END orange Stripe above -->
+								
+								<!-- START Top Content with Headline -->
+								<table id="header" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#EEEEEE" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif;">
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+									<tr>
+										<td width="30"></td>
+										<td width="640" valign="middle">
+											<h1 style="font-size: 16px;">[% language_strings.activate_enabled %]</h1>
+											<p style="color: #666666; font-size: 13px;">[% language_strings.activate_setup | eval %]<br>[% language_strings.activate_setup_release %]</p>
+										</td>
+										<td width="30"></td>
+									</tr>									
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+								</table>								
+								<!-- END Top Content with Headline -->
+							
+								
+								<table id="info" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>
+									<!-- START How do I use it -->
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 14px; margin: 0 0 15px 0;">[% language_strings.activate_how %]</h2>
+											<table id="summary" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+												<tr>
+													<td width="310" valign="top"><p>[% language_strings.activate_good %]</p></td>
+													<td width="20"></td>
+													<td width="310" valign="top"><p>[% language_strings.activate_action %]</p></td>
+												</tr>
+											</table>
+										</td>
+										<td width="30"></td>
+									</tr>
+									<!-- END START How do I use it -->
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>
+									<!-- START And what can I do with it -->
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 14px; margin: 0 0 15px 0;">[% language_strings.activate_what %]</h2>
+											<p>[% language_strings.activate_status %]</p>
+											<img src="[% img_path %]/img/[% language_strings.activate_img_help_list %]" alt="[% language_strings.activate_img_alt_help_list %]" height="100" width="640">
+											<p>[% language_strings.activate_cleared %]<br><em>[% language_strings.activate_undone %]</em></p>
+										</td>
+										<td width="30"></td>
+									</tr>
+									<!-- END And what can I do with it -->
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>									
+								</table>
+								
+								<!-- START What actions can I take with the quarantine manager -->
+								<table id="actions" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+									<tr>
+										<td width="30"></td>
+										<td width="640">
+											<h2 style="font-size: 14px; margin: 0 0 15px 0;">[% language_strings.activate_which %]</h2>
+											<table id="action_list" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/[% language_strings.activate_img_new_report %]" alt="[% language_strings.activate_img_alt_new_report %]" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">[% language_strings.activate_assume %]</td>
+												</tr>
+												<tr>
+													<td colspan="3"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td>
+												</tr>
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/[% language_strings.activate_img_help_enable %]" alt="[% language_strings.activate_img_alt_help_enable %]" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">[% language_strings.activate_disabled %]</td>
+												</tr>
+												<tr>
+													<td colspan="3"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td>
+												</tr>
+												<tr>
+													<td width="145"><img src="[% img_path %]/img/[% language_strings.activate_img_help_disable %]" alt="[% language_strings.activate_img_alt_disable %]" height="44" width="145"></td>
+													<td width="20"></td>
+													<td width="475">[% language_strings.activate_maintaining %]</td>
+												</tr>
+											</table>
+										</td>
+										<td width="30"></td>
+									</tr>				
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>									
+								</table>
+								<!-- END What actions can I take with the quarantine manager -->
+								
+								<!-- END Footer --
+								
+								<!-- START Footer -->
+								<table id="footer" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#00a0fa" height="8"></td>
+									</tr>									
+								</table>
+								<!-- END Footer -->
+							</td>
+						</tr>
+					</table>
+					<!-- START underground note -->
+					<table id="underground" border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<td align="center" height="30" style="color: #999999; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;" valign="middle">[% language_strings.quar_footer_signature %] <a href="http://www.underground8.com" title="visit the underground_8 website" style="color: #999999; font-weight: bold; text-decoration: none;">[% language_strings.quar_footer_company %]</a> [% language_strings.quar_footer_brand %]</td>
+						</tr>
+					</table>
+					<!-- END underground note -->
+				</td>
+			</tr>
+		</table>
+    </body>
+</html>

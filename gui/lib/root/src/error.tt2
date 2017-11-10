@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>[% Catalyst.localize('browser_title') %]</title>
+        <meta name="author" content="Open AS" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="cache-control" content="no-cache"/>
+        <meta http-equiv="content-language" content="[% Catalyst.language %]" />
+        <meta http-equiv="expires" content="0" />
+        <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<!--[if lt IE 7]>
+			<link href="/static/css/style_ie.css" rel="stylesheet" type="text/css" media="all" />
+		<![endif]-->
+		<script src="/static/js/prototype.js" type="text/javascript"></script>
+        <script src="/static/js/scriptaculous.js" type="text/javascript"></script>
+        <script src="/static/js/openas.js" type="text/javascript"></script>
+    </head>
+    <body>
+		<div id="horizon">
+			<div id="error_box">
+				<blockquote>
+					<p>[% Catalyst.localize('error_occured_text') %]</p>
+				</blockquote>
+				<p class="note">[% Catalyst.localize('error_occured_send_mail') %]</p>
+				<ul>
+					<li class="email"><a href="mailto:team@openas.org?Subject=Open%20AS%20Error" title="[% Catalyst.localize('error_occured_drop_line') %]">team@openas.org</a></li>
+					<li class="phone">+43 (0) 732 250 270 30</li>
+				</ul>
+				<div id="form_data">
+				[% PROCESS error/send_report_form.inc.tt2 %]
+				</div>
+				<div id="back_to_limes">
+					[% Catalyst.localize('error_occured_return_frontpage') %]
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

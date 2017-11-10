@@ -1,0 +1,13 @@
+<div id="mail_transfer_domains_add">
+    [% INCLUDE admin/mail_transfer/domains/add.inc.tt2 %]
+</div>
+<div id="mail_transfer_domains_list">
+    [% INCLUDE admin/mail_transfer/domains/list.inc.tt2 %]
+</div>
+<div id="mail_transfer_domains_add_bulk">
+    [% INCLUDE admin/mail_transfer/domains/add_bulk.inc.tt2 %]
+</div>
+<div id="mail_transfer_domains_reassign">
+    [% INCLUDE admin/mail_transfer/domains/reassign.inc.tt2 %]
+</div>
+

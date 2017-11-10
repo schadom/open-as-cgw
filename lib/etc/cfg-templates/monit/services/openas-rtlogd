@@ -1,0 +1,4 @@
+ check process openas-rtlogd with pidfile /var/run/openas-rtlogd.pid
+   start program = "/etc/init.d/openas-rtlogd start"
+   stop  program = "/etc/init.d/openas-rtlogd stop"
+   if cpu > 60% for 2 cycles then alert

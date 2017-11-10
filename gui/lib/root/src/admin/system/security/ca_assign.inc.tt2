@@ -1,0 +1,26 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/system/security/ca_assign'), enctype = 'multipart/form-data', nojs = 'nojs' %]
+	[% IF ((box_status.success OR box_status.custom_success) AND done == "assign") OR phail == "assign"  %]
+	<script type="text/javascript">
+		function toggle_ca_assign(){
+			Effect.toggle('system_security_ca_assign_infobar','slide',{duration: 0.2});
+		}
+		toggle_ca_assign();
+	</script>
+	[% END %]
+
+	[%	options = [];
+		FOREACH srv IN smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (smtpsrv_preselect == srv.key ? 'selected="selected"' : '') });
+		END %]
+	<p class="info">[% Catalyst.localize(box_path _ '_text') %]</p>
+	<fieldset>
+	[% INCLUDE 'site/elements/input' type = 'file', name = 'file_pem', required = 'required' %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/select' name = 'smtpsrv', option_list = options %]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_applycert') %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

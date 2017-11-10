@@ -1,0 +1,29 @@
+[% IF search_result.size AND search_result.size > 0; %]
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' 
+		table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_num'));
+		table_headers.push(Catalyst.localize(box_path _ '_match'));
+
+		table_th_classes = [];
+		table_th_classes.push('', '');
+		table_td_classes = [];
+		table_td_classes.push('', '');
+
+		table_values = [];
+		num = 0;
+
+		IF reverse_output; search_result = search_result.reverse; END;
+		FOREACH line IN search_result; 
+			num = num + 1;
+			line_filtered = line FILTER html_entity;
+			table_values.push([ num, line_filtered.remove('ANTISPAM') ]);
+		END;
+
+		INCLUDE 'site/elements/table',
+			headers = table_headers,
+			td_classes = table_td_classes,
+			th_classes = table_th_classes,
+			td_values = table_values;
+	INCLUDE 'site/box_close';
+END %]

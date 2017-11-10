@@ -1,0 +1,7 @@
+<div id="content_scanning_anti_virus_scanners">
+    [% INCLUDE admin/content_scanning/anti_virus/scanners.inc.tt2 %]
+</div>
+<div id="content_scanning_anti_virus_options">
+    [% INCLUDE admin/content_scanning/anti_virus/options.inc.tt2 %]
+</div>
+

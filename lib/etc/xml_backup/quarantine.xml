@@ -1,0 +1,39 @@
+<perldata>
+ <hashref memory_address="0xbf2727c">
+  <item key="_check_sender">0</item>
+  <item key="_db_host">localhost</item>
+  <item key="_db_name">amavis</item>
+  <item key="_db_password">re2dd3j</item>
+  <item key="_db_user">amavis</item>
+  <item key="_domain_map">/etc/postfix/transport.db</item>
+  <item key="_global_item_lifetime">7</item>
+  <item key="_language">en</item>
+  <item key="_listen_address">localhost</item>
+  <item key="_listen_port">10010</item>
+  <item key="_max_confirm_interval">5</item>
+  <item key="_max_confirm_retries">4</item>
+  <item key="_max_quarantine_size">5120</item>
+  <item key="_notify_unconfirmees_interval">
+   <hashref memory_address="0xa62aaec">
+    <item key="d_of_m">*</item>
+    <item key="d_of_w">*</item>
+    <item key="h">5</item>
+    <item key="min">0</item>
+    <item key="month">*</item>
+   </hashref>
+  </item>
+  <item key="_quarantine_enabled">0</item>
+  <item key="_quarantine_path">/var/lib/mysql/amavis</item>
+  <item key="_send_spamreport_interval">
+   <hashref memory_address="0xa62fefc">
+    <item key="d_of_m">*</item>
+    <item key="d_of_w">*</item>
+    <item key="h">6</item>
+    <item key="min">0</item>
+    <item key="month">*</item>
+   </hashref>
+  </item>
+  <item key="_sender_name">AS Communication Gateway</item>
+  <item key="_user_item_lifetime">14</item>
+ </hashref>
+</perldata>

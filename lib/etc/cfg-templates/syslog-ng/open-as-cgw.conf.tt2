@@ -1,0 +1,114 @@
+#
+# Configuration file for
+# OPEN AS COMMUNICATION GATEWAY
+# based upon default ubuntu syslog-ng.conf
+# 
+# Can NOT be used on its own!
+#
+
+
+
+# We want a nice standardized readable (human and machine...!) date format
+# the default format was made by people who hate the metric system
+options { ts_format(rfc3339); };
+
+destination d_simplemail { file("/var/log/mail-simple.log" flush_lines(1) owner(root) group(limes) perm(0660)); };
+destination d_ascgw { file("/var/log/ascgw.log"); };
+
+filter f_simplemail { facility(local0); };
+filter f_ascgw { facility(local7); };
+
+# rt_limes
+log {
+        source(s_src);
+        filter(f_mail);        
+        filter(f_greydummies);
+        destination(rt_limes);
+};
+
+# local0.* / simplemail
+log {
+		source(s_src);
+		filter(f_simplemail);
+		destination(d_simplemail);
+};
+
+# local7.* / ascgw
+log {
+		source(s_src);
+		filter(f_ascgw);
+		destination(d_ascgw);
+};
+
+
+# LIMES REAL TIME LOG
+destination rt_limes { pipe("/var/open-as-cgw/rt_log" flush_lines(1) owner(root) group(limes) perm(0664)); };
+
+
+# LIMES MAILLOG MANGLER
+
+template t_mangled_mail {
+        template("$ISODATE $HOST ANTISPAM $MSGONLY\n");
+        template_escape(yes);   
+};
+
+destination d_mangled_mail {
+        file("/var/log/open-as-cgw/mangled-mail.log" owner(root) group(limes) perm(0660) template(t_mangled_mail));
+};
+
+filter f_postfix {
+        not message("warning: header Subject:")
+        and not message("Client host triggers FILTER")
+        and not message("configuration /etc/postfix");
+};
+
+filter f_amavis {
+        message(" Hits: ")
+        or
+        (not message("^amavis"));
+};
+
+# filter greylist dummie entries from monit
+filter f_greydummies {
+        not message("host=1.2.3.4")
+        and
+        (not message("mx.foo.tld"));
+};
+
+filter f_nummail {
+        facility(mail) and level(info..notice);
+};
+
+filter f_postfwd {
+		(not message("postfwd.*starting"))
+		and
+		(not message("postfwd.*terminated"))
+		and
+		(not message("Server closing!"));	
+};
+
+log {
+        source(s_src);
+        filter(f_nummail);
+        filter(f_postfix);
+        filter(f_amavis);
+        filter(f_greydummies); 
+		filter(f_postfwd);
+        destination(d_mangled_mail);
+};
+
+
+
+# external syslog server
+[% IF server_enabled == 1 && server && port && proto -%]
+destination d_test {[% proto %]( "[% server -%]" port([% port -%]) template(t_mangled_mail)); };
+
+log {
+        source(s_src);
+        filter(f_nummail);
+        filter(f_postfix);
+        filter(f_amavis);
+        filter(f_greydummies); 
+        destination(d_test);
+};
+[% END %]

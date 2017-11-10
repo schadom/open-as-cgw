@@ -1,0 +1,42 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+
+[% IF ip_ranges.size > 0 %]
+[%	table_headers = [];
+	table_headers.push( Catalyst.localize(box_path _ '_range') );
+	table_headers.push( Catalyst.localize(box_path _ '_description') );
+	table_headers.push( Catalyst.localize(box_path _ '_action') );
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', 'action');
+
+	table_td_classes = [];
+	table_td_classes.push('left', '', 'action');
+
+	table_values = [];
+
+	FOREACH entry IN ip_ranges;
+		elem_range = entry.start _ (entry.end != '' ? ' - ' _ entry.end : '');
+
+		elem_del = BLOCK; 
+				INCLUDE 'site/elements/link', 
+				update = 'content',
+				url = Catalyst.uri_for('/admin/system/security/del_range/') _ entry.start,
+				label = Catalyst.localize(box_path _ '_delete') ;
+		END;
+		elem_del = '<span>' _ elem_del _ '</span>';
+
+		table_values.push([ elem_range, entry.description, elem_del ]);
+	END;
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		tr_classes = table_row_classes,
+		td_values = table_values;
+%]
+[% ELSE %]
+	<p class="no_entries">[% Catalyst.localize(box_path _ '_noentries') %]</p>
+[% END %]
+[% INCLUDE 'site/box_close' %]

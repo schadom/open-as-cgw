@@ -1,0 +1,4 @@
+<div id="help_appliance_content_scanning">
+  	<h3>[% Catalyst.localize('content_scanning_languages_language_filter_heading') %]</h3>
+	<p>[% Catalyst.localize('help_content_scanning_languages_language_filter') %]</p>
+</div>

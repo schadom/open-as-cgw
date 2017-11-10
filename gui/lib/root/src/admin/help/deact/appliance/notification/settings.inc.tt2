@@ -1,0 +1,9 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('heading_notification_settings_addaccount') %]</h3>
+    <p>[% Catalyst.localize('help_heading_notification_settings_addaccount') %]</p>
+
+    <h3>[% Catalyst.localize('heading_notification_settings_recipients') %]</h3>
+    <p>[% Catalyst.localize('help_heading_notification_settings_recipients') %]</p>
+</div>

@@ -1,0 +1,28 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form', url = Catalyst.uri_for('/admin/quarantine/quarantining_options/change_destiny') %]
+	<fieldset>
+	[%
+		destinies = {	'2'=>'destiny_user', 
+						'1' => 'destiny_admin', 
+						'0' => 'destiny_discard' };
+		fields = 	{	'spam' => mails_destiny.spam_destiny, 
+						'virus' => mails_destiny.virus_destiny, 
+						'banned' => mails_destiny.banned_destiny};
+
+		FOREACH cat IN ['spam', 'virus', 'banned'];
+				handling_list = [];
+				FOREACH dest IN ['2', '1', '0'];
+					handling_list.push({ 	value => dest, 
+											selected => (fields.$cat == dest ? 'selected="selected"' : ''), 
+											label => Catalyst.localize(destinies.$dest) });
+				END;
+				INCLUDE 'site/elements/select'
+					name = "destiny_$cat",
+					option_list = handling_list;
+		END; 
+		INCLUDE 'site/elements/input' type = 'button';
+	%]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

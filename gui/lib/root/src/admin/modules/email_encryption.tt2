@@ -1,0 +1,4 @@
+<div id="modules_email_encryption_control">
+    [% INCLUDE admin/modules/email_encryption/control.inc.tt2 %]
+</div>
+

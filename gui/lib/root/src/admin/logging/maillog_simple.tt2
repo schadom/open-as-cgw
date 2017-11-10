@@ -1,0 +1,7 @@
+<div id="logging_maillog_simple_search">
+    [% INCLUDE admin/logging/maillog_simple/search.inc.tt2 %]
+</div>
+<div id="logging_maillog_simple_list">
+    [% INCLUDE admin/logging/maillog_simple/list.inc.tt2 %]
+</div>
+

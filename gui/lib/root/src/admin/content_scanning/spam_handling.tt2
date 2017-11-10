@@ -1,0 +1,4 @@
+<div id="content_scanning_spam_handling_matrix">
+    [% INCLUDE admin/content_scanning/spam_handling/matrix.inc.tt2 %]
+</div>
+

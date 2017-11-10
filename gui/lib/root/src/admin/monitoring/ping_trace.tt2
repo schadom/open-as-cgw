@@ -1,0 +1,7 @@
+<div id="monitoring_ping_trace_ping">
+	[% INCLUDE admin/monitoring/ping_trace/ping.inc.tt2 %]
+</div>
+<div id="monitoring_ping_trace_trace">
+	[% INCLUDE admin/monitoring/ping_trace/trace.inc.tt2 %]
+</div>
+

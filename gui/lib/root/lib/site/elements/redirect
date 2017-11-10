@@ -1,0 +1,6 @@
+[% IF redirect_url -%]
+<span id="redirect_url" style="display:none">[%- redirect_url -%]</span>
+[% END -%]
+[% IF redirect_timeout -%]
+<span id="redirect_timeout" style="display:none">[%- redirect_timeout -%]</span>
+[% END -%]

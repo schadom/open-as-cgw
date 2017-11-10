@@ -1,0 +1,5 @@
+					[% UNLESS id; id = box_name; END -%]
+					[% heading = box_path _ "_heading" -%]
+					<div class="widget" id="[% id %]">
+						<h4><a class="toggle_up" href="#" onclick="toggle_widget('widget_[% id %]', this)">[% Catalyst.localize('toggle_widget') %]</a>[% Catalyst.localize(heading) %]</h4>
+						<div id="widget_[% id %]">

@@ -1,0 +1,46 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% IF smtpsrvs.size > 0;
+	table_headers = [];
+	table_headers.push(Catalyst.localize(box_path _ '_desc'));
+	table_headers.push(Catalyst.localize(box_path _ '_addr'));
+	table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', 'action');
+	table_td_classes = [];
+	table_td_classes.push('left', '', 'action');
+
+	table_values = [];
+	FOREACH smtpsrv IN smtpsrvs; -%]
+		[% link_del = BLOCK %]
+			[% INCLUDE 'site/elements/link'
+				url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/delete/' _ smtpsrv.key),
+				update = 'content',
+				infobar = box_path _ '_infobar',
+				label = Catalyst.localize(box_path _ '_delete'),
+			-%]
+		[% END %]
+		[% link_edit = BLOCK %]
+			[% INCLUDE 'site/elements/link'
+				url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/add_update/' _ smtpsrv.key),
+				update = 'content',
+				infobar = box_path _ '_infobar',
+				label = Catalyst.localize(box_path _ '_edit'),
+			-%]
+		[% END %]
+		[%
+		links = '<span>' _ link_del _ '</span><span>' _ link_edit _ '</span>';
+		table_values.push([ smtpsrv.value.descr, smtpsrv.value.addr, links ]);
+	END;
+
+	INCLUDE 'site/elements/table'
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		td_values = table_values;
+
+ELSE %]
+	<p class="no_entries">[% Catalyst.localize(box_path _ '_noentries') %]</p>
+[% END %]
+[% INCLUDE 'site/box_close' %]

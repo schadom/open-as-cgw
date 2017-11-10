@@ -1,0 +1,9 @@
+<div id="help_appliance_logging">
+    <h3>[% Catalyst.localize('logging_maillog_simple_search_heading') %]</h3>
+	<p>[% Catalyst.localize('help_logging_maillog_simple_search') %]</p>
+
+	<!--
+	<h3>[% Catalyst.localize('logging_maillog_simple_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_logging_maillog_simple_list') %]</p>
+	-->
+</div>

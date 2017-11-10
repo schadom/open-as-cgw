@@ -1,0 +1,10 @@
+<div id="help_appliance_dashboard">
+    <h3>[% Catalyst.localize('dashboard_dashboard_appliance_status_heading') %]</h3>
+	<p>[% Catalyst.localize('help_dashboard_dashboard_appliance_status') %]</p>
+	
+	<h3>[% Catalyst.localize('dashboard_dashboard_service_status_heading') %]</h3>
+	<p>[% Catalyst.localize('help_dashboard_dashboard_service_status') %]</p>
+	
+	<h3>[% Catalyst.localize('dashboard_dashboard_mailtraffic_stats_heading') %]</h3>
+	<p>[% Catalyst.localize('help_dashboard_dashboard_mailtraffic_stats') %]</p>
+</div>

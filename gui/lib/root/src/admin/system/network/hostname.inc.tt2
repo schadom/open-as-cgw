@@ -1,0 +1,10 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/network/configure_hostname') %]
+        <fieldset>
+            [%  INCLUDE 'site/elements/input' name='hostname', value=system.hostname, required='required' %]
+            [%  INCLUDE 'site/elements/input' name='domainname', value=system.domainname, required='required' %]
+            [% INCLUDE 'site/elements/input' type = 'button'%]
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

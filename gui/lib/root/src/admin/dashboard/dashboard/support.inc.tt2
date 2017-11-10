@@ -1,0 +1,4 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/widget_open' %]
+	<p>[% Catalyst.localize(box_path _ '_text') %]</p>
+[% INCLUDE 'site/widget_close' %]

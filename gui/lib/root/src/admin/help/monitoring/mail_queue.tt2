@@ -1,0 +1,7 @@
+<div id="help_appliance_monitoring">
+    <h3>[% Catalyst.localize('monitoring_mail_queue_stats_heading') %]</h3>
+	<p>[% Catalyst.localize('help_monitoring_mail_queue_stats') %]</p>
+
+    <h3>[% Catalyst.localize('monitoring_mail_queue_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_monitoring_mail_queue_list') %]</p>
+</div>

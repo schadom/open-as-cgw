@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Encrypted email deliverance notification</title>
+	</head>
+	<body>
+		<h3>You have sent an encrypted e-mail</h3>
+		<br/>
+		<br/>
+		You have recently sent an encrypted e-mail [% mail_rcpt %]. The password for the encrypted archive is<br/>
+		<h4>[% mail_password %]</h4><br/>
+		You may contact [% mail_rcpt %] to tell him/her this password in order to open the file.
+	</body>
+</html>

@@ -1,0 +1,38 @@
+[%  PROCESS 'site/box_init';
+
+    # URL and variable definitions for this box
+-%]
+
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form'
+        url=Catalyst.uri_for('/admin/system/time_settings/ntp'),
+        -%]
+        <fieldset>
+            [%  INCLUDE 'site/elements/input'
+                name = 'addserver',
+                -%]
+        </fieldset>
+        <fieldset>
+            [% FOREACH server = system.time_servers %]
+            [%  tmp = 'server' _ loop.count;
+                label = Catalyst.localize('system_time_settings_ntp_server') _ loop.count; 
+                IF system.time_servers.size > 1;
+                    label = label _ '  <a href="#' _  tmp _ '" onclick="document.getElementById(\'' _ tmp _ '\').value=\'\';document.getElementById(\'ntp_submit\').click();return false;"><span class="invisible">(' _ Catalyst.localize('delete') _ ')</span></a>';
+                END;
+            %]
+                [%  INCLUDE 'site/elements/input'
+                    label = label, 
+                    name = tmp,
+                    value = server,
+                    -%]
+            [% END %]
+        </fieldset>
+        <fieldset>
+           [% INCLUDE 'site/elements/input'
+                type = 'button',
+                id = 'ntp_submit',
+                -%]
+        </fieldset>
+    </form>
+
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,16 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+	<p class="info">[% Catalyst.localize(box_path _ '_text') %]</p>
+		[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/system/remote_assistance/configure_snmp') %]
+		<fieldset>
+			[% INCLUDE 'site/elements/input' name = 'status', type = 'checkbox', value = 'yes', checked = snmp_status ? 'checked="checked"' : '' %]
+		</fieldset>
+		<fieldset>
+			[% INCLUDE 'site/elements/input', name = 'community', value = snmp_community ? snmp_community : '', required = 'required' %]
+			[% INCLUDE 'site/elements/input', name = 'contact', value = snmp_contact ? snmp_contact : '', required = 'required' %]
+			[% INCLUDE 'site/elements/input', name = 'network', value = snmp_network ? snmp_network : '', required = 'required'%]
+			[% INCLUDE 'site/elements/input', name = 'location', value = snmp_location ? snmp_location : '', required = 'required' %]
+			[% INCLUDE 'site/elements/input' type = 'button' %]
+		</fieldset>
+	</form>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,8 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' -%]
+	[% INCLUDE 'site/elements/amchart'
+		id = 'entire_traffic',
+		type = 'amline',
+		controls = 'enabled'
+	-%]
+[% INCLUDE 'site/box_close' %]

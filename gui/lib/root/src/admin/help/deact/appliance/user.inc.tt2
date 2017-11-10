@@ -1,0 +1,10 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('heading_appliance_user_change_password') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_user_change_password') %]</p>
+	<br/>
+    <h3>[% Catalyst.localize('heading_appliance_user_change_password_ssh') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_user_change_password_ssh') %]</p>
+
+</div>

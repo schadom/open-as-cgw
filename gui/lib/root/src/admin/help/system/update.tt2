@@ -1,0 +1,13 @@
+<div id="help_appliance_system">
+ 	<h3>[% Catalyst.localize('system_update_settings_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_update_settings') %]
+
+	<h3>[% Catalyst.localize('system_update_versions_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_update_versions') %]</p>
+
+	<h3>[% Catalyst.localize('system_update_upgrade_info_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_update_upgrade_info') %]</p>
+
+	<h3>[% Catalyst.localize('system_update_upgrade_table_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_update_upgrade_table') %]</p>
+</div>

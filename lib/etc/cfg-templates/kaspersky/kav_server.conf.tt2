@@ -1,0 +1,64 @@
+[path]
+BasesPath = /var/lib/kav/bases
+LicensePath = /var/lib/kav/licenses
+
+[locale]
+DateFormat = %d-%m-%Y
+TimeFormat = %H:%M:%S
+
+[aveserver.resource]
+TempDisk_MinFree = 2 Mb
+MemoryFiles_Max = -1
+ScanMemory_Max = 0
+
+[aveserver.path]
+PidPath = /var/run/aveserver.pid
+TempPath = /tmp
+ScanExcludePath =
+ScanIncludePath =
+
+[aveserver.local]
+MaxClients = -1
+Path = /var/run/aveserver
+Permissions = 0666
+MaxClientTimeout = 0
+Protocol = aveserver/4.0
+BaseSet = standard
+
+[aveserver.options]
+DetachFromTerminal = true
+StartMode = normal
+WatchdogTimer = 7
+ArchiveRecursionLevel = [% archive_recursion == 0 ? '-1' : archive_recursion %]
+LoadBaseSet = standard
+
+[aveserver.report]
+Append = false
+ReportFileName = /var/log/aveserver.log
+ScanReportFormat = 0
+ReportLevel = 10
+
+[scanner.display]
+ShowContainerResultOnly=false
+ShowProgress=false
+ShowOk=false
+ShowObjectResultOnly=false
+
+[scanner.options]
+SelfExtArchives=yes
+MailBases=yes
+Archives=yes
+Packed=yes
+LocalFS=false
+Cure=no
+MailPlain=yes
+Heuristic=yes
+Recursion=false
+
+[scanner.report]
+Append=true
+ShowContainerResultOnly=false
+ShowOk=false
+ReportLevel=3
+ShowObjectResultOnly=false
+ReportFileName=/tmp/kavscanner.log

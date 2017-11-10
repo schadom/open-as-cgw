@@ -1,0 +1,6 @@
+# check host locutus.underground8.com with address locutus.underground8.com
+#    if failed icmp type echo count 3 with timeout 3 seconds then alert
+#    if failed host locutus.underground8.com port 981 type tcpssl protocol http
+#       and request "/sysmon_check.txt"
+#       then restart
+

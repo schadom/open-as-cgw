@@ -1,0 +1,11 @@
+<div id="envelope_scanning_bwlist_manager_control">
+	[% INCLUDE admin/envelope_scanning/bwlist_manager/control.inc.tt2 %]
+</div>
+<div id="envelope_scanning_bwlist_manager_whitelist">
+	[% INCLUDE admin/envelope_scanning/bwlist_manager/whitelist.inc.tt2 %]
+</div>
+<div id="envelope_scanning_bwlist_manager_blacklist">
+	[% INCLUDE admin/envelope_scanning/bwlist_manager/blacklist.inc.tt2 %]
+</div>
+
+

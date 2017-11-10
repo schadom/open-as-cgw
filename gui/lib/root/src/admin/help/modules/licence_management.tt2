@@ -1,0 +1,10 @@
+<div id="help_appliance_modules">
+    <h3>[% Catalyst.localize('modules_licence_management_info_heading') %]</h3>
+	<p>[% Catalyst.localize('help_modules_licence_management_info') %]</p>
+
+	<h3>[% Catalyst.localize('modules_licence_management_update_heading') %]</h3>
+	<p>[% Catalyst.localize('help_modules_licence_management_update') %]</p>
+
+	<h3>[% Catalyst.localize('modules_licence_management_upload_heading') %]</h3>
+	<p>[% Catalyst.localize('help_modules_licence_management_upload') %]</p>
+</div>

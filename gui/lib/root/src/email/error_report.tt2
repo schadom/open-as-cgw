@@ -1,0 +1,21 @@
+*** ERROR REPORT FROM LIMES AS ***
+
+* Sender Information
+  
+  Name: [% admin_name %]
+  Email: [% email_address %]
+  Phone Number: [% phone_number %]
+  Wants contact: [% want_contact ? 'yes' : 'no' %]
+
+  [% IF comment %]
+* The user has written the following comment:
+  ---
+  [% comment %]
+  ---
+  [% END %]
+
+* Dumper Output of the Exception thrown:
+  ---
+  [% USE Dumper %]
+  [% Dumper.dump(exception) %]
+  ---

@@ -1,0 +1,37 @@
+			<h3>[% Catalyst.localize('error_occured_report_directly') %]</h3>
+			
+	        [% Catalyst.prototype.form_with_indicator({ 
+	                update => 'form_data', 
+	                url => Catalyst.uri_for('/error/commit_error_report'),
+	                indicator => 'send_error_report_submit' 
+	                infobar => 'send_error_report_infobar' }) %]
+
+	        <div id="send_error_report_form">
+	            <div class="element left">
+	                <label for="admin_name">[% Catalyst.localize('notification_settings_username') %]</label>
+	                <input id="admin_name" name="admin_name" type="text" value="" />
+	            </div>
+				<div class="element">
+	                <label for="phone_nr">[% Catalyst.localize('phone') %]</label>
+	                <input id="phone_nr" name="phone_nr" type="text" value="" />
+	            </div>
+	            <div class="element left">
+	                <label for="email_address">[% Catalyst.localize('email') %]</label>
+	                <input id="email_address" name="email_address" type="text" value="" />
+	            </div>
+				<div class="element textarea">
+	                <label for="comment">[% Catalyst.localize('problem_description') %]</label>
+	                <textarea id="comment" name="comment" size="50" rows="6"></textarea>
+	            </div>
+	            <div class="element checkbox">
+	                <label for="want_contact">[% Catalyst.localize('want_contact') %]</label>
+	                <input id="want_contact" class="checkbox" name="want_contact" type="checkbox"/>
+	            </div>
+	            <div id="send_error_report_submit" class="element button">
+	                <input id="submit" class="save" type="submit" value="[% Catalyst.localize('submit') %]"/>
+	                <input id="reset" type="reset" value="[% Catalyst.localize('reset') %]"/>
+	            </div>
+				[% PROCESS site/infoBar
+				name = 'send_error_report' %]
+	        </div>
+	        </form>

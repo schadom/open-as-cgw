@@ -1,0 +1,12 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/system/user/change_password') %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input' name = 'username', value = 'admin' %]
+		[% INCLUDE 'site/elements/input' name = 'pw_current', type = 'password' %]
+		[% INCLUDE 'site/elements/input' name = 'pw_new', type = 'password' %]
+		[% INCLUDE 'site/elements/input' name = 'pw_new_verify', type = 'password' %]
+		[% INCLUDE 'site/elements/input' type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

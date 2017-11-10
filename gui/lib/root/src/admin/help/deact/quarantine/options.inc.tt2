@@ -1,0 +1,12 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('quarantine_status') %]</h3>
+    <p>[% Catalyst.localize('help_quarantine_status') %]</p>
+    
+    <h3>[% Catalyst.localize('options_mails_destiny_usage') %]</h3>
+    <p>[% Catalyst.localize('help_options_mails_destiny') %]</p>
+
+    <h3>[% Catalyst.localize('options_admin_mailboxes_usage') %]</h3>
+    <p>[% Catalyst.localize('help_options_admin_mailboxes') %]</p>
+</div>

@@ -1,0 +1,18 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% INCLUDE 'site/elements/form',
+	url = Catalyst.uri_for('/admin/quarantine/general_settings/change_language'), -%]
+	<fieldset>
+		[%	language_list = [];
+			language_list.push({ value=>'en', label=>Catalyst.localize(box_path _ '_english'), selected => (settings.language == "en" ? 'selected="selected"' : '') });
+			language_list.push({ value=>'de', label=>Catalyst.localize(box_path _ '_german'), selected => (settings.language == "de" ? 'selected="selected"' : '') });
+		%]
+		[% INCLUDE 'site/elements/select',
+			name = 'language',
+			option_list = language_list, %]
+		[% INCLUDE 'site/elements/input' type = 'button', %]
+	</fieldset>
+</form>
+
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,13 @@
+<div id="help_appliance_quarantine">
+   	<h3>[% Catalyst.localize('quarantine_general_settings_timing_options_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_general_settings_timing_options') %]
+
+	<h3>[% Catalyst.localize('quarantine_general_settings_activation_request_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_general_settings_activation_request') %]</p>
+
+	<h3>[% Catalyst.localize('quarantine_general_settings_spam_report_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_general_settings_spam_report') %]</p>
+
+	<h3>[% Catalyst.localize('quarantine_general_settings_language_options_heading') %]</h3>
+	<p>[% Catalyst.localize('help_quarantine_general_settings_language_options') %]</p>
+</div>

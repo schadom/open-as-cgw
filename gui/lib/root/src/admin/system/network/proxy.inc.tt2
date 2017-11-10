@@ -1,0 +1,16 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+	[% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/network/configure_proxy') name='proxy_form' %]
+		<p class="info">[% Catalyst.localize(box_path _ '_text') %]</p>
+		<fieldset>
+			[%  INCLUDE 'site/elements/input' name='proxy_enabled', type='checkbox', value='enabled', checked=system.proxy_enabled==1 ? 'checked="checked"' : '' %]
+		</fieldset>
+		<fieldset>
+			[%  INCLUDE 'site/elements/input' name='proxy_server', value=system.proxy_server, required='required' %]
+			[%  INCLUDE 'site/elements/input' name='proxy_port', class='number', value=system.proxy_port, required='required' %]
+			[%  INCLUDE 'site/elements/input' name='proxy_username', value=system.proxy_username %]
+			[%  INCLUDE 'site/elements/input' name='proxy_password', value=system.proxy_password, type='password' %]
+			[% INCLUDE 'site/elements/input' type = 'button' %]
+		</fieldset>
+	</form>
+[% INCLUDE 'site/box_close' %]

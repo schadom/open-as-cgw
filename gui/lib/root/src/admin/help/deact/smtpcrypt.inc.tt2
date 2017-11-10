@@ -1,0 +1,6 @@
+<div id="help_smtpcrypt">
+    
+
+    <h3>[% Catalyst.localize('nav_smtpcrypt') %]</h3>
+    <p>[% Catalyst.localize('help_smtpcrypt') %]</p>
+</div>

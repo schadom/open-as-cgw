@@ -1,0 +1,9 @@
+<div id="system_backup_manager_create">
+    [% INCLUDE admin/system/backup_manager/create.inc.tt2 %]
+</div>
+<div id="system_backup_manager_list">
+    [% INCLUDE admin/system/backup_manager/list.inc.tt2 %]
+</div>
+<div id="system_backup_manager_upload">
+    [% INCLUDE admin/system/backup_manager/upload.inc.tt2 %]
+</div>

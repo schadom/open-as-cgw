@@ -1,0 +1,7 @@
+<div id="monitoring_mail_queue_stats">
+	[% INCLUDE admin/monitoring/mail_queue/stats.inc.tt2 %]
+</div>
+<div id="monitoring_mail_queue_list">
+	[% INCLUDE admin/monitoring/mail_queue/list.inc.tt2 %]
+</div>
+

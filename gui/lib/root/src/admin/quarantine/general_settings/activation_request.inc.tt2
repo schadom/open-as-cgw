@@ -1,0 +1,42 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_automation') %]</strong>
+	[%	INCLUDE 'site/elements/enable',
+		status = (activation_request_enabled == 1) ? 'enabled' : 'disabled',
+		url = Catalyst.uri_for('/admin/quarantine/general_settings/toggle_notification_state/activation_request/') _ (activation_request_enabled ? "0" : "1"),
+	%]
+	</li>
+</ul>
+
+[% IF activation_request_enabled == 1 %]
+[% INCLUDE 'site/elements/form', url = Catalyst.uri_for('/admin/quarantine/general_settings/change_intervals/activation_request'), -%]
+	<fieldset>
+	[%		timeofday_list = [];
+			FOREACH hour IN [0..23];
+				timeofday_list.push({ value=>hour, label=>"$hour:00", selected=> (hour==activation_request_hours ? 'selected="selected"' : '') });
+			END;
+
+			weekdays_list = [];
+			count = 0;
+			# weekdays_list.push({ value=>'all', label=>Catalyst.localize('quarantine_general_settings_day_daily') });
+			FOREACH day IN ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+				weekdays_list.push({ value=>count, label=>Catalyst.localize('quarantine_general_settings_day_' _ day), checked => (activation_request_days == count || activation_request_days.match(count) ? 'checked="checked"' : '') });
+				count = count + 1;
+			END;
+		%]
+
+		[% INCLUDE 'site/elements/select',
+			name = 'day_hours',
+			option_list = timeofday_list, %]
+		[% INCLUDE 'site/elements/multiple_select',
+			name = 'week_days',
+			option_list = weekdays_list, %]
+	</fieldset>
+	<fieldset >
+		[% INCLUDE 'site/elements/input' type = 'button' %]
+	</fieldset>
+</form>
+[% END %]
+[% INCLUDE 'site/box_close' %]

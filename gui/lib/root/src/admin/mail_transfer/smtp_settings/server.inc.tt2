@@ -1,0 +1,39 @@
+[%  PROCESS 'site/box_init';
+
+	# URL and variable definitions for this box
+-%]
+
+[% INCLUDE 'site/box_open' %]
+	[% INCLUDE 'site/elements/form'
+		url=Catalyst.uri_for('/admin/mail_transfer/smtp_settings/server'),
+		-%]
+		<fieldset>
+			[%  INCLUDE 'site/elements/input'
+				name='smtpd_banner',
+				value=antispam.smtpd_banner,
+				required='required',
+				-%]
+			[%  INCLUDE 'site/elements/input'
+				name='max_connections',
+				class='number',
+				value=antispam.get_max_incoming_connections,
+				required='required',
+				-%]
+			[%  INCLUDE 'site/elements/input'
+				name='smtpd_timeout',
+				class='number',
+				value=antispam.get_smtpd_timeout,
+				required='required',
+				-%]
+			[%  INCLUDE 'site/elements/input'
+				name='smtpd_queuetime',
+				class='number',
+				value=antispam.get_smtpd_queuetime,
+				required='required',
+				-%]
+			[% INCLUDE 'site/elements/input'
+				type = 'button'
+				-%]
+		</fieldset>
+	</form>
+[% INCLUDE 'site/box_close' %]

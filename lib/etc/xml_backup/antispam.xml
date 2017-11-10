@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.008008 [linux]" ?>
+<root>
+  <postfix _ip_range_whitelist="">
+    <_config broken_sasl_auth_clients="yes" change_range="0" ip_range_whitelist="" mydestination="antispam.localdomain, localhost.localdomain, localhost" myhostname="antispam.localdomain" smtpd_banner="OPEN AS ANTISPAM PROXY" smtpd_client_connection_rate_limit="200" smtpd_client_restrictions="check_client_access hash:/etc/postfix/amavis_bypass" smtpd_helo_required="yes" smtpd_sasl_auth_enable="no" smtpd_sasl_authenticated_header="yes" smtpd_sasl_path="smtpd" smtpd_sasl_security_options="noanonymous" smtpd_timeout="60" strict_rfc821_envelopes="no">
+      <relay_domains/>
+      <smtpd_recipient_restrictions>check_client_access hash:/etc/postfix/amavis_bypass_internal</smtpd_recipient_restrictions>
+      <smtpd_recipient_restrictions>permit_sasl_authenticated</smtpd_recipient_restrictions>
+      <smtpd_recipient_restrictions>permit_mynetworks</smtpd_recipient_restrictions>
+      <smtpd_recipient_restrictions>reject_unauth_destination</smtpd_recipient_restrictions>
+      <smtpd_recipient_restrictions>reject_non_fqdn_recipient</smtpd_recipient_restrictions>
+      <smtpd_recipient_restrictions>check_policy_service inet:127.0.0.1:2501</smtpd_recipient_restrictions>
+      <smtpd_recipient_restrictions>permit</smtpd_recipient_restrictions>
+      <smtpd_sender_restrictions>permit_sasl_authenticated</smtpd_sender_restrictions>
+      <smtpd_sender_restrictions>check_sender_access hash:/etc/postfix/amavis_senderbypass</smtpd_sender_restrictions>
+      <smtpd_sender_restrictions>permit_mynetworks</smtpd_sender_restrictions>
+      <smtpd_sender_restrictions>reject_non_fqdn_sender</smtpd_sender_restrictions>
+      <smtpd_sender_restrictions>permit</smtpd_sender_restrictions>
+    </_config>
+    <_domains>
+      <relay_domains/>
+      <relay_smtp/>
+    </_domains>
+    <_options rbl_checks="0" sender_domain_verify="1" sender_fqdn_required="1"/>
+  </postfix>
+  <sqlgrey _addr_blacklist="" _addr_whitelist="" _ip_blacklist="" _ip_whitelist="" _mysql_database="sqlgrey" _mysql_host="localhost" _mysql_password="loltruck2000" _mysql_username="sqlgrey-user">
+    <_config addr_blacklisting="0" addr_whitelisting="0" greylisting="1" selective_greylisting="0" greylisting_message="You have been greylisted. Come back in 5min." greylisting_triplettime="5" greylisting_connectage="24" greylisting_authtime="30" greylisting_domainlevel="2" ip_blacklisting="0" ip_whitelisting="0"/>
+  </sqlgrey>
+  <amavis _archive_maxfiles="1000" _archive_recursion="12" _banned_attachments="" _block_score="50" _clamav_enabled="1" _info_score="0" _kav_enabled="1" _notification_admin="" _quarantine_admin="" _spam_admin="" _spam_score="5" _spam_subject_tag="** SPAM ** " _unchecked_subject_tag="** UNCHECKED **" _use_anti_virus="1" _warn_recipient_banned_file="0" _warn_recipient_virus="0">
+    <_policy>
+      <external bypass_att="0" bypass_spam="0" bypass_virus="0"/>
+      <internal bypass_att="0" bypass_spam="1" bypass_virus="0"/>
+      <smtpauth bypass_att="0" bypass_spam="1" bypass_virus="0"/>
+      <whitelist bypass_att="0" bypass_spam="1" bypass_virus="0"/>
+    </_policy>
+  </amavis>
+  <spamassassin>
+    <gtube spam_test_string="XJS*C4JDBQADN1.NSBN3*2IINEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X"/>
+  </spamassassin>
+    <_banned_attachments_groups>
+      <_banned_attachments_group banned="exe,com,bat" description="Windows executables-common"/>
+      <_banned_attachments_group banned="exe,com,bat,cmd,pif,scr,vbs,cpl,dll" description="Windows executables-full"/>
+      <_banned_attachments_group banned="gz,bz2,tar,tgz,tbz,tbz2,rpm,deb,cpio,Z" description="Unix archives"/>
+      <_banned_attachments_group banned="zip,rar,arc,arj,zoo,lha,cab" description="Windows archives"/>
+      <_banned_attachments_group banned="mim,b64,bhx,hqx,xxe,uu,uue" description="Winzip vulnerable"/>
+    </_banned_attachments_groups>
+</root>
+

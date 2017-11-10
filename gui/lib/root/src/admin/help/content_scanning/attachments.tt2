@@ -1,0 +1,16 @@
+<div id="help_appliance_content_scanning">
+ 	<h3>[% Catalyst.localize('content_scanning_attachments_warnings_heading') %]</h3>
+	<p>[% Catalyst.localize('help_content_scanning_attachments_warnings') %]</p>
+
+	<h3>[% Catalyst.localize('content_scanning_attachments_block_file_extensions_heading') %]</h3>
+	<p>[% Catalyst.localize('help_content_scanning_attachments_block_file_extensions') %]</p>
+
+	<h3>[% Catalyst.localize('content_scanning_attachments_block_mime_types_heading') %]</h3>
+	<p>[% Catalyst.localize('help_content_scanning_attachments_block_mime_types') %]</p>
+
+	<h3>[% Catalyst.localize('content_scanning_attachments_group_heading') %]</h3>
+	<p>[% Catalyst.localize('help_content_scanning_attachments_group') %]</p>
+
+	<h3>[% Catalyst.localize('content_scanning_attachments_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_content_scanning_attachments_list') %]</p>
+</div>

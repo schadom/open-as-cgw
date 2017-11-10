@@ -1,0 +1,8 @@
+ check process postfwd with pidfile /var/tmp/postfwd-master.pid
+   group postfw
+   start program = "/etc/init.d/postfwd restart"
+   stop  program = "/usr/bin/killall -9 postfwd"
+   if failed port 10040 within 2 cycles then start
+   if 99 restarts within 99 cycles then timeout
+
+

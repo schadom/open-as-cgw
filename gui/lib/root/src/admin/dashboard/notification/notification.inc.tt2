@@ -1,0 +1,8 @@
+[% INCLUDE site/notification
+    class = class,
+    update = 'no',
+    heading = Catalyst.localize(heading), 
+    text = Catalyst.localize(text), 
+    link_text = Catalyst.localize(link_text), 
+    link_url = Catalyst.uri_for(link_url),
+ %]

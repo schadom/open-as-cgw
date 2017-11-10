@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title>Encryption failure notification</title>
+	</head>
+	<body>
+		<h3>Sorry, something has gone wrong</h3>
+		You have ordered to send an encrypted e-mail to [% mail_rcpt %]. However, something went wrong during the encryption process - this could possibly be a bug in the AS Communication Gateway, we're terribly sorry for inconvenience.
+	</body>
+</html>

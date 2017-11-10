@@ -1,0 +1,36 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/quarantine/general_settings/change_settings') %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input',
+			name = 'max_confirm_retries',
+			class = 'number',
+			value = settings.max_confirm_retries,
+			required = 'required', %]
+		[% INCLUDE 'site/elements/input',
+			name = 'max_confirm_interval',
+			class = 'number',
+			value = settings.max_confirm_interval,
+			required = 'required', %]
+		[% INCLUDE 'site/elements/input',
+			name = 'global_item_lifetime',
+			class = 'number',
+			value = settings.global_item_lifetime,
+			required = 'required', %]
+		[% INCLUDE 'site/elements/input',
+			name = 'user_item_lifetime',
+			class = 'number',
+			value = settings.user_item_lifetime,
+			required = 'required', %]
+		[% INCLUDE 'site/elements/input',
+			name = 'sender_name',
+			value = settings.sender_name,
+			required = 'required', %]
+		[% INCLUDE 'site/elements/input',
+			name = 'sizelimit_address',
+			value = settings.sizelimit_address,
+			required = 'required', %]
+		[% INCLUDE 'site/elements/input' type = 'button', %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

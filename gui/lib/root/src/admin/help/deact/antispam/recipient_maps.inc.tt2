@@ -1,0 +1,17 @@
+<div id="help_appliance_antispam">
+    
+    
+
+    <h3>[% Catalyst.localize('heading_antispam_recipients_maps_ldap_update') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_recipients_maps_ldap_update') %]</p>
+    
+    <h3>[% Catalyst.localize('heading_antispam_recipients_multiadd_recipients') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_recipients_multiadd_recipients') %]</p>
+    
+    <h3>[% Catalyst.localize('heading_antispam_recipients_addrecipient') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_recipients_addrecipient') %]</p>
+    
+    <h3>[% Catalyst.localize('heading_show_selected_recipients') %]</h3>
+    <p>[% Catalyst.localize('help_show_selected_recipients') %]</p>
+    
+</div>

@@ -1,0 +1,10 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+    <p class="info">[% Catalyst.localize(box_path _ '_text') -%]</p>
+    [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/remote_assistance/configure_sshd') %]
+        <fieldset>
+            [% INCLUDE 'site/elements/input' name='ssh', type='checkbox', value='yes', checked=system.get_additional_ssh_port() > 0 ? 'checked="checked"' : '' %]
+            [% INCLUDE 'site/elements/input' type = 'button' %]
+         </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,2 @@
+			<h3>[% Catalyst.localize('error_report_sent') %]</h3>
+			<p>[% Catalyst.localize('error_report_thankyou_text') %]</p>

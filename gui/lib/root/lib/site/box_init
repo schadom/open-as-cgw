@@ -1,0 +1,4 @@
+[% matches = component.caller.match('^admin/(.+)/(.+)/(.+)\.inc\.tt2$');
+    box_name = matches.2;
+    box_path = matches.0 _ '_' _ matches.1 _ '_' _ matches.2;
+-%]

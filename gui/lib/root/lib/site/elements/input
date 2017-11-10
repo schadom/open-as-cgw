@@ -1,0 +1,21 @@
+                [% UNLESS type == "button" -%]
+					[% UNLESS id; id = name; END; -%]
+                    [% UNLESS type; type = 'text'; END; -%]
+                    [% UNLESS class; class = type; END; -%]
+                    [% UNLESS label; label = box_path _ '_' _ name; END; -%]
+                    [% IF box_status.fields.$name; class_error = ' error'; END; -%]
+                    [% IF required; class_required = ' required'; END; -%]
+					[% IF checked; checked_attr = ' checked="checked"'; END; -%]
+					<div class="element [% class %][% class_required %][% class_error %]">
+						[% UNLESS class == "nolabel" %]<label for="[% id %]">[% Catalyst.localize(label) %]</label>[% END %]
+						<input id="[% id %]" name="[% name %]" [% IF class=="nolabel" %] size="4" maxlength="4" [% END %] type="[% type %]" value="[% value %]"[% checked_attr %] /> 
+					</div>
+				[% ELSE -%]
+					[% UNLESS name; name = 'save'; END; -%]
+					[% UNLESS value; value = Catalyst.localize('save'); END; -%]
+					<div class="element button">
+						<div class="button">
+							<input[% IF id %] id="[% id %]"[% END %] name="[% name %]" type="submit" value="[% value %]" />
+						</div>
+					</div>
+				[% END -%]

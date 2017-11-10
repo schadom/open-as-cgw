@@ -1,0 +1,70 @@
+[% IF recipient_state != -1 AND redirected AND mails %]
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% IF recipient_state != -1 AND mails ;
+	table_headers = [];
+	table_headers.push( Catalyst.localize(box_path _ '_type') );
+	table_headers.push( Catalyst.localize(box_path _ '_received') );
+	table_headers.push( Catalyst.localize(box_path _ '_sender') );
+	table_headers.push( Catalyst.localize(box_path _ '_subject') );
+	table_headers.push( Catalyst.localize(box_path _ '_action') );
+
+	table_th_classes = [];
+	table_th_classes.push('left', '', '', '', 'action');
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', '', 'action');
+
+	table_values = [];
+
+	CELL_WIDTH = 25;
+
+	FOREACH mail IN mails;
+		release_type = (mail.released == 1) ? "rerelease" : "release";
+		url_release = BLOCK;
+			INCLUDE 'site/elements/link',
+				url = Catalyst.uri_for("/admin/quarantine/user_box_administration/release/" _ mail.mail_id),
+				update = 'content',
+				label = Catalyst.localize(box_path _ '_' _ release_type);
+		END;
+
+		url_delete = BLOCK;
+			INCLUDE 'site/elements/link',
+				url = Catalyst.uri_for("/admin/quarantine/user_box_administration/delete/" _ mail.mail_id),
+				update = 'content',
+				label = Catalyst.localize(box_path _ '_delete');
+		END;
+
+		action = '<span>' _ url_release _ '</span> | <span>' _ url_delete _ '</span>';
+
+
+		# Escape mail-from & subject, shorten if necessary and create tooltip
+		mail_from = mail.from FILTER html_entity;
+		mail_subject = mail.subject FILTER html_entity;
+
+		IF mail_from.length > (CELL_WIDTH + 3);
+			mail_from = "<span title=\"" _ mail_from _ "\">" _ mail_from.substr(0, CELL_WIDTH) _ '...' _ "</span>";
+		END;
+		IF mail_subject.length > (CELL_WIDTH + 3);
+			mail_subject = "<span title=\"" _ mail_subject _ "\">" _ mail_subject.substr(0, CELL_WIDTH) _ '...' _ "</span>";
+		END;
+
+		# Determine reason for quarantinization
+		SWITCH mail.mail_type;
+			CASE 'S'; mail_type = '<strong>Spam</strong>';
+			CASE 'V'; mail_type = '<strong>Virus</strong>';
+			CASE 'B'; mail_type = '<strong>Banned</strong>';
+			CASE 'C'; mail_type = '<strong>Clear</strong>';
+		END;
+
+		table_values.push([ mail_type, mail.date, mail_from, mail_subject, action ]);
+	END;
+
+
+	INCLUDE site/elements/table,
+		headers = table_headers,
+		th_classes = table_th_classes,
+		td_classes = table_td_classes,
+		td_values = table_values;
+END %]
+[% INCLUDE 'site/box_close' %]
+[% END %]

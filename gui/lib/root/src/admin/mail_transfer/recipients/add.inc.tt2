@@ -1,0 +1,19 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/mail_transfer/recipients/add/') %]
+	[% 	options = [];
+		FOREACH domain IN relay_domains;
+			options.push({ value=> domain.key, label => domain.key });
+		END;
+		modality = [];
+		modality.push({ value => '', label => 'Deny' });
+		modality.push({ value => '1', label => 'Accept' });	%]
+	<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+	<fieldset>
+		[% INCLUDE 'site/elements/input' required = 'required', name = 'user' %]
+		[% INCLUDE 'site/elements/select' name = 'domain', option_list = options %]
+		[% INCLUDE 'site/elements/select'  name = 'accept', option_list = modality %]
+		[% INCLUDE 'site/elements/input' value = 'Add recipient', type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

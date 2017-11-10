@@ -1,0 +1,28 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+<ul class="text_list" id="sortable_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_status') %]</strong>
+		[% INCLUDE 'site/elements/enable' 
+			status = (antispam.postfwd.get_status_rbl == "enabled") ? "enabled" : "disabled",
+			url = Catalyst.uri_for('/admin/envelope_scanning/dnsl_manager/toggle_rbl_checks'),
+			update = 'content',
+		%]
+	</li>
+</ul>
+[% IF antispam.postfwd.get_status_rbl == "enabled" %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_addnew_text') %]</p>
+	[% INCLUDE 'site/elements/form' update = 'content',	url = Catalyst.uri_for('/admin/envelope_scanning/dnsl_manager/enlist') %]
+		<fieldset>
+			[% INCLUDE 'site/elements/input'  name = 'newrbl',	required = 'required' %]
+			[% INCLUDE 'site/elements/input' value = Catalyst.localize(box_path _ "_addnew_btn"), type = 'button' %]
+		</fieldset>
+	</form>
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_blockthreshold_text') %]</p>
+	[% INCLUDE 'site/elements/form', url = Catalyst.uri_for("/admin/envelope_scanning/dnsl_manager/blocking_threshold") %]
+		<fieldset>
+		[% INCLUDE 'site/elements/input' name = 'blockthreshold', value = (antispam.postfwd.rbl_threshold ? antispam.postfwd.rbl_threshold : 2), required = 'required' %]
+		[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_blockthreshold_btn') %]
+		</fieldset>
+	</form>
+[% END %]
+[% INCLUDE 'site/box_close' %]

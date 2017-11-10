@@ -1,0 +1,30 @@
+#
+# =============================================================================
+# This is a template for non-spam (VIRUS,...) ADMINISTRATOR NOTIFICATIONS.
+# For syntax and customization instructions see README.customize.
+# Long header fields will be automatically wrapped by the program.
+#
+Date: %d
+From: AS Communication Gateway <as-cgw@%h>
+Subject: [? [:ccat_maj] |Clean (?) mail|Clean mail|TEMPFAIL-ed mail|\
+OVERSIZED mail|AS Communication Gateway: Blocked illegal headers|spam|SPAM|UNCHECKED contents in mail|\
+AS Communication Gateway: Blocked illegal attachements|AS Communication Gateway: Blocked virus]
+To: [? %#T |undisclosed-recipients: ;|[<%T>|, ]]
+[? %#C |#|Cc: [<%C>|, ]]
+Message-ID: <VA%i@%h>
+
+AS Communication Gateway has blocked a mail:
+From: [?%s|<>|[?%o|(?)|%s]] 
+To: [? %#T |undisclosed-recipients: ;|[<%T>|, ]]
+[? %j |#|[:wrap|78||  |Subject: %j]]
+
+[? %#V |No viruses were found.
+|Virus: %V
+]
+[? %#F |#|[:wrap|78||  |Banned [?%#F|names|name|names]: %F]]
+[? %#X |#|Bad header:[\n[:wrap|78|  |  |%X]]]
+[? %q |The message was not quarantined.|The message has been quarantined.]
+
+-- 
+AS Communication Gateway
+http://www.underground8.com

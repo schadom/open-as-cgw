@@ -1,0 +1,42 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+	[% IF banned_attachments.size > 0; %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+		[% table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_entry'));
+		table_headers.push(Catalyst.localize(box_path _ '_description'));
+		table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+		table_th_classes = [];
+		table_th_classes.push('left', '', 'action');
+		table_td_classes = [];
+		table_td_classes.push('left', '', 'action');
+
+		table_values = [];
+
+		FOREACH entry IN banned_attachments;
+			link_del = BLOCK; %]<span>[%
+				INCLUDE 'site/elements/link'
+					update = 'content',
+					url = Catalyst.uri_for('/admin/content_scanning/attachments/delist/' _ entry.banned),
+					infobar = box_path _ '_infobar',
+					label = Catalyst.localize(box_path _ '_delete');
+				%]</span>[%
+			END;
+
+
+			IF entry.description == "Blocked Content-Type" OR entry.description == "Blocked Filegroup-Type";
+				link_del = "";
+			END;
+			table_values.push([ "<strong>$entry.banned</strong>", entry.description, link_del ]);
+		END;
+
+		INCLUDE 'site/elements/table'
+			headers = table_headers,
+			td_classes = table_td_classes,
+			th_classes = table_th_classes,
+			td_values = table_values;
+	ELSE %]
+		<p class="no_entries">[% Catalyst.localize(box_path _ '_noentries') %]</p>
+	[% END %]
+[% INCLUDE 'site/box_close' %]

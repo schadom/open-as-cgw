@@ -1,0 +1,7 @@
+<div id="help_appliance_envelope_scanning">
+   	<h3>[% Catalyst.localize('envelope_scanning_dnsl_manager_control_heading') %]</h3>
+	<p>[% Catalyst.localize('help_envelope_scanning_dnsl_manager_control') %]</p>
+
+	<h3>[% Catalyst.localize('envelope_scanning_dnsl_manager_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_envelope_scanning_dnsl_manager_list') %]</p>
+</div>

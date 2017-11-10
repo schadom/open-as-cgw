@@ -1,0 +1,4 @@
+<div id="help_appliance_system">
+    <h3>[% Catalyst.localize('logging_syslog_remote_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_syslog_remote') %]</p>
+</div>

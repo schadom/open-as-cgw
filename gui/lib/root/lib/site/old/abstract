@@ -1,0 +1,13 @@
+                <div id="abstract">
+                    <div id="helpButton" class="inactive">
+                       [% Catalyst.prototype.link_with_indicator('',{ 
+                            update => 'helpContent', 
+                            url => url, 
+                            helpbar => 'helpContainer'
+                            before => 'toggle_help_button(1)'} )%]
+                    </div>
+                    [%  title = 'title_' _ site 
+                        abstract = 'abstract_' _ site %]
+                    <h1>[% Catalyst.localize(title) %]</h1>
+                    <p>[% Catalyst.localize(abstract) %]</p>
+                </div>

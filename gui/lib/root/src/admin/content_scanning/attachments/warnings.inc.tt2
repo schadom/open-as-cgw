@@ -1,0 +1,21 @@
+[%  PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+	<ul class="text_list two_column">
+		<li>
+			<strong>[% Catalyst.localize(box_path _ '_virus') %]</strong>
+				[% INCLUDE 'site/elements/enable'
+                    name='warn_recipient_virus'
+					status=(antispam.warn_recipient_virus ? 'enabled' : 'disabled'),
+					url=Catalyst.uri_for("/admin/content_scanning/attachments/toggle_warn_virus"),
+				-%]
+		</li>
+		<li>
+			<strong>[% Catalyst.localize(box_path _ '_banned') %]</strong>
+				[% INCLUDE 'site/elements/enable'
+                    name='warn_recipient_banned_file'
+					status=(antispam.warn_recipient_banned_file ? 'enabled' : 'disabled'),
+					url=Catalyst.uri_for("/admin/content_scanning/attachments/toggle_warn_banned"),
+				-%]
+		</li>
+	</ul>
+[% INCLUDE 'site/box_close' %]

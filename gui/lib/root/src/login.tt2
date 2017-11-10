@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+	<title>[% Catalyst.localize('browser_title') %]</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="author" content="Open AS" />
+	<meta name="copyright" content="Open AS" />
+	<meta name="robots" content="noindex,nofollow">
+        <meta http-equiv="cache-control" content="no-cache"/>
+        <meta http-equiv="content-language" content="[% Catalyst.language %]" />
+        <meta http-equiv="expires" content="0" />
+	<link rel="shortcut icon" href="/static/img/favicon.ico" />
+        <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!--[if lt IE 7]>
+	<link href="/static/css/style_ie.css" rel="stylesheet" type="text/css" media="all" />
+	<![endif]-->
+	<script src="/static/js/openas.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		window.onload = removeAttributes;
+		/* ]]> */
+	</script>
+    </head>
+    <body id="login">
+		<!-- <a id="logo" href="https://openas.org">openas.org</a> -->
+        <div id="horizon">
+            <div id="login_center">
+                [% login_form_url = Catalyst.uri_for('/login') %]
+                <form id="login_form" action="[% login_form_url %]" method="post">
+                    <fieldset>
+                        <label for="username">[% Catalyst.localize('login') %]</label>
+                        <input disabled="disabled" id="username" name="username" value="" />
+                        
+                        <label for="password">[% Catalyst.localize('password') %]</label>
+                        <input disabled="disabled" id="password" name="password" type="password" value="" />
+						
+                        <input disabled="disabled" id="submit" type="submit" value="" />
+					</fieldset>
+                </form>
+                <div id="personalize">
+                    <strong>[% hostname %].[% domainname %]</strong><br />
+                    [% ip_address %]
+                </div>
+				[% IF error_msg %]
+				<p id="login_error">[% Catalyst.localize( error_msg ) %]</p>
+				[% END %]
+            </div> 
+			<div id="copy_note">Open AS Communication Gateway | Licensed under AGPL | <a href="https://openas.org" target="_blank">www.openas.org</a></div>
+            [% PROCESS redirect.inc.tt2 
+               redirect_url = Catalyst.uri_for('/login') %]
+        </div>
+		<noscript>
+		<div id="overlay"></div>
+		<div id="login_horizon">
+			<div id="notification" class="notification_error">
+				<h3>[% Catalyst.localize('no_javascript') %]</h3>
+				<p>[% Catalyst.localize('turn_on_javascript') %]</p>
+			</div>
+		</div>
+		</noscript>
+    </body>
+</html>

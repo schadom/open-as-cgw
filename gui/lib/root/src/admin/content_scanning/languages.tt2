@@ -1,0 +1,4 @@
+<div id="content_scanning_languages_language_filter">
+    [% INCLUDE admin/content_scanning/languages/language_filter.inc.tt2 %]
+</div>
+

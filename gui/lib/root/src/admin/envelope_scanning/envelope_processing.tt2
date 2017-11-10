@@ -1,0 +1,3 @@
+<div id="envelope_scanning_envelope_processing_greylisting">
+	[% INCLUDE admin/envelope_scanning/envelope_processing/greylisting.inc.tt2 %]
+</div>

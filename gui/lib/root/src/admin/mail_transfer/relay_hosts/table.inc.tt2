@@ -1,0 +1,47 @@
+[%  PROCESS 'site/box_init';
+    # URL and variable definitions for this box
+table_headers = [];
+table_headers.push(Catalyst.localize('mail_transfer_relay_hosts_table_header_range')); 
+table_headers.push(Catalyst.localize('mail_transfer_relay_hosts_table_header_description')); 
+table_headers.push("Action");
+table_values = [];
+
+table_size = 0;
+table_th_classes = [];
+table_th_classes.push('left', '', 'action');
+
+table_td_classes = [];
+table_td_classes.push('left', '', 'action');
+
+
+FOREACH entry IN antispam.get_ip_range_whitelist(); -%]
+    [% link_text = BLOCK %]
+        [% INCLUDE 'site/elements/link'
+            url = Catalyst.uri_for('/admin/mail_transfer/relay_hosts/delist/' _ entry.start),
+            update = 'content',
+            infobar = box_path _ '_infobar',
+            label = Catalyst.localize('delete'),
+        -%]
+    [% END %]
+[%
+	link_text = '<span>' _ link_text _ '</span>';
+    table_size = table_size + 1;
+    alt_text = entry.start _ " - " _ entry.end;
+    IF entry.end != '';
+        table_values.push( [ alt_text, entry.description, link_text ] );
+    ELSE;
+        table_values.push( [ entry.start, entry.description, link_text ] );
+    END;
+END;
+-%]
+[% INCLUDE 'site/box_open' %]
+    [% IF table_size > 0; 
+            INCLUDE 'site/elements/table'
+		        headers = table_headers,
+		        td_values = table_values,
+                th_classes = table_th_classes,
+                td_classes = table_td_classes;
+        ELSE; -%]
+    <p class="no_entries">[% Catalyst.localize(box_path _ '_empty'); %]</p>
+    [%- END -%]
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,14 @@
+                        [%# BOX_OPEN - USAGE -%]
+                        [%# include site/box_open with an id attributes - this will automatically set the heading text, the infobar and everything -%]
+						[%  matches = template.name.match('admin/(.+)\.tt2');
+							menu = matches.0;
+							matches = menu.match('(\w+)/(\w+)/?(\w+)?');
+							menu = matches.0 || menu;
+							submenu = matches.1; %]
+						[% id = menu _ '_' _ submenu _ '_' _ box_name -%]
+						[% box_heading = id _ '_heading' -%]
+						[% PROCESS 'site/infoBar'
+							name = id %]
+						[% UNLESS addition_class; add_class = " " _ additional_class; END;%]
+						<div class="box[% add_class %]">
+							<h3>[% Catalyst.localize(box_heading) %]</h3>

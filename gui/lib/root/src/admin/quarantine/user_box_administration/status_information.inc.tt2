@@ -1,0 +1,28 @@
+[% IF recipient_state != -1 AND redirected %]
+[% PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_user') %]</strong>[% re_user %]@[% re_domain %]</li>
+	<li><strong>[% Catalyst.localize(box_path _ '_boxstatus') %]</strong>
+	[% IF recipient_state == 0 %]
+		[% Catalyst.localize(box_path _ '_qunconfirmed') %]
+	[% ELSIF recipient_state == 1 %]
+		[% Catalyst.localize(box_path _ '_qenabled') %]
+	[% ELSIF recipient_state == 2 %]
+		[% Catalyst.localize(box_path _ '_qdisabled') %]
+	[% END %]
+	</li>
+	<li><strong>[% Catalyst.localize(box_path _ '_itemcount') %]</strong>[% q_size %]</li>
+
+	[% IF mails %]
+	<li><strong>[% Catalyst.localize(box_path _ '_empty') %]</strong>
+		[% INCLUDE site/elements/link,
+			update = 'content',
+			url = Catalyst.uri_for('/admin/quarantine/user_box_administration/delete_all/' _ re_user _ '@' _ re_domain),
+			label = Catalyst.localize(box_path _ '_delete'),
+		 %]
+	</li>
+	[% END %]
+</ul>
+[% INCLUDE 'site/box_close' %]
+[% END %]

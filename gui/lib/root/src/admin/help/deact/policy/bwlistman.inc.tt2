@@ -1,0 +1,9 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('title_policy_bwlistman') %]</h3>
+    <p>[% Catalyst.localize('bwlistman_help_general') %]</p>
+
+    <h3>[% Catalyst.localize('bwlistman_add_entry') %]</h3>
+    <p>[% Catalyst.localize('bwlistman_help_add') %]</p>
+</div>

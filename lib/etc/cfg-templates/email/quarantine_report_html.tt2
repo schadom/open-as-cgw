@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+[% %]
+
+<html>
+    <head>
+        <title>[% language_strings.quar_product %] - [% language_strings.report_title %]</title>
+		<style type="text/css">
+			tr.header th{background-color: #CCC; color: #FFF; font-weight: bold;}
+		
+			tr.even td{background-color: #EEE;}
+			tr.warning td{background-color: #FF7F7F; color: #FFF; font-weight: bold; text-align: center; text-transform: uppercase;}
+			tr.unwanted{color: #888;}
+			tr.unwanted_even td{background-color: #F2F2F2; color: #888;}
+			
+			a.release, a.delete, a.release_S, a.release_V, a.release_B{font-weight: bold; text-decoration: underline;}
+			a.release{color: #669900;}
+			a.delete{color: #FF0000;}
+			a.release_S{color: #FF8105;}
+			a.release_V{color: #D64385;}
+			a.release_B{color: #9351B2;}
+		</style>
+    </head>
+    <body bgcolor="#505050" style="margin:0; padding:0;">
+		<table id="layout" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td align="center">
+					<table id="center" bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="850">
+						<tr>
+							<td align="left">
+								<!-- START orange Stripe above -->
+								<table id="border_top" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#ff8500" height="8"></td>
+									</tr>				
+								</table>
+								<!-- END orange Stripe above -->
+								
+								<!-- START Top Content with Headline -->
+								<table id="header" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#EEEEEE" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif;">
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+									<tr>
+										<td width="30"></td>
+										<td width="790" valign="middle">
+											<h1 style="font-size: 16px;">[% language_strings.report_status %] [% date_string %]</h1>
+											<p style="color: #666666; font-size: 13px;">[% language_strings.report_usage | eval %]</p>
+										</td>
+										<td width="30"></td>
+									</tr>									
+									<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer_g.gif" alt="" height="30" width="1"></td></tr>
+								</table>								
+								<!-- END Top Content with Headline -->
+								
+								<!-- START QuarantineManager -->
+								<table id="quarantine_manager" bgcolor="#2e3333" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif;">
+									<tr>
+										<td colspan="9" height="30"><img src="[% img_path %]/img/spacer_dg.gif" alt="" height="30" width="1"></td>
+									</tr>
+									<tr>
+										<td width="30"></td>
+										<td colspan="5">
+											<h2 style="color: #eeeeee; font-family: Lucida Sans Unicode, sans-serif; font-size: 14px; font-weight: bold; margin: 0 0 15px 0;">[% language_strings.report_manager %]</h2>
+										</td>
+										<td width="30"></td>
+									</tr>
+									<tr>
+										<td width="30"></td>
+										<td width="210"><a href="mailto:[% sender_address %]?subject=[% language_strings.report_get_report_message_subject %]&body=[% language_strings.report_get_report_message %]%0A[[GET:[% confirmation_id %]]]"><img src="[% img_path %]/img/[% language_strings.report_img_new_report %]" alt="[% language_strings.report_img_alt_new_report %]" height="64" width="210" style="border: none;"></a></td>
+										<td width="80"></td>
+										<td width="210"><a href="mailto:[% sender_address %]?subject=[% language_strings.report_activate_message_subject %]&body=[% language_strings.report_activate_message %]%0A[[ACT:[% confirmation_id %]]]"><img src="[% img_path %]/img/[% language_strings.report_img_enable %]" alt="[% language_strings.report_img_alt_enable %]" height="64" width="210" style="border: none;"></a></td>
+										<td width="80"></td>
+										<td width="210"><a href="mailto:[% sender_address %]?subject=[% language_strings.report_deactivate_message_subject %]&body=[% language_strings.report_deactivate_message %]%0A[[DEA:[% confirmation_id %]]]"><img src="[% img_path %]/img/[% language_strings.report_img_disable %]" alt="[% language_strings.report_img_alt_disable %]" height="64" width="210" style="border: none;"></a></td>
+										<td width="30"></td>
+									</tr>
+									<tr>
+										<td colspan="5" height="30"><img src="[% img_path %]/img/spacer_dg.gif" alt="" height="30" width="1"></td>
+									</tr>
+								</table>
+								<!-- END QuarantineManager -->
+							
+								<!-- START Quarantine List -->
+								<table id="statistics" border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>
+									<tr>
+										<td width="30"></td>
+										<td width="790">
+											
+											<!-- START Quarantine Message List -->
+											<table border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+												<tr>
+													<td width="690">
+														<h2 style="font-size: 14px; margin: 0 0 15px 0;">[% language_strings.report_mails_in_quarantine %]</h2>
+													</td>
+													<td width="100" align="right"><a href="mailto:[% sender_address %]?subject=[% language_strings.report_delete_all_message_subject %]&body=[% language_strings.report_delete_all_message %]%0A[[DAL:[% confirmation_id %]]]" title="[% language_strings.report_delete_all %]"><img src="[% img_path %]/img/[% language_strings.report_img_delete_all %]" alt="[% language_strings.report_delete_all %]" height="26" width="100" style="border: none;"></a></td>
+												</tr>
+											</table>
+											<table id="quarantine_list" border="0" cellspacing="0" cellpadding="0" width="100%" valign="middle" style="font-size: 11px; font-family: Lucida Sans Unicode, sans-serif;">
+                                                [% IF quarantined_messages.size == 0  %]
+												<tr>
+                                                    <td colspan="6" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="6" align="left" style="size: 11px;">[% language_strings.report_empty_box %]</td>
+                                                </tr>
+                                                [% ELSE %]
+
+                                                [% FOREACH item IN quarantined_messages.keys.sort.reverse %]
+												<tr>
+                                                    <td colspan="6" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+                                                </tr>
+                                                <tr>
+													<td colspan="6">
+														<table border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #505050; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+															<tr>
+																<td width="690">
+																	<h2 style="font-size: 14px; margin: 0 0 15px 0;">
+																	[% USE date %]
+																	[% mydate = date.format(date.now, '%d.%m.%Y') %]
+
+                                                                    [%  my_year = item.substr(0, 4)
+                                                                        my_month = item.substr(4, 2) 
+                                                                        my_day = item.substr(6, 2)
+                                                                        formatted_date = my_day _ "." _ my_month _ "." _ my_year %]
+
+																	[% IF mydate == formatted_date %]
+																	Today,
+																	[% END %]
+																	[% formatted_date %]</h2>
+																</td>
+																<td width="100" align="right"><a href="mailto:[% sender_address %]?subject=[% language_strings.report_subject_delete_day %]&body=[% language_strings.report_subject_delete_day_message %]%0A[[DED:st[% formatted_date %][% confirmation_id %]]]" title="[% language_strings.report_delete_day %]"><img src="[% img_path %]/img/[% language_strings.report_img_delete_day %]" alt="[% language_strings.report_delete_day %]" height="26" width="100" style="border: none;"></a>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr class="header">
+													<th align="center" height="20" width="80">[% language_strings.report_received %]</th>
+                                                    <th align="center" width="40">[% language_strings.report_type %]</th>
+                                                    <th align="left" width="45">[% language_strings.report_score %]</th>
+													<th align="left" width="255">[% language_strings.report_sender %]</th>
+													<th align="left" width="290">[% language_strings.report_subject %]</th>
+													<th align="center" width="80">[% language_strings.report_action %]</th>
+												</tr>
+                                                [% list_items = [] %]
+                                                [% FOREACH list_item = quarantined_messages.$item %]
+                                                        [% list_items.push(list_item) %]
+                                                [% END %]
+
+                                                [% sorted_list = list_items.sort('date').reverse 
+												 count_rows = 0 %]
+												 
+                                                [% FOREACH message IN sorted_list %]
+												[% IF count_rows mod 2 == 1;
+													colored_rows = ' class="even"';
+												   ELSE;
+													colored_rows = '';
+												   END; %]
+                                                [% IF (message.quar_type == 'V' && show_virus == 0 && hide_links_virus == 0) || (message.quar_type == 'B' && show_banned == 0 && hide_links_banned == 0) || (message.quar_type == 'S' && show_spam == 0 && hide_links_spam == 0) %]
+                                                    <tr[% colored_rows %]><td colspan="6" align="center"><strong>[% language_strings.hidden_by_admin %]</strong></td></tr>
+												[% count_rows = count_rows + 1 %]
+                                                [% ELSIF message.spam_level < 15 && message.quar_type != 'V' %]<!-- elseif spam score zu hoch, virus, attachment -->
+												<tr[% colored_rows %]>
+											        <td align="center" height="20" style="font-weight: bold;">[% message.date %]</td>
+                                                    <td align="center"><img src="[% img_path %]/img/mailtype_[% message.quar_type %].png" alt="[% language_strings.report_type %]" height="16" width="16"></td>
+                                                    <td align="left">[% message.spam_level %]</td>
+                                                    <td align="left">[% message.from %]</td>
+                                                    <td align="left">[% message.subject FILTER html_entity %]</td>
+											        <td align="center">
+                                                    [%  IF (message.quar_type == 'V' && show_virus == 0 && hide_links_virus == 1) || (message.quar_type == 'B' && show_banned == 0 && hide_links_banned == 1) || (message.quar_type == 'S' && show_spam == 0 && hide_links_spam == 1) %]
+                                                        <em style="color: #888;">[% language_strings.report_automatic %]</em>
+                                                    [% ELSE %]
+														[% 	release_class = 'release' %]
+														<a class="[% release_class %]" href="mailto:[% sender_address %]?subject=AS Communication Gateway - Release&body=[% language_strings.report_release_message %]%0ASubject:[% message.subject FILTER html_entity %]%0A[[REL:[% message.mail_id %][% message.confirmation_id %]]]">[% language_strings.report_release %]</a>
+														<!--| <a class="delete" href="mailto:[% sender_address %]?subject=AS Communication Gateway - Delete&body=[% language_strings.report_delete_message %]%0ASubject:[% message.subject %]%0A[[DEL:[% message.mail_id %][% message.confirmation_id %]]]">[% language_strings.report_delete %]</a>-->
+                                                    [% END %]
+													</td>
+												[% count_rows = count_rows + 1 %]
+												</tr>
+                                                [% END %]<!-- ob behandelbar in quarantaene -->
+                                                [% END %]<!-- foreach e-mails pro tag -->
+												
+												[% FOREACH message IN sorted_list %]
+												[% IF count_rows mod 2 == 1;
+													colored_rows = ' class="unwanted_even"';
+												   ELSE;
+													colored_rows = ' class="unwanted"';
+												   END; %]
+												[% IF loop.first && loop.size > 1 %]
+												<tr class="warning"><td colspan="6" height="20">[% language_strings.unwanted_below %]</td></tr>
+												[% END %]
+                                                [% IF  message.spam_level >= 15 || message.quar_type == 'V'  %] <!-- if spam score zu hoch, virus, attachment -->
+												<tr[% colored_rows %]>
+											        <td align="center" height="20" style="font-weight: bold;">[% message.date %]</td>
+                                                    <td align="center"><img src="[% img_path %]/img/mailtype_[% message.quar_type %].png" alt="[% language_strings.report_type %]" height="16" width="16"></td>
+                                                    <td align="left">[% message.spam_level %]</td>
+                                                    <td align="left">[% message.from %]</td>
+                                                    <td align="left">[% message.subject FILTER html_entity %]</td>
+											        <td align="center">
+                                                    [%  IF (message.quar_type == 'V' && show_virus == 0 && hide_links_virus == 1) || (message.quar_type == 'B' && show_banned == 0 && hide_links_banned == 1) || (message.quar_type == 'S' && show_spam == 0 && hide_links_spam == 1) %]
+                                                        <em style="color: #888;">[% language_strings.report_automatic %]</em>
+                                                    [% ELSE %]
+														[% 	release_class = 'release_' _ message.quar_type %]
+														<a class="[% release_class %]" href="mailto:[% sender_address %]?subject=AS Communication Gateway - Release&body=[% language_strings.report_release_message %]%0ASubject:[% message.subject FILTER html_entity %]%0A[[REL:[% message.mail_id %][% message.confirmation_id %]]]">[% language_strings.report_release %]</a>
+														<!--| <a class="delete" href="mailto:[% sender_address %]?subject=AS Communication Gateway - Delete&body=[% language_strings.report_delete_message %]%0ASubject:[% message.subject %]%0A[[DEL:[% message.mail_id %][% message.confirmation_id %]]]">[% language_strings.report_delete %]</a>-->
+                                                    [% END %]
+													</td>
+												</tr>
+												[% count_rows = count_rows + 1 %]
+                                                [% END %]<!-- ob behandelbar in quarantaene -->
+                                                [% END %]<!-- foreach e-mails pro tag -->
+												
+                                                [% END %]<!-- foreach tage -->
+                                                [% END %]<!-- if quarantine has any messages -->
+											</table>
+											[% IF quarantined_messages.size > 0  %]
+											<table id="legend" align="left" border="0" cellspacing="0" cellpadding="0" width="455" style="color: #999; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;">
+											<tr><td colspan="9" height="15"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td></tr>
+											<tr>					
+												<td width="65" style="font-weight: bold;">[% language_strings.report_legend %]:</td>									
+												<td width="20"><img src="[% img_path %]/img/mailtype_S.png" alt="" height="16" width="16"></td>
+												<td width="100">[% language_strings.report_type_s %]</td>
+												<td width="5"></td>
+												<td width="20"><img src="[% img_path %]/img/mailtype_V.png" alt="" height="16" width="16"></td>
+												<td width="100">[% language_strings.report_type_v %]</td>
+												<td width="5"></td>
+												<td width="20"><img src="[% img_path %]/img/mailtype_B.png" alt="" height="16" width="16"></td>
+												<td width="120">[% language_strings.report_type_b %]</td>
+											</tr>
+											<tr><td colspan="9" height="15"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td></tr>
+											</table>
+											[% END %]
+											<!-- END Quarantine Message List -->
+										</td>
+										<td width="30"></td>
+									</tr>
+									<tr>
+										<td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td>
+									</tr>									
+								</table>
+								<!-- END Quarantine List -->
+								
+								<!-- START Footer -->
+								<table id="footer" border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td bgcolor="#00a0fa" height="8"></td>
+									</tr>									
+								</table>
+								<!-- END Footer -->
+							</td>
+						</tr>
+					</table>
+					<!-- START underground note -->
+					<table id="underground" border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<td align="center" height="30" style="color: #999999; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;" valign="middle">[% language_strings.quar_footer_signature %] <a href="http://www.underground8.com" title="visit the underground_8 website" style="color: #999999; font-weight: bold; text-decoration: none;">[% language_strings.quar_footer_company %]</a> [% language_strings.quar_footer_brand %]</td>
+						</tr>
+					</table>
+					<!-- END underground note -->
+				</td>
+			</tr>
+		</table>
+    </body>
+</html>

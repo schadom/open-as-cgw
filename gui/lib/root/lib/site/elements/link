@@ -1,0 +1,15 @@
+    <a href="[% url%]"[% UNLESS update=='no' %] onclick="new Ajax.Updater(
+        '[% update %]',
+        '[% url %]',
+        {
+            asynchronous: 1,
+            evalScripts: 'true',
+            onComplete: function (request)
+                {
+                    redirect_on_event();
+                    changeClass('working', 'now', 'idle');
+                    [% IF infobar %]Effect.toggle('[% infobar %]', 'slide', {duration: 0.2});[% END %]
+                }
+        });
+        changeClass('working', 'idle', 'now');
+        return false;"[% END %]>[% label %]</a>

@@ -1,0 +1,30 @@
+# /etc/sudoers
+
+# This file MUST be edited with the 'visudo' command as root.
+#
+# See the man page for details on how to write a sudoers file.
+# Host alias specification
+
+# User alias specification
+Runas_Alias     OP = root
+
+# Cmnd alias specification
+
+Cmnd_Alias      CONFIG = /usr/sbin/postmap, /usr/sbin/postconf, /etc/init.d/postfix, /sbin/ifup, /sbin/ifdown, /etc/init.d/hostname.sh, /etc/init.d/amavis, /etc/init.d/sqlgrey, /etc/init.d/saslauthd, /usr/sbin/update-rc.d, /usr/bin/crontab, /etc/init.d/nginx, /sbin/route, /etc/init.d/openntpd, /etc/init.d/dnsmasq, /etc/init.d/mysql, /etc/init.d/openas-firewall, /etc/init.d/openas-rtlogd, /etc/init.d/openas-qcron, /etc/init.d/openas-qng, /etc/init.d/openas-ldapsync, /etc/init.d/openas-backend
+
+
+# Defaults
+
+Defaults        !lecture,tty_tickets,!fqdn
+
+# User privilege specification
+root    ALL=(ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo  ALL=(ALL:ALL) ALL
+
+%limes  ALL = (OP) NOPASSWD: ALL
+admin      ALL = NOPASSWD: /usr/local/bin/cli.pl, /etc/init.d/nginx

@@ -1,0 +1,7 @@
+<div id="help_appliance_system">
+    <h3>[% Catalyst.localize('system_time_settings_timezone_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_time_settings_timezone') %]</p>
+
+	<h3>[% Catalyst.localize('system_time_settings_ntp_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_time_settings_ntp') %]</p>
+</div>

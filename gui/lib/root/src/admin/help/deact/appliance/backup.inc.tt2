@@ -1,0 +1,12 @@
+<div id="help_appliance_backup">
+    
+
+    <h2>[% Catalyst.localize('create_backup') %]</h2>
+    <p>[% Catalyst.localize('help_create_backup')  %]</p>
+
+    <h2>[% Catalyst.localize('heading_appliance_backup_upload') %]</h2>
+    <p>[% Catalyst.localize('help_heading_appliance_backup_upload')  %]</p>
+
+    <h2>[% Catalyst.localize('available_backups') %]</h2>
+    <p>[% Catalyst.localize('help_available_backups')  %]</p>
+</div>

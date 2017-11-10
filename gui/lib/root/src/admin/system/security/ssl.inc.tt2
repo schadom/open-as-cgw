@@ -1,0 +1,50 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/system/security/ca_assign'), enctype = 'multipart/form-data', nojs = 'nojs' %]
+	[%	options = [];
+		FOREACH srv IN smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (smtpsrv_preselect == srv.key ? 'selected="selected"' : '') });
+		END; %]
+	<fieldset>
+	<legend>[% Catalyst.localize(box_path _ '_pem_heading') %]</legend>
+	<p class="info">[% Catalyst.localize(box_path _ '_pem_text') %]</p>
+	[%  INCLUDE 'site/elements/input'
+		type = 'file',
+		name = 'file_pem',
+		required = 'required', -%]
+	[%	INCLUDE 'site/elements/select'
+		name = 'smtpsrv',
+		option_list = options, %]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_applycert') -%]
+	</fieldset>
+</form>
+
+[% INCLUDE 'site/elements/form'	id = 'system_security_ssl_revoke', url = Catalyst.uri_for('/admin/system/security/ca_unassign') %]
+	<fieldset>
+	<legend>[% Catalyst.localize(box_path _ '_revoke_heading') %]</legend>
+	<p class="info">[% Catalyst.localize(box_path _ '_revoke_text') %]</p>
+	[% INCLUDE 'site/elements/select' name = 'smtpsrv', id = 'ssl_revoke',	option_list = options %]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_revokecert') -%]
+	</fieldset>
+</form>
+
+[%	revoke_keypair = BLOCK;
+		INCLUDE 'site/elements/link' url = Catalyst.uri_for('/admin/system/security/revoke_keypair'), label = Catalyst.localize(box_path _ '_delkeypair');
+	END; %]
+
+[% INCLUDE 'site/elements/form'	id = 'system_security_ssl_assign_keypair', url = Catalyst.uri_for('/admin/system/security/assign_keypair'),	enctype = 'multipart/form-data',
+	nojs = 'nojs' %]
+	<fieldset>
+	<legend>[% Catalyst.localize(box_path _ '_cert_heading') %]</legend>
+	<p class="info">[% Catalyst.localize(box_path _ '_cert_text') %] [% revoke_keypair %]</p>
+	[%	options = [];
+		FOREACH srv IN smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (smtpsrv_preselect == srv.key ? 'selected="selected"' : '') });
+		END; %]
+	
+	[% INCLUDE 'site/elements/input' type = 'file', name = 'file_cert', required = 'required' %]
+	[% INCLUDE 'site/elements/input' type = 'file', name = 'file_key',	required = 'required' %]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_applykeypair') %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

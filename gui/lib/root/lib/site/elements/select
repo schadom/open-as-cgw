@@ -1,0 +1,12 @@
+					[% UNLESS id; id = name; END; %]
+                    [% label = box_path _ '_' _ name %]
+                    [% IF box_status.fields.$name; class_error = ' error'; END; %]
+					[% IF required; class_required = ' required'; END; %]															
+					<div class="element select[% class_required %][% class_error %]">
+						<label for="[% id %]">[% Catalyst.localize(label) %]</label>
+						<select id="[% id %]" name="[% name %]">
+							[% FOREACH option_list %]
+							<option value="[% value %]" [% selected %]>[% label %]</option>
+							[% END %]
+						</select>
+					</div>

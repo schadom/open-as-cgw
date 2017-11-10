@@ -1,0 +1,93 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% prefix = 'monitoring_diagnostics_center_self_diagnostics_' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize('monitoring_diagnostics_center_self_diagnostics_text') %]</p>
+[% IF result %]
+	[% pri_dns_status = (pri_dns_reachable != 'err_lookup') ? prefix _ 'dns_query_ok' : prefix _ 'dns_query_error' %]
+	[% sec_dns_status = (sec_dns_reachable != 'err_lookup') ? prefix _ 'dns_query_ok' : prefix _ 'dns_query_error' %]
+	[% default_gw_status = (default_gw_reachable) ? prefix _ 'host_reachable' : prefix _ 'host_unreachable' %] 
+
+	[% SWITCH self_lookup %] 
+	[%   CASE 'err_lookup' %] 
+	[%     self_lookup_status = prefix _ 'self_lookup_err_not_found' %]
+	[%   CASE 'found_single' %] 
+	[%     self_lookup_status = prefix _ 'self_lookup_ok_single' %]
+	[%   CASE 'found_multiple' %]
+	[%     self_lookup_status = prefix _ 'self_lookup_ok_multiple' %]
+	[% END %]
+
+	[% SWITCH self_rlookup %]
+		[%   CASE 'err_lookup' %]
+		[%     self_rlookup_status = prefix _ 'self_lookup_err_not_found' %]
+		[%   CASE 'err_rlookup' %] 
+		[%     self_rlookup_status = prefix _ 'self_rlookup_err' %]
+		[%   CASE 'err_no_match' %]
+		[%     self_rlookup_status = prefix _ '_self_rlookup_err_no_match' %]
+		[%   CASE DEFAULT %]
+		[%     self_rlookup_status = prefix _ 'self_rlookup_ok' %]
+	[% END %]
+	[%  last_update_status = ((last_update_diff_secs / 60) > 60) ? prefix _ 'lastupdate_ts_outdated' : prefix _ 'lastupdate_ts_fresh' %] 
+	[% ### NETWORK CONFIGURATION ### %]
+	<h4>[% Catalyst.localize(prefix _ 'network') %]</h4>
+	<ul class="text_list">
+		<li><strong>[% Catalyst.localize('system_network_dns_primary_dns')  %]</strong>[% Catalyst.localize(pri_dns_status) %]</li>
+		<li><strong>[% Catalyst.localize('system_network_dns_secondary_dns') %]</strong>[% Catalyst.localize(sec_dns_status) %]</li>
+		<li><strong>[% Catalyst.localize('system_network_ip_default_gateway') %]</strong>[% Catalyst.localize(default_gw_status) %]</li>
+		<li><strong>[% Catalyst.localize(prefix _ 'self_lookup') %]</strong>[% Catalyst.localize(self_lookup_status) %]</li> 
+		<li><strong>[% Catalyst.localize(prefix _ 'self_rlookup') %]</strong>[% Catalyst.localize(self_rlookup_status) %]</li>
+		<li><strong>[% Catalyst.localize(prefix _ 'lastupdate_ts') %]</strong>[% Catalyst.localize(last_update_status) %]</li>
+	</ul>
+
+	[% ### SMTP SERVERS ### %]
+	<h4>[% Catalyst.localize(prefix _ 'configured_smtp_servers') %]</h4>
+	[% IF smtpsrv_status.size() > 0 %]
+		<ul class="text_list">
+		[% FOREACH smtp IN smtpsrv_status %]
+			[% smtpsrv_status_descr = smtp.key %]
+			[% smtpsrv_status_reachable = smtp.value %]
+			<li><strong><span class="label">[% smtpsrv_status_descr %]</span></strong>
+				[% (smtpsrv_status_reachable)
+					? Catalyst.localize(prefix _ 'service_reachable')
+					: Catalyst.localize(prefix _ 'service_unreachable') %]</li>
+		[% END %]
+		</ul>
+	[% ELSE %]
+		<p>[% Catalyst.localize(prefix _ 'no_smtp_servers_configured') %]</p>
+	[% END %]
+
+	[% ### DOMAINS ### %]
+	<h4>[% Catalyst.localize(prefix _ 'configured_domains') %]</h4>
+	[% IF domain_mx_checked.size() > 0 %]
+		<ul class="text_list">
+		[% FOREACH domain IN domain_mx_checked %]
+			[% domain_name = domain.key %]
+			[% domain_mx_status = domain.value %]
+			<li><strong>[% domain_name %]</strong>
+			[% IF domain_mx_status == 'mx_err' %]
+				[%   Catalyst.localize(prefix _ 'domain_mx_error') %]
+				[% ELSIF domain_mx_status == 'mx_ok_single' %]
+				[%   Catalyst.localize(prefix _ 'domain_mx_ok_single') %]
+				[% ELSIF domain_mx_status == 'mx_ok_multiple' %]
+				[%   Catalyst.localize(prefix _ 'domain_mx_ok_multiple') %]
+				[% ELSIF domain_mx_status == 'mx_ok_single_norevlookup' %]
+				[%   Catalyst.localize(prefix _ 'domain_mx_ok_single_norl') %]
+				[% ELSIF domain_mx_status == 'mx_ok_multiple_norevlookup' %]
+				[%   Catalyst.localize(prefix _ 'domain_mx_ok_multiple_norl') %]
+			[% END %]
+			</li>
+		[% END %]
+		</ul>
+	[% ELSE %]
+		<p>[% Catalyst.localize(prefix _ 'no_domains_configured') %]</p>
+	[% END %]
+[% END %]
+
+[% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/monitoring/diagnostics_center/start_diagnostics'), -%]
+	[% button_text= Catalyst.localize( result 
+			? 'monitoring_diagnostics_center_self_diagnostics_rerun' 
+			: 'monitoring_diagnostics_center_self_diagnostics_start') %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input' type = 'button', value = button_text %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

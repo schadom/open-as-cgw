@@ -1,0 +1,2 @@
+[% INCLUDE site/gui_lock
+    text = Catalyst.localize(message) %]

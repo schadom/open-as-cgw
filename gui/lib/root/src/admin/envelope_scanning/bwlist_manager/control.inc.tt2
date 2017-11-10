@@ -1,0 +1,27 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_status') %]</strong>
+	[% INCLUDE 'site/elements/enable' 
+		status = engine_status,
+		update = 'content',
+		url = Catalyst.uri_for('/admin/envelope_scanning/bwlist_manager/toggle'),
+	-%]
+	</li>
+</ul>
+
+[% IF engine_status == "enabled" %]
+	<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_addnew_text') %]</p>
+	[%	options = [];
+		options.push({ value=>'blacklist', selected=>' selected="selected"', label=>Catalyst.localize(box_path _ "_addnew_blacklist") });
+		options.push({ value=>'whitelist', selected=>'', label=>Catalyst.localize(box_path _ "_addnew_whitelist") }); %]
+	[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/envelope_scanning/bwlist_manager/enlist'), update = 'content' %]
+		<fieldset>
+			[% INCLUDE 'site/elements/input' name = 'addnew_desc',	required = 'required' %]
+			[% INCLUDE 'site/elements/input' name = 'addnew_entry',	required = 'required' %]
+			[% INCLUDE 'site/elements/select' name = 'addnew_modality',	option_list = options %]
+			[% INCLUDE 'site/elements/input' type = 'button' %]
+		</fieldset>
+	</form>
+[% END # engine enabled %]
+[% INCLUDE 'site/box_close' %]

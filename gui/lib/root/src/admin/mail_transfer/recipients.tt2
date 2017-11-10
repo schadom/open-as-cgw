@@ -1,0 +1,12 @@
+<div id="mail_transfer_recipients_add">
+    [% INCLUDE admin/mail_transfer/recipients/add.inc.tt2 %]
+</div>
+<div id="mail_transfer_recipients_list">
+    [% INCLUDE admin/mail_transfer/recipients/list.inc.tt2 %]
+</div>
+<div id="mail_transfer_recipients_ldap_cache">
+    [% INCLUDE admin/mail_transfer/recipients/ldap_cache.inc.tt2 %]
+</div>
+<div id="mail_transfer_recipients_add_bulk">
+    [% INCLUDE admin/mail_transfer/recipients/bulk_add.inc.tt2 %]
+</div>

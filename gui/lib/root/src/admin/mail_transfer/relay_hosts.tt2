@@ -1,0 +1,6 @@
+<div id="mail_transfer_relay_hosts_form">
+    [% INCLUDE admin/mail_transfer/relay_hosts/form.inc.tt2 %]
+</div>
+<div id="mail_transfer_relay_hosts_table">
+    [% INCLUDE admin/mail_transfer/relay_hosts/table.inc.tt2 %]
+</div>

@@ -1,0 +1,62 @@
+[% PROCESS 'site/box_init' -%]
+[% INCLUDE 'site/box_open' %]
+
+<p>[% Catalyst.localize(box_path _ '_text') %]</p>
+
+	[% IF smtpsrvs.size > 0;
+		table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_desc'));
+		table_headers.push(Catalyst.localize(box_path _ '_addr'));
+		table_headers.push(Catalyst.localize(box_path _ '_action'));
+
+		table_th_classes = [];
+		table_th_classes.push('left', '', '');
+		table_td_classes = [];
+		table_td_classes.push('left', '', '');
+
+		table_values = [];
+		FOREACH smtpsrv IN smtpsrvs; -%]
+            [% link_del = BLOCK %]
+                [% INCLUDE 'site/elements/link'
+                    url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/delete/' _ smtpsrv.key),
+                    update = 'content',
+                    infobar = box_path _ '_infobar',
+                    label = Catalyst.localize(box_path _ '_delete'),
+                -%]
+            [% END %]
+            [% link_edit = BLOCK %]
+                [% INCLUDE 'site/elements/link'
+                    url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/add_update/' _ smtpsrv.key),
+                    update = 'content',
+                    infobar = box_path _ '_infobar',
+                    label = Catalyst.localize(box_path _ '_edit'),
+                -%]
+            [% END %]
+        	[%
+			links = link_del _ " | " _ link_edit;
+			table_values.push([ "<strong>$smtpsrv.value.descr</strong>", smtpsrv.value.addr, links ]);
+		END;
+	
+		INCLUDE 'site/elements/table'
+			headers = table_headers,
+			td_classes = table_td_classes,
+			th_classes = table_th_classes,
+			td_values = table_values;
+
+	ELSE %]
+		<p>[% Catalyst.localize(box_path _ '_noentries') %]</p>
+	[% END %]
+
+[% INCLUDE 'site/elements/form',
+	update = 'content',
+	url = Catalyst.uri_for('/admin/mail_transfer/smtp_servers/add_update/new') %]
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input'
+			value = Catalyst.localize(box_path _ '_addnew'),
+			type = 'button'; %]
+	</fieldset>
+</form>
+
+
+[% INCLUDE 'site/box_close' %]
+

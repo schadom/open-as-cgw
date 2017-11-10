@@ -1,0 +1,6 @@
+[% INCLUDE site/notification
+    heading = Catalyst.localize(heading), 
+    text = Catalyst.localize(text), 
+    update = 'horizon',
+    link_text = Catalyst.localize(link_text), 
+    link_url = Catalyst.uri_for(link_url) %]

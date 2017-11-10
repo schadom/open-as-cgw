@@ -1,0 +1,21 @@
+[% language_strings.activate_enabled | upper %]
+[% language_strings.activate_setup | eval %] [% language_strings.activate_setup_release %]
+
+[% language_strings.activate_how | upper %]
+[% language_strings.activate_good_plain %]
+[% language_strings.activate_action %]
+
+[% language_strings.activate_what | upper %]
+[% language_strings.activate_status_plain %]
+
+[% language_strings.activate_cleared_plain %]
+
+[% language_strings.activate_which | upper %]
+[% language_strings.activate_assume_plain %]
+
+[% language_strings.activate_disabled_plain %]
+
+[% language_strings.activate_maintaining_plain %]
+
+-- 
+[% language_strings.quar_footer_signature %] [% language_strings.quar_footer_company %] [% language_strings.quar_footer_brand %]

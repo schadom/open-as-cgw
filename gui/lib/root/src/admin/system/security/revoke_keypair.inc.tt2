@@ -1,0 +1,33 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[%	revoke_keypair = BLOCK;
+		INCLUDE 'site/elements/link' url = Catalyst.uri_for('/admin/system/security/revoke_keypair'), label = Catalyst.localize(box_path _ '_delkeypair');
+	END; %]
+[% INCLUDE 'site/elements/form', url = Catalyst.uri_for('/admin/system/security/assign_keypair'), enctype = 'multipart/form-data',
+	nojs = 'nojs' %]
+
+	[% IF (phail == "revoke" OR ((box_status.success OR box_status.custom_success) AND done == "revoke")) %]
+	<script type="text/javascript">
+		function toggle_revoke_keypair(){
+			Effect.toggle('system_security_revoke_keypair_infobar','slide',{duration: 0.2});
+			window.scrollBy(0,1000);  /* Just to scroll to bottom of page in order to actually *see*
+			the error message above .. omg this is da real hacky shit */
+		}
+		toggle_revoke_keypair();
+	</script>
+	[% END %]
+
+	<p class="info">[% Catalyst.localize(box_path _ '_text') %] [% revoke_keypair %]</p>
+	<fieldset>
+	[%	options = [];
+		FOREACH srv IN smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (smtpsrv_preselect == srv.key ? 'selected="selected"' : '') });
+		END; %]
+	[% INCLUDE 'site/elements/input' type = 'file', name = 'file_cert', required = 'required' %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/input' type = 'file', name = 'file_key',	required = 'required' %]
+	[% INCLUDE 'site/elements/input' type = 'button', value = Catalyst.localize(box_path _ '_applykeypair') %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,6 @@
+<div id="help_appliance_about">
+    
+
+    <h2>[% Catalyst.localize('title_appliance_about') %]</h2>
+    <p>[% Catalyst.localize('help_about')  %]</p>
+</div>

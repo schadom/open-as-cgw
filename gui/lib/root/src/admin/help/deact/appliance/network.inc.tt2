@@ -1,0 +1,18 @@
+<div id="help_appliance_backup">
+    
+
+    <h3>[% Catalyst.localize('heading_appliance_network_ip') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_network_ip')  %]</p>
+
+    <h3>[% Catalyst.localize('heading_appliance_network_dns') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_network_dns')  %]</p>
+
+    <h3>[% Catalyst.localize('heading_appliance_network_proxy') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_network_proxy')  %]</p>
+
+    <h3>[% Catalyst.localize('add_admin_range') %]</h3>
+    <p>[% Catalyst.localize('help_admin_range')  %]</p>
+
+    <h3>[% Catalyst.localize('appliance_network_adminranges') %]</h3>
+    <p>[% Catalyst.localize('help_ip_ranges')  %]</p>
+</div>

@@ -1,0 +1,31 @@
+[%  PROCESS 'site/box_init';
+
+    # URL and variable definitions for this box
+
+options=[];
+
+FOREACH region = system.all_timezones;
+    FOREACH zone = region.value;
+        options.push({value => region.key _ '/' _ zone, 
+                      selected => system.tz.search(zone) ? ' selected="selected"':'',
+                      label => region.key _ '/' _ zone,
+                    });
+    END;
+END;
+-%]
+
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form'
+        url=Catalyst.uri_for('/admin/system/time_settings/timezone'),
+        -%]
+        <fieldset>
+            [% INCLUDE site/elements/select
+                name='timezone',
+                option_list=options,
+                -%]
+           [% INCLUDE 'site/elements/input'
+                type = 'button',
+                -%]
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

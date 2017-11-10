@@ -1,0 +1,4 @@
+<div id="logging_live_log_livelog">
+    [% INCLUDE admin/logging/live_log/livelog.inc.tt2 %]
+</div>
+

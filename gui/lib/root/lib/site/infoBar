@@ -1,0 +1,76 @@
+<div id="[% name %]_infobar" style="display:none">
+	[% IF box_status %]
+		[% IF box_status.success =='status_failed' || box_status.custom_error  %]
+			[% # Prevent to display multiple infoBoxes when whole content is updated (bind_infobar must be set) %]
+			[% IF !bind_infobar OR (bind_infobar.match('^' _ name)) %]
+				<div id="[% name %]_error" class="notification error" [% box_status.fields || box_status.custom_error ? '' : 'style="display:none"' %]>
+				<h3>[% Catalyst.localize('heading_error_status') %]</h3>
+				<p>
+				[% IF box_status.custom_error;
+					Catalyst.localize(box_status.custom_error);
+				ELSE;
+					missing = [ ];
+					invalid = [ ];
+					constraints = [ ];
+	
+					# sort errors and field names into the 3 lists
+					FOREACH code IN box_status.fields;
+						FOREACH errmsg IN code.value.split(' ');
+							IF errmsg == 'err_missing'; missing.push(code.key);
+								ELSIF errmsg == 'err_invalid'; invalid.push(code.key);
+								ELSE; constraints.push(errmsg);
+							END;
+						END;
+					END;
+	
+					# display missing form fields
+					FOREACH elem IN missing;
+						IF loop.size() == 1;
+							Catalyst.localize(name _ '_' _ elem) _ Catalyst.localize('single_missing');
+						ELSIF loop.last();
+							' ' _ Catalyst.localize('and') _ ' ' _ Catalyst.localize(name _ '_' _ elem) _ Catalyst.localize('multiple_missing');
+						ELSIF loop.first();
+							Catalyst.localize(name _ '_' _ elem);
+						ELSE;
+							', ' _ Catalyst.localize(name _ '_' _ elem);
+						END;
+					END;
+	
+					# display invalid form fields
+					FOREACH elem IN invalid;
+						IF loop.size() == 1;
+							Catalyst.localize(name _ '_' _ elem) _ Catalyst.localize('single_invalid');
+						ELSIF loop.last();
+							' ' _ Catalyst.localize('and') _ ' ' _ Catalyst.localize(name _ '_' _ elem) _ Catalyst.localize('multiple_invalid');
+						ELSIF loop.first();
+							Catalyst.localize(name _ '_' _ elem);
+						ELSE;
+							', ' _ Catalyst.localize(name _ '_' _ elem);
+						END;
+					END;
+
+					FOREACH elem IN constraints;
+						"<br/>" _ Catalyst.localize(name _ '_' _ elem);
+					END; 
+				END; %]
+				</p>
+				</div>
+	
+			[% END %]
+		[% ELSE %]
+			[% # Prevent to display multiple infoBoxes when whole content is updated (bind_infobar must be set); bind_infobar; name; %]
+			[% IF !bind_infobar OR (bind_infobar AND bind_infobar.match('^' _ name)) %]
+				<div id="[% name %]_status" class="notification success" [% box_status.success != 'status_failed' && notify != 'yes' ? '' : 'style="display:none"' %]
+					onclick="Effect.toggle('[% name %]_infobar','slide',{duration: 0.2}); return false;"> 
+				<h3>[% Catalyst.localize('heading_success_status') %]</h3>
+				<p>[% IF box_status.custom_success;
+						Catalyst.localize(box_status.custom_success);
+					ELSE;
+						Catalyst.localize(name _ '_' _ box_status.success);
+					END; %]</p>
+				</div>
+			[% END %]
+		[% END %]
+	[% END %]
+	</div>
+

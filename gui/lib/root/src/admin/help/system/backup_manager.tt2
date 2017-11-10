@@ -1,0 +1,7 @@
+<div id="help_appliance_system">
+    <h3>[% Catalyst.localize('system_backup_manager_list_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_backup_manager_list') %]</p>
+
+	<h3>[% Catalyst.localize('system_backup_manager_upload_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_backup_manager_upload') %]</p>
+</div>

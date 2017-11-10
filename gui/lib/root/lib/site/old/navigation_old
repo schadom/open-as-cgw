@@ -1,0 +1,39 @@
+
+
+<h1>Navigation</h1>
+<ul>
+    <li><a href="[% Catalyst.uri_for('/admin') %]">Frontpage</a></li>
+    <li><a href="[% Catalyst.uri_for('/admin/appliance') %]">Appliance</a>
+    <ul>
+        <li><a href="[% Catalyst.uri_for('/admin/appliance/network') %]">Network</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/appliance/system') %]">System</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/appliance/user') %]">User Management</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/appliance/update') %]">Update</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/appliance/backup') %]">Backup</a></li>
+    </ul></li>
+    <li><a href="[% Catalyst.uri_for('/admin/antispam') %]">Antispam</a>
+    <ul>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/domains') %]">Domains</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/ipbwlists') %]">IP Black/Whitelists</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/emailaddressbwlists') %]">E-Mail Black/Whitelists</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/externalblacklists') %]">External Blacklists</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/attachments') %]">Attachments</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/score') %]">Score</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/tags') %]">Tags</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/antivirus') %]">Virus Scanner</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/antispam/general') %]">General Settings</a></li>
+    </ul></li>
+    <li><a href="[% Catalyst.uri_for('/admin/notification') %]">Notifications</a>
+    <ul>
+        <li><a href="[% Catalyst.uri_for('/admin/notification/alarm') %]">Alarm</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/notification/virus') %]">Virus</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/notification/attachment') %]">Attachment</a></li>
+    </ul></li>
+    <li><a href="[% Catalyst.uri_for('/admin/log') %]">Logging</a>
+    <ul>
+        <li><a href="[% Catalyst.uri_for('/admin/log/systeminformation') %]">System Information</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/log/syslog') %]">Syslog</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/log/email') %]">E-Mail</a></li>
+        <li><a href="[% Catalyst.uri_for('/admin/log/config') %]">Configuration</a></li>
+    </ul></li>
+</ul>

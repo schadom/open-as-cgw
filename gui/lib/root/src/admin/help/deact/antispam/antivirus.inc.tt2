@@ -1,0 +1,11 @@
+ <div id="help_antispam_antivirus">
+    
+
+    <h3>[% Catalyst.localize('antispam_antivirus_select') %]</h3>
+    <p>[% Catalyst.localize('help_antivirus_select') %]</p>
+
+    <h3>[% Catalyst.localize('heading_antispam_antivirus_options') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_antivirus_options') %]</p>
+
+
+ </div>

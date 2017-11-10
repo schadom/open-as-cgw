@@ -1,0 +1,13 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open'
+	additional_class = "small left",
+-%]
+	<ul class="text_list">
+		<li><strong>[% Catalyst.localize(box_path _ '_version') %]</strong>[% versions.version_system %]</li>
+		<li><strong>[% Catalyst.localize(box_path _ '_avgcpu') %]</strong>[% sysinfo.cpu_avg_1h -%] %</li>
+		<li><strong>[% Catalyst.localize(box_path _ '_avgmem') %]</strong>[% sysinfo.mem_used_percentage %] %</li>
+		<li><strong>[% Catalyst.localize(box_path _ '_hdd') %]</strong>[% advanced_sysinfo.disk_usedpercentage %] %</li>
+		<li><strong>[% Catalyst.localize(box_path _ '_avgload') %]</strong>[% sysinfo.loadavg_15 %]</li>
+		<li><strong>[% Catalyst.localize(box_path _ '_uptime') %]</strong>[% sysinfo.uptime %]</li>
+	</ul>
+[% INCLUDE 'site/box_close' %]

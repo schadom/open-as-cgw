@@ -1,0 +1,6 @@
+<div id="mail_transfer_smtp_settings_client">
+    [% INCLUDE admin/mail_transfer/smtp_settings/client.inc.tt2 %]
+</div>
+<div id="mail_transfer_smtp_settings_server">
+    [% INCLUDE admin/mail_transfer/smtp_settings/server.inc.tt2 %]
+</div>

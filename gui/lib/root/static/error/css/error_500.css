@@ -1,0 +1,33 @@
+/* ##########################################
+## CSS for AS Comunication Gateway
+## (c) 2009 underground_8 secure computing 
+##### @author: vo@underground8.com 
+##### @last_changed: 2009-02-23
+############################################# */
+
+/* ## IMPORT OTHER STYLES ###################################### */
+@import url("reset.css");
+
+/* ## LAYOUT & DESIGN ########################################## */
+body{background: #2F3131 url(../img/body_bg.jpg) top center no-repeat; font: 11px/16.5px "Lucida Sans Unicode", sans-serif}
+strong{font-weight: bold;}
+em{font-style: italic;}
+#center{left: 50%; margin-left: -490px; position: absolute; top: 0; width: 980px;}
+#title{background: transparent url(../img/title_bg.png) top left no-repeat; color: #FFF; font-size: 24px; height: 54px; margin: 54px 0; text-transform: uppercase; text-indent: -9999px;}
+#container{color: #505050;}
+	#top{background-color: #FFF; overflow: auto; padding: 40px;}
+	#top h2{font-size: 16px; margin-bottom: 16.5px; text-transform: uppercase;}
+	#top p{float: left; margin-right: 15px; width: 290px;}
+	#top #countdown{background: url(../img/countdown_bg.jpg) center right no-repeat; color: #999; float: right; font-size: 36px; font-weight: bold; height: 58px; padding-top: 40px; width: 290px;}
+	
+	#bottom{background: #F0F0F0 url(../img/bottom_bg.gif) top left repeat-x; overflow: auto; padding: 40px;}
+	#bottom h3{color: #888; font-size: 16px; margin-bottom: 16.5px; text-transform: uppercase;}
+	#bottom .solution{width: 290px; float: left; margin-top: 16.5px;}
+		#bottom .solution.restart_gui, #bottom .solution.restart_appliance{margin-right: 15px;}
+		#bottom .solution h4{font-weight: bold; font-size: 12px; margin-bottom: 16.5px;}
+		#bottom .solution p{background-position: center left; background-repeat: no-repeat; padding-left: 100px;}
+		#bottom .solution.restart_gui p{background-image: url(../img/restart_gui_bg.jpg);}
+		#bottom .solution.restart_appliance p{background-image: url(../img/restart_appliance_bg.jpg);}
+		#bottom .solution.support p{background-image: url(../img/support_bg.jpg);}		
+		#bottom .solution.support a{color: #F00; text-decoration: underline;}		
+			#bottom .solution.support a:hover{text-decoration: none;}		

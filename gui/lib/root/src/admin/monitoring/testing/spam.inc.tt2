@@ -1,0 +1,20 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% INCLUDE 'site/elements/form'
+	url=Catalyst.uri_for('/admin/monitoring/testing/spam'), -%]
+	<fieldset>
+		[%  INCLUDE 'site/elements/input'
+			name = 'gtube_string',
+			value = gtube_string,
+			required = 'required', -%]
+
+		[% INCLUDE 'site/elements/input'
+			name = 'gtube_score',
+			class = 'number',
+			value = (gtube_score ? gtube_score : 0),
+			required = 'required', -%]
+		[% INCLUDE 'site/elements/input' type = 'button',  -%]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

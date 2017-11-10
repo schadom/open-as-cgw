@@ -1,0 +1,5 @@
+ check process openas-qcron with pidfile /var/run/openas-qcron.pid
+   group mail
+   start program = "/etc/init.d/openas-qcron start"
+   stop  program = "/etc/init.d/openas-qcron stop"
+   if 2 restarts within 9 cycles then timeout

@@ -1,0 +1,35 @@
+[%  PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]<br/>
+[%	
+	group_list = [];
+
+	FOREACH group_type IN banned_attachments_groups;
+		FOREACH group_item IN banned_attachments_groups_items.$group_type;
+			IF loop.index() == 0;
+				current_group = group_item;
+				NEXT;
+			END;
+
+			FOREACH group_item_extension IN group_item;
+				selected = 0;
+				FOREACH banned IN banned_attachments;
+						IF group_item_extension == banned.banned;
+							selected = 1;
+						END;
+				END;
+
+				group_list.push({ value => group_item_extension, label => current_group _ ": " _ group_item_extension, checked => (selected ? 'checked' : ''), });
+			END;
+		END;
+	END;
+%]
+[% INCLUDE 'site/elements/form', update = 'content', url = Catalyst.uri_for('/admin/content_scanning/attachments/enlist_grouptypes') %]
+	<fieldset>
+	[% INCLUDE 'site/elements/multiple_select',	name = 'group_list', wide = 'wide', lines = "10", option_list = group_list; %]
+	</fieldset>
+	<fieldset>
+	[% INCLUDE 'site/elements/input', type = 'button'; %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

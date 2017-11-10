@@ -1,0 +1,79 @@
+#!/bin/bash
+#
+# This file is part of the Open AS Communication Gateway.
+#
+# The Open AS Communication Gateway is free software: you can redistribute it
+# and/or modify it under theterms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the License,
+# or (at your option) any later version.
+#
+# The Open AS Communication Gateway is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+# General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along
+# with the Open AS Communication Gateway. If not, see http://www.gnu.org/licenses/.
+#
+### BEGIN INIT INFO
+# Provides:          openas-firewall
+# Required-Start:    $local_fs $network $remote_fs $syslog
+# Required-Stop:     $local_fs $network $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Init script for Open AS Firewall.
+# Description:       Init script for Open AS Firewall.
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/bin/firewall.sh
+NAME=openas-firewall
+DESC="Open AS Firewall"
+
+test -f ${DAEMON} || exit 0
+
+case "$1" in
+  start)
+    echo -n "Starting $DESC: "    
+    $DAEMON
+    echo "$NAME."
+    exit 0
+    ;;
+
+  stop)
+    echo -n "Stopping $DESC: "
+    # Flush tables
+    iptables -F
+    iptables -t nat -F
+    iptables -t mangle -F
+    iptables -X
+    iptables -t nat -X
+    iptables -t mangle -X
+    # Set default-policies
+    iptables -P INPUT ACCEPT
+    iptables -P OUTPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    echo "$NAME."
+    exit 0
+    ;;
+    
+  restart)
+    $0 stop
+    $0 start
+    ;;
+    
+  status)
+    echo "Filter:"
+    iptables -L -vn
+    echo "NAT:"
+    iptables -t nat -L -vn
+    echo "Mangle:"
+    iptables -t mangle -L -vn
+    exit 0
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart|status}" >&2
+    exit 0
+    ;;
+esac

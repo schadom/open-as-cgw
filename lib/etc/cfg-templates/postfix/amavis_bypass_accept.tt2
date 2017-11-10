@@ -1,0 +1,5 @@
+[%- IF ip_whitelisting -%]
+    [%- FOREACH ip = ip_addresses %]
+[% ip %] OK
+    [%- END -%]
+[% END %]

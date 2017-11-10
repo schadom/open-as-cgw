@@ -1,0 +1,20 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' update = 'content',	url = Catalyst.uri_for('/admin/mail_transfer/domains/save/') _ (domain_new ? domain_new : "new") %]
+	[% 	smtpsrv = relay_domains.$domain_name.dest_mailserver;
+		options = [];
+		FOREACH srv IN relay_smtpsrvs;
+			options.push({ value=> srv.key, label => srv.value.descr _ " [" _ srv.value.addr _ "]", selected => (smtpsrv_preselect == srv.key ? 'selected="selected"' : '') });
+		END; %]
+	<fieldset>
+		[% INCLUDE 'site/elements/input', required = 'required', value = (domain_new ? domain_new : ''), name = 'domain' %]	
+		[% INCLUDE 'site/elements/select' name = 'address', option_list = options %]
+		[% IF domain_new == "" %]
+		[% INCLUDE 'site/elements/input' type = 'checkbox', name = 'instant_enable', value = '1', checked = '', %]
+		[% END %]
+	</fieldset>
+	<fieldset>
+	[% 	INCLUDE 'site/elements/input' value = Catalyst.localize(box_path _ (domain_new == "" ? '_addnew' : '_update')), type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

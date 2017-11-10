@@ -1,0 +1,2 @@
+[% quarantine -%]   lmtp:[127.0.0.1]:10010
+support             virtual:

@@ -1,0 +1,46 @@
+				[%  matches = template.name.match('admin/(.+)\.tt2');
+					menu = matches.0;
+					matches = menu.match('(\w+)/(\w+)');
+					menu = matches.0 || menu;
+					submenu = matches.1; %]
+				[% UNLESS update; update = menu _ '_' _ submenu _ '_' _ box_name; END; -%]
+				[% UNLESS name; name = box_path _ '_form'; END; -%]
+				[% UNLESS id; id = name; END; -%]
+				[% infobar = menu _ '_' _ submenu _ '_' _ box_name _ '_infobar' -%]
+
+                [% IF notify; %]
+                    [% UNLESS notification_url; Catalyst.uri_for(box_name _ '_notification'); END; -%]
+                    <script type="text/javascript">
+                        new Ajax.Updater('horizon',
+                        '[% notification_url %]',
+                        {   
+                            method: 'get',
+                            onComplete: function() {
+                                show_overlay();
+                            },
+                         });
+                    </script>
+                [% END %]
+				<form action="[% url %]" id="[% id %]" [% IF enctype %]enctype="[% enctype %]" [% END %]method="post" 
+                onsubmit="new Ajax.Updater(
+                        '[% update %]',
+                        '[% url %]',
+                        {
+                            parameters: 
+[% UNLESS nojs %]
+                                Form.serialize(this),
+[% END %]
+                                asynchronous: 1,
+                                evalScripts: 'true', 
+                                onComplete: 
+                                    function(request)
+                                    {
+                                        redirect_on_event();
+                                        changeClass('working', 'idle', 'now');
+                                        Effect.toggle('[% infobar %]', 'slide', {duration: 0.2});
+                                    }
+                        });
+                        changeClass('working', 'now', 'idle');
+                        return false;"
+						>
+

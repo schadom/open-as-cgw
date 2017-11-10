@@ -1,0 +1,31 @@
+[%  PROCESS 'site/box_init';
+
+    # URL and variable definitions for this box
+-%]
+
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form'
+        url=Catalyst.uri_for('/admin/mail_transfer/relay_hosts/enlist'),
+        update='content',
+        -%]
+        <fieldset>
+            [%  INCLUDE 'site/elements/input'
+                name='range_start',
+                value='',
+                required='required',
+                -%]
+            [%  INCLUDE 'site/elements/input'
+                name='range_end',
+                value='',
+                required='required',
+                -%]
+            [%  INCLUDE 'site/elements/input'
+                name='description',
+                value='',
+                -%]
+            [% INCLUDE 'site/elements/input'
+                type = 'button'
+                -%]
+        </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

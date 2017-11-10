@@ -1,0 +1,18 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('heading_appliance_system_hostdomname') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_system_hostdomname') %]</p>
+
+    <h3>[% Catalyst.localize('heading_appliance_system_timezone') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_system_timezone') %]</p>
+
+    <h3>[% Catalyst.localize('heading_appliance_system_timesync') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_system_timesync') %]</p>
+
+    <h3>[% Catalyst.localize('heading_appliance_system_syslog') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_system_syslog') %]</p>
+
+    <h3>[% Catalyst.localize('heading_appliance_system_sshd') %]</h3>
+    <p>[% Catalyst.localize('help_heading_appliance_system_sshd') %]</p>
+</div>

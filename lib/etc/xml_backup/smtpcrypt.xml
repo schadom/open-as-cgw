@@ -1,0 +1,29 @@
+<perldata>
+ <hashref memory_address="0xc41b314">
+  <item key="domain_rcpt_autocrypt">
+   <hashref memory_address="0xc415b24">
+   </hashref>
+  </item>
+  <item key="domain_sender_autocrypt">
+   <hashref memory_address="0xc4093a8">
+   </hashref>
+  </item>
+  <item key="global">
+   <hashref memory_address="0xc408f4c">
+    <item key="default_enc_type">generate_pw</item>
+    <item key="default_pack_type">pdf</item>
+    <item key="default_password"></item>
+    <item key="default_tag">CRYPT</item>
+    <item key="enabled">0</item>
+   </hashref>
+  </item>
+  <item key="mailaddr_rcpt_autocrypt">
+   <hashref memory_address="0xc41b464">
+   </hashref>
+  </item>
+  <item key="mailaddr_sender_autocrypt">
+   <hashref memory_address="0xc2cac84">
+   </hashref>
+  </item>
+ </hashref>
+</perldata>

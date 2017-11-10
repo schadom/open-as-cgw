@@ -1,0 +1,27 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('title_antispam') %]</h3>
+    <p>[% Catalyst.localize('help_antispam') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_antispam_general') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_general') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_antispam_domains') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_domains') %]</p>
+
+    <h3>[% Catalyst.localize('nav_antispam_smtp_server') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_smtpsrvs') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_antispam_recipient_maps') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_recipient_maps') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_antispam_smtp') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_smtp') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_antispam_antivirus') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_antivirus') %]</p>
+	
+	<h3>[% Catalyst.localize('nav_antispam_score_map') %]</h3>
+    <p>[% Catalyst.localize('abstract_antispam_score') %]</p>
+</div>

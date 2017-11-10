@@ -1,0 +1,6 @@
+<div id="monitoring_diagnostics_center_system_status">
+	[% INCLUDE admin/monitoring/diagnostics_center/system_status.inc.tt2 %]
+</div>
+<div id="monitoring_diagnostics_center_self_diagnostics">
+	[% INCLUDE admin/monitoring/diagnostics_center/self_diagnostics.inc.tt2 %]
+</div>

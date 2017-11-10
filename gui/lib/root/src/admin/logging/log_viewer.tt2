@@ -1,0 +1,7 @@
+<div id="logging_log_viewer_search">
+    [% INCLUDE admin/logging/log_viewer/search.inc.tt2 %]
+</div>
+<div id="logging_log_viewer_list">
+    [% INCLUDE admin/logging/log_viewer/list.inc.tt2 %]
+</div>
+

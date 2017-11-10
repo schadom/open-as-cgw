@@ -1,0 +1,3 @@
+[% FOREACH ip IN ip_range_whitelist -%]
+[% ip -%] FILTER smtp-amavis:[127.0.0.1]:10030
+[% END -%]

@@ -1,0 +1,19 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open' %]
+
+[% prefix = 'monitoring_ping_trace_ping_' %]
+
+
+[% INCLUDE 'site/elements/form'
+	url=Catalyst.uri_for('/admin/monitoring/ping_trace/ping'), -%]
+	[% button_text= 'Ping' %]
+	<fieldset>
+		[%  INCLUDE 'site/elements/input'
+			name='hostname',
+			required='required', -%]
+		[% INCLUDE 'site/elements/input' type = 'button', value = button_text, -%]
+	</fieldset>
+</form>
+
+[% INCLUDE 'site/box_close' %]
+

@@ -1,0 +1,96 @@
+#!/bin/bash
+
+# Default Variables
+modprobe ip_tables			# core iptables
+modprobe ip_conntrack			# connectrion tracking
+modprobe ip_conntrack_ftp		# ip conntrack
+modprobe ipt_iprange			# ip range
+
+# flush everything on startup
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+iptables -X
+iptables -t nat -X
+iptables -t mangle -X
+
+# set default policies
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+
+# MY_REJECT-Chain
+iptables -N MY_REJECT
+iptables -A MY_REJECT -p tcp -j REJECT --reject-with tcp-reset
+iptables -A MY_REJECT -p udp -j REJECT --reject-with icmp-port-unreachable
+iptables -A MY_REJECT -j REJECT --reject-with icmp-proto-unreachable
+
+# USER chain
+iptables -N USER
+[%- IF admin_range.size > 0 -%]
+[%- FOREACH entry IN admin_range %]
+iptables -A USER -i [% if_name %] -m state --state NEW -p tcp -m iprange --src-range [% entry.start %]-[% entry.end %] --dport 22 -j ACCEPT # ssh adminrange
+iptables -A USER -i [% if_name %] -m state --state NEW -p tcp -m iprange --src-range [% entry.start %]-[% entry.end %] --dport 443 -j ACCEPT # https adminrange
+
+[% IF additional_ssh_port != 0 %]
+iptables -A USER -i [% if_name %] -m state --state NEW -p tcp -m iprange --src-range [% entry.start %]-[% entry.end %] --dport [% additional_ssh_port %] -j ACCEPT # ssh adminrange
+[% END %]
+[% END -%]
+[% ELSE %]
+
+iptables -A USER -i [% if_name %] -p tcp --dport 22 -j ACCEPT # ssh
+iptables -A USER -i [% if_name %] -p tcp --dport 443 -j ACCEPT # https
+
+[% IF additional_ssh_port != 0 %]
+iptables -A USER -i [% if_name %] -p tcp --dport [% additional_ssh_port %] -j ACCEPT # ssh
+[% END %]
+[% END %]
+
+iptables -A USER -i [% if_name %] -j DROP
+
+# MY_DROP-Chain
+iptables -N MY_DROP
+iptables -A MY_DROP -j DROP
+
+# log all blocked packages
+#iptables -A INPUT -m state --state INVALID -m limit --limit 7200/h -j LOG --log-prefix "INPUT INVALID "
+#iptables -A OUTPUT -m state --state INVALID -m limit --limit 7200/h -j LOG --log-prefix "OUTPUT INVALID "
+
+# block corrupt packages
+iptables -A INPUT -m state --state INVALID -j DROP
+iptables -A OUTPUT -m state --state INVALID -j DROP
+
+[% IF use_snmp != 0 %]
+# SNMP
+iptables -A INPUT -i [% if_name %] -p udp --dport [% 161 %] -j ACCEPT
+[% END %]
+
+# drop stealth scans etc.
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j MY_DROP
+iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j MY_DROP # SYN FIN
+iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j MY_DROP # SYN RST
+iptables -A INPUT -p tcp --tcp-flags FIN,RST FIN,RST -j MY_DROP # FIN RST
+iptables -A INPUT -p tcp --tcp-flags ACK,FIN FIN -j MY_DROP # FIN ACK
+iptables -A INPUT -p tcp --tcp-flags ACK,PSH PSH -j MY_DROP # PSH ACK
+iptables -A INPUT -p tcp --tcp-flags ACK,URG URG -j MY_DROP #URG without ACK
+
+# activate connection-tracking
+iptables -A OUTPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# ICMP
+iptables -A INPUT -p icmp -j ACCEPT
+
+[%# IF use_25 %]
+iptables -A INPUT -i [% if_name %] -m state --state NEW -p tcp --dport 25 -j ACCEPT # SMTP 
+iptables -A INPUT -i [% if_name %] -m state --state NEW -p tcp --dport 587 -j ACCEPT # SMTPS 
+[%# END %]
+
+# previously defined USER table which contains ssh and adminrange
+iptables -A INPUT -i [% if_name %] -p tcp -j USER
+
+# Default-Policies
+iptables -A INPUT -j MY_REJECT
+iptables -A OUTPUT -j MY_REJECT
+
+exit 0

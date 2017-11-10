@@ -1,0 +1,11 @@
+[%  PROCESS 'site/box_init'%]
+[% INCLUDE 'site/box_open' %]
+    [% INCLUDE 'site/elements/form' url=Catalyst.uri_for('/admin/system/network/configure_interface') %]
+        <fieldset>
+            [%  INCLUDE 'site/elements/input' name='ip_address', value=system.ip_address, required='required' %]
+            [%  INCLUDE 'site/elements/input' name='subnet_mask', value=system.subnet_mask, required='required' %]
+            [%  INCLUDE 'site/elements/input' name='default_gateway', value=system.default_gateway, required='required' %]
+            [% INCLUDE 'site/elements/input' type = 'button' %]
+         </fieldset>
+    </form>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>[% language_strings.mail_crypt_product %] - [% language_strings.sendernotification_failure_title %]</title>
+		<style>
+			body, table{color: #333333; font: 11px "Lucida Sans Unicode", sans-serif; line-height: 16.5px;}
+			h2{color: #EE0304; font-size: 14px; font-weight: bold; margin: 0 0 30px 0; text-transform: uppercase;}
+			a{color: inherit; font-weight: bold; text-decoration: underline;}
+			strong.error{color: #EE0304;}
+		</style>
+    </head>
+	
+    <body bgcolor="#505050" style="margin:0; padding:0;">
+		<table id="layout" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td align="center">
+					<!-- START border top orange -->
+					<table border="0" cellspacing="0" cellpadding="0" width="700">
+						<tr>
+							<td bgcolor="#FF8500" height="15"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1" ></td>
+						</tr>
+					</table>
+					<!-- END border top orange -->
+					
+					<!-- START content -->
+					<table bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" width="700">
+						<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1" ></td></tr>
+						<tr>
+							<td width="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="0" width="30" ></td>
+							<td>
+								<h2>[% language_strings.sendernotification_failure_heading %]</h2>
+								<table border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td align="center" valign="middle" width="145">
+											<img src="[% img_path %]/img/failure.gif" alt="" height="115" width="105" >
+										</td>
+										<td width="15"><img src="[% img_path %]/img/spacer.gif" alt="" height="0" width="16" ></td>
+										<td width="480" valign="top">
+											[% language_strings.sendernotification_failure_send_to %] [% mail_rcpt %].<br><br>
+											[% language_strings.sendernotification_failure_something_wrong %]<br><br>
+										</td>
+									</tr>
+									<tr><td colspan="3"><strong>[% language_strings.sendernotification_failure_fix_admin %]</strong></td></tr>
+								</table>
+							</td>
+							<td width="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="0" width="30"></td>
+						</tr>
+						<tr><td colspan="3" height="30"><img src="[% img_path %]/img/spacer.gif" alt="" height="30" width="1"></td></tr>
+					</table>
+					<!-- END content -->
+					
+					<!-- START border bottom blue -->
+					<table border="0" cellspacing="0" cellpadding="0" width="700">
+						<tr>
+							<td bgcolor="#00a0fa" height="15"><img src="[% img_path %]/img/spacer.gif" alt="" height="15" width="1"></td>
+						</tr>
+					</table>
+					<!-- END border bottom blue -->
+					
+					<!-- START underground note -->
+					<table id="underground" border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<td align="center" height="30" style="color: #999999; font-family: Lucida Sans Unicode, sans-serif; font-size: 11px;" valign="middle">[% language_strings.footer_signature %] <a href="http://www.underground8.com" title="visit the underground_8 website" style="color: #999999; font-weight: bold; text-decoration: none;">underground_8</a> [% language_strings.via %] [% language_strings.product %]</td>
+						</tr>
+					</table>
+					<!-- END underground note -->
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

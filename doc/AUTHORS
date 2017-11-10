@@ -1,0 +1,38 @@
+The Open AS Communication Gateway has begun as commercial Antispam Gateway,
+originally initiated by the Austrian company underground_8 Secure Computing
+GmbH.
+
+Within the frame of the commercial development, numerous people have worked
+on its way up to the version 2.0.2s, when the AS has finally gone Open Source.
+
+
+=== Active developers =========================================================
+Wehinger Stefan <stefan@openas.org>
+Core programming, build system, packaging
+
+Sonnleitner Erik, PhD <erik@openas.org>
+Core programming, OSS porting, maintainer
+
+Dominic Schallert <dominic@openas.org>
+Core programming, configs, scripting
+
+
+=== Former developers =========================================================
+Lampesberger Harald BSc.
+Core programming, software architecture
+
+Österle Veronika BSc., <veronika@egozentrum.net>
+GUI design, GUI templating, CSS, Ajax
+
+Radu Iulian
+cyrus-sasl patch
+
+Starlinger Andreas
+Quarantine-ng code
+
+Tangui Achraf
+Score-matrix code
+
+
+
+And some more people, remaining in cognito.

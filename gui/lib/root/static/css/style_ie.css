@@ -1,0 +1,94 @@
+/* ****************************************************************************
+This file is part of the Open AS Communication Gateway.
+
+The Open AS Communication Gateway is free software: you can redistribute it
+and/or modify it under theterms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the License,
+or (at your option) any later version.
+
+The Open AS Communication Gateway is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along
+with the Open AS Communication Gateway. If not, see http://www.gnu.org/licenses/.
+**************************************************************************** */
+
+/* ##########################################
+## CSS for AS Comunication Gateway
+## @author: Veronika Oesterle
+## @last_changed: 2009-04-27
+############################################# */
+
+/* -- PNG Fixes -- */
+.as_open{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_open.png');}
+.as_150{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_150.png');}
+.as_300{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_300.png');}
+.as_500{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_500.png');}
+.as_1000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_1000.png');}
+.as_2500{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_2500.png');}
+.as_5000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_5000.png');}
+.as_10000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_10000.png');}
+
+.as_v300{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v300.png');}
+.as_v500{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v500.png');}
+.as_v1000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v1000.png');}
+.as_v2500{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v2500.png');}
+.as_v5000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v5000.png');}
+.as_v10000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v10000.png');}
+.as_v20000{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/img/appliance_name_bg_v20000.png');}
+
+/* -- Box Model Hacks -- */
+#login #username, #login #password{height: 40px; padding-top: 10px; width: 180px;}
+
+#main_menu{float: none;}
+#main_menu li.hover ul{width: 978px;}
+
+.box .element{display: inline;}
+	.box .element.text input, .box .element.password input, .box .element.number input, .box .element.select select, .box .element.file input{height: 30px;}
+	.box .element.text input, .box .element.password input, .box .element.select select, .box .element.file input, .box .element.checkbox_list .box_list{width: 200px;}
+	.box .element.number input{width: 100px;}
+	.box .element.select select{margin-top: 6px;}
+	.box .element.error{background-color: transparent;}
+	
+	.box .element.checkbox_list strong{float: left;}
+	.box .element.checkbox_list input{float: right;}
+	.box .element.checkbox_list .clear{display: none;}
+	
+	.box .element.button input{padding: 0 9px 0 14px;}
+	
+.box a.enabled, .box a.disabled{width: 80px;}
+.box p.button a{height: 29px; padding-top: 6px;}
+	
+table{font: 11px "Lucida Sans Unicode", sans-serif;}
+table.table_content tbody td.action a{padding-bottom: 2px;}
+table.table_content thead th.one_action{width: 72px;}
+table.table_content thead th.two_action{width: 144px;}
+table.table_content thead th.three_action{width: 216px;}
+
+#sitemap_content{height: 135px;}
+#sitemap ul li{margin-left: 0; width: 160px;}
+
+.mail_status{height: 134px;}
+.reminder{z-index: 501;}
+
+/* -- Notifications -- */
+#notification h3{height: 40px;}
+#notification p{color: #505050;}
+#notification #buttons span{width: 20px;}
+#notification #buttons a{float: right; height: 29px; padding-top: 6px;}
+
+/* -- addition fixes -- */
+#sitemap_handle a, #help_handle a{display: inline;}
+table.table_content tbody td{height: 31px;}
+#top_bar #working{z-index: 1000;}
+#help_center{background-color: #222; margin: 0; margin-left: -490px; position: absolute; left: 50%; width: 980px;}
+
+/* -- Dashboard -- */
+#dashboard_content{width: 700px; margin: -40px -5px -10px -20px;}
+	#dashboard_content .box{width: 628px;}
+	#dashboard_content .box.small{width: 307px;}
+		#dashboard_content .box table.table_content{width: 621px;}
+#dashboard_sidebar{height: 680px; margin-right: -20px;}
+	#dashboard_sidebar h4{width: 230px;}

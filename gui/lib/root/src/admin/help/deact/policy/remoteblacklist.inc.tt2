@@ -1,0 +1,13 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('rbl_checks') %]</h3>
+    <p>[% Catalyst.localize('help_policy_rbl_toggle') %]</p>
+
+    <h3>[% Catalyst.localize('heading_policy_rbl_form') %]</h3>
+    <p>[% Catalyst.localize('help_policy_rbl_form') %]</p>
+
+    <h3>[% Catalyst.localize('heading_policy_rbl_list') %]</h3>
+    <p>[% Catalyst.localize('help_policy_rbl_list') %]</p>
+
+</div>

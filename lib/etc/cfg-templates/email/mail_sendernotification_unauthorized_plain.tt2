@@ -1,0 +1,12 @@
+[% language_strings.sendernotification_unauthorized_heading %]
+
+[% language_strings.sendernotification_unauthorized_send_to %] [% mail_rcpt %].
+
+[% language_strings.sendernotification_unauthorized_not_authorized %]
+
+[% language_strings.sendernotification_unauthorized_not_forwarded %]
+								
+[% language_strings.sendernotification_unauthorized_contact_admin %]
+								
+--
+[% language_strings.footer_signature %] underground_8 [% language_strings.via %] [% language_strings.product %]

@@ -1,0 +1,13 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open'
+	additional_class = "small",
+-%]
+	<ul class="text_list" id="service_status">
+		<li class="[% processes.processes.amavisd-new.running   ? 'running' : 'not_running' %]">[% Catalyst.localize(box_path _ '_antispam') %]</li>
+		<li class="[% processes.processes.clamd.running     ? 'running' : 'not_running' %]">[% Catalyst.localize(box_path _ '_antivirus') %]</li>
+		<li class="[% processes.processes.master.running    ? 'running' : 'not_running' %]">[% Catalyst.localize(box_path _ '_mailagent') %]</li>
+		<li class="[% processes.processes.mysqld.running    ? 'running' : 'not_running' %]">[% Catalyst.localize(box_path _ '_database') %]</li>
+		<li class="[% processes.processes.rtlogd.running    ? 'running' : 'not_running' %]">[% Catalyst.localize(box_path _ '_logging') %]</li>
+		<li class="[% processes.processes.saslauthd.running ? 'running' : 'not_running' %]">[% Catalyst.localize(box_path _ '_smtpauth') %]</li>
+	</ul>
+[% INCLUDE 'site/box_close' %]

@@ -1,0 +1,12 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/content_scanning/anti_virus/change_options'); %]
+	<fieldset>
+	[% INCLUDE 'site/elements/input' name = 'unchecked_tag', required = 'required', value = unchecked_tag %]
+	[% INCLUDE 'site/elements/input' name = 'recursion_level', class = 'number', required = 'required', value = recursion_level %]
+	[% INCLUDE 'site/elements/input' name = 'max_archive_files', class = 'number', required = 'required', value = max_archive_files %]
+	[% INCLUDE 'site/elements/input' name = 'max_archive_size', class = 'number', required = 'required', value = max_archive_size %]
+	[% INCLUDE 'site/elements/input' type = 'button' %]
+	</fieldset>
+</form>
+[% INCLUDE 'site/box_close' %]

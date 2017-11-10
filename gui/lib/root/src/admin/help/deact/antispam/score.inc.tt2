@@ -1,0 +1,7 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('score_matrix_use') %]</h3>
+    <p>[% Catalyst.localize('help_antispam_use_score_matrix') %]</p>
+
+</div>

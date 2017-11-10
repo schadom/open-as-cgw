@@ -1,0 +1,13 @@
+<div id="help_appliance_system"> 
+	<h3>[% Catalyst.localize('system_network_hostname_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_network_hostname') %]</p>
+
+	<h3>[% Catalyst.localize('system_network_ip_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_network_ip') %]</p>
+
+	<h3>[% Catalyst.localize('system_network_dns_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_network_dns') %]</p>
+
+	<h3>[% Catalyst.localize('system_network_proxy_heading') %]</h3>
+	<p>[% Catalyst.localize('help_system_network_proxy') %]</p>
+</div>

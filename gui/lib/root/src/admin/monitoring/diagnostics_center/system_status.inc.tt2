@@ -1,0 +1,11 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[% prefix = 'monitoring_diagnostics_center_system_status_' %]
+<ul class="text_list two_column">
+	<li><strong>[% Catalyst.localize(prefix _ 'harddisk') %]</strong> [% report.disk_totalsizeG %]G total <em>([% report.disk_usedsizeG %]G/[% report.disk_usedpercentage %]% used)</em></li>
+	<li><strong>[% Catalyst.localize(prefix _ 'memory') %]</strong> [% report.mem_totalG %]G total <em>([% report.mem_usedG %]G/[% report.mem_used_percentage %]% used)</em></li>
+	<li><strong>[% Catalyst.localize(prefix _ 'swap') %]</strong> [% report.swap_totalG %]G total <em>([% report.swap_usedG %]G/[% report.swap_used_percentage %]% used)</em></li>
+	<li><strong>[% Catalyst.localize(prefix _ 'logging_space') %]</strong>[% report.logs_used %]</li>
+	<li><strong>[% Catalyst.localize(prefix _ 'quarantine_space') %]</strong>[% report.quarantine_used %]</li>
+</ul>
+[% INCLUDE 'site/box_close' %]

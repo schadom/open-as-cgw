@@ -1,0 +1,7 @@
+ check process openas-qng with pidfile /var/run/openas-qng.pid
+   group mail
+   start program = "/etc/init.d/openas-qng start"
+   stop  program = "/etc/init.d/openas-qng stop"
+   if failed port 10010 type TCP within 2 cycles then start
+   if 99 restarts within 99 cycles then timeout
+

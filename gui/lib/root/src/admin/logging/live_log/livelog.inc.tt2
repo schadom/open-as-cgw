@@ -1,0 +1,80 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open'; %]
+[% USE date %]
+[% # USE TextToHtml %]
+<script type="text/javascript">
+	new Ajax.PeriodicalUpdater(
+		"logging_live_log_livelog",
+		"[% Catalyst.uri_for("/admin/logging/live_log/update/18") %]",
+		{ method: "get", frequency: 2, decay: 2 }
+	);
+</script>
+<div id="livelog">
+[%
+	CELL_WIDTH = 25;
+
+	table_headers = [];
+	table_headers.push( Catalyst.localize(box_path _ '_date') );
+	table_headers.push( Catalyst.localize(box_path _ '_time') );
+	table_headers.push( Catalyst.localize(box_path _ '_sender') );
+	table_headers.push( Catalyst.localize(box_path _ '_recipient') );
+	table_headers.push( Catalyst.localize(box_path _ '_status') );
+	table_headers.push( Catalyst.localize(box_path _ '_subject') );
+
+	table_th_classes = [];
+	table_th_classes.push('', '', '', '', '', '');
+
+	table_td_classes = [];
+	table_td_classes.push('left', '', '', '', '', '');
+
+
+	table_values = [];
+	table_row_classes = [ 'passed_clean', 'passed_spam', 'passed_spam' ];
+
+	FOREACH mail IN mails;
+		mail_from = mail.mail_from.length > (CELL_WIDTH + 3)
+			? "<span title=\"" _ mail.mail_from _ "\">" _ mail.mail_from.substr(0,CELL_WIDTH) _ '...' _ "</span>"
+			: mail.mail_from;
+
+		rcpt_to   = mail.rcpt_to.length > (CELL_WIDTH + 3) 
+			? "<span title=\"" _ mail.mail_to _ "\">" _ mail.rcpt_to.substr(0,CELL_WIDTH) _ '...' _ "</span>"
+			: mail.rcpt_to;
+
+		mail.subject = mail.subject FILTER html_entity;	
+		subject   = mail.subject.length > (CELL_WIDTH + 3) 
+			? "<span title=\"" _ mail.subject _ "\">" _ mail.subject.substr(0,CELL_WIDTH) _ '...' _ "</span>"
+			: mail.subject IF mail.subject;
+
+		received_date = date.format(time => mail.received_log, format => '%Y-%m-%d');
+		received_time = date.format(time => mail.received_log, format => '%H:%M:%S');
+		status = mail.status;
+
+
+		SWITCH mail.status;
+			CASE 'passed_clean';			status = "Passed clean";
+			CASE 'passed_spam';				status = "Passed (tagged)";
+			CASE 'blocked_spam';			status = "Blocked (Spam)";
+			CASE 'blocked_greylisted';		status = "Greylisted";
+			CASE 'blocked_blacklisted';		status = "Blacklisted";
+			CASE 'blocked_virus';			status = "Virus found";
+			CASE 'blocked_banned';			status = "Banned Attachment";
+		END;
+
+		status = "<strong>" _ status _ "</strong>";
+
+		table_row_classes.unshift( mail.status );
+		table_values.push( [ received_date, received_time, mail_from, rcpt_to, status, subject ]);
+	END;
+
+	INCLUDE 'site/elements/table'
+		id = 'livelog',
+		headers = table_headers,
+		td_classes = table_td_classes,
+		th_classes = table_th_classes,
+		tr_classes = table_row_classes,
+		td_values = table_values;
+%]
+</div>
+
+[% INCLUDE 'site/box_close'; %]
+

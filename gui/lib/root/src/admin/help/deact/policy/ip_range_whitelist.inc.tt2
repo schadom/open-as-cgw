@@ -1,0 +1,9 @@
+<div id="help_appliance_system">
+    
+
+    <h3>[% Catalyst.localize('title_policy_iprangewhitelist') %]</h3>
+    <p>[% Catalyst.localize('help_title_policy_iprangewhitelist') %]</p>
+
+    <h3>[% Catalyst.localize('ip_ranges') %]</h3>
+    <p>[% Catalyst.localize('help_internal_iprangewhitelist') %]</p>
+</div>

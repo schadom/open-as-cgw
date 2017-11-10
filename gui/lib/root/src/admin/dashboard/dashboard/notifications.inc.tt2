@@ -1,0 +1,121 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/widget_open' %]
+	[% have_news = 0 %]
+	<!-- Special events -->
+	[% # New versions %]
+	[% IF Catalyst.config.new_sec_version or Catalyst.config.new_main_version %]
+		[% update_class =  Catalyst.config.new_sec_version ? "class=\"security\" " : "" %]
+		<div class="reminder_major">
+			<h5>[% Catalyst.localize(box_path _ '_getupdate_heading')%]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_getupdate') %]
+				<a href="[% Catalyst.uri_for('/admin/system/update') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # Restart required %]
+	[% IF Catalyst.config.restart_required %]
+		<div class="reminder_critical">
+			<h5>[% Catalyst.localize(box_path _ '_reboot_required_heading')%]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_reboot_required') %]
+				<a href="[% Catalyst.uri_for('/admin/system/general_settings') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # Renew licence %]
+	[% IF Catalyst.config.renew_licence_warning == 1 %]
+		<div class="reminder_major">
+			<h5>[% Catalyst.localize(box_path _ '_renew_licence_heading')%]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_renew_licence') %]
+				<a href="[% Catalyst.uri_for('/admin/modules/licence_management') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% ELSIF Catalyst.config.renew_licence_warning == 2 %]
+		<div class="reminder_critical">
+			<h5>[% Catalyst.localize(box_path _ '_licence_expired_heading')%]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_licence_expired') %]
+				<a href="[% Catalyst.uri_for('/admin/modules/licence_management') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # No SMTP Servers %]
+	[% IF Catalyst.config.no_smtpsrvs %]
+		<div class="reminder_major">
+			<h5>[% Catalyst.localize(box_path _ '_no_smtp_servers_heading') %]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_no_smtp_servers') %]
+				<a href="[% Catalyst.uri_for('/admin/mail_transfer/smtp_servers') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # No Domains %]
+	[% IF Catalyst.config.no_domains %]
+		<div class="reminder_major">
+			<h5>[% Catalyst.localize(box_path _ '_no_domains_heading') %]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_no_domains') %]
+				<a href="[% Catalyst.uri_for('/admin/mail_transfer/domains') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # High MailQ Level %]
+	[% IF Catalyst.config.high_mailq_level %]
+		<div class="reminder_major">
+			<h5>[% Catalyst.localize(box_path _ '_high_mailq_level_heading') %]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_high_mailq_level') %]
+				<a href="[% Catalyst.uri_for('/admin/monitoring/mail_queue') %]">Do it now.</a>
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # Update Running %]
+	[% IF Catalyst.config.update_running %]
+		<div class="reminder_critical">
+			<h5>[% Catalyst.localize(box_path _ '_update_running_heading') %]</h5>
+			<p>
+				[% Catalyst.localize(box_path _ '_update_running') %]
+			</p>
+		</div>
+		[% have_news = 1 %]
+	[% END %]
+
+	[% # No Notifications - Show default text %]
+	[% IF !have_news %]
+		<div class="reminder_minor">
+			<h5>[% Catalyst.localize(box_path _ '_default_text_heading') %]</h5>
+			<p>[% Catalyst.localize(box_path _ '_default_text') %]</p>
+		</div>
+	[% END %]
+
+	<!--
+	<div class="reminder_critical">
+		<h5>Please restart now</h5>
+		<p>The last update requires a <a href="#">reboot</a> of the appliance</p>
+	</div>
+	<div class="reminder_major">
+		<h5>System Update available</h5>
+		<p>For 100%  protection, please install the <a href="#">latest system update</a></p>
+	</div>
+	<div class="reminder_minor">
+		<h5>Please renew licence</h5>
+		<p>One of your <a href="#">licences</a> is expiring!</p>
+	</div>
+	-->
+
+[% INCLUDE 'site/widget_close' %]

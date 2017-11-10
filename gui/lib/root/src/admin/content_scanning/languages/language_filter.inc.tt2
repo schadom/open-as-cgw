@@ -1,0 +1,33 @@
+[% PROCESS 'site/box_init'; -%]
+[% INCLUDE 'site/box_open'; %]
+<p class="info"><strong>Note:</strong> [% Catalyst.localize(box_path _ '_text') %]</p>
+<ul class="text_list">
+	<li><strong>[% Catalyst.localize(box_path _ '_status') %]</strong>
+	[%	INCLUDE 'site/elements/enable',
+		status = (language_filter_status == "enabled") ? 'enabled' : 'disabled',
+		url = Catalyst.uri_for('/admin/content_scanning/languages/toggle_language_filter')
+	%]
+	</li>
+</ul>
+[% IF language_filter_status == "enabled";
+	list_lang = [];
+	FOREACH lang IN langs.sort;
+		found = "0";
+		FOREACH allowed IN languages_allowed;
+			IF allowed==lang;
+				found = "1";
+			END;
+		END;
+		list_lang.push({ value => lang, label => langs.$lang, checked => (found=="1" ? 'checked="checked"' : '') });
+	END;
+
+	INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/content_scanning/languages/save_language_prefs') %]
+		<fieldset>
+			[% INCLUDE 'site/elements/multiple_select', name = 'langs',	lines = 12,	option_list = list_lang %]
+		</fieldset>
+		<fieldset>
+			[% INCLUDE 'site/elements/input' type = 'button' %]
+		</fieldset>
+	</form>
+[% END %]
+[% INCLUDE 'site/box_close'; %]

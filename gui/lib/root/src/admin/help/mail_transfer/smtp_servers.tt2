@@ -1,0 +1,7 @@
+<div id="help_appliance_mail_transfer">
+    <h3>[% Catalyst.localize('mail_transfer_smtp_servers_select_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_smtp_servers_select') %]</p>
+
+	<h3>[% Catalyst.localize('mail_transfer_smtp_servers_add_update_heading') %]</h3>
+	<p>[% Catalyst.localize('help_mail_transfer_smtp_servers_add_update') %]</p>
+</div>

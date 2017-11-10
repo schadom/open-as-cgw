@@ -1,0 +1,106 @@
+[% PROCESS 'site/box_init' %]
+[% INCLUDE 'site/box_open' %]
+[%	list_from = [];
+	list_to = [];
+
+	FOREACH entry IN log_range;
+		list_from.push({ value => entry.value, label => entry.label  });
+		list_to.push({ value => entry.value, label => entry.label  });
+	END;
+
+	list_yield = [];
+	list_yield.push({ value => 'all',        label => '(All)' });
+	list_yield.push({ value => 'relayed',    label => 'Relayed' });
+	list_yield.push({ value => 'accepted',   label => 'Accepted' });
+	list_yield.push({ value => 'greylist',   label => 'Greylisted' });
+	list_yield.push({ value => 'blacklist',  label => 'Blocked (Blacklist)' });
+	list_yield.push({ value => 'spam',       label => 'Blocked (Spam)' });
+	list_yield.push({ value => 'virus',      label => 'Blocked (Virus)' });
+	list_yield.push({ value => 'banned',     label => 'Blocked (Banned Att.)' });
+%]
+
+<p class="info">[% Catalyst.localize(box_path _ '_authority') %]</p>
+[% IF entry.size > 0 %]
+	[% INCLUDE 'site/elements/form' url = Catalyst.uri_for('/admin/logging/maillog_simple/search') %]
+		<fieldset>
+			[%  INCLUDE 'site/elements/select'
+				name = 'from',
+				option_list = list_from, -%]
+			[%	INCLUDE 'site/elements/select',
+				name = 'yield', 
+				option_list = list_yield, %]
+			[%  INCLUDE 'site/elements/select'
+				name = 'to',
+				option_list = list_to, -%]
+			[%	INCLUDE 'site/elements/input',
+				name = 'ignore_case', 
+				value = '1',
+				type = 'checkbox', %]
+			[%	INCLUDE 'site/elements/input',
+				name = 'pattern', %]
+			[%	INCLUDE 'site/elements/input',
+				name = 'reverse', 
+				value = '1',
+				type = 'checkbox', %]
+			[% INCLUDE 'site/elements/input'
+				value = Catalyst.localize(box_path _ '_start'),
+				type = 'button' -%]
+		</fieldset>
+	</form>
+
+		[% IF search_result AND search_result.size > 0; 
+
+		CELL_WIDTH = 23;
+
+		table_headers = [];
+		table_headers.push(Catalyst.localize(box_path _ '_num'));
+		table_headers.push(Catalyst.localize(box_path _ '_ts'));
+		table_headers.push(Catalyst.localize(box_path _ '_yield'));
+		table_headers.push(Catalyst.localize(box_path _ '_from'));
+		table_headers.push(Catalyst.localize(box_path _ '_to'));
+		table_headers.push(Catalyst.localize(box_path _ '_qnr'));
+		table_headers.push(Catalyst.localize(box_path _ '_subject'));
+
+		table_th_classes = [];
+		table_th_classes.push('left', '', '', '', '', '', '');
+
+		table_td_classes = [];
+		table_td_classes.push('left', '', '', '', '', '', '');
+
+		table_values = [];
+		num = 0;
+
+		search_result = search_result.reverse;
+		IF reverse_output; search_result = search_result.reverse; END;
+		FOREACH line IN search_result; 
+			num = num + 1;
+
+			from = line.from FILTER html_entity;
+			from = from.length > (CELL_WIDTH + 3) ?
+				"<span title=\"" _ from _ "\">" _ from.substr(0,CELL_WIDTH) _ '...' _ "</span>" : from;
+			
+			to = line.to FILTER html_entity;
+			to = to.length > (CELL_WIDTH + 3) ? 
+				"<span title=\"" _ to _ "\">" _ to.substr(0,CELL_WIDTH) _ '...' _ "</span>" : to;
+			
+			subject = line.subject FILTER html_entity;
+			subject = subject.length > (CELL_WIDTH + 3) ? 
+				"<span title=\"" _ subject _ "\">" _ subject.substr(0,CELL_WIDTH) _ '...' _ "</span>" : subject;
+
+			yield = "<strong>" _ line.yield _ "</strong>";
+			
+			table_values.push([ num, line.ts, yield, from, to, line.qnr, subject]);
+		END;
+
+		INCLUDE 'site/elements/table',
+			headers = table_headers,
+			td_classes = table_td_classes,
+			th_classes = table_th_classes,
+			td_values = table_values;
+	END; %]
+
+[% ELSE %]
+	<p><i>There are currently no logs to crawl through - your appliance may be brand new; please
+	re-check this page in some while.</i></p>
+[% END %]
+[% INCLUDE 'site/box_close' %]
