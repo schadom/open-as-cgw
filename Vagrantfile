@@ -9,8 +9,8 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.hostname = "antispam.local"
-  config.vm.network "forwarded_port", guest: 443, host: 825
-  config.vm.network "forwarded_port", guest: 443, host: 8587
+  config.vm.network "forwarded_port", guest: 25, host: 2525
+  config.vm.network "forwarded_port", guest: 587, host: 2587
   config.vm.network "forwarded_port", guest: 443, host: 8443
   config.vm.synced_folder ".", "/vagrant"
 
