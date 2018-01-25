@@ -1,5 +1,6 @@
 [![Open AS Communication Gateway](https://raw.githubusercontent.com/open-as-team/open-as-cgw/master/gui/lib/root/static/img/logo.png)](https://github.com/open-as-team/open-as-cgw) 
-###
+
+### Open AS Communication Gateway
 
 [![Travis CI](https://travis-ci.org/open-as-team/open-as-cgw.svg?branch=master)](https://travis-ci.org/open-as-team/open-as-cgw)
 [![Docs](https://img.shields.io/badge/docs-in%20progress-red.svg)](https://open-as-cgw.readthedocs.io/en/latest/)
@@ -41,7 +42,7 @@ You can build and install the package yourself or rely on pre-built packages for
 
 
 
-Developers
+Development
 ----------------------------------------
 
 **Testing environment**
@@ -76,4 +77,4 @@ By default the repository on your local machine is synced with the Vagrant VM an
 **Contributing**
 
 Feel free to pick any open issue and provide a proper fix.
-We greatly appreciate pull requests via Github. 
+We greatly appreciate pull requests via Github.
