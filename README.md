@@ -1,9 +1,11 @@
-[![Open AS Communication Gateway](https://openas.org/assets/img/logo.png)](https://openas.org) 
+[![Open AS Communication Gateway](https://raw.githubusercontent.com/open-as-team/open-as-cgw/master/gui/lib/root/static/img/logo.png)](https://github.com/open-as-team/open-as-cgw) 
 ## Open AS Communication Gateway
 
 [![Travis CI](https://travis-ci.org/open-as-team/open-as-cgw.svg?branch=master)](https://travis-ci.org/open-as-team/open-as-cgw)
 [![Docs](https://img.shields.io/badge/docs-in%20progress-red.svg)](https://open-as-cgw.readthedocs.io/en/latest/)
 [![Launchpad PPA](https://img.shields.io/badge/launchpad-ppa-red.svg)](https://code.launchpad.net/~open-as-team/+recipe/open-as-cgw-daily)
+
+[!Open AS Communication Gateway](https://raw.githubusercontent.com/open-as-team/open-as-cgw/master/gui/lib/root/static/img/openas_dashboard2.png)](https://github.com/open-as-team/open-as-cgw) 
 
 An open, integrated, easy-to-use, GUI-managed SMTP gateway scanning your emails for spam and viruses.
 
@@ -11,13 +13,14 @@ The Open AS Communication Gateway (or short 'AS') aims to be a all-in-one soluti
 
 While we focus on Ubuntu LTS as the base distribution for our appliance releases, technically it should also work on Debian or any of it's derivatives, as long as all dependencies are met. Please apologize that we cannot provide any support for such setups.
 
-:warning: This branch is **UNSTABLE**! Support for Ubuntu 16.04 Xenial LTS in progress! :warning:
+:warning: This branch is **UNSTABLE** ! :warning:
 
 
 
 Main features
 ----------------------------------------
 
+ * Appliance based on Ubuntu 16.04.3 LTS (Xenial Xerus)
  * Recipient maps (specified manualy or fetched via LDAP, e.g. from MS AD)
  * White- and black-listing based on e-mail addresses, hostnames, domain-names, network ranges, CIDR ranges, reverse lookups and so on
  * Remote blacklisting (DNSBLs, URI DNSBLs, etc.)
