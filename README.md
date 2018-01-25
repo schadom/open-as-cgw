@@ -5,7 +5,7 @@
 [![Docs](https://img.shields.io/badge/docs-in%20progress-red.svg)](https://open-as-cgw.readthedocs.io/en/latest/)
 [![Launchpad PPA](https://img.shields.io/badge/launchpad-ppa-red.svg)](https://code.launchpad.net/~open-as-team/+recipe/open-as-cgw-daily)
 
-[!Open AS Communication Gateway](https://raw.githubusercontent.com/open-as-team/open-as-cgw/master/gui/lib/root/static/img/openas_dashboard2.png)](https://github.com/open-as-team/open-as-cgw) 
+[![Open AS Communication Gateway](https://raw.githubusercontent.com/open-as-team/open-as-cgw/master/gui/lib/root/static/img/openas_dashboard2.png)](https://github.com/open-as-team/open-as-cgw) 
 
 An open, integrated, easy-to-use, GUI-managed SMTP gateway scanning your emails for spam and viruses.
 
