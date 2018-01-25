@@ -1,4 +1,5 @@
 [![Open AS Communication Gateway](https://raw.githubusercontent.com/open-as-team/open-as-cgw/master/gui/lib/root/static/img/logo.png)](https://github.com/open-as-team/open-as-cgw) 
+###
 
 [![Travis CI](https://travis-ci.org/open-as-team/open-as-cgw.svg?branch=master)](https://travis-ci.org/open-as-team/open-as-cgw)
 [![Docs](https://img.shields.io/badge/docs-in%20progress-red.svg)](https://open-as-cgw.readthedocs.io/en/latest/)
