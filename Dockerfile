@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get install -y redis-server \
     && mkdir -p /tmp/build/open-as-cgw \
     && cd /tmp/build/open-as-cgw/ \
-    && git clone https://github.com/open-as-team/open-as-cgw \
+    && git clone https://github.com/open-as-team/open-as-cgw.git \
     && dpkg-buildpackage -rfakeroot \
     && echo "debconf debconf/frontend select noninteractive" | sudo debconf-set-selections \
     && echo "mysql-server mysql-server/root_password password" | sudo debconf-set-selections \
